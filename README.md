@@ -6,10 +6,13 @@
     1. [Audience](#audience)
     1. [Document Semantics, Formatting, and Naming](#document)
     1. [Contact](#contact)
-1. [Some paragraph](#paragraph1)
-    1. [Sub paragraph](#subparagraph1)
+1. [Pour bien démarrer](#démarrer)
+    1. [Quelle est cette norme de conception?](#norme)
+    1. [Comment appliquer la norme de conception?](#appliquer)
+    1. [Le choix derrière REST?](#rest)
+    1. [Exemple de définition OpenAPI](#openapi)
 1. [Another paragraph](#paragraph2)
-1. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+
 
 ## Préface <a name="préface"></a>
 
@@ -25,10 +28,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus purus urna, ele
 ## Contact <a name="contact"></a>
 In gravida, sapien congue pharetra convallis, sem diam consequat nisi, ut ullamcorper magna eros ut ante. Nunc mattis placerat metus, id malesuada leo rutrum sed. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent et enim ac nisl rutrum efficitur. Duis ultrices eros quis orci scelerisque, et mollis tellus euismod. Donec facilisis scelerisque sem, eu elementum metus pretium et. Nulla placerat nisl consectetur tortor accumsan vehicula. Donec sit amet risus eget urna viverra aliquam. Morbi pharetra lacinia tempus.
 
-### Sub paragraph <a name="subparagraph1"></a>
+### Pour bien démarrer <a name="démarrer"></a>
 This is a sub paragraph, formatted in heading 3 style
 
 ## Another paragraph <a name="paragraph2"></a>
 The second paragraph text
-
-## [Fourth Example](http://www.fourthexample.com)
