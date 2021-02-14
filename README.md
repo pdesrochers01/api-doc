@@ -7,10 +7,10 @@
     1. [Document Semantics, Formatting, and Naming](#document)
     1. [Contact](#contact)
 1. [Pour bien démarrer](#démarrer)
-    1. [Quelle est cette norme de conception?](#norme)
-    1. [Comment appliquer la norme de conception?](#appliquer)
-    1. [Le choix derrière REST?](#rest)
-    1. [Exemple de définition OpenAPI](#openapi)
+    1. [Pourquoi une norme de conception des API?](#norme)
+    1. [Comment appliquer cette norme de conception?](#appliquer)
+    1. [Pourquoi choisir REST?](#rest)
+    1. [La norme de spécification OpenAPI](#openapi)
 1. [Another paragraph](#paragraph2)
 
 
