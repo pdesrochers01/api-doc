@@ -34,6 +34,14 @@
     1. [En-têtes des requêtes](#entetedemandes)
     1. [Gestion des dates](#dates)
     1. [Exemples](#exemples)
+1. [Versionnage des API](#nommage)
+    1. [Gestion sémantique de version](#sémantiqueversion)
+    1. [Version majeure](#versionmajeure)
+    1. [Version mineure](#versionmineure)
+    1. [Rétrocompatibilité](#rétrocompatibilité)
+    1. [Politique de fin de vie](#findevie)
+    1. [Désuétude des API](#désuétude)
+
 
 ## Préface <a name="préface"></a>
 
