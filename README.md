@@ -7,11 +7,8 @@
     1. [Document Semantics, Formatting, and Naming](#document)
     1. [Contact](#contact)
 1. [Pour bien démarrer](#démarrer)
-    1. [Pourquoi une norme de conception des API?](#norme)
-    1. [Comment appliquer cette norme de conception?](#appliquer)
-    1. [Pourquoi choisir REST?](#rest)
-    1. [La norme de spécification OpenAPI](#openapi)
-1. [Another paragraph](#paragraph2)
+
+
 
 
 ## Préface <a name="préface"></a>
@@ -29,7 +26,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus purus urna, ele
 In gravida, sapien congue pharetra convallis, sem diam consequat nisi, ut ullamcorper magna eros ut ante. Nunc mattis placerat metus, id malesuada leo rutrum sed. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent et enim ac nisl rutrum efficitur. Duis ultrices eros quis orci scelerisque, et mollis tellus euismod. Donec facilisis scelerisque sem, eu elementum metus pretium et. Nulla placerat nisl consectetur tortor accumsan vehicula. Donec sit amet risus eget urna viverra aliquam. Morbi pharetra lacinia tempus.
 
 ## Pour bien démarrer <a name="démarrer"></a>
-This is a sub paragraph, formatted in heading 3 style
 
-## Another paragraph <a name="paragraph2"></a>
-The second paragraph text
+### Pourquoi une norme de conception des API? <a name="norme"></a>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus purus urna, elementum vitae blandit vitae, accumsan nec sem. Sed non urna placerat, aliquet leo at, eleifend nisi. Nunc gravida, metus at tempus tristique, nunc mauris placerat ipsum, ac aliquet purus erat id ex. Aenean at nunc mauris. Nullam posuere dui ligula, quis tempor dolor sollicitudin eu.
+
+### Comment appliquer cette norme de conception? <a name="appliquer"></a>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus purus urna, elementum vitae blandit vitae, accumsan nec sem. Sed non urna placerat, aliquet leo at, eleifend nisi. Nunc gravida, metus at tempus tristique, nunc mauris placerat ipsum, ac aliquet purus erat id ex. Aenean at nunc mauris. Nullam posuere dui ligula, quis tempor dolor sollicitudin eu.
+
+### Pourquoi choisir REST? <a name="rest"></a>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus purus urna, elementum vitae blandit vitae, accumsan nec sem. Sed non urna placerat, aliquet leo at, eleifend nisi. Nunc gravida, metus at tempus tristique, nunc mauris placerat ipsum, ac aliquet purus erat id ex. Aenean at nunc mauris. Nullam posuere dui ligula, quis tempor dolor sollicitudin eu.
+
+### La norme de spécification OpenAPI <a name="openapi"></a>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus purus urna, elementum vitae blandit vitae, accumsan nec sem. Sed non urna placerat, aliquet leo at, eleifend nisi. Nunc gravida, metus at tempus tristique, nunc mauris placerat ipsum, ac aliquet purus erat id ex. Aenean at nunc mauris. Nullam posuere dui ligula, quis tempor dolor sollicitudin eu.
