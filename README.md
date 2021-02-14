@@ -11,6 +11,13 @@
     1. [Comment appliquer cette norme de conception?](#appliquer)
     1. [Pourquoi choisir REST?](#rest)
     1. [La norme de spécification OpenAPI](#openapi)
+1. [Définitions](#définition)
+    1. [REST](#rest)
+    1. [API](#api)
+    1. [Ressources](#resssources)
+    1. [Représentation](#représentation)
+    1. [Espace de nommage](#namespace)
+    1. [Opérations](#opérations)
 
 
 ## Préface <a name="préface"></a>
