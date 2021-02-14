@@ -18,7 +18,21 @@
     1. [Représentation](#représentation)
     1. [Espace de nommage](#namespace)
     1. [Opérations](#opérations)
-
+1. [Exigences gouvernementale des API](#exigences)
+    1. [Documentation des API](#documentation)
+    1. [Développement des API](#développement)
+    1. [L'expérience du développeur](#expérience)
+    1. [Stabilité des API](#stabilité)
+    1. [Maturité de la conception des API](#maturité)
+    1. [Opérations](#opérations)
+1. [Conventions de nommage](#nommage)
+    1. [Format des messages](#formatmessages)
+    1. [Noms des composants URI](#composantesuri)
+    1. [Noms des champs](#nomschamps)
+    1. [Noms des relations des liens](#nomsliens)
+    1. [En-têtes des demandes.](#entetedemandes)
+    1. [Gestion des dates](#dates)
+    1. [Exemples](#exemples)
 
 ## Préface <a name="préface"></a>
 
