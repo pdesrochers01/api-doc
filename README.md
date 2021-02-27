@@ -64,7 +64,7 @@ Le public visé par ce document est constitué des développeurs d'API, des arch
 ## Document Semantics, Formatting, and Naming <a name="document"></a>
 Les mots clés `DOIT`, `NE DOIT PAS`, `DEVRAIT`, `NE DEVRAIT PAS`, `RECOMMANDÉ`, `PEUT` et `OPTIONNEL` dans ce document doivent être interprétés comme décrit dans le standard [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
-Les mots REST et RESTful DOIVENT être écrits tels que présentés ici, représentant l'acronyme comme toutes les lettres majuscules. Cela est également vrai pour JSON, XML et d'autres acronymes.
+Les mots `REST` et `RESTful` **DOIVENT** être écrits tels que présentés ici, représentant l'acronyme comme toutes les lettres majuscules. Cela est également vrai pour `JSON`, `XML` et d'autres acronymes.
 
 Le texte lisible par traitement informatique (machine-readable), comme les URL, les verbes HTTP et le code source, est représenté à l'aide d'une police de caractères à largeur fixe.
 
@@ -90,17 +90,17 @@ La détermination du moment d'utilisation de la norme est basée sur la catégor
 
 Une API appartiendra généralement à l'une des catégories suivantes:
 
-API de niveau système: il s'agit d'API de bas niveau exposées directement par une application.
+- **API de niveau système**: il s'agit d'API de bas niveau exposées directement par une application.
 
-API de niveau processus: il s'agit d'API composées d'autres API système via l'orchestration et la chorégraphie.
+- **API de niveau processus**: il s'agit d'API composées d'autres API système via l'orchestration et la chorégraphie.
 
-API de niveau d'expérience: il s'agit d'API destinées à faciliter l'adoption de l'intégration d'API entre une organisation et ses consommateurs externes.
+- **API de niveau d'expérience**: il s'agit d'API destinées à faciliter l'adoption de l'intégration d'API entre une organisation et ses consommateurs externes.
 
-Si votre API fait partie de l'API de niveau système et est développée sur mesure, il est RECOMMANDÉ d'utiliser la norme de conception car cela vous aidera à développer des API de niveau processus ou expérience si elles sont requises à l'avenir.
+Si votre API fait partie de l'API de niveau système et est développée sur mesure, il est **RECOMMANDÉ** d'utiliser la norme de conception car cela vous aidera à développer des API de niveau processus ou expérience si elles sont requises à l'avenir.
 
-Si votre API est une API de niveau de processus, vous DEVRIEZ appliquer la norme de conception car le plus souvent, une API de niveau de processus sera adaptée pour la réutilisation.
+Si votre API est une API de niveau de processus, vous **DEVRIEZ** appliquer la norme de conception car le plus souvent, une API de niveau de processus sera adaptée pour la réutilisation.
 
-Si votre API est une API de niveau d'expérience, les normes de conception DOIVENT être appliquées.
+Si votre API est une API de niveau d'expérience, les normes de conception **DOIVENT** être appliquées.
 
 Cette norme de conception elle-même ne s'applique PAS aux API tierces au niveau du système telles que celles disponibles en tant que «prêtes à l'emploi» ou faisant partie de la plate-forme SaaS, par exemple. API Salesforce ou API ArcGIS. Cependant, la norme peut s'appliquer si vous cherchez à réexposer ces API en tant qu'API de niveau d'expérience pour une consommation plus large.
 
@@ -120,29 +120,7 @@ Il est prévu que le développement futur de ces normes de conception prendra é
 
 
 ## La norme de spécification OpenAPI <a name="openapi"></a>
-
-Des exemples de modèles OpenAPI (anciennement appelés Swagger) qui exposent les méthodes d'API et sont conformes au Guide de conception de services sont fournis ici pour aider les concepteurs d'API à démarrer. Les concepteurs d'API peuvent utiliser ces modèles comme base pour démarrer leur définition d'API à partir d'un point de départ conforme aux normes.
-
-Les modèles disponibles sont:
-
-OpenAPI v3.0 Template (JSON format)
-OpenAPI v3.0 Template (YAML format)
-
-Une fois la définition OpenAPI copiée, les concepteurs peuvent effectuer les tâches suivantes:
-
-Fournissez une description pertinente de l'API - Reportez-vous à la ligne numéro 5.
-
-Revoir et mettre à jour la description
-
-Pour chaque méthode:
-
-Mettre à jour la définition du champ
-Mettre à jour la description
-Donnez des exemples
-Passez en revue les codes d'état et les messages d'erreur et mettez à jour si nécessaire
-Voir la section Documentation API pour plus de détails sur les informations à inclure dans le fichier de documentation OpenAPI.
-
-NB. Ces exemples OpenAPI montrent comment une API peut être définie. Vérifiez toujours le référentiel pour la dernière copie du modèle et des exemples.
+[OpenAPI v3.0](https://swagger.io/specification/)
 
 # Définitions <a name="définition"></a>
 
@@ -167,6 +145,7 @@ En décomposant les systèmes en ces zones logiques, cela permet une séparation
 
 ## Identifiants de ressource <a name="idresssources"></a>
 TBC
+
 ## Représentations <a name="représentation"></a>
 TBD
 
