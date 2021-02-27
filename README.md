@@ -15,7 +15,7 @@
     1. [REST](#rest)
     1. [API](#api)
     1. [Ressources](#resssources)
-    1. [Identifiants de ressource](#resssources)
+    1. [Identifiants de ressource](#idresssources)
     1. [Représentations](#représentation)
     1. [Espace de noms](#namespace)
     1. [Opérations](#opérations)
@@ -143,3 +143,25 @@ Passez en revue les codes d'état et les messages d'erreur et mettez à jour si 
 Voir la section Documentation API pour plus de détails sur les informations à inclure dans le fichier de documentation OpenAPI.
 
 NB. Ces exemples OpenAPI montrent comment une API peut être définie. Vérifiez toujours le référentiel pour la dernière copie du modèle et des exemples.
+
+# Définitions <a name="définition"></a>
+
+## REST <a name="rest"></a>
+TBD
+
+## API <a name="api"></a>
+TBD
+
+## Ressources <a name="resssources"></a>
+TBD
+
+## Identifiants de ressource <a name="idresssources"></a>
+TBC
+## Représentations <a name="représentation"></a>
+TBD
+
+## Espace de noms <a name="namespace"></a>
+TBD
+
+## Opérations <a name="opérations"></a>
+TBC
