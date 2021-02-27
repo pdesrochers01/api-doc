@@ -144,7 +144,18 @@ Dans l'exemple d'un système RH, les ressources sont les `salariés`, les `poste
 En décomposant les systèmes en ces zones logiques, cela permet une séparation nette des préoccupations (par exemple, les fonctions des employés ne fonctionnent que sur les employés et seuls les employés peuvent demander des demandes de congé). Cela garantit également que chaque élément de données renvoyé par votre API est le plus petit nécessaire pour répondre aux exigences du client (par exemple, lorsque vous demandez des employés, vous ne recevez pas non plus les membres de la famille).
 
 ## Identifiants de ressource <a name="idresssources"></a>
-TBC
+Chaque ressource disponible dans votre système (par exemple, chaque `employé` ou chaque `demande de congé`) doit être identifiable de manière unique dans le système. Ceci est un élément clé du style RESTful des API; la possibilité d'adresser individuellement tout élément de votre système et de stocker ces identifiants pour une utilisation ultérieure.
+
+Les identificateurs de ressources peuvent être l'un des suivants:
+| Nom                   | Exemple                   |
+| --------------------- |---------------------------|
+| Numérique             | /employes/12389           |
+| Chaîne de caractères  | /employes/john-smith      |
+| Date                  | /dates/2018-09-17         |
+
+Tant que l'identifiant est unique dans votre application, il peut s'agir de n'importe quelle chaîne de caractères ou de chiffres.
+
+Lorsque des identifiants numériques sont utilisés, ils NE DOIVENT pas être séquentiels, par ex. il ne devrait pas être anodin de deviner le prochain ID. Si cela est difficile à réaliser, il est probable que l'API doive être davantage extraite de la source de données sous-jacente.
 
 ## Représentations <a name="représentation"></a>
 TBD
