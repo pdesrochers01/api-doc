@@ -161,7 +161,7 @@ Lorsque des identifiants numériques sont utilisés, ils **NE DOIVENT** pas êtr
 ## Représentations <a name="représentation"></a>
 Un concept clé dans la conception d'API RESTful est l'idée de la représentation d'une ressource à un moment donné.
 
-Lorsque vous demandez au système des informations sur les employés, vous recevrez une représentation de cet employé, par ex.
+Lorsque vous demandez au système des informations sur les employés, vous recevrez une représentation de cet employé, par exemple :
 
 ```
 HTTP 1.1 GET /employees/john-smith
@@ -177,12 +177,44 @@ Content-Type: application/json
   "on_leave" : false
 }
 ```
+L'intention est que cette représentation peut changer au fil du temps à mesure que le système et les données changent. Un futur appel à ce même point d'extrémité peut produire une représentation différente si l'employé est maintenant en congé ou si son poste au sein de l'organisation a changé.
+
+Il est également possible de demander une représentation entièrement différente de cette même ressource si le système la prend en charge. Par exemple, il peut y avoir un cas où vous avez besoin d'une version PDF de cet employé et cela peut être facilité par une demande de représentation différente via l'en-tête `Accept`:
+
+```
+HTTP 1.1 GET /employees/john-smith
+Accept: application/pdf
+
+200 OK
+Content-Type: application/pdf
+
+...<BINARY CODE>...
+```
+
 
 ## Espace de noms <a name="namespace"></a>
-TBD
+L'espace de noms d'un service définit le regroupement des fonctions associées dans. Les espaces de noms peuvent être de niveau assez élevé (par exemple, le nom d'une agence ou d'un service) ou assez bas (par exemple, un projet, une équipe ou un service exposé).
+
+Les espaces de noms sont utiles pour fournir aux consommateurs l'accès aux fonctions associées via des technologies de passerelle. Une fois qu'un consommateur a un jeton d'accès à un espace de noms particulier, il est probable (mais pas toujours obligatoire) qu'il aura accès à toutes les fonctions fournies dans cet espace de noms.
+
+Les espaces de noms sont pertinents lors de la conception de la structure de votre URL et sont décrits plus en détail dans la section Noms des composants URI.
 
 ## Opérations <a name="opérations"></a>
-TBC
+
+Pour utiliser l'un des espaces de noms, ressources et identificateurs de ressources, les développeurs doivent utiliser Operations.
+
+Une opération est définie par l'utilisation de:
+
+une méthode HTTP; et
+un chemin de ressource.
+Exemples:
+```
+GET /employes
+GET /employes/john-smith
+DELETE /employes/john-smith
+```
+
+
 ********
 # Définitions <a name="définition"></a>
 
