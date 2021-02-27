@@ -12,8 +12,8 @@
     1. [Pourquoi choisir REST?](#rest)
     1. [La norme de spécification OpenAPI](#openapi)
 1. [Définitions](#définition)
-    1. [REST](#rest)
     1. [API](#api)
+    1. [REST](#rest)
     1. [Ressources](#resssources)
     1. [Identifiants de ressource](#idresssources)
     1. [Représentations](#représentation)
@@ -144,6 +144,38 @@ Voir la section Documentation API pour plus de détails sur les informations à 
 
 NB. Ces exemples OpenAPI montrent comment une API peut être définie. Vérifiez toujours le référentiel pour la dernière copie du modèle et des exemples.
 
+# Définitions <a name="définition"></a>
+
+
+
+## API <a name="api"></a>
+Dans le contexte de cette norme de conception d'API, une API (Application Programming Interface) est définie comme une API RESTful.
+
+Une API RESTful est un style de communication entre les systèmes où les ressources sont définies par URI et ses opérations sont définies par l'utilisation de méthodes HTTP.
+
+Une API RESTful adopte de nombreuses normes HTTP telles que les codes de réponse et les méthodes.
+
+## REST <a name="rest"></a>
+REST (representational state transfer) est un style d'architecture logicielle définissant un ensemble de contraintes à utiliser pour créer des services web. Les services web conformes au style d'architecture REST, aussi appelés services web RESTful, établissent une interopérabilité entre les ordinateurs sur Internet. Les services web REST permettent aux systèmes effectuant des requêtes de manipuler des ressources web via leurs représentations textuelles à travers un ensemble d'opérations uniformes et prédéfinies sans état.
+
+## Ressources <a name="resssources"></a>
+Afin de concevoir une API utile et propre, votre système doit être divisé en groupements logiques (souvent appelés modèles ou ressources). Dans la plupart des cas, les ressources sont les «noms» de votre système.
+
+Dans l'exemple d'un système RH, les ressources sont les `salariés`, les `postes` et les `demandes de congé`.
+
+En décomposant les systèmes en ces zones logiques, cela permet une séparation nette des préoccupations (par exemple, les fonctions des employés ne fonctionnent que sur les employés et seuls les employés peuvent demander des demandes de congé). Cela garantit également que chaque élément de données renvoyé par votre API est le plus petit nécessaire pour répondre aux exigences du client (par exemple, lorsque vous demandez des employés, vous ne recevez pas non plus les membres de la famille).
+
+## Identifiants de ressource <a name="idresssources"></a>
+TBC
+## Représentations <a name="représentation"></a>
+TBD
+
+## Espace de noms <a name="namespace"></a>
+TBD
+
+## Opérations <a name="opérations"></a>
+TBC
+********
 # Définitions <a name="définition"></a>
 
 ## REST <a name="rest"></a>
