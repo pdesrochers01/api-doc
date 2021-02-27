@@ -152,13 +152,31 @@ Les identificateurs de ressources peuvent être l'un des suivants:
 | Numérique             | /employes/12389           |
 | Chaîne de caractères  | /employes/john-smith      |
 | Date                  | /dates/2018-09-17         |
+| GUID                  | 7d80-eb69-4lq5-9f95       |
 
 Tant que l'identifiant est unique dans votre application, il peut s'agir de n'importe quelle chaîne de caractères ou de chiffres.
 
-Lorsque des identifiants numériques sont utilisés, ils NE DOIVENT pas être séquentiels, par ex. il ne devrait pas être anodin de deviner le prochain ID. Si cela est difficile à réaliser, il est probable que l'API doive être davantage extraite de la source de données sous-jacente.
+Lorsque des identifiants numériques sont utilisés, ils **NE DOIVENT** pas être séquentiels. Par exemple. il ne devrait pas être évident de deviner le prochain identificateur.
 
 ## Représentations <a name="représentation"></a>
-TBD
+Un concept clé dans la conception d'API RESTful est l'idée de la représentation d'une ressource à un moment donné.
+
+Lorsque vous demandez au système des informations sur les employés, vous recevrez une représentation de cet employé, par ex.
+
+```
+HTTP 1.1 GET /employees/john-smith
+Accept: application/json
+
+200 OK
+Content-Type: application/json
+
+{
+  "name" : "John Smith",
+  "employee_id" : "123456",
+  "position" : "Manager",
+  "on_leave" : false
+}
+```
 
 ## Espace de noms <a name="namespace"></a>
 TBD
