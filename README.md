@@ -1,16 +1,18 @@
 # Lignes directrices sur les API du gouvernement du Québec
 
-# Table of contents
+# Table des matières
 1. [Préface](#préface)
     1. [Introduction](#introduction)
     1. [Audience](#audience)
     1. [Sémantique et formatage du document](#document)
     1. [Contacts](#contact)
+
 1. [Pour bien démarrer](#démarrer)
     1. [Pourquoi une norme de conception des API?](#norme)
     1. [Comment appliquer cette norme de conception?](#appliquer)
     1. [Pourquoi choisir REST?](#rest)
     1. [La norme de spécification OpenAPI](#openapi)
+
 1. [Définitions](#définition)
     1. [API](#api)
     1. [REST](#rest)
@@ -19,13 +21,15 @@
     1. [Représentations](#représentation)
     1. [Espace de noms](#namespace)
     1. [Opérations](#opérations)
+
 1. [Exigences gouvernementale des API](#exigences)
     1. [Documentation des API](#documentation)
     1. [Développement des API](#développement)
     1. [L'expérience du développeur](#expérience)
     1. [Stabilité des API](#stabilité)
     1. [Maturité de la conception des API](#maturité)
-    1. [Opérations](#opérations)
+    1. [Opérations](#exigencesopérations)
+
 1. [Sécurité des API](#sécuritéapi)
     1. [Conception des API](#conceptionsecurité)
     1. [Sécurité des transports](#sécuritétransports)
@@ -36,6 +40,7 @@
     1. [Validation des entrées](#validationentrées)
     1. [Validation du type de contenu](#validationtypecontenu)
     1. [Utiliser les fonctions de sécurité de la passerelle d'API](#fonctionspasserelle)
+
 1. [Conventions de nommage](#nommage)
     1. [Format des messages](#formatmessages)
     1. [Noms des composants URI](#composantesuri)
@@ -44,6 +49,7 @@
     1. [En-têtes des requêtes](#entetedemandes)
     1. [Gestion des dates](#dates)
     1. [Exemples](#exemples)
+
 1. [Versionnage des API](#nommage)
     1. [Gestion sémantique de version](#sémantiqueversion)
     1. [Version majeure](#versionmajeure)
@@ -51,6 +57,7 @@
     1. [Rétrocompatibilité](#rétrocompatibilité)
     1. [Politique de fin de vie](#findevie)
     1. [Désuétude des API](#désuétude)
+
 1. [Requête des API](#requête)
     1. [Entête des requêtes](#entêterequêtes)
     1. [Méthodes des requêtes HTTP](#méthodeshttp)
@@ -59,17 +66,21 @@
     1. [Paramètres de requête](#paramètresrequête)
     1. [Pagination](#paramètresrequête)
     1. [Filtrage et tri](#Filtragetri)
+
 1. [Réponses des API](#réponses)
     1. [Entête des réponses](#entêteréponses)
     1. [Codes de réponse HTTP](#codesréponsehttp)
     1. [Contenu des réponses](#contenuréponses)
+
 1. [Hypermédia](#hypermédia)
     1. [Hypermédia - Données liées](#hypermédiadonnées)
     1. [HATEOAS](#hateoas)
     1. [API compatible hypermédia](#compatiblehypermédia)
     1. [Link Description Object](#linkobject)
     1. [Type de relation de lien](#typelien)
+
 1. [Outils de test](#outilstest)
+
 1. [Références](#références)
 
 
@@ -212,8 +223,6 @@ Content-Type: application/pdf
 
 ...<BINARY CODE>...
 ```
-
-
 ## Espace de noms <a name="namespace"></a>
 L'espace de noms d'un service définit le regroupement des fonctions associées dans. Les espaces de noms peuvent être de niveau assez élevé (par exemple, le nom d'une agence ou d'un service) ou assez bas (par exemple, un projet, une équipe ou un service exposé).
 
@@ -236,8 +245,30 @@ GET /employes/john-smith
 DELETE /employes/john-smith
 ```
 
+# Exigences gouvernementale des API <a name="exigences"></a>
 
-********
+## Documentation des API <a name="documentation"></a>
+TBD
+
+## Développement des API <a name="développement"></a>
+TBD
+
+## L'expérience du développeur <a name="expérience"></a>
+TBD
+
+## Stabilité des API <a name="stabilité"></a>
+TBC
+
+## Maturité de la conception des API <a name="maturité"></a>
+TBD
+
+## Espace de noms <a name="namespace"></a>
+TBD
+
+## Opérations <a name="exigencesopérations"></a>
+TBC
+
+**********
 # Définitions <a name="définition"></a>
 
 ## REST <a name="rest"></a>
