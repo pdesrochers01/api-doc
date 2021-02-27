@@ -51,6 +51,28 @@
     1. [Rétrocompatibilité](#rétrocompatibilité)
     1. [Politique de fin de vie](#findevie)
     1. [Désuétude des API](#désuétude)
+1. [Requête des API](#requête)
+    1. [Entête des requêtes](#entêterequêtes)
+    1. [Méthodes des requêtes HTTP](#méthodeshttp)
+    1. [Formats du contenu des requêtes (Request Payload Formats)](#formatréponses)
+    1. [Idempotence](#idempotence)
+    1. [Paramètres de requête](#paramètresrequête)
+    1. [Pagination](#paramètresrequête)
+    1. [Filtrage et tri](#Filtragetri)
+1. [Réponses des API](#réponses)
+    1. [Entête des réponses](#entêteréponses)
+    1. [Codes de réponse HTTP](#codesréponsehttp)
+    1. [Contenu des réponses](#contenuréponses)
+1. [Hypermédia](#hypermédia)
+    1. [Hypermédia - Données liées](#hypermédiadonnées)
+    1. [HATEOAS](#hateoas)
+    1. [API compatible hypermédia](#compatiblehypermédia)
+    1. [Link Description Object](#linkobject)
+    1. [Type de relation de lien](#typelien)
+1. [Outils de test](#outilstest)
+1. [Références](#références)
+
+
 
 
 # Préface <a name="préface"></a>
