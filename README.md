@@ -1,6 +1,7 @@
-# Lignes directrices sur les API du gouvernement du Québec
+# Lignes directrices des API du gouvernement du Québec
 
 # Table des matières
+
 1. [Préface](#préface)
     1. [Introduction](#introduction)
     1. [Audience](#audience)
