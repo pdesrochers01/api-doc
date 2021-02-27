@@ -62,7 +62,7 @@ Ce document décrit la norme de conception pour l'ensemble des interfaces de pro
 Le public visé par ce document est constitué des développeurs d'API, des architectes de solutions et des analystes commerciaux.
 
 ## Document Semantics, Formatting, and Naming <a name="document"></a>
-Les mots clés DOIT, NE DOIT PAS, DEVRAIT, NE DEVRAIT PAS, RECOMMANDÉ, PEUT et OPTIONNEL dans ce document doivent être interprétés comme décrit dans le standard RFC 2119.
+Les mots clés `DOIT`, `NE DOIT PAS`, `DEVRAIT`, `NE DEVRAIT PAS`, `RECOMMANDÉ`, `PEUT` et `OPTIONNEL` dans ce document doivent être interprétés comme décrit dans le standard [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
 Les mots REST et RESTful DOIVENT être écrits tels que présentés ici, représentant l'acronyme comme toutes les lettres majuscules. Cela est également vrai pour JSON, XML et d'autres acronymes.
 
