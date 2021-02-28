@@ -417,26 +417,43 @@ Les URL **DOIVENT** suivre la convention de dénomination standard décrite ci-d
 
 Le tableau suivant explique comment construire l'URI de l'API.
 
-| URI Element                       | Description                                                  | Example                                                      |
-| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Protocol                          | All APIs **MUST** be exposed using HTTPS.                    | `https://`                                                   |
-| Authority > Environment           | The domain of where the API endpoint will be exposed. Refer to the 'DNS' standard section for details. | `gw.api.gov.au`                                              |
-| Path > API                        | The API name which is derived from the business domain.      | e.g. `/namespace/project-name` Any agency/department can specify the API name that they would like to expose their services on. |
-| Path > Version                    | The version of the API that is desired to be accessed by the consumer. | e.g. `/v1` All APIs must specify a version that follow the versioning scheme as specified in 'versioning' below. |
-| Path > Collection                 | The collection identifies a list of resources. The collection **MUST** be named using the **plural** representation of a noun. | e.g. As part of the workforce API - a resource could be a list of `employees`. |
-| Path > Resource                   | The resource identifier which corresponds to an instance of the resource. | e.g. As part of the **project-name** API - if there was a specific employee with id E13454. These details can be retrieved using `GET` `/project-name/v1/employees/E13454` |
-| Query String > Parameters/Filters | Query parameters **MUST** NOT be used to transport payload or actual data. The following query parameters **SHOULD** be supported by your API where they would be useful:**attributes** - specify or restrict the attributes to be returned**filters** – conditions to restrict/filter the collection list**sort** – specify the sort requirement**page** – specify which pagination index to be return in a collection set | e.g. `attributes=first_name,last_name` returns data element with only the `first_name` and `last_name` attributes`filters=creation_date => 2001-09-20T13:00:00 and creation_date <= 2001-09-21T13:00:00 and first_name like 'fred' and post_code=3000` - return a collection of resources where the creation date is between 2001-09-20 1pm and 2001-09-21 1pm and first-name like 'fred' and post_code is 3000.`sort=date_of_birth desc` - return a collection where the resources are sorted by date_of_birth in descending order.`page=10` – returns the 10th page index |
+| Élément de l'URI                        | Description                                                  | Exemple                                                      |
+| --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Protocol                                | Toutes les API **DOIVENT** être exposées en utilisant HTTPS. | `https://`                                                   |
+| Autorité > Environment                  | Le domaine dans lequel le point de terminaison de l'API sera exposé. Reportez-vous à la section standard «DNS» pour plus de détails. | `api.quebec.ca`                                              |
+| Chemin > API                            | Le nom d'API dérivé du domaine métier.                       | e.g. `/namespace/project-name` Toute service peut spécifier le nom de l'API sur lequel elle souhaite exposer ses services. |
+| Chemin > Version                        | La version de l'API à laquelle le consommateur souhaite accéder. | e.g. `/v1` Toutes les API doivent spécifier une version qui suit le schéma de gestion des versions tel que spécifié dans la section «gestion des versions» ci-dessous. |
+| Chemin > Collection                     | La collection identifie une liste de ressources. La collection **DOIT** être nommée en utilisant la représentation plurielle d'un nom. | par exemple, dans le cadre de l'API de la main-d'œuvre - une ressource peut être une liste de `employees`. |
+| Chemin > Resource                       | L'identifiant de ressource qui correspond à une instance de la ressource. | par exemple, dans le cadre de l'API project-name, s'il y avait un employé spécifique avec l'ID E13454. Ces détails peuvent être récupérés en utilisant `GET` `/project-name/v1/employees/E13454` |
+| Chaîne de requête> Paramètres / Filtres | Les paramètres de requête **NE DOIVENT** PAS être utilisés pour transporter des données utiles ou des données réelles. Les paramètres de requête suivants **DEVRAIENT** être pris en charge par votre API là où ils seraient utiles: **attributs** - spécifiez ou restreignez les attributs à renvoyer **filtres** - conditions pour restreindre / filtrer la liste de collection **sort** - spécifiez l'exigence de tri **page** - spécifiez l'index de pagination à renvoyer dans un ensemble de collections | e.g. `attributes=first_name,last_name` returns data element with only the `first_name` and `last_name` attributes`filters=creation_date => 2001-09-20T13:00:00 and creation_date <= 2001-09-21T13:00:00 and first_name like 'fred' and post_code=3000` - return a collection of resources where the creation date is between 2001-09-20 1pm and 2001-09-21 1pm and first-name like 'fred' and post_code is 3000.`sort=date_of_birth desc` - return a collection where the resources are sorted by date_of_birth in descending order.`page=10` – returns the 10th page index |
 
+**Noms des ressources**
+Les concepteurs d'API **DOIVENT** suivre ces principes lors de la création d'une API REST:
 
+Les noms **DOIVENT** être utilisés - pas les verbes pour les noms.
+Les noms de ressources **DOIVENT** être au pluriel. Lorsque le pluriel d'une ressource n'est pas standard, comme feuille ou poisson, choisissez un nom plus approprié ou utilisez le pluriel approprié - feuilles, poissons.
+Les noms de ressources **DOIVENT** être en minuscules et n'utiliser que des caractères alphabétiques et des traits d'union.
+Le caractère trait d'union, (-), **DOIT** être utilisé comme séparateur de mot dans les paramètres de chemin URI.
+Notez que c'est le seul endroit où les tirets sont utilisés comme séparateur de mots. Dans presque toutes les autres situations, le caractère de soulignement DOIT être utilisé.
 
-
-
-
-
-
-
-
-
+Bons exemples:
+```
+/employees
+/customers
+/products
+```
+Mauvais exemples :
+```
+/get-employee
+/customer
+/add-product
+```
+**Noms des paramètres de requête**
+- Les littéraux / expressions dans les chaînes de requête **DEVRAIENT** être séparés en utilisant un trait de soulignement.
+- Les valeurs des paramètres de requête **DOIVENT** être codées en pourcentage.
+- Les paramètres de requête **DOIVENT** commencer par une lettre et **DEVRAIENT** tous être en minuscules. Seuls les caractères alphabétiques, les chiffres et le caractère de soulignement **DOIVENT** être utilisés.
+- Les paramètres de requête **DEVRAIENT** être facultatifs.
+- Les paramètres de requête **NE DEVRAIENT** pas contenir de caractères qui ne sont pas sûrs pour les URL.
 
 
 ## Noms des champs <a name="nomschamps"></a>
