@@ -558,19 +558,19 @@ Lorsque vous utilisez des champs de date, les conventions de dénomination suiva
 ## Exemples <a name="exemples"></a>
 ### Bons exemples d'URL
 
-List des employés:
-`GET` https://gw.api.gov.au/e09284/v1/employees
-Requête avec filtre:
-`GET` https://gw.api.gov.au/e09284/v1/employees?year=2011&sort=desc
-`GET` https://gw.api.gov.au/e09284/v1/employees?section=economy&year=2011
-Un seul employé au format JSON:
-`GET` https://gw.api.gov.au/e09284/v1/employees/1234
-Tous les endroits où cet employé travaille:
-`GET` https://gw.api.gov.au/e09284/v1/employees/1234/locations
-Spécifiez les champs facultatifs dans une liste séparée par des virgules:
-`GET` https://gw.api.gov.au/e09284/v1/employees/1234?fields=job_title,start_date
-Ajouter un nouvel emplacement à un employé en particulier:
-`POST` https://gw.api.gov.au/e09284/v1/employees/1234/locations
+List des employés :
+`GET https://gw.api.gov.au/e09284/v1/employees`
+Requête avec filtre :
+`GET https://gw.api.gov.au/e09284/v1/employees?year=2011&sort=desc`
+`GET https://gw.api.gov.au/e09284/v1/employees?section=economy&year=2011`
+Un seul employé au format JSON :
+`GET https://gw.api.gov.au/e09284/v1/employees/1234`
+Tous les endroits où cet employé travaille :
+`GET https://gw.api.gov.au/e09284/v1/employees/1234/locations`
+Spécifiez les champs facultatifs dans une liste séparée par des virgules :
+`GET https://gw.api.gov.au/e09284/v1/employees/1234?fields=job_title,start_date`
+Ajouter un nouvel emplacement à un employé en particulier :
+`POST https://gw.api.gov.au/e09284/v1/employees/1234/locations`
 
 ### Exemples d'URL incorrectes
 
