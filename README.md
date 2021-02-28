@@ -337,18 +337,6 @@ Toutes les API adhérant à cette norme **DOIVENT** être conçues au niveau 2 d
 
 Une API **PEUT** choisir de mettre en œuvre le niveau 3 du modèle, mais ce n'est pas obligatoire pour cette norme.
 
-
-**********
-1. [Sécurité des API](#sécuritéapi)
-    1. [Conception des API](#conceptionsecurité)
-    1. [Sécurité des transports](#sécuritétransports)
-    1. [Authentification et autorisation](#authentificationautorisation)
-    1. [Limitation du débit](#limitationdébit)
-    1. [Gestion des erreurs](#gestionerreurs)
-    1. [Journaux d'audit](#journauxaudit)
-    1. [Validation des entrées](#validationentrées)
-    1. [Validation du type de contenu](#validationtypecontenu)
-    1. [Utiliser les fonctions de sécurité de la passerelle d'API](#fonctionspasserelle)
 # Sécurité des API <a name="sécuritéapi"></a>
 
 ## Conception des API <a name="conceptionsecurité"></a>
@@ -375,4 +363,243 @@ TBC
 TBD
 
 ## Utiliser les fonctions de sécurité de la passerelle d'API <a name="fonctionspasserelle"></a>
+TBC
+
+# Conventions de nommage <a name="nommage"></a>
+
+## Format des messages <a name="formatmessages"></a>
+Pour les noms de corps de requête et de réponse et de paramètre de requête, le format de message est **RECOMMANDÉ** d'utiliser snake-case:
+
+Exemple:
+```
+// this_is_snake_case
+
+{
+  "employee_id" : "AB1837"
+}
+```
+Si le cas de serpent n'est pas disponible, il est alors **RECOMMANDÉ** d'utiliser le cas de chameau.
+
+Exemple:
+```
+// thisIsCamelCase
+
+{
+  "employeeId" : "AB1837"
+}
+```
+Dans les deux cas, l'objet et la définition de champ doivent être identiques pour le corps de la demande et de la réponse et les paramètres de la requête.
+
+## Noms des composants URI <a name="composantesuri"></a>
+Les URI suivent la spécification RFC 3986. Cette spécification simplifie le développement et la consommation de services d'API REST.
+
+Les directives de cette section régissent la structure et la sémantique de votre URI conformément aux contraintes de la RFC 3986.
+
+**Composants URI**
+La structure des URL utilisées dans les API **DEVRAIT** être significative pour les consommateurs. Les URL **DEVRAIENT** suivre une structure hiérarchique prévisible pour améliorer la compréhensibilité et donc la convivialité.
+
+Les URL **DOIVENT** suivre la convention de dénomination standard décrite ci-dessous:
+```
+https://api.quebec.ca/namespace/project-name/v1/collection?attributes=first_name,last_name
+\___/   \___________/\___________________________________/\______________________________/
+  |           |                        |                                  |
+schéma     autorité                 chemin                              requête
+```
+**Longueur maximale de l'URI**
+L'URI total, y compris le chemin et la requête, **NE DOIT PAS** dépasser 2000 caractères, y compris les codes de mise en forme tels que les virgules, les traits de soulignement, les points d'interrogation, les tirets, les plus ou les barres obliques.
+
+**Conventions de dénomination des URI**
+Les URL **DOIVENT** suivre la convention de dénomination standard décrite ci-dessous:
+
+- l'URI DOIT être spécifié en minuscules
+- seuls les tirets «-» peuvent être utilisés pour séparer les mots ou les paramètres de chemin pour la lisibilité (pas d'espaces ni de traits de soulignement)
+- seuls les traits de soulignement peuvent être utilisés pour séparer les mots dans les noms de paramètres de requête, mais pas dans le cadre de l'URI de base
+
+Le tableau suivant explique comment construire l'URI de l'API.
+
+| URI Element                       | Description                                                  | Example                                                      |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Protocol                          | All APIs **MUST** be exposed using HTTPS.                    | `https://`                                                   |
+| Authority > Environment           | The domain of where the API endpoint will be exposed. Refer to the 'DNS' standard section for details. | `gw.api.gov.au`                                              |
+| Path > API                        | The API name which is derived from the business domain.      | e.g. `/namespace/project-name` Any agency/department can specify the API name that they would like to expose their services on. |
+| Path > Version                    | The version of the API that is desired to be accessed by the consumer. | e.g. `/v1` All APIs must specify a version that follow the versioning scheme as specified in 'versioning' below. |
+| Path > Collection                 | The collection identifies a list of resources. The collection **MUST** be named using the **plural** representation of a noun. | e.g. As part of the workforce API - a resource could be a list of `employees`. |
+| Path > Resource                   | The resource identifier which corresponds to an instance of the resource. | e.g. As part of the **project-name** API - if there was a specific employee with id E13454. These details can be retrieved using `GET` `/project-name/v1/employees/E13454` |
+| Query String > Parameters/Filters | Query parameters **MUST** NOT be used to transport payload or actual data. The following query parameters **SHOULD** be supported by your API where they would be useful:**attributes** - specify or restrict the attributes to be returned**filters** – conditions to restrict/filter the collection list**sort** – specify the sort requirement**page** – specify which pagination index to be return in a collection set | e.g. `attributes=first_name,last_name` returns data element with only the `first_name` and `last_name` attributes`filters=creation_date => 2001-09-20T13:00:00 and creation_date <= 2001-09-21T13:00:00 and first_name like 'fred' and post_code=3000` - return a collection of resources where the creation date is between 2001-09-20 1pm and 2001-09-21 1pm and first-name like 'fred' and post_code is 3000.`sort=date_of_birth desc` - return a collection where the resources are sorted by date_of_birth in descending order.`page=10` – returns the 10th page index |
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Noms des champs <a name="nomschamps"></a>
+TBD
+
+## Noms des relations des liens <a name="nomsliens"></a>
+TBC
+
+## En-têtes des requêtes <a name="entetedemandes"></a>
+TBD
+
+## Gestion des dates <a name="dates"></a>
+TBD
+
+## Exemples <a name="exemples"></a>
+TBC
+
+*******
+# Titre1 <a name="titre1"></a>
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+*******
+# Titre1 <a name="titre1"></a>
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+*******
+# Titre1 <a name="titre1"></a>
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+*******
+# Titre1 <a name="titre1"></a>
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+*******
+# Titre1 <a name="titre1"></a>
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
+TBC
+
+## Titre2 <a name="titre2"></a>
+TBD
+
+## Titre2 <a name="titre2"></a>
 TBC
