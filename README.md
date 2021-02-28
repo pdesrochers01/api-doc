@@ -773,36 +773,29 @@ X-API-Retire-Time: 2018-11-17T13: 00: 00Z
 
 Cela fournit aux consommateurs un rappel constant que l'API est marquée comme obsolète et qu'il existe probablement une autre version disponible pour qu'ils migrent.
 
+# Requête des API <a name="requête"></a>
 
-*******
-# Titre1 <a name="titre1"></a>
-
-## Titre2 <a name="titre2"></a>
+## Entête des requêtes <a name="entêterequêtes"></a>
 TBD
 
-## Titre2 <a name="titre2"></a>
+## Méthodes des requêtes HTTP <a name="méthodeshttp"></a>
 TBD
 
-## Titre2 <a name="titre2"></a>
+## Formats du contenu des requêtes (Request Payload Formats) <a name="formatréponses"></a>
 TBD
 
-## Titre2 <a name="titre2"></a>
+## Idempotence <a name="idempotence"></a>
 TBC
 
-## Titre2 <a name="titre2"></a>
+## Paramètres de requête <a name="paramètresrequête"></a>
 TBD
 
-## Titre2 <a name="titre2"></a>
+## Pagination <a name="paramètresrequête"></a>
 TBD
 
-## Titre2 <a name="titre2"></a>
+## Filtrage et tri <a name="Filtragetri"></a>
 TBC
 
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBC
 
 *******
 # Titre1 <a name="titre1"></a>
