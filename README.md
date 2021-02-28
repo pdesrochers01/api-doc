@@ -457,7 +457,7 @@ Mauvais exemples :
 
 
 ## Noms des champs <a name="nomschamps"></a>
-Le modèle de données pour la représentation *DOI** être conforme à la spécification `JSON`.
+Le modèle de données pour la représentation *DOIT** être conforme à la spécification `JSON`.
 
 Les valeurs peuvent elles-mêmes être des objets, des chaînes, des nombres, des booléens ou des tableaux d'objets.
 
@@ -468,16 +468,142 @@ Les valeurs peuvent elles-mêmes être des objets, des chaînes, des nombres, de
 - Les champs qui représentent des tableaux **DEVRAIENT** être nommés en utilisant des noms au pluriel (par exemple authentificateurs - contient un ou plusieurs authentificateurs, produits - contient un ou plusieurs produits).
 
 ## Noms des relations des liens <a name="nomsliens"></a>
-TBC
+Pour aider à guider les utilisateurs à travers vos liens relationnels API **DOIVENT** être fournis. Ces liens agissent comme la navigation de votre API informant les utilisateurs de l'endroit où ils peuvent aller ensuite.
+
+Un tableau `_links` **DOIT** être fourni pour les ressources. Il contient des objets lien qui peuvent faire référence à des ressources associées dans le système.
+
+Une relation de lien **DOIT** contenir les éléments suivants:
+
+- href - chaîne contenant l'URL absolue ou relative de la ressource
+- rel - la chaîne textuelle décrivant ce qu'est cette entité
+- méthode - la méthode HTTP qui **DEVRAIT** être utilisée lors de l'utilisation de cette ressource associée.
+
+Exemple:
+```
+"_links": [
+    {
+        "href": "/v1/customer/partner-referrals/ALT-JFWXHGUV7VI",
+        "rel": "_self",
+        "method": "GET"
+    }
+]
+```
 
 ## En-têtes des requêtes <a name="entetedemandes"></a>
-TBD
+Les en-têtes suivants **DEVRAIENT** être utilisés par défaut sur toutes les demandes.
+
+| Header | Default Value      |
+| ------ | ------------------ |
+| Accept | `application/json` |
+
+
 
 ## Gestion des dates <a name="dates"></a>
-TBD
+### Dates formatées ISO8601
+
+Toutes les implémentations utilisant des dates **DOIVENT** être conformes au format [ISO 8601] (https://en.wikipedia.org/wiki/ISO_8601).
+
+Dans ISO 8601, les valeurs de date et d'heure sont classées de la plus grande à la plus petite unité de temps: année, mois (ou semaine), jour, heure, minute, seconde et fraction de seconde.
+
+La manière internationalement reconnue de représenter un objet de date est:
+
+```
+YYYY-MM-DD
+```
+
+La manière internationalement reconnue de représenter un objet temporel est:
+
+```
+hh:mm:ss.fff
+```
+
+Les composants de ceux-ci sont décrits ci-dessous:
+
+| Date Component | Description                                                  | Example |
+| -------------- | ------------------------------------------------------------ | ------- |
+| YYYY           | Année à quatre chiffres                                      | `2019`  |
+| MM             | Mois à deux chiffres (avec zéro non significatif)            | `04`    |
+| DD             | Jour à deux chiffres (avec zéro non significatif)            | `27`    |
+| T              | Définir le caractère indiquant le début de l'élément temporel dans un format datetime combiné | `T`     |
+| hh             | Deux chiffres d'une heure (00 à 23)                          | `18`    |
+| mm             | Deux chiffres d'une minute                                   | `38`    |
+| ss             | Deux chiffres de seconde                                     | `12`    |
+| fff            | Trois chiffres d'une milliseconde (000 à 999)                | `123`   |
+
+Lorsqu'il est combiné dans un datetime, l'objet peut être représenté comme suit:
+
+```
+2019-10-02T18:36:12.123
+```
+
+### Utilisation des fuseaux horaires
+
+Lors de l'utilisation du format ISO 8601, le fuseau horaire est **RECOMMANDÉ** à fournir. Cela est dû aux complexités qui surviennent lors de la consommation de données et de la conversion à l'heure locale.
+
+Le fuseau horaire peut être représenté dans une variété de mécanismes, mais il est le plus souvent représenté comme un décalage par rapport à GMT + 0 (ou à l'heure zouloue).
+
+`2019-10-02T18:36:12.123Z` (avec «z» indiquant l'heure zoulou).
+
+La convention ici est la suivante:
+
+| Composant de date | Description                                                  | Exemple |
+| ----------------- | ------------------------------------------------------------ | ------- |
+| Z                 | Indique l'heure zouloue (facultatif)                         | `Z`     |
+| + \| -            | + représente un décalage positif par rapport à Zulu (par exemple devant Zulu). - représente un décalage négatif par rapport à Zulu (par exemple, derrière Zulu) | `+      |
+| hh                | Deux chiffres d'une heure (00 à 13)                          | `10`    |
+| mm                | Deux chiffres d'une minute (généralement 00, 15, 30 ou 45)   | `30`    |
+
+pour représenter l'heure normale de l'Est du Québec (-5), le format suivant serait utilisé:
+
+```
+2019-10-02T18:36:12.123+10:00
+```
+
+### Conventions de dénomination des champs de date
+
+Lorsque vous utilisez des champs de date, les conventions de dénomination suivantes pour ces champs doivent être utilisées:
+
+- Pour les propriétés nécessitant à la fois la date et l'heure, les services **DOIVENT** utiliser le suffixe `datetime`, par exemple `start_datetime`.
+- Pour les propriétés ne nécessitant que des informations de date sans spécifier l'heure, les services **DOIVENT** utiliser le suffixe `date`, par exemple `date_naissance`.
+- Pour les propriétés ne nécessitant que des informations d'heure sans spécifier de date, les services **DOIVENT** utiliser le suffixe `time`, par ex. `rendez-vous_start_time`.
+
+
 
 ## Exemples <a name="exemples"></a>
-TBC
+### Bons exemples d'URL
+
+List des employés:
+`GET` https://gw.api.gov.au/e09284/v1/employees
+Requête avec filtre:
+`GET` https://gw.api.gov.au/e09284/v1/employees?year=2011&sort=desc
+`GET` https://gw.api.gov.au/e09284/v1/employees?section=economy&year=2011
+Un seul employé au format JSON:
+`GET` https://gw.api.gov.au/e09284/v1/employees/1234
+Tous les endroits où cet employé travaille:
+`GET` https://gw.api.gov.au/e09284/v1/employees/1234/locations
+Spécifiez les champs facultatifs dans une liste séparée par des virgules:
+`GET` https://gw.api.gov.au/e09284/v1/employees/1234?fields=job_title,start_date
+Ajouter un nouvel emplacement à un employé en particulier:
+`POST` https://gw.api.gov.au/e09284/v1/employees/1234/locations
+
+### Exemples d'URL incorrectes
+
+Point de terminaison non pluriel:
+
+`GET` https://gw.api.vic.gov.au/e09284/v1/employee
+`GET` https://gw.api.vic.gov.au/e09284/v1/employee/1234
+`GET` https://gw.api.vic.gov.au/e09284/v1/employee/1234/location
+
+`GET` https://gw.api.gov.au/e09284/v1/employee
+`GET` https://gw.api.gov.au/e09284/v1/employee/1234
+`GET` https://gw.api.gov.au/e09284/v1/employee/1234/location
+
+Verbe dans l'URL:
+`POST` https://gw.api.gov.au/e09284/v1/employee/1234/create
+
+Filtrage à l'extérieur dans l'URL au lieu de la chaîne de requête
+`GET` https://gw.api.gov.au/e09284/v1/employee/1234/desc
+
 
 *******
 # Titre1 <a name="titre1"></a>
