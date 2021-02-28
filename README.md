@@ -560,46 +560,53 @@ Lorsque vous utilisez des champs de date, les conventions de dénomination suiva
 
 List des employés :
 
-`GET https://gw.api.gov.au/e09284/v1/employees`
+`GET https://api.quebec.ca/e09284/v1/employees`
 
 Requête avec filtre :
 
-`GET https://gw.api.gov.au/e09284/v1/employees?year=2011&sort=desc`
-`GET https://gw.api.gov.au/e09284/v1/employees?section=economy&year=2011`
+`GET https://api.quebec.ca/e09284/v1/employees?year=2011&sort=desc`
+
+`GET https://api.quebec.ca/e09284/v1/employees?section=economy&year=2011`
 
 Un seul employé au format JSON :
 
-`GET https://gw.api.gov.au/e09284/v1/employees/1234`
+`GET https://api.quebec.ca/e09284/v1/employees/1234`
 
 Tous les endroits où cet employé travaille :
 
-`GET https://gw.api.gov.au/e09284/v1/employees/1234/locations`
+`GET https://api.quebec.ca/e09284/v1/employees/1234/locations`
 
 Spécifiez les champs facultatifs dans une liste séparée par des virgules :
 
-`GET https://gw.api.gov.au/e09284/v1/employees/1234?fields=job_title,start_date`
+`GET https://api.quebec.ca/e09284/v1/employees/1234?fields=job_title,start_date`
 
 Ajouter un nouvel emplacement à un employé en particulier :
 
-`POST https://gw.api.gov.au/e09284/v1/employees/1234/locations`
+`POST https://api.quebec.ca/e09284/v1/employees/1234/locations`
 
 ### Exemples d'URL incorrectes
 
 Point de terminaison non pluriel:
 
-`GET` https://gw.api.vic.gov.au/e09284/v1/employee
-`GET` https://gw.api.vic.gov.au/e09284/v1/employee/1234
-`GET` https://gw.api.vic.gov.au/e09284/v1/employee/1234/location
+`GET https://api.quebec.ca/e09284/v1/employee`
 
-`GET` https://gw.api.gov.au/e09284/v1/employee
-`GET` https://gw.api.gov.au/e09284/v1/employee/1234
-`GET` https://gw.api.gov.au/e09284/v1/employee/1234/location
+`GET https://api.quebec.ca/e09284/v1/employee/1234`
+
+`GET https://api.quebec.ca/e09284/v1/employee/1234/location`
+
+`GET https://api.quebec.ca/e09284/v1/employee`
+
+`GET https://api.quebec.ca/e09284/v1/employee/1234`
+
+`GET https://api.quebec.ca/e09284/v1/employee/1234/location`
 
 Verbe dans l'URL:
-`POST` https://gw.api.gov.au/e09284/v1/employee/1234/create
 
-Filtrage à l'extérieur dans l'URL au lieu de la chaîne de requête
-`GET` https://gw.api.gov.au/e09284/v1/employee/1234/desc
+`POST https://api.quebec.ca/e09284/v1/employee/1234/create`
+
+Filtrage à l'extérieur dans l'URL au lieu de la chaîne de requête :
+
+`GET https://api.quebec.ca/e09284/v1/employee/1234/desc`
 
 
 *******
