@@ -457,7 +457,15 @@ Mauvais exemples :
 
 
 ## Noms des champs <a name="nomschamps"></a>
-TBD
+Le modèle de données pour la représentation *DOI** être conforme à la spécification `JSON`.
+
+Les valeurs peuvent elles-mêmes être des objets, des chaînes, des nombres, des booléens ou des tableaux d'objets.
+
+- Les noms de clé DOIVENT être des mots en minuscules, séparés par un caractère de soulignement.
+   - `foo`
+   - `bar_baz`
+- Un préfixe tel que `is_` ou` has_` **NE DEVRAIT PAS** être utilisé pour les clés de type booléen.
+- Les champs qui représentent des tableaux **DEVRAIENT** être nommés en utilisant des noms au pluriel (par exemple authentificateurs - contient un ou plusieurs authentificateurs, produits - contient un ou plusieurs produits).
 
 ## Noms des relations des liens <a name="nomsliens"></a>
 TBC
