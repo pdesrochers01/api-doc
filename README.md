@@ -29,7 +29,6 @@
     1. [L'expérience du développeur](#expérience)
     1. [Stabilité des API](#stabilité)
     1. [Maturité de la conception des API](#maturité)
-    1. [Opérations](#exigencesopérations)
 
 1. [Sécurité des API](#sécuritéapi)
     1. [Conception des API](#conceptionsecurité)
@@ -248,28 +247,108 @@ DELETE /employes/john-smith
 
 # Exigences gouvernementale des API <a name="exigences"></a>
 
+
 ## Documentation des API <a name="documentation"></a>
-TBD
+Des API bien documentées sont un élément essentiel d'un programme d'API réussi. Cela facilite l'interopérabilité des services grâce à un document descriptif commun. Dans la mesure du possible, la structure, les méthodes, les conventions de dénomination et les réponses seront également normalisées pour garantir une expérience commune aux développeurs qui accèdent aux services d'une gamme d'éditeurs.
+
+Toutes les API créées pour le gouvernement australien **DOIVENT** spécifier un document OpenAPI v2.0 valide car il a le support le plus large. Un document OpenAPI v3.0 **PEUT** également être fourni pour assurer la pérennité de l'API.
+
+Le document de description de l'API est **RECOMMANDÉ** de contenir les sections suivantes:
+
+- À propos de
+- Mentions légales
+- Conditions d'utilisation
+- Licence
+- Classification des données
+- droits d'auteur
+- Attribution
+- Exigences d'authentification
+- Modèle de données
+- Nous contacter
 
 ## Développement des API <a name="développement"></a>
-TBD
+Il est **RECOMMANDÉ** de suivre les directives suivantes lors du développement d'API:
+
+- Les documents de description de l'API **DEVRAIENT** contenir la documentation de l'API (informations et descriptions de haut niveau) et la version contrôlée en conséquence.
+
+- Ils **DOIVENT** être considérés comme des contrats techniques entre concepteurs et développeurs et entre consommateurs et fournisseurs.
+
+- Les API simulées **DEVRAIENT** être créées en utilisant la description de l'API pour permettre une intégration précoce du code pour le développement.
+
+- Le comportement et l'intention de l'API **DEVRAIENT** être décrits avec autant d'informations que possible.
+
+- La documentation **DEVRAIT** être publique dans la mesure du possible et facilement accessible à ceux qui en ont besoin.
+
+- Les descriptions **DEVRAIENT** contenir un exemple de demande et de réponses.
+
+- Des exemples de corps de demande et de réponse **DEVRAIENT** être fournis dans leur intégralité.
+
+- Les codes de réponse et les messages d'erreur attendus **DEVRAIENT** être fournis dans leur intégralité.
+
+- Des codes de réponse corrects **DEVRAIENT** être utilisés (voir Codes de réponse HTTP).
+
+- Les problèmes ou limitations connus **DEVRAIENT** être clairement documentés.
+
+- Les performances attendues, la disponibilité et le SLA / OLA **DEVRAIENT** être clairement documentés.
+
+- S'il est connu, une chronologie dans laquelle les méthodes seront obsolètes **DEVRAIT** être fournie. (Voir la section Politique de fin de vie et dépréciation de l'API).
+
+- Toute la documentation de l'API **DEVRAIT** être imprimable ou exportable.
+
+Tous les documents OpenAPI **DEVRAIENT** être fournis au format JSON.
+
+Afin de suivre les recommandations de versionnage de cette norme, il **DOIT** y avoir une description OpenAPI par version principale.
+
+Par exemple; si votre produit API expose et gère 3 versions principales de son API REST, vous devez fournir 3 descriptions OpenAPI (une pour chaque version: v1, v2 et v3).
 
 ## L'expérience du développeur <a name="expérience"></a>
-TBD
+Une API difficile à utiliser réduit la probabilité que les consommateurs continuent à l'utiliser et cherchent donc des alternatives. Il est également peu probable qu'ils recommandent l'API à d'autres.
+
+Les API en cours de conception sont **RECOMMANDÉES** pour être testées avec de vrais consommateurs. Tout commentaire fourni **DEVRAIT** être pris en compte pour être intégré à l'API afin d'assurer le meilleur résultat possible.
+
+L'équipe API WoG fournit un processus d'examen des API pour garantir que les API répondent à un niveau de base d'utilisation avant qu'elles ne soient publiées aux consommateurs potentiels pour commentaires.
+
 
 ## Stabilité des API <a name="stabilité"></a>
-TBC
+Les API **DOIVENT** être conçues en gardant à l'esprit la compatibilité ascendante, car lorsque des modifications sont introduites, il est peu probable que les consommateurs les introduisent immédiatement dans leurs applications.
+
+Dans la plupart des cas, l'introduction de nouveaux champs dans une API ou l'ajout de nouveaux points de terminaison est un changement sans rupture et peut être introduit avec une mise à jour de version de correctif.
+
+Si le contrat API doit changer d'une manière qui rompt le contrat des consommateurs, cela **DEVRAIT** être communiqué clairement.
+
+1. Les propriétaires de produits API **DEVRAIENT** documenter la durée de vie du support pour les services API (par exemple, combien de temps ils seront pris en charge).
+1. Les nouvelles fonctionnalités **DOIVENT** être introduites de manière à ne pas affecter les consommateurs existants.
+1. Toutes les activités de dépréciation **DOIVENT** être connues des consommateurs avant leur mise en œuvre.
 
 ## Maturité de la conception des API <a name="maturité"></a>
-TBD
+Lors de la conception d'une nouvelle API, l'une des principales considérations est l'expérience du développeur utilisant cette API. Les développeurs auront une bien meilleure expérience s'ils comprennent déjà les concepts de base de l'API.
 
-## Espace de noms <a name="namespace"></a>
-TBD
+Le concept le plus courant pour les développeurs d'API est le style architectural des API RESTful.
 
-## Opérations <a name="exigencesopérations"></a>
-TBC
+Afin d'aider les concepteurs d'API à s'assurer que leurs API sont conçues de manière REST, le modèle de maturité Richardson a été développé en tant qu'outil.
+
+Ce modèle décompose toutes les API RESTful en l'un des 4 niveaux différents en fonction de leur utilisation des URI, des méthodes HTTP et des HATEOAS:
+
+Niveau 0 - État de base pour toute nouvelle API.
+Niveau 1 - L'API implémente différents URI, mais un seul verbe (par exemple POST)
+Niveau 2 - L'API implémente différents URI et plusieurs verbes (par exemple CRUD via GET / POST / PUT / DELETE).
+Niveau 3 - L'API implémente différents URI, plusieurs verbes et HATEOAS pour représenter les relations entre les objets.
+Toutes les API adhérant à cette norme **DOIVENT** être conçues au niveau 2 du modèle de maturité Richardson.
+
+Une API **PEUT** choisir de mettre en œuvre le niveau 3 du modèle, mais ce n'est pas obligatoire pour cette norme.
+
 
 **********
+1. [Sécurité des API](#sécuritéapi)
+    1. [Conception des API](#conceptionsecurité)
+    1. [Sécurité des transports](#sécuritétransports)
+    1. [Authentification et autorisation](#authentificationautorisation)
+    1. [Limitation du débit](#limitationdébit)
+    1. [Gestion des erreurs](#gestionerreurs)
+    1. [Journaux d'audit](#journauxaudit)
+    1. [Validation des entrées](#validationentrées)
+    1. [Validation du type de contenu](#validationtypecontenu)
+    1. [Utiliser les fonctions de sécurité de la passerelle d'API](#fonctionspasserelle)
 # Définitions <a name="définition"></a>
 
 ## REST <a name="rest"></a>
