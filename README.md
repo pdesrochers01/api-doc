@@ -180,12 +180,12 @@ En décomposant les systèmes en ces zones logiques, cela permet une séparation
 Chaque ressource disponible dans votre système (par exemple, chaque `employé` ou chaque `demande de congé`) doit être identifiable de manière unique dans le système. Ceci est un élément clé du style RESTful des API; la possibilité d'adresser individuellement tout élément de votre système et de stocker ces identifiants pour une utilisation ultérieure.
 
 Les identificateurs de ressources peuvent être l'un des suivants:
-| Nom                   | Exemple                   |
-| --------------------- |---------------------------|
-| Numérique             | /employes/12389           |
-| Chaîne de caractères  | /employes/john-smith      |
-| Date                  | /dates/2018-09-17         |
-| GUID                  | 7d80-eb69-4lq5-9f95       |
+| Nom                       | Exemple                        |
+| ------------------------- |--------------------------------|
+| Numérique                 | /employes/12389                |
+| Chaîne de caractères      | /employes/john-smith           |
+| Date                      | /dates/2018-09-17              |
+| GUID                      | 7d80-eb69-4lq5-9f95            |
 
 Tant que l'identifiant est unique dans votre application, il peut s'agir de n'importe quelle chaîne de caractères ou de chiffres.
 
