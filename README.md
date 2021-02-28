@@ -349,24 +349,30 @@ Une API **PEUT** choisir de mettre en œuvre le niveau 3 du modèle, mais ce n'e
     1. [Validation des entrées](#validationentrées)
     1. [Validation du type de contenu](#validationtypecontenu)
     1. [Utiliser les fonctions de sécurité de la passerelle d'API](#fonctionspasserelle)
-# Définitions <a name="définition"></a>
+# Sécurité des API <a name="sécuritéapi"></a>
 
-## REST <a name="rest"></a>
+## Conception des API <a name="conceptionsecurité"></a>
 TBD
 
-## API <a name="api"></a>
+## Sécurité des transports <a name="sécuritétransports"></a>
 TBD
 
-## Ressources <a name="resssources"></a>
+## Authentification et autorisation <a name="authentificationautorisation"></a>
 TBD
 
-## Identifiants de ressource <a name="idresssources"></a>
+## Limitation du débit <a name="limitationdébit"></a>
 TBC
-## Représentations <a name="représentation"></a>
+## Gestion des erreurs <a name="gestionerreurs"></a>
 TBD
 
-## Espace de noms <a name="namespace"></a>
+## Journaux d'audit <a name="journauxaudit"></a>
 TBD
 
-## Opérations <a name="opérations"></a>
+## Validation des entrées <a name="validationentrées"></a>
+TBC
+
+## Validation du type de contenu <a name="validationtypecontenu"></a>
+TBD
+
+## Utiliser les fonctions de sécurité de la passerelle d'API <a name="fonctionspasserelle"></a>
 TBC
