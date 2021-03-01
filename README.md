@@ -130,7 +130,7 @@ Il est important de prendre note que les **API REST** ne sont généralement pas
 Finalement, étant donné que les outils pour les **API REST** sont largement disponibles et que les développeurs sont déjà familiées avec ceux-ci (autant en Amérique du Nord qu'ailleurs dans le monde), il a été déterminé que le style d'architecture **REST** serait la base de la modélisation des API dans le gouvernement du Québec.
 
 ## La norme de spécification OpenAPI <a name="openapi"></a>
-[OpenAPI v3.0](https://swagger.io/specification/)
+TBC [OpenAPI v3.0](https://swagger.io/specification/)
 
 # Définitions <a name="définition"></a>
 
