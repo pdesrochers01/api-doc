@@ -51,7 +51,7 @@
     1. [Rétrocompatibilité](#rétrocompatibilité)
     1. [Politique de fin de vie](#findevie)
     1. [Désuétude des API](#désuétude)
-1. [Requête des API](#requête)
+1. [Requête des API et paramètres](#requêteparamètres)
     1. [Entête des requêtes](#entêterequêtes)
     1. [Méthodes des requêtes HTTP](#méthodeshttp)
     1. [Formats du contenu des requêtes (Request Payload Formats)](#formatréponses)
@@ -773,29 +773,135 @@ X-API-Retire-Time: 2018-11-17T13: 00: 00Z
 
 Cela fournit aux consommateurs un rappel constant que l'API est marquée comme obsolète et qu'il existe probablement une autre version disponible pour qu'ils migrent.
 
-# Requête des API <a name="requête"></a>
+# Requête des API et paramètres <a name="requêteparamètres"></a>
 
 ## Entête des requêtes <a name="entêterequêtes"></a>
-TBD
+Toutes les API **DOIVENT** prendre en charge les en-têtes de requête suivants:
+
+
+
+| Entête                        | Valeur                                                       |
+| ----------------------------- | ------------------------------------------------------------ |
+| Autorisation / Identification | Peut être l'un des éléments suivants : clé API, authentification de base (clé API + secret), nom d'utilisateur + mot de passe, Jeton (token) |
+
+Les en-têtes des requêtes suivantes sont facultatives.
+
+| Entête        | Valeur                                                       |
+| ------------- | ------------------------------------------------------------ |
+| Content-Type  | Peut être l'un des valeurs suivantes :`application/json` (obligatoire), `application/xml` (optionel pour xml), `multipart/form-data` (optionel pour les fichiers), `application/x-www-form-urlencoded` (optionel pour les form data) |
+| Accept        | Content-Types qui sont acceptable pour la réponse. Peut être un choix de :`application/json` (obligatoire), `application/xml` (optionel pour xml) |
+| Connection    | Options de contrôle pour la connexion actuelle. Par exemple : `keep-alive`. |
+| Date          | La date et l'heure à laquelle le message a été émis, au format "HTTP-date" tel que défini par [RFC 7231 Date / Time Formats] (http://tools.ietf.org/html/rfc7231#section-7.1.1.1) . Par exemple. «Mar 15 novembre 1994 08:12:31 GMT». |
+| Cookie        | Un cookie HTTP précédemment envoyé par le serveur.           |
+| Cache-Control | Utilisé pour spécifier des directives qui doivent être respectées par tous les mécanismes de mise en cache, par exemple pas de cache. |
+| ETag          | Utilisé pour identifier la version particulière d'une ressource en cours de mise à jour pour empêcher plusieurs mises à jour utilisateur. Cela doit correspondre à ce qui est actuellement stocké sur le serveur. |
+
 
 ## Méthodes des requêtes HTTP <a name="méthodeshttp"></a>
-TBD
+Les opérations de l'API RESTful sont basées sur la norme HTTP Request Method telle que définie par la [RFC 7231] (https://tools.ietf.org/html/rfc7231#section-4.3).
+
+
+
+### Méthodes de requête HTTP supportées
+
+
+
+| Méthode HTTP | Description                                                  |
+| ------------ | ------------------------------------------------------------ |
+| `GET`        | Pour *récupérer* une ressource.                              |
+| `POST`       | Pour *créer* une nouvelle ressource, ou pour * exécuter * une opération sur une ressource qui change l'état du système, par ex. envoyer un message. |
+| `PUT`        | Pour *remplacer* une ressource par une autre fournie dans la demande. |
+| `PATCH`      | Pour effectuer une *mise à jour partielle* d'une ressource.  |
+| `DELETE`     | Pour *supprimer* une ressource.                              |
+| `HEAD`       | Pour récupérer des métadonnées sur la demande, par ex. combien de résultats retournera la requête? (sans  exécuter la requête). |
+| `OPTIONS`    | Utilisé pour déterminer si une demande CORS (partage de ressources inter-origines, en anglais *cross-origin resource sharing*) peut être effectuée. Ceci est principalement utilisé dans les applications Web *front-end* pour déterminer si elles peuvent utiliser directement les API. |
+
+
+
+Une demande de récupération de ressources peut être effectuée pour une seule ressource ou une collection de ressources.
+
+Prenons l'exemple suivant:
+
+```
+https://api.quebec.ca/agence/v1/clients/{id}
+```
+
+Pour récupérer une collection de clients, une requête est envoyée à l'URN `/customers`.
+
+Pour récupérer un seul "client", une requête est envoyée à l'URN `/customers/{id}`.
+
+### Collection de ressources
+
+Les opérations suivantes s'appliquent à une collection de ressources:
+
+| Méthode HTTP | Chemin des ressources | Opération                                       | Exemples                                             |
+| ------------ | --------------------- | ----------------------------------------------- | ---------------------------------------------------- |
+| GET          | `/ressources`         | Obtenez une collection de la ressource          | GET `/employés` ou GET<br />` /employés?Status=open` |
+| POST         | `/ressources`         | Créez une nouvelle instance de cette ressource. |                                                      |
+
+**Note :**
+
+La création ou la mise à jour de plusieurs instances de ressources dans la même demande n'est actuellement pas standardisée. Il existe des facteurs tels que l'accusé de réception et la manière de gérer le succès partiel d'un ensemble de lots qui doivent être considérés au cas par cas.
+
+Les futures versions de la spécification pourraient aborder le traitement par lots à l'aide d'API.
+
+
+
+### Ressource unique
+
+Les opérations suivantes sont applicables pour une seule ressource:
+
+
+
+| Méthode HTTP | Chemin des ressources | Opération                                                    |
+| ------------ | --------------------- | ------------------------------------------------------------ |
+| GET          | `/resources/{id}`     | Obtenez l'instance correspondant à l'ID de ressource         |
+| PUT          | `/resources/{id}`     | Pour mettre à jour une instance de ressource en la remplaçant |
+| SUPPRIMER    | `/resources/{id}`     | Pour supprimer l'instance de ressource en fonction de la ressource |
+| PATCH        | `/resources/{id}`     | Effectuez des modifications telles que l'ajout, la mise à jour et la suppression des attributs spécifiés. Est souvent utilisé pour effectuer des mises à jour partielles sur une ressource |
 
 ## Formats du contenu des requêtes (Request Payload Formats) <a name="formatréponses"></a>
-TBD
+Au minimum, l'API **DOIT** prendre en charge une charge utile au format `JSON` lorsqu'elle est fournie.
+
+D'autres formats de données utiles tels que `XML`, `CSV` et `YAML` peuvent être pris en charge si nécessaire.
+
+La prise en charge du format supplémentaire doit être documentée dans la conception de votre API (définition Swagger).
 
 ## Idempotence <a name="idempotence"></a>
-TBC
+Une méthode HTTP idempotente est une méthode HTTP qui peut être appelée plusieurs fois sans résultats différents. Dans certains cas, les appels secondaires entraîneront un code de réponse différent, mais il n'y aura pas de changement d'état de la ressource.
+Par exemple, lorsque vous invoquez N demandes DELETE similaires, la première demande supprimera la ressource et la réponse sera 200 (OK) ou 204 (Aucun contenu). Les demandes supplémentaires renverront 404 (non trouvé). De toute évidence, la réponse est différente de la première requête, mais il n'y a aucun changement d'état pour aucune ressource côté serveur car la ressource d'origine est déjà supprimée.
 
-## Paramètres de requête <a name="paramètresrequête"></a>
-TBD
+| Méthode HTTP | Est idempotent |
+| ------------ | -------------- |
+| `GET`        | Vrai           |
+| `POST`       | Faux           |
+| `PUT`        | Vrai           |
+| `PATCH`      | Faux           |
+| `DELETE`     | Vrai           |
+| `HEAD`       | Vrai           |
+| `OPTIONS`    | Vrai           |
+
+Les méthodes API RESTful **DOIVENT** adhérer à l'idempotence spécifiée dans le tableau ci-dessus
+
+
 
 ## Pagination <a name="paramètresrequête"></a>
-TBD
+La pagination est le processus qui consiste à renvoyer un grand ensemble de résultats sous forme de blocs (ou de pages) afin de réduire la quantité d'informations envoyées avec chaque requête.
+
+La pagination nécessite plusieurs paramètres de requête à fournir, et des informations supplémentaires sur la façon de configurer cela sont fournies dans la section pagination de ce document.
 
 ## Filtrage et tri <a name="Filtragetri"></a>
-TBC
+Offrir la possibilité de filtrer et de trier les collections dans votre API offre à vos consommateurs une plus grande flexibilité et contrôle la façon dont ils choisissent de consommer votre API.
 
+Il existe un certain nombre de techniques sur la façon de procéder et d'autres explications sont fournies ci-dessous, cependant **NE PAS** définir les paramètres de filtrage et de tri dans le cadre de l'URI de l'API (par exemple, `/employés/age/de/20/à/30` ).
+
+Les paramètres de filtre ne font pas partie de la définition de la ressource. Utilisez plutôt des paramètres de requête pour spécifier les exigences de filtrage et de tri.
+
+Exemple:
+
+```
+?date_of_birth=\>1999-12-31 and \<=2001-09-21T13:00:00
+```
 
 *******
 # Titre1 <a name="titre1"></a>
