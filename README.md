@@ -1055,11 +1055,14 @@ La pagination est **RECOMMANDÉE** pour:
 3. Assurez-vous que les données de la réponse sont facilement gérables pour améliorer l'expérience utilisateur.
 
 
-*******
-# Titre1 <a name="titre1"></a>
+# Outils de test <a name="outilstest"></a>
 
-## Titre2 <a name="titre2"></a>
+## Références <a name="références"></a>
 TBD
+
+
+*********template*********
+# Titre1 <a name="titre1"></a>
 
 ## Titre2 <a name="titre2"></a>
 TBD
