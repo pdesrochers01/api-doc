@@ -77,6 +77,8 @@
 ## Introduction <a name="introduction"></a>
 Ce document décrit la norme de conception pour l'ensemble des interfaces de programmation d'application (API) du Québec. Ce guide s'adresse à toute personne œuvrant au développement de services numériques pour une fonction publique, que ce soit dans le cadre de la fonction publique du Québec, d'une agence gouvernementale ou au-delà.
 
+Ce document de normes API est un travail en cours (Work-in-progress). Pour contribuer, veuillez faire une demande à l'adresse ci-dessous. L'équipe de gestion des API du gouvernement du Québec analysera la demande et décidera lesquels incorporer.
+
 ## Audience <a name="audience"></a>
 Le public visé par ce document est constitué des développeurs d'API, des architectes de solutions et des analystes commerciaux.
 
@@ -1057,8 +1059,32 @@ La pagination est **RECOMMANDÉE** pour:
 
 # Outils de test <a name="outilstest"></a>
 
+Il existe une grande variété d'outils de test gratuits (open source) disponibles pour les tests d'API:
+
+- **SoapUI** - SoapUI est l'outil de test fonctionnel Open Source pour les tests d'API. Il prend en charge plusieurs protocoles tels que SOAP, REST, HTTP, JMS, etc. Vous pouvez télécharger SoapUI à partir de https://www.soapui.org/downloads/soapui.html
+- **Postman** - Postman est une application pour interagir avec les API HTTP. Il vous présente une interface graphique conviviale pour la construction de requêtes et la lecture des réponses. Vous pouvez télécharger Postman sur https://www.getpostman.com/
+- **Curl** - cURL est un outil pour travailler avec des URL. cURL nous permet d'interroger une URL à partir de la ligne de commande. Cela nous permet de publier des données de formulaire. Avec cURL, nous pouvons facilement essayer de nouvelles API. Vous pouvez télécharger le curl à partir de la ligne de commande sous Linux en tapant sudo yum install curl
+- **Apache benchmark** - L'outil ApacheBench (ab) peut charger des serveurs de test en envoyant un nombre arbitraire de requêtes simultanées. Vous pouvez télécharger le benchmark Apache à partir de la ligne de commande sous Linux en tapant yum install httpd-tools
+- **Swagger** - L'éditeur Swagger peut être utilisé pour valider votre définition Swagger avant de l'importer dans API Manager.
+
+
 ## Références <a name="références"></a>
-TBD
+
+[Government of Canada Web API Standard](https://github.com/wet-boew/wet-boew-api-standards#style-guide)
+
+[18F API Standards](https://github.com/18F/api-standards)
+
+[Gov.UK API Service Manual](https://www.gov.uk/service-manual/technology/application-programming-interfaces-apis)
+
+[PayPal API Design Guidelines](https://github.com/paypal/api-standards/blob/master/api-style-guide.md)
+
+[Refinery29 API Standards](https://github.com/refinery29/api-standards#url-structure-and-versioning)
+
+[LeaseWeb API Design Standards](https://github.com/LeaseWeb/api-standards)
+
+[OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md)
+
+
 
 
 *********template*********
