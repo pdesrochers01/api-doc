@@ -77,17 +77,19 @@
 ## Introduction <a name="introduction"></a>
 Ce document décrit la norme de conception pour l'ensemble des interfaces de programmation d'application (API) du Québec. Ce guide s'adresse à toute personne œuvrant au développement de services numériques pour une fonction publique, que ce soit dans le cadre de la fonction publique du Québec, d'une agence gouvernementale ou au-delà.
 
-Ce document de normes API est un travail en cours (Work-in-progress). Pour contribuer, veuillez faire une demande à l'adresse ci-dessous. L'équipe de gestion des API du gouvernement du Québec analysera la demande et décidera lesquels incorporer.
+Ce document de normes API est un travail en cours d'élaboration (Work-in-progress). Pour y contribuer, veuillez faire une demande à l'adresse ci-dessous. L'équipe de gestion des API du gouvernement du Québec analysera la demande et décidera lesquels incorporer.
 
 ## Audience <a name="audience"></a>
-Le public visé par ce document est constitué des développeurs d'API, des architectes de solutions et des analystes commerciaux.
+Le public visé par ce document est constitué des développeurs d'API, des architectes d'entreprise et de solutions, des analystes organiques et d'affaire.
+
+Ce document a été écrit dans le but d'être utilisé en interne au sein du gouvernement du Québec. Il est rendu public afin de permettre une adoption plus large par des individus ou des organisations partenaires qui souhaitent aussi créer ou consommer des API interopérables avec les standard du gouvernement du Québec.
 
 ## Document Semantics, Formatting, and Naming <a name="document"></a>
-Les mots clés `DOIT`, `NE DOIT PAS`, `DEVRAIT`, `NE DEVRAIT PAS`, `RECOMMANDÉ`, `PEUT` et `OPTIONNEL` dans ce document doivent être interprétés comme décrit dans le standard [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
+Les mots clés **DOIT**, **NE DOIT PAS**, **DEVRAIT**, **NE DEVRAIT PAS**, **RECOMMANDÉ**, **PEUT** et **OPTIONNEL** dans ce document doivent être interprétés tel que décrit dans le standard [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
-Les mots `REST` et `RESTful` **DOIVENT** être écrits tels que présentés ici, représentant l'acronyme comme toutes les lettres majuscules. Cela est également vrai pour `JSON`, `XML` et d'autres acronymes.
+Les acronymes sont écrits en majuscules. Par exemple,les mots `REST`, `JSON`, `XML` et tous les autres acronymes sont tous représentés de cette façon.
 
-Le texte lisible par traitement informatique (machine-readable), comme les URL, les verbes HTTP et le code source, est représenté à l'aide d'une police de caractères à largeur fixe.
+Les textes lisibles par traitement informatique (programme, script, etc.) tel que les `URL`, les verbes `HTTP` et `les codes sources`, sont représentés à l'aide de `mise en évidence (surbrillance) des blocs de code`.
 
 
 ## Contact <a name="contact"></a>
