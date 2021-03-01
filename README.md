@@ -7,7 +7,6 @@
     1. [Audience](#audience)
     1. [Sémantique et formatage du document](#document)
     1. [Contacts](#contact)
-1. [Pour bien démarrer](#démarrer)
     1. [Pourquoi une norme de conception des API?](#norme)
     1. [Comment appliquer cette norme de conception?](#appliquer)
     1. [Pourquoi choisir REST?](#rest)
@@ -77,77 +76,63 @@
 ## Introduction <a name="introduction"></a>
 Ce document décrit la norme de conception pour l'ensemble des interfaces de programmation d'application (API) du Québec. Ce guide s'adresse à toute personne œuvrant au développement de services numériques pour une fonction publique, que ce soit dans le cadre de la fonction publique du Québec, d'une agence gouvernementale ou au-delà.
 
-Ce document de normes API est un travail en cours d'élaboration (Work-in-progress). Pour y contribuer, veuillez faire une demande à l'adresse ci-dessous. L'équipe de gestion des API du gouvernement du Québec analysera la demande et décidera lesquels incorporer.
+Ce document de normes API est un travail en cours d'élaboration (Work-in-progress). Pour y contribuer, veuillez faire une demande à l'adresse ci-dessous. L'équipe de gestion des API du gouvernement du Québec analysera la demande et décidera si ceux-ci peuvent être incorporer.
 
 ## Audience <a name="audience"></a>
-Le public visé par ce document est constitué des développeurs d'API, des architectes d'entreprise et de solutions, des analystes organiques et d'affaire.
+Le public visé par ce document sont les développeurs d'API, les architectes d'entreprise et de solutions et les analystes organiques et d'affaire.
 
 Ce document a été écrit dans le but d'être utilisé en interne au sein du gouvernement du Québec. Il est rendu public afin de permettre une adoption plus large par des individus ou des organisations partenaires qui souhaitent aussi créer ou consommer des API interopérables avec les standard du gouvernement du Québec.
 
 ## Document Semantics, Formatting, and Naming <a name="document"></a>
 Les mots clés **DOIT**, **NE DOIT PAS**, **DEVRAIT**, **NE DEVRAIT PAS**, **RECOMMANDÉ**, **PEUT** et **OPTIONNEL** dans ce document doivent être interprétés tel que décrit dans le standard [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
-Les acronymes sont écrits en majuscules. Par exemple,les mots `REST`, `JSON`, `XML` et tous les autres acronymes sont tous représentés de cette façon.
+Les acronymes sont écrits en majuscules. Par exemple,les mots **REST**, **JSON**, **XML** et tous les autres acronymes sont tous représentés de cette façon.
 
-Les textes lisibles par traitement informatique (programme, script, etc.) tel que les `URL`, les verbes `HTTP` et `les codes sources`, sont représentés à l'aide de `mise en évidence (surbrillance) des blocs de code`.
-
+Les textes lisibles par traitement informatique (programme, script, etc.) tel que les `URL`, les verbes `HTTP` et `les codes sources`, sont représentés par la `mise en évidence (surbrillance) des blocs de code`.
 
 ## Contact <a name="contact"></a>
-TBC
-
-# Pour bien démarrer <a name="démarrer"></a>
+TBC (ex: apiteam@api.quebec.ca)
 
 ## Pourquoi une norme de conception des API? <a name="norme"></a>
-Ce document peut servir de référence dans la phase de conception du développement d'un nouvel API.
+La principale intention de ce document est de servir de référence dans la phase de conception du développement d'un nouvel API.
 
-Les normes de conception définies dans ce document sont à la fois indépendantes des données (ne tiennent pas compte du type de données consommées ou produites) et indépendantes du langage de programmation (ne tiennent pas compte du langage de programmation utilisé).
+Les normes de conception définies dans ce document indépendantes des données (ne tiennent pas compte du type de données consommées ou produites) et des langages de programmation.
 
-Ces normes de conception présentent des modèles communs qui sont applicables à tous les scénarios d'API sur la manière dont ceux-ci peuvent être conçus.
-
-En tant que tel, ce document n'a pas besoin d'être appliqué de façon intégrale. Il peut être utilisé comme point de référence lors du développement d'une nouvelle API ou d'un scénario d'intégration.
+Ces normes de conception présentent des patrons communs de conception qui sont applicables à tous les scénarios d'API. Ces patrons de conceptions sont basées sur des standards reconnus par l'industrie.
 
 ## Comment appliquer cette norme de conception? <a name="appliquer"></a>
-Savoir comment et quand appliquer les normes de conception d'API influencera considérablement la conception de solution d'API qu'un concepteur d'API prendra.
-
-La détermination du moment d'utilisation de la norme est basée sur la catégorie d'API et le niveau d'abstraction requis.
+Il est important de bien comprendre quand et comment appliquer ces normes de conception d'API. En effet, la catégorie à laquelle appartient l'API déterminera si vous devrez ou non utiliser ce cadre normatif.
 
 Une API appartiendra généralement à l'une des catégories suivantes:
 
-- **API de niveau système**: il s'agit d'API de bas niveau exposées directement par une application.
+- **API de niveau système (application)**: il s'agit d'API de bas niveau exposées directement par une application.
 
-- **API de niveau processus**: il s'agit d'API composées d'autres API système via l'orchestration et la chorégraphie.
+- **API de niveau processus**: il s'agit d'API composées d'autres API systèmes soit via une orchestration et/ou une chorégraphie.
 
-- **API de niveau d'expérience**: il s'agit d'API destinées à faciliter l'adoption de l'intégration d'API entre une organisation et ses consommateurs externes.
+- **API de niveau d'intégration**: il s'agit d'API destinées à faciliter l'adoption de l'intégration d'API entre une organisation et ses consommateurs externes.
 
-Si votre API fait partie de l'API de niveau système et est développée sur mesure, il est **RECOMMANDÉ** d'utiliser la norme de conception car cela vous aidera à développer des API de niveau processus ou expérience si elles sont requises à l'avenir.
+Si votre API fait partie de l'API de niveau système (application) et est développée sur mesure (maison), il est **RECOMMANDÉ** d'utiliser cette norme de conception car elle facilitera le développement des API de niveau processus ou d'intégration (dans les cas où ceux-ci seraient requises dans le futur).
 
-Si votre API est une API de niveau de processus, vous **DEVRIEZ** appliquer la norme de conception car le plus souvent, une API de niveau de processus sera adaptée pour la réutilisation.
+Si votre API est une API de niveau de processus, il est aussi **RECOMMANDÉ** d'appliquer cette norme de conception. En effet, les API de niveau de processus sont souvent réutilisation par différents consommateurs.
 
 Si votre API est une API de niveau d'expérience, les normes de conception **DOIVENT** être appliquées.
 
-Cette norme de conception elle-même ne s'applique PAS aux API tierces au niveau du système telles que celles disponibles en tant que «prêtes à l'emploi» ou faisant partie de la plate-forme SaaS, par exemple. API Salesforce ou API ArcGIS. Cependant, la norme peut s'appliquer si vous cherchez à réexposer ces API en tant qu'API de niveau d'expérience pour une consommation plus large.
-
 ## Pourquoi choisir REST? <a name="rest"></a>
 
-Cette norme de conception d'API se concentre largement sur l'utilisation des API HTTP REST (Representational State Transfer) comme base de conception.
+Cette norme de conception d'API du gouvernement du Québec est basée sur le style d'architecture **REST** (Representational State Transfer).
 
-Alors qu'il existe des normes et des modèles de conception émergents pour les API (y compris GraphQL et gRPC), les développeurs du monde entier ont largement accepté REST comme mécanisme de facto de représentation et de transfert de données vers et depuis des systèmes sur Internet.
+Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté **REST** comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet.
 
-REST fonctionne bien lors de la modélisation des systèmes et des données. Les principes peuvent être appliqués aux systèmes qui sont à la fois grands et petits et les outils disponibles pour les développeurs prennent largement en charge l'accès aux données prêt à l'emploi.
+Le style d'Architecre **REST** est très efficace lorsque nous devons modéliser des systèmes et des données. Les principes peuvent être aussi bien appliqués aux systèmes de petite ou de grande envergure et les outils disponibles (écosystème de développement) supportent facilement les accès aux données.
 
-Les API REST ne sont généralement pas adaptées à la diffusion de données (websockets) et ne sont pas non plus la meilleure utilisation pour les API largement basées sur des fonctions (gRPC / JSON-RPC). GraphQL est une alternative qui gère ces aspects du développement d'une manière différente et a été considérée comme une option pour les standards WoG.
+Il est important de prendre note que les **API REST** ne sont généralement pas adaptées à la diffusion (streaming) de données ou dans les cas ou la performance des interaction est essentielle. **GraphQL** et **gRPC/JSON-RPC** sont des alternatives en émergence qui seront éventuellement considérées comme des options pour les standards du gouvernement du Québec.
 
-Étant donné que les outils pour les API REST sont plus largement disponibles et que les connaissances technologiques générales du gouvernement sont déjà raisonnablement familiarisées avec les API REST et les principes de conception, il a été déterminé que REST serait la base de la modélisation de cette norme de conception d'API pour une utilisation dans le gouvernement australien .
-
-Il est prévu que le développement futur de ces normes de conception prendra également en compte GraphQL et gRPC / JSON-RPC.
-
+Étant donné que les outils pour les **API REST** sont largement disponibles et que les connaissances technologiques des développeurs sont déjà familiarisées avec ceux-ci (autant en amérique du nord qu'ailleurs dans le monde), il a été déterminé que **REST** serait la base de la modélisation des API dans le gouvernement du Québec.
 
 ## La norme de spécification OpenAPI <a name="openapi"></a>
 [OpenAPI v3.0](https://swagger.io/specification/)
 
 # Définitions <a name="définition"></a>
-
-
 
 ## API <a name="api"></a>
 Dans le contexte de cette norme de conception d'API, une API (Application Programming Interface) est définie comme une API RESTful.
