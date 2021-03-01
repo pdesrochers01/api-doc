@@ -903,65 +903,157 @@ Exemple:
 ?date_of_birth=\>1999-12-31 and \<=2001-09-21T13:00:00
 ```
 
+# Réponses des API <a name="réponses"></a>
+
+## Entête des réponses <a name="entêteréponses"></a>
+Le type de contenu recommandé est `JSON` (` application/json`).
+
+Les en-têtes de réponse suivants **PEUVENT** être inclus dans toutes les réponses:
+
+| En-tête                      | Valeur                                                       |
+| ---------------------------- | ------------------------------------------------------------ |
+| Access-Control-Allow-Origin  | URL qui est autorisée à accéder à ce service directement à partir de javascript et de clients basés sur un navigateur. <br />**Remarque:** N'utilisez jamais d'URL génériques (*) à moins que la ressource REST ne soit vraiment publique. |
+| Access-Control-Allow-Methods | Les méthodes auxquelles il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
+| Access-Control-Allow-Headers | Les en-têtes auxquels il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
+| Content-Type                 | Choix de: <br />`application / json` (obligatoire)<br />` application / xml` (facultatif pour `xml`)<br />` multipart / form-data` (facultatif pour les fichiers)<br />`text / html` (facultatif pour` html`) |
+| Cache-Control                | Informe les mécanismes de mise en cache.                     |
+| Date                         | La date et l'heure à laquelle le message a été émis Date par ex. Mar 15 novembre 1994 08:12:31 GMT |
+| Expire                       | Donne la date / heure après laquelle la réponse est considérée comme périmée, par ex. Jeu. 01 décembre 1994 16:00:00 GMT |
+| ETag                         | Utilisé pour identifier la version particulière d'une ressource. Le client doit l'inclure dans toutes les demandes de mise à jour pour s'assurer qu'il est inchangé. |
+
+
+
+## Codes de réponse HTTP <a name="codesréponsehttp"></a>
+TBC : https://restfulapi.net/http-status-codes/
+
+
+## Contenu des réponses <a name="contenuréponses"></a>
+La charge utile de réponse pour une API peut concerner une seule ressource ou un ensemble de ressources.
+
+Lorsque le format de réponse est «JSON», les normes de réponse suivantes s'appliquent:
+
+### Ressource unique
+
+Les codes d'état suivants représentent les réponses appropriées aux différentes opérations qui peuvent être effectuées sur une seule ressource dans le système.
+
+| Request Method | Resource Path     | Status                 | Code |
+| -------------- | ----------------- | ---------------------- | ---- |
+| POST           | `/resources/{id}` | Created                | 201  |
+|                |                   | Accepted               | 202  |
+|                |                   | Bad Request            | 400  |
+|                |                   | Unauthorised           | 401  |
+|                |                   | Forbidden              | 403  |
+|                |                   | Not found              | 404  |
+|                |                   | Not Allowed            | 405  |
+|                |                   | Unsupported Media Type | 415  |
+|                |                   | Unprocessable Entity   | 422  |
+|                |                   | Internal Server Error  | 500  |
+| PUT            | `/resources/{id}` | OK                     | 200  |
+|                |                   | Accepted               | 202  |
+|                |                   | No content             | 204  |
+|                |                   | Bad Request            | 400  |
+|                |                   | Unauthorised           | 401  |
+|                |                   | Forbidden              | 403  |
+|                |                   | Not found              | 404  |
+|                |                   | Not Allowed            | 405  |
+|                |                   | Unsupported Media Type | 415  |
+|                |                   | Unprocessable Entity   | 422  |
+|                |                   | Internal Server error  | 500  |
+| DELETE         | `/resources/{id}` | Accepted               | 202  |
+|                |                   | No Content             | 204  |
+|                |                   | Bad Request            | 400  |
+|                |                   | Unauthorised           | 401  |
+|                |                   | Forbidden              | 403  |
+|                |                   | Not found              | 404  |
+|                |                   | Not Allowed            | 405  |
+|                |                   | Internal Server error  | 500  |
+| PATCH          | `/resources/{id}` | Accepted               | 202  |
+|                |                   | No content             | 204  |
+|                |                   | Bad Request            | 400  |
+|                |                   | Unauthorised           | 401  |
+|                |                   | Forbidden              | 403  |
+|                |                   | Not found              | 404  |
+|                |                   | Not Allowed            | 405  |
+|                |                   | Unsupported Media Type | 415  |
+|                |                   | Unprocessable Entity   | 422  |
+|                |                   | Internal Server error  | 500  |
+
+### Collection of Resources
+
+The following status codes represent appropriate responses to the different operations that can be performed on a collection resource within the system.
+
+| Request Method | Resource Path | Status                 | Code |
+| -------------- | ------------- | ---------------------- | ---- |
+| GET            | `/resources/` | OK                     | 200  |
+|                |               | Bad Request            | 400  |
+|                |               | Unauthorised           | 401  |
+|                |               | Forbidden              | 403  |
+|                |               | Not found              | 404  |
+|                |               | Not Allowed            | 405  |
+|                |               | Unsupported Media Type | 415  |
+|                |               | Internal Server error  | 500  |
+
+
+
+
 *******
-# Titre1 <a name="titre1"></a>
+1. [Hypermédia](#hypermédia)
+    1. [Hypermédia - Données liées](#hypermédiadonnées)
+    1. [HATEOAS](#hateoas)
+    1. [API compatible hypermédia](#compatiblehypermédia)
+    1. [Link Description Object](#linkobject)
+    1. [Type de relation de lien](#typelien)
+# Hypermédia <a name="titre1"></a>
 
-## Titre2 <a name="titre2"></a>
-TBD
+## HATEOAS <a name="hateoas"></a>
+TBC https://restcookbook.com/Basics/hateoas/
+«Hypermédia en tant que moteur de l'état de l'application» est le concept de représentation des actions autorisées sous forme d'hyperliens associés à la ressource. Similaire au concept de données liées hypermédia, les liens définis dans les données de réponse représentent des transitions d'états disponibles de cet état actuel vers des états adjacents.
 
-## Titre2 <a name="titre2"></a>
-TBD
+```
+{
+   "numéro_compte": "12345",
+   "solde": 100,00,
+   "_liens":[
+     {"rel": "** deposit **", "href": "/ accounts / 12345 / deposit"},
+     {"rel": "** retirer **", "href": "/ accounts / 12345 / retirer"},
+     {"rel": "** transfer **", "href": "/ accounts / 12345 / transfer"}
+   ]
+}
+```
 
-## Titre2 <a name="titre2"></a>
-TBD
+Mais si le même compte est à découvert de 25, la seule action autorisée est le dépôt:
 
-## Titre2 <a name="titre2"></a>
+```
+{
+   "numéro_compte": "12345",
+   "solde": -25,00,
+   "_liens":[{
+     "rel": "dépôt",
+     "href": "/ comptes / 12345 / dépôt"
+   }]
+}
+```
+
+La décision d'implémenter les conceptions HATEOAS dans votre API dépend de la volonté des clients de consommer HATEOAS et de l'effort de conception et de mise en œuvre.
+
+## API compatible hypermédia <a name="compatiblehypermédia"></a>
 TBC
 
-## Titre2 <a name="titre2"></a>
-TBD
+Une API compatible hypermédia fournit aux consommateurs une machine à états accessible des transitions qu'ils peuvent utiliser.
 
-## Titre2 <a name="titre2"></a>
-TBD
+Dans les API, les méthodes de requête telles que «DELETE», «PATCH», «POST» et «PUT» lancent une transition dans l'état d'une ressource. Une requête «GET» ne **DOIT** jamais changer l'état de la ressource qui est récupérée.
 
-## Titre2 <a name="titre2"></a>
-TBC
+Afin de fournir une meilleure expérience aux consommateurs d'API, les concepteurs d'API **DEVRAIENT** fournir une liste des transitions d'état disponibles pour chaque ressource dans le tableau `_links`.
 
-## Titre2 <a name="titre2"></a>
-TBD
+*********
+Les API **DEVRAIENT** suivre une politique de «pagination d'abord».
 
-## Titre2 <a name="titre2"></a>
-TBC
+La pagination est **RECOMMANDÉE** pour:
 
-*******
-# Titre1 <a name="titre1"></a>
+1. répondre aux demandes en temps opportun (par exemple, plus long que 2 secondes)
+2. assurez-vous que la quantité de données renvoyées reste dans une charge utile gérable (par exemple, plus gros que 500 Ko)
+3. Assurez-vous que les données de la réponse sont facilement gérables pour améliorer l'expérience utilisateur.
 
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBC
-
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBC
-
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBC
 
 *******
 # Titre1 <a name="titre1"></a>
