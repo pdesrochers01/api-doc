@@ -9,7 +9,7 @@
     1. [Contacts](#contact)
     1. [Pourquoi une norme de conception des API?](#norme)
     1. [Comment appliquer cette norme de conception?](#appliquer)
-    1. [Pourquoi choisir REST?](#rest)
+    1. [Pourquoi le style d'architecture REST?](#rest)
     1. [La norme de spécification OpenAPI](#openapi)
 1. [Définitions](#définition)
     1. [API](#api)
@@ -117,7 +117,7 @@ Si votre API est une API de niveau de processus, il est aussi **RECOMMANDÉ** d'
 
 Si votre API est une API de niveau d'expérience, ces normes de conception **DOIVENT** être appliquées.
 
-## Pourquoi choisir REST? <a name="rest"></a>
+## Pourquoi le style d'architecture REST? <a name="rest"></a>
 
 Cette norme de conception d'API du gouvernement du Québec est basée sur le style d'architecture **REST** (Representational State Transfer).
 
@@ -130,7 +130,7 @@ Il est important de prendre note que les **API REST** ne sont généralement pas
 Finalement, étant donné que les outils pour les **API REST** sont largement disponibles et que les développeurs sont déjà familiées avec ceux-ci (autant en Amérique du Nord qu'ailleurs dans le monde), il a été déterminé que le style d'architecture **REST** serait la base de la modélisation des API dans le gouvernement du Québec.
 
 ## La norme de spécification OpenAPI <a name="openapi"></a>
-TBC [OpenAPI v3.0](https://swagger.io/specification/)
+**TBC** [OpenAPI v3.0](https://swagger.io/specification/)
 
 # Définitions <a name="définition"></a>
 
@@ -1057,6 +1057,10 @@ Il existe une grande variété d'outils de test gratuits (open source) disponibl
 
 ## Références <a name="références"></a>
 
+[Fielding's Dissertation on REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+
+[xxx](yyy)
+
 [Government of Canada Web API Standard](https://github.com/wet-boew/wet-boew-api-standards#style-guide)
 
 [18F API Standards](https://github.com/18F/api-standards)
@@ -1071,7 +1075,9 @@ Il existe une grande variété d'outils de test gratuits (open source) disponibl
 
 [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md)
 
+[HTTP Status Codes](https://restfulapi.net/http-status-codes/)
 
+[JSON:API, a specification for building APIs in JSON](https://jsonapi.org/format/)
 
 
 *********template*********
