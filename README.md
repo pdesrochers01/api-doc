@@ -119,6 +119,8 @@ Si votre API est une API de niveau d'expérience, ces normes de conception **DOI
 
 ## Pourquoi le style d'architecture REST? <a name="rest"></a>
 
+ajouter standards du gouvernement du canada et ontario.
+
 Cette norme de conception d'API du gouvernement du Québec est basée sur le style d'architecture **REST** (Representational State Transfer).
 
 Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté **REST** comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet.
