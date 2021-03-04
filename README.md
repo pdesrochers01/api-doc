@@ -119,11 +119,9 @@ Si votre API est une API de niveau d'expérience, ces normes de conception **DOI
 
 ## Pourquoi le style d'architecture REST? <a name="rest"></a>
 
-ajouter standards du gouvernement du canada et ontario.
-
 Cette norme de conception d'API du gouvernement du Québec est basée sur le style d'architecture **REST** (Representational State Transfer).
 
-Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté **REST** comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet.
+Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté **REST** comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontarion, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture REST. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
 
 Le style d'architecture **REST** est très efficace lorsque nous devons modéliser des systèmes et des données. Les principes peuvent être aussi bien appliqués aux systèmes de petite ou de grande envergure et les outils disponibles (écosystème de développement) supportent facilement les accès aux données.
 
@@ -137,6 +135,9 @@ Finalement, étant donné que les outils pour les **API REST** sont largement di
 # Définitions <a name="définition"></a>
 
 ## API <a name="api"></a>
+
+En informatique, une interface de programmation d’application1 ou interface de programmation applicative2,3,4 (souvent désignée par le terme API pour Application Programming Interface) est un ensemble normalisé de classes, de méthodes, de fonctions et de constantes qui sert de façade par laquelle un logiciel offre des services à d'autres logiciels. Elle est offerte par une bibliothèque logicielle ou un service web, le plus souvent accompagnée d'une description qui spécifie comment des programmes consommateurs peuvent se servir des fonctionnalités du programme fournisseur.
+
 Dans le contexte de cette norme de conception d'API, une API (Application Programming Interface) est définie comme une API RESTful.
 
 Une API RESTful est un style de communication entre les systèmes où les ressources sont définies par URI et ses opérations sont définies par l'utilisation de méthodes HTTP.
