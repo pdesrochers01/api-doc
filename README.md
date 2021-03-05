@@ -385,7 +385,7 @@ La structure des URL utilisées dans les API **DEVRAIT** être significative pou
 
 Les URL **DOIVENT** suivre la convention de dénomination standard tel que décrite ci-dessous:
 ```
-https://api.quebec.ca/namespace/v1/collection?attributes=prénom,nom
+https://api.quebec.ca/namespace/v1/collection?attributes=prenom,nom
 \___/   \___________/\______________________/\____________________/
   |           |                   |                     |
 schéma     autorité            chemin                requête
@@ -407,12 +407,12 @@ Le tableau suivant explique comment construire l'URI de l'API.
 | Élément de l'URI                        | Description                                                  | Exemple                                                      |
 | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Protocol                                | Toutes les API **DOIVENT** être exposées en utilisant HTTPS. | `https://`                                                   |
-| Autorité > Environment                  | Le domaine dans lequel le point de terminaison de l'API sera exposé. Reportez-vous à la section standard «DNS» pour plus de détails. | `api.quebec.ca`                                              |
-| Chemin > API                            | Le nom d'API dérivé du domaine métier.                       | e.g. `/namespace/project-name` Toute service peut spécifier le nom de l'API sur lequel elle souhaite exposer ses services. |
-| Chemin > Version                        | La version de l'API à laquelle le consommateur souhaite accéder. | e.g. `/v1` Toutes les API doivent spécifier une version qui suit le schéma de gestion des versions tel que spécifié dans la section «gestion des versions» ci-dessous. |
-| Chemin > Collection                     | La collection identifie une liste de ressources. La collection **DOIT** être nommée en utilisant la représentation plurielle d'un nom. | par exemple, dans le cadre de l'API de la main-d'œuvre - une ressource peut être une liste de `employees`. |
-| Chemin > Resource                       | L'identifiant de ressource qui correspond à une instance de la ressource. | par exemple, dans le cadre de l'API project-name, s'il y avait un employé spécifique avec l'ID E13454. Ces détails peuvent être récupérés en utilisant `GET` `/project-name/v1/employees/E13454` |
-| Chaîne de requête> Paramètres / Filtres | Les paramètres de requête **NE DOIVENT** PAS être utilisés pour transporter des données utiles ou des données réelles. Les paramètres de requête suivants **DEVRAIENT** être pris en charge par votre API là où ils seraient utiles: **attributs** - spécifiez ou restreignez les attributs à renvoyer **filtres** - conditions pour restreindre / filtrer la liste de collection **sort** - spécifiez l'exigence de tri **page** - spécifiez l'index de pagination à renvoyer dans un ensemble de collections | e.g. `attributes=first_name,last_name` retourne un élément de données ne contenant que `first_name` et `last_name` attributes`filters=creation_date => 2001-09-20T13:00:00 et creation_date <= 2001-09-21T13:00:00 et first_name like 'fred' et post_code=3000` - retourne une collection de ressources avec uen date de création entre 2001-09-20 1pm et 2001-09-21 1pm et first-name comme 'fred' et post_code is 3000. |
+| Autorité > Environment                  | Le domaine dans lequel le point de terminaison (*endpoint*) de l'API sera exposé.| `api.quebec.ca`                                              |
+| Chemin > API                            | Le nom d'API dérivé du domaine métier.                       | Exemple : `/namespace/nom-du-projet`. |
+| Chemin > Version                        | La version de l'API à laquelle le consommateur souhaite accéder. | Exemple : `/v1`. |
+| Chemin > Collection                     | La collection identifie une liste de ressources. La collection **DOIT** être nommée en utilisant la représentation plurielle d'un nom. |  |
+| Chemin > Resource                       | L'identifiant de ressource qui correspond à une instance de la ressource. | Par exemple, l'API nom-du-projet, un employé spécifique avec l'ID E13454 serait récupérés en utilisant `GET` `/project-name/v1/employes/E13454` |
+| Chaîne de requête> Paramètres/Filtres   | Les paramètres de requête **NE DOIVENT PAS** être utilisés pour transporter des données réelles. Les paramètres de requête suivants **DEVRAIENT** être pris en charge par votre API là où ils seraient utiles: **attributs** - spécifiez ou restreignez les attributs à renvoyer **filtres** - conditions pour restreindre / filtrer la liste de collection **sort** - spécifiez l'exigence de tri **page** - spécifiez l'index de pagination à renvoyer dans un ensemble de collections | Par exemple, `attributes=prenom,nom` retourne un élément de données ne contenant que `prenom` et `nom` attributes`filters=date_de_creation => 2001-09-20T13:00:00 et date_de_creation <= 2001-09-21T13:00:00 et prenom like 'Marie' et post_code=3000` - retourne une collection de ressources avec uen date de création entre 2001-09-20 1pm et 2001-09-21 1pm et prénom 'fred' et post_code est 3000. |
 
 **Noms des ressources**
 Les concepteurs d'API **DOIVENT** suivre ces principes lors de la création d'une API REST:
