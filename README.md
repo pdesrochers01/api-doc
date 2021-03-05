@@ -411,31 +411,34 @@ Le tableau suivant explique comment construire l'URI de l'API.
 | Chemin > API                            | Le nom d'API dérivé du domaine métier.                       | Exemple : `/namespace/nom-du-projet`. |
 | Chemin > Version                        | La version de l'API à laquelle le consommateur souhaite accéder. | Exemple : `/v1`. |
 | Chemin > Collection                     | La collection identifie une liste de ressources. La collection **DOIT** être nommée en utilisant la représentation plurielle d'un nom. |  |
-| Chemin > Resource                       | L'identifiant de ressource qui correspond à une instance de la ressource. | Par exemple, l'API nom-du-projet, un employé spécifique avec l'ID E13454 serait récupérés en utilisant `GET` `/project-name/v1/employes/E13454` |
+| Chemin > Resource                       | L'identifiant de ressource qui correspond à une instance de la ressource. | Par exemple, l'API nom-du-projet, un employé spécifique avec l'ID 123456 serait récupérés en utilisant `GET` `/project-name/v1/employes/E13454` |
 | Chaîne de requête> Paramètres/Filtres   | Les paramètres de requête **NE DOIVENT PAS** être utilisés pour transporter des données réelles. Les paramètres de requête suivants **DEVRAIENT** être pris en charge par votre API là où ils seraient utiles: **attributs** - spécifiez ou restreignez les attributs à renvoyer **filtres** - conditions pour restreindre / filtrer la liste de collection **sort** - spécifiez l'exigence de tri **page** - spécifiez l'index de pagination à renvoyer dans un ensemble de collections | Par exemple, `attributes=prenom,nom` retourne un élément de données ne contenant que `prenom` et `nom` attributes`filters=date_de_creation => 2001-09-20T13:00:00 et date_de_creation <= 2001-09-21T13:00:00 et prenom like 'Marie' et post_code=3000` - retourne une collection de ressources avec uen date de création entre 2001-09-20 1pm et 2001-09-21 1pm et prénom 'fred' et post_code est 3000. |
 
 **Noms des ressources**
+
 Les concepteurs d'API **DOIVENT** suivre ces principes lors de la création d'une API REST:
 
-Les noms **DOIVENT** être utilisés - pas les verbes pour les noms.
-Les noms de ressources **DOIVENT** être au pluriel. Lorsque le pluriel d'une ressource n'est pas standard, comme feuille ou poisson, choisissez un nom plus approprié ou utilisez le pluriel approprié - feuilles, poissons.
-Les noms de ressources **DOIVENT** être en minuscules et n'utiliser que des caractères alphabétiques et des traits d'union.
-Le caractère trait d'union, (-), **DOIT** être utilisé comme séparateur de mot dans les paramètres de chemin URI.
-Notez que c'est le seul endroit où les tirets sont utilisés comme séparateur de mots. Dans presque toutes les autres situations, le caractère de soulignement DOIT être utilisé.
+- Les noms **DOIVENT** être utilisés - pas de verbes pour les noms.
+- Les noms de ressources **DOIVENT** être au pluriel.
+- Les noms de ressources **DOIVENT** être en minuscules et n'utiliser que des caractères alphabétiques et des traits d'union.
+- Le caractère trait d'union (-) **DOIT** être utilisé comme séparateur de mot dans les paramètres de chemin des URI.
+
+Notez que c'est le seul endroit où les tirets sont utilisés comme séparateur de mots. Dans presque toutes les autres situations, le caractère de soulignement **DOIT** être utilisé.
 
 Bons exemples:
 ```
-/employees
-/customers
-/products
+/employes
+/clients
+/produits
 ```
 Mauvais exemples :
 ```
-/get-employee
-/customer
-/add-product
+/obtenir-employe
+/client
+/ajouter-produit
 ```
 **Noms des paramètres de requête**
+
 - Les littéraux / expressions dans les chaînes de requête **DEVRAIENT** être séparés en utilisant un trait de soulignement.
 - Les valeurs des paramètres de requête **DOIVENT** être codées en pourcentage.
 - Les paramètres de requête **DOIVENT** commencer par une lettre et **DEVRAIENT** tous être en minuscules. Seuls les caractères alphabétiques, les chiffres et le caractère de soulignement **DOIVENT** être utilisés.
@@ -444,6 +447,7 @@ Mauvais exemples :
 
 
 ## Noms des champs <a name="nomschamps"></a>
+
 Le modèle de données pour la représentation *DOIT** être conforme à la spécification `JSON`.
 
 Les valeurs peuvent elles-mêmes être des objets, des chaînes, des nombres, des booléens ou des tableaux d'objets.
