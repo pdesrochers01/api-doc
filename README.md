@@ -418,9 +418,9 @@ Le tableau suivant explique comment construire l'URI de l'API.
 
 Les concepteurs d'API **DOIVENT** suivre ces principes lors de la création d'une API REST:
 
-- Les noms **DOIVENT** être utilisés - pas de verbes pour les noms.
+- Les noms **DOIVENT** être utilisés et non des verbes dans l'URI.
 - Les noms de ressources **DOIVENT** être au pluriel.
-- Les noms de ressources **DOIVENT** être en minuscules et n'utiliser que des caractères alphabétiques et des traits d'union.
+- Les noms de ressources **DOIVENT** être en minuscules et n'utiliser que des caractères alphabétiques et des traits d'union (-).
 - Le caractère trait d'union (-) **DOIT** être utilisé comme séparateur de mot dans les paramètres de chemin des URI.
 
 Notez que c'est le seul endroit où les tirets sont utilisés comme séparateur de mots. Dans presque toutes les autres situations, le caractère de soulignement **DOIT** être utilisé.
@@ -439,11 +439,11 @@ Mauvais exemples :
 ```
 **Noms des paramètres de requête**
 
-- Les littéraux / expressions dans les chaînes de requête **DEVRAIENT** être séparés en utilisant un trait de soulignement.
+- Les expressions dans les chaînes de requête **DEVRAIENT** être séparés en utilisant un trait de soulignement.
 - Les valeurs des paramètres de requête **DOIVENT** être codées en pourcentage.
 - Les paramètres de requête **DOIVENT** commencer par une lettre et **DEVRAIENT** tous être en minuscules. Seuls les caractères alphabétiques, les chiffres et le caractère de soulignement **DOIVENT** être utilisés.
 - Les paramètres de requête **DEVRAIENT** être facultatifs.
-- Les paramètres de requête **NE DEVRAIENT** pas contenir de caractères qui ne sont pas sûrs pour les URL.
+- Les paramètres de requête **NE DEVRAIENT** pas contenir de caractères non-sécure.
 
 
 ## Noms des champs <a name="nomschamps"></a>
@@ -456,24 +456,25 @@ Les valeurs peuvent elles-mêmes être des objets, des chaînes, des nombres, de
    - `foo`
    - `bar_baz`
 - Un préfixe tel que `is_` ou` has_` **NE DEVRAIT PAS** être utilisé pour les clés de type booléen.
-- Les champs qui représentent des tableaux **DEVRAIENT** être nommés en utilisant des noms au pluriel (par exemple authentificateurs - contient un ou plusieurs authentificateurs, produits - contient un ou plusieurs produits).
+- Les champs qui représentent des tableaux **DEVRAIENT** être nommés en utilisant des noms au pluriel (par exemple `produits` contient un ou plusieurs produits).
 
 ## Noms des relations des liens <a name="nomsliens"></a>
-Pour aider à guider les utilisateurs à travers vos liens relationnels API **DOIVENT** être fournis. Ces liens agissent comme la navigation de votre API informant les utilisateurs de l'endroit où ils peuvent aller ensuite.
 
-Un tableau `_links` **DOIT** être fourni pour les ressources. Il contient des objets lien qui peuvent faire référence à des ressources associées dans le système.
+Afin de faciliter la navigation des utilisateurs dans l'API, des liens relationnels **DOIVENT** être fournis.
 
-Une relation de lien **DOIT** contenir les éléments suivants:
+Un tableau `_links` **DOIT** être fourni pour les ressources. Il contient des objets lien qui peuvent référer à des ressources associées dans le système.
+
+Une relation de lien (*link relation*) **DOIT** contenir les éléments suivants:
 
 - href - chaîne contenant l'URL absolue ou relative de la ressource
-- rel - la chaîne textuelle décrivant ce qu'est cette entité
-- méthode - la méthode HTTP qui **DEVRAIT** être utilisée lors de l'utilisation de cette ressource associée.
+- rel - la chaîne textuelle décrivant ce qu'est l'entité
+- méthode - la méthode HTTP utilisée lors de l'utilisation de la ressource associée.
 
 Exemple:
 ```
 "_links": [
     {
-        "href": "/v1/customer/partner-referrals/ALT-JFWXHGUV7VI",
+        "href": "/v1/clients/reference-partenaire/ABC-123456",
         "rel": "_self",
         "method": "GET"
     }
@@ -481,25 +482,25 @@ Exemple:
 ```
 
 ## En-têtes des requêtes <a name="entetedemandes"></a>
+
 Les en-têtes suivants **DEVRAIENT** être utilisés par défaut sur toutes les demandes.
 
-| Header | Default Value      |
-| ------ | ------------------ |
-| Accept | `application/json` |
-
-
+| En-tête | Valeur par défaut   |
+| ------- | ------------------- |
+| Accept  | `application/json`  |
 
 ## Gestion des dates <a name="dates"></a>
+
 ### Dates formatées ISO8601
 
-Toutes les implémentations utilisant des dates **DOIVENT** être conformes au format [ISO 8601] (https://en.wikipedia.org/wiki/ISO_8601).
+Toutes les API utilisant des dates **DOIVENT** être conformes au format [ISO 8601] (https://en.wikipedia.org/wiki/ISO_8601).
 
-Dans ISO 8601, les valeurs de date et d'heure sont classées de la plus grande à la plus petite unité de temps: année, mois (ou semaine), jour, heure, minute, seconde et fraction de seconde.
+Dans ce standard, les valeurs de date et d'heure sont classées de la plus grande à la plus petite unité de temps: année, mois (ou semaine), jour, heure, minute, seconde et fraction de seconde.
 
-La manière internationalement reconnue de représenter un objet de date est:
+La manière internationalement reconnue de représenter un objet date est :
 
 ```
-YYYY-MM-DD
+AAAA-MM-JJ
 ```
 
 La manière internationalement reconnue de représenter un objet temporel est:
@@ -508,110 +509,91 @@ La manière internationalement reconnue de représenter un objet temporel est:
 hh:mm:ss.fff
 ```
 
-Les composants de ceux-ci sont décrits ci-dessous:
+Voici la description de ces composantes :
 
-| Date Component | Description                                                  | Example |
+| Composantes    | Description                                                  | Example |
 | -------------- | ------------------------------------------------------------ | ------- |
-| YYYY           | Année à quatre chiffres                                      | `2019`  |
-| MM             | Mois à deux chiffres (avec zéro non significatif)            | `04`    |
-| DD             | Jour à deux chiffres (avec zéro non significatif)            | `27`    |
-| T              | Définir le caractère indiquant le début de l'élément temporel dans un format datetime combiné | `T`     |
-| hh             | Deux chiffres d'une heure (00 à 23)                          | `18`    |
-| mm             | Deux chiffres d'une minute                                   | `38`    |
-| ss             | Deux chiffres de seconde                                     | `12`    |
-| fff            | Trois chiffres d'une milliseconde (000 à 999)                | `123`   |
+| AAAA           | Année à quatre chiffres                                      | `2021`  |
+| MM             | Mois à deux chiffres (avec zéro non significatif)            | `07`    |
+| JJ             | Jour à deux chiffres (avec zéro non significatif)            | `14`    |
+| hh             | Deux chiffres(00 à 23)                                       | `13`    |
+| mm             | Deux chiffres                                                | `48`    |
+| ss             | Deux chiffres                                                | `12`    |
+| fff            | Trois chiffres (milliseconde de 000 à 999)                   | `123`   |
 
-Lorsqu'il est combiné dans un datetime, l'objet peut être représenté comme suit:
+Lorsqu'il est combiné dans un `datetime`, l'objet peut être représenté comme suit:
 
 ```
-2019-10-02T18:36:12.123
+2021-07-14T13:48:12.123
 ```
 
-### Utilisation des fuseaux horaires
+### Utilisation des fuseaux horaires (*Timezones*)
 
-Lors de l'utilisation du format ISO 8601, le fuseau horaire est **RECOMMANDÉ** à fournir. Cela est dû aux complexités qui surviennent lors de la consommation de données et de la conversion à l'heure locale.
+Lors de l'utilisation du format ISO 8601, il est **RECOMMANDÉ** de fournir le fuseau horaire. Cette pratique peut permettre d'éviter une certaine complexité lors de conversion à l'heure locale.
 
-Le fuseau horaire peut être représenté dans une variété de mécanismes, mais il est le plus souvent représenté comme un décalage par rapport à GMT + 0 (ou à l'heure zouloue).
+Le fuseau horaire peut être représenté dans une variété de mécanismes, mais il est le plus souvent représenté comme un décalage par rapport à GMT + 0.
 
-`2019-10-02T18:36:12.123Z` (avec «z» indiquant l'heure zoulou).
-
-La convention ici est la suivante:
-
-| Composant de date | Description                                                  | Exemple |
-| ----------------- | ------------------------------------------------------------ | ------- |
-| Z                 | Indique l'heure zouloue (facultatif)                         | `Z`     |
-| + \| -            | + représente un décalage positif par rapport à Zulu (par exemple devant Zulu). - représente un décalage négatif par rapport à Zulu (par exemple, derrière Zulu) | `+      |
-| hh                | Deux chiffres d'une heure (00 à 13)                          | `10`    |
-| mm                | Deux chiffres d'une minute (généralement 00, 15, 30 ou 45)   | `30`    |
+`2021-07-14T13:48:12.123DST`.
 
 pour représenter l'heure normale de l'Est du Québec (-5), le format suivant serait utilisé:
 
 ```
-2019-10-02T18:36:12.123+10:00
+2019-10-02T18:36:12.123-05:00
 ```
 
 ### Conventions de dénomination des champs de date
 
-Lorsque vous utilisez des champs de date, les conventions de dénomination suivantes pour ces champs doivent être utilisées:
+Lorsque vous utilisez des champs de date, les conventions de dénomination suivantes pour ces champs doivent être utilisées :
 
 - Pour les propriétés nécessitant à la fois la date et l'heure, les services **DOIVENT** utiliser le suffixe `datetime`, par exemple `start_datetime`.
 - Pour les propriétés ne nécessitant que des informations de date sans spécifier l'heure, les services **DOIVENT** utiliser le suffixe `date`, par exemple `date_naissance`.
 - Pour les propriétés ne nécessitant que des informations d'heure sans spécifier de date, les services **DOIVENT** utiliser le suffixe `time`, par ex. `rendez-vous_start_time`.
 
-
-
 ## Exemples <a name="exemples"></a>
+
 ### Bons exemples d'URL
 
-List des employés :
+Liste des employés :
 
-`GET https://api.quebec.ca/e09284/v1/employees`
+`GET https://api.quebec.ca/v1/employes`
 
 Requête avec filtre :
 
-`GET https://api.quebec.ca/e09284/v1/employees?year=2011&sort=desc`
+`GET https://api.quebec.ca/v1/employes?annee=2012&sort=desc`
 
-`GET https://api.quebec.ca/e09284/v1/employees?section=economy&year=2011`
+`GET https://api.quebec.ca/v1/employes?section=juridique&annee=2012`
 
 Un seul employé au format JSON :
 
-`GET https://api.quebec.ca/e09284/v1/employees/1234`
+`GET https://api.quebec.ca/v1/employes/123456`
 
 Tous les endroits où cet employé travaille :
 
-`GET https://api.quebec.ca/e09284/v1/employees/1234/locations`
+`GET https://api.quebec.ca/v1/employes/123456/locations`
 
 Spécifiez les champs facultatifs dans une liste séparée par des virgules :
 
-`GET https://api.quebec.ca/e09284/v1/employees/1234?fields=job_title,start_date`
+`GET https://api.quebec.ca/v1/employes/1234?fields=titre_poste,date_debut`
 
 Ajouter un nouvel emplacement à un employé en particulier :
 
-`POST https://api.quebec.ca/e09284/v1/employees/1234/locations`
+`POST https://api.quebec.ca/v1/employes/123456/locations`
 
 ### Exemples d'URL incorrectes
 
 Point de terminaison non pluriel:
 
-`GET https://api.quebec.ca/e09284/v1/employee`
+`GET https://api.quebec.ca/v1/employe`
 
-`GET https://api.quebec.ca/e09284/v1/employee/1234`
-
-`GET https://api.quebec.ca/e09284/v1/employee/1234/location`
-
-`GET https://api.quebec.ca/e09284/v1/employee`
-
-`GET https://api.quebec.ca/e09284/v1/employee/1234`
-
-`GET https://api.quebec.ca/e09284/v1/employee/1234/location`
+`GET https://api.quebec.ca/v1/employe/123456`
 
 Verbe dans l'URL:
 
-`POST https://api.quebec.ca/e09284/v1/employee/1234/create`
+`POST https://api.quebec.ca/v1/employe/123456/ajouter`
 
 Filtrage à l'extérieur dans l'URL au lieu de la chaîne de requête :
 
-`GET https://api.quebec.ca/e09284/v1/employee/1234/desc`
+`GET https://api.quebec.ca/v1/employe/123456/desc`
 
 # Versionnage des API <a name="versionnage"></a>
 
