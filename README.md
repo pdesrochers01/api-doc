@@ -141,7 +141,7 @@ Dans le contexte de cette norme de conception d'API, une API est définie comme 
 ![alt text](https://github.com/pdesrochers01/api-doc/blob/main/API-Web.png "API de type service Web")
 
 ## REST <a name="rest"></a>
-REST (representational state transfer) est un style d'architecture logicielle définissant un ensemble de contraintes à utiliser pour créer des services web.
+REST (*REpresentational State Transfer*) est un style d'architecture logicielle définissant un ensemble de contraintes à utiliser pour créer des services web.
 
 Les services web conformes au style d'architecture REST, aussi appelés services web RESTful, établissent une interopérabilité entre les ordinateurs sur Internet. Les services web REST permettent aux systèmes effectuant des requêtes de manipuler des ressources web via leurs représentations textuelles à travers un ensemble d'opérations uniformes et prédéfinies sans état.
 
