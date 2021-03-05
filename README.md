@@ -379,26 +379,28 @@ Exemple:
 
 Les URI de cette norme suivent la spécification RFC 3986 afin de simplifier le développement et la consommation de services d'API REST.
 
-**Composants URI**
+**Composants de l'URI**
 
-La structure des URL utilisées dans les API **DEVRAIT** être significative pour les consommateurs. Les URL **DEVRAIENT** suivre une structure hiérarchique prévisible pour améliorer la compréhensibilité et donc la convivialité.
+La structure des URL utilisées dans les API **DEVRAIT** être significative pour les consommateurs. Les URL **DEVRAIENT** suivre une structure hiérarchique prévisible afin d'assurer sa compréhension et sa convivialité.
 
-Les URL **DOIVENT** suivre la convention de dénomination standard décrite ci-dessous:
+Les URL **DOIVENT** suivre la convention de dénomination standard tel que décrite ci-dessous:
 ```
-https://api.quebec.ca/namespace/project-name/v1/collection?attributes=first_name,last_name
-\___/   \___________/\___________________________________/\______________________________/
-  |           |                        |                                  |
-schéma     autorité                 chemin                              requête
+https://api.quebec.ca/namespace/v1/collection?attributes=prénom,nom
+\___/   \___________/\______________________/\____________________/
+  |           |                   |                     |
+schéma     autorité            chemin                requête
 ```
 **Longueur maximale de l'URI**
-L'URI total, y compris le chemin et la requête, **NE DOIT PAS** dépasser 2000 caractères, y compris les codes de mise en forme tels que les virgules, les traits de soulignement, les points d'interrogation, les tirets, les plus ou les barres obliques.
+
+L'URI total, y compris le chemin et la requête, **NE DOIT PAS** dépasser 2000 caractères, incluant les codes de mise en forme tels que les virgules, les traits de soulignement, les points d'interrogation, les tirets, les barres obliques, etc.
 
 **Conventions de dénomination des URI**
+
 Les URL **DOIVENT** suivre la convention de dénomination standard décrite ci-dessous:
 
 - l'URI DOIT être spécifié en minuscules
-- seuls les tirets «-» peuvent être utilisés pour séparer les mots ou les paramètres de chemin pour la lisibilité (pas d'espaces ni de traits de soulignement)
-- seuls les traits de soulignement peuvent être utilisés pour séparer les mots dans les noms de paramètres de requête, mais pas dans le cadre de l'URI de base
+- seuls les tirets «-» peuvent être utilisés pour séparer les mots ou les paramètres pour des fins de lisibilité (pas d'espaces ni de traits de soulignement)
+- seuls les traits de soulignement peuvent être utilisés pour séparer les mots dans les noms de paramètres de requête, mais pas dans le cadre de l'URI de base.
 
 Le tableau suivant explique comment construire l'URI de l'API.
 
