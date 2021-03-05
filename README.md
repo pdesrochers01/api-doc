@@ -350,37 +350,37 @@ TBD
 ## Utiliser les fonctions de sécurité de la passerelle d'API <a name="fonctionspasserelle"></a>
 TBC
 
-# Conventions de nommage <a name="nommage"></a>
+# Conventions de nommage (*Naming Conventions*) <a name="nommage"></a>
 
 ## Format des messages <a name="formatmessages"></a>
-Pour les noms de corps de requête et de réponse et de paramètre de requête, le format de message est **RECOMMANDÉ** d'utiliser snake-case:
+
+Pour les noms de corps de requête et de réponse (*request and response body*) et des paramètres des requêtes, Il est **RECOMMANDÉ** d'utiliser le format de message  *snake-case* :
 
 Exemple:
 ```
-// this_is_snake_case
+// ceci_est_un_snake_case
 
 {
-  "employee_id" : "AB1837"
+  "employe_id" : "123456"
 }
 ```
-Si le cas de serpent n'est pas disponible, il est alors **RECOMMANDÉ** d'utiliser le cas de chameau.
+S'il n'est pas possible d'utiliser le *snake-case* , le formet *camel case* est alors **RECOMMANDÉ** .
 
 Exemple:
 ```
-// thisIsCamelCase
+// CeciEstUnCamelCase
 
 {
-  "employeeId" : "AB1837"
+  "employeId" : "123456"
 }
 ```
-Dans les deux cas, l'objet et la définition de champ doivent être identiques pour le corps de la demande et de la réponse et les paramètres de la requête.
 
 ## Noms des composants URI <a name="composantesuri"></a>
-Les URI suivent la spécification RFC 3986. Cette spécification simplifie le développement et la consommation de services d'API REST.
 
-Les directives de cette section régissent la structure et la sémantique de votre URI conformément aux contraintes de la RFC 3986.
+Les URI de cette norme suivent la spécification RFC 3986 afin de simplifier le développement et la consommation de services d'API REST.
 
 **Composants URI**
+
 La structure des URL utilisées dans les API **DEVRAIT** être significative pour les consommateurs. Les URL **DEVRAIENT** suivre une structure hiérarchique prévisible pour améliorer la compréhensibilité et donc la convivialité.
 
 Les URL **DOIVENT** suivre la convention de dénomination standard décrite ci-dessous:
