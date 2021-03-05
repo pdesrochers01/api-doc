@@ -143,7 +143,19 @@ Dans le contexte de cette norme de conception d'API, une API est définie comme 
 ## REST <a name="rest"></a>
 REST (*REpresentational State Transfer*) est un style d'architecture logicielle définissant un ensemble de contraintes à utiliser pour créer des services web.
 
-Les services web conformes au style d'architecture REST, aussi appelés services web RESTful, établissent une interopérabilité entre les ordinateurs sur Internet. Les services web REST permettent aux systèmes effectuant des requêtes de manipuler des ressources web via leurs représentations textuelles à travers un ensemble d'opérations uniformes et prédéfinies sans état.
+Les services web conformes au style d'architecture REST, aussi appelés services web RESTful, établissent une interopérabilité entre les ordinateurs sur Internet.
+
+Les services web REST permettent aux systèmes effectuant des requêtes de manipuler des ressources web via leurs représentations textuelles à travers un ensemble d'opérations uniformes et prédéfinies sans état.
+
+Essentiellement, ce style d’architecture vise à utiliser tous les standards du Web afin de développer des applications distribuées. Il a été développé par Thomas Fielding dans sa thèse de doctorat (Université de Californie, 2000).
+
+Les principaux bénéfices de l’architecture REST est d’exploiter les caractéristiques du Web et de son principale protocole (HTTP) sont :
+- Réutilisation des verbes d’actions standards pour interagir avec des stockages persistants (GET pour lire, POST pour créer une nouvelle ressource, PUT pour mettre à jour, DELETE pour effacer, ETC.)
+- Réutilisation des mécanismes de cache (fureteur, proxy, passerelle, serveur Web, etc.)
+- Réutilisation des mécanismes de redirection et de transfert
+- Réutilisation des mécanismes de sécurité (cryptage, authentification, etc.)
+
+Toutes ces caractéristiques sont des facteurs essentiels afin de créer des services résilients. Un autre avantage important réside dans le fait que le Web est construit à partir de multitude de spécifications succinctes permettant une évolution plus facile et éviter ainsi d’interminables polémiques sur la sélection des normes.
 
 ## Ressources <a name="resssources"></a>
 Afin de concevoir une API facilement utilisable, les applications doit être divisées en groupements logiques (souvent appelés modèles ou ressources).
@@ -153,9 +165,9 @@ Dans l'exemple d'un système de gestion de ressources humaines (RH), les **resso
 La décomposition des systèmes en groupes logiques permet une séparation des préoccupations (*"separation of concerns"*). Cela garantit également que chaque élément de données retourné par l'API sera minimaliste afin répondre aux exigences du client.
 
 ## Identifiants de ressource <a name="idresssources"></a>
-Chaque ressource disponible dans votre système (par exemple, chaque `employé` ou chaque `demande de congé`) doit être identifiable de manière unique dans le système. Ceci est un élément clé du style RESTful des API; la possibilité d'adresser individuellement tout élément de votre système et de stocker ces identifiants pour une utilisation ultérieure.
+ChaToutes les ressources disponibles dans un système (par exemple, chaque `employé` ou chaque `demande de congé`) doit être identifiable de manière unique. Ceci est un élément clé d'un API RESTful, soit la possibilité d'adresser individuellement tout élément d'un système.
 
-Les identificateurs de ressources peuvent être l'un des suivants:
+Voici quelques exemples d'identificateurs de ressources :
 | Nom                       | Exemple                        |
 | ------------------------- |--------------------------------|
 | Numérique                 | /employes/12389                |
@@ -163,14 +175,12 @@ Les identificateurs de ressources peuvent être l'un des suivants:
 | Date                      | /dates/2018-09-17              |
 | GUID                      | 7d80-eb69-4lq5-9f95            |
 
-Tant que l'identifiant est unique dans votre application, il peut s'agir de n'importe quelle chaîne de caractères ou de chiffres.
-
-Lorsque des identifiants numériques sont utilisés, ils **NE DOIVENT** pas être séquentiels. Par exemple. il ne devrait pas être évident de deviner le prochain identificateur.
+**Note** : Lorsque des identifiants numériques sont utilisés, ils **NE DOIVENT** pas être séquentiels afin d'éviter une facilité à deviner le prochain identificateur.
 
 ## Représentations <a name="représentation"></a>
-Un concept clé dans la conception d'API RESTful est l'idée de la représentation d'une ressource à un moment donné.
+Un concept clé dans la conception d'API RESTful rédise dans l'idée de représenter une ressource à un moment donné.
 
-Lorsque vous demandez au système des informations sur les employés, vous recevrez une représentation de cet employé, par exemple :
+Par notre exemple d'un système de gestion de ressources humaines, lorsque qu'une application cliente demande une informations sur un employé, le système de RH retournera cette représentation :
 
 ```
 HTTP 1.1 GET /employees/john-smith
@@ -180,18 +190,18 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name" : "John Smith",
-  "employee_id" : "123456",
-  "position" : "Manager",
-  "on_leave" : false
+  "nom" : "Marie Tremblay",
+  "no_employe" : "123456",
+  "poste" : "Directrice",
+  "en_conge" : false
 }
 ```
-L'intention est que cette représentation peut changer au fil du temps à mesure que le système et les données changent. Un futur appel à ce même point d'extrémité peut produire une représentation différente si l'employé est maintenant en congé ou si son poste au sein de l'organisation a changé.
+L'état de cette représentation peut changer au fil du temps. Un appel ultérieur à ce même *endpoint* peut potentiellement produire une représentation différente si l'employée est en congé ou si son poste au sein de l'organisation a changé.
 
-Il est également possible de demander une représentation entièrement différente de cette même ressource si le système la prend en charge. Par exemple, il peut y avoir un cas où vous avez besoin d'une version PDF de cet employé et cela peut être facilité par une demande de représentation différente via l'en-tête `Accept`:
+Il est également possible de demander une représentation entièrement différente de cette même ressource si le système le permet. Par exemple, une version PDF de cette employée peut être produite via une instruction spécifique dans l'entête `Accept`. L'exemple ci-dessous retournera une version PDF de la requête :
 
 ```
-HTTP 1.1 GET /employees/john-smith
+HTTP 1.1 GET /employes/marie-tremblay
 Accept: application/pdf
 
 200 OK
@@ -199,45 +209,42 @@ Content-Type: application/pdf
 
 ...<BINARY CODE>...
 ```
-## Espace de noms <a name="namespace"></a>
-L'espace de noms d'un service définit le regroupement des fonctions associées dans. Les espaces de noms peuvent être de niveau assez élevé (par exemple, le nom d'une agence ou d'un service) ou assez bas (par exemple, un projet, une équipe ou un service exposé).
+## Espace de noms (*namespace*) <a name="namespace"></a>
+L'espace de noms (*namespace*) d'un service définit le regroupement d'un ensemble de fonctions associées. Les espaces de noms (*namespace*) peuvent être de niveau élevé (par exemple, le nom d'un OP ou d'un service) ou bas (par exemple un projet spécifique ou une équipe précise).
 
-Les espaces de noms sont utiles pour fournir aux consommateurs l'accès aux fonctions associées via des technologies de passerelle. Une fois qu'un consommateur a un jeton d'accès à un espace de noms particulier, il est probable (mais pas toujours obligatoire) qu'il aura accès à toutes les fonctions fournies dans cet espace de noms.
+Les espaces de noms (*namespace*) sont utiles pour fournir aux consommateurs d'API des accès à des regroupement via une passerelle d'API. Une fois qu'un consommateur a un jeton d'accès (*access token*) à un espace de noms particulier, il peut alors avoir accès à toutes les fonctions fournies dans cet espace de noms (*namespace*).
 
-Les espaces de noms sont pertinents lors de la conception de la structure de votre URL et sont décrits plus en détail dans la section Noms des composants URI.
+Les espaces de noms (*namespace*) doivent être tenus en compte dans la conception de la structure d'un URL (voir la section Noms des composants URI).
 
 ## Opérations <a name="opérations"></a>
 
-Pour utiliser l'un des espaces de noms, ressources et identificateurs de ressources, les développeurs doivent utiliser Operations.
+Les développeurs utilisent des **Operations** afin d'accéder aux espaces de noms (*namespace*), ressources et des identificateurs de ressources.
 
-Une opération est définie par l'utilisation de:
+Une opération est définie par l'utilisation d'une méthode HTTP et d'un chemin de ressource.
 
-une méthode HTTP; et
-un chemin de ressource.
 Exemples:
 ```
 GET /employes
-GET /employes/john-smith
-DELETE /employes/john-smith
+GET /employes/123456
+DELETE /employes/123456
 ```
 
 # Exigences gouvernementale des API <a name="exigences"></a>
 
-
 ## Documentation des API <a name="documentation"></a>
-Des API bien documentées sont un élément essentiel d'un programme d'API réussi. Cela facilite l'interopérabilité des services grâce à un document descriptif commun. Dans la mesure du possible, la structure, les méthodes, les conventions de dénomination et les réponses seront également normalisées pour garantir une expérience commune aux développeurs qui accèdent aux services d'une gamme d'éditeurs.
 
-Toutes les API créées pour le gouvernement australien **DOIVENT** spécifier un document OpenAPI v2.0 valide car il a le support le plus large. Un document OpenAPI v3.0 **PEUT** également être fourni pour assurer la pérennité de l'API.
+Une bonne documentation d'un API est un élément essentiel. En effet, cela facilite l'interopérabilité des services grâce à un document descriptif commun. Idéalement, la structure, les méthodes, les conventions de dénomination (*naming conventions*) et les réponses seront également normalisées afin de garantir une expérience commune aux développeurs qui accèdent aux services provenant des différents OP ou agence.
+
+En conséquence, toutes les API créées pour le gouvernement québécois **DOIVENT** fournir un document OpenAPI v2.0. Un document OpenAPI v3.0 **PEUT** également être fourni pour assurer la pérennité de l'API.
 
 Le document de description de l'API est **RECOMMANDÉ** de contenir les sections suivantes:
 
 - À propos de
 - Mentions légales
-- Conditions d'utilisation
-- Licence
-- Classification des données
-- droits d'auteur
-- Attribution
+    - Conditions d'utilisation
+    - Licence
+    - Classification des données
+    - Droits d'auteur
 - Exigences d'authentification
 - Modèle de données
 - Nous contacter
