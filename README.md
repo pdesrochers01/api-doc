@@ -448,21 +448,21 @@ Mauvais exemples :
 
 ## Noms des champs <a name="nomschamps"></a>
 
-Le modèle de données pour la représentation *DOIT** être conforme à la spécification `JSON`.
+Le modèle de données pour la représentation **DOIT** être conforme à la spécification `JSON`.
 
-Les valeurs peuvent elles-mêmes être des objets, des chaînes, des nombres, des booléens ou des tableaux d'objets.
+Les valeurs peuvent être des objets, des chaînes, des nombres, des booléens ou des tableaux d'objets.
 
 - Les noms de clé DOIVENT être des mots en minuscules, séparés par un caractère de soulignement.
    - `foo`
    - `bar_baz`
-- Un préfixe tel que `is_` ou` has_` **NE DEVRAIT PAS** être utilisé pour les clés de type booléen.
-- Les champs qui représentent des tableaux **DEVRAIENT** être nommés en utilisant des noms au pluriel (par exemple `produits` contient un ou plusieurs produits).
+- Un préfixe tel que `is_` ou `has_` **NE DEVRAIT PAS** être utilisé pour les clés de type booléen.
+- Les champs qui représentent des tableaux **DEVRAIENT** être nommés en utilisant des noms au pluriel (par exemple, `produits` contient un ou plusieurs produits).
 
 ## Noms des relations des liens <a name="nomsliens"></a>
 
 Afin de faciliter la navigation des utilisateurs dans l'API, des liens relationnels **DOIVENT** être fournis.
 
-Un tableau `_links` **DOIT** être fourni pour les ressources. Il contient des objets lien qui peuvent référer à des ressources associées dans le système.
+Un tableau `_links` **DOIT** être fourni pour les ressources. Il contient des objets lien (*link*) qui peuvent référer à des ressources associées dans le système.
 
 Une relation de lien (*link relation*) **DOIT** contenir les éléments suivants:
 
@@ -493,7 +493,7 @@ Les en-têtes suivants **DEVRAIENT** être utilisés par défaut sur toutes les 
 
 ### Dates formatées ISO8601
 
-Toutes les API utilisant des dates **DOIVENT** être conformes au format [ISO 8601] (https://en.wikipedia.org/wiki/ISO_8601).
+Toutes les API utilisant des dates **DOIVENT** être conformes au format [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
 
 Dans ce standard, les valeurs de date et d'heure sont classées de la plus grande à la plus petite unité de temps: année, mois (ou semaine), jour, heure, minute, seconde et fraction de seconde.
 
@@ -535,7 +535,7 @@ Le fuseau horaire peut être représenté dans une variété de mécanismes, mai
 
 `2021-07-14T13:48:12.123DST`.
 
-pour représenter l'heure normale de l'Est du Québec (-5), le format suivant serait utilisé:
+Pour représenter l'heure normale de l'Est du Québec (GMT -5), le format suivant serait utilisé:
 
 ```
 2019-10-02T18:36:12.123-05:00
