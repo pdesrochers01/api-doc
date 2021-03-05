@@ -252,7 +252,7 @@ Il est **RECOMMANDÉ** d'inclure les sections suivantes dans le document de desc
 ## Développement des API <a name="développement"></a>
 Il est **RECOMMANDÉ** de suivre les directives suivantes lors du développement d'une API:
 
-- Les documents de description de l'API **DEVRAIENT** contenir la documentation de l'API (informations et descriptions de haut niveau) et versionnés.
+- Le document de description de l'API **DEVRAIENT** contenir une description de haut niveau et **DEVRAIENT** être versionnés.
 
 - Ils **DOIVENT** être considérés comme des contrats techniques entre les concepteurs (*designers*) et les développeurs et entre consommateurs et fournisseurs.
 
@@ -284,20 +284,20 @@ Afin de suivre les recommandations de versionnage de cette norme, il **DOIT** y 
 
 ## L'expérience du développeur <a name="expérience"></a>
 
-Une API difficile à utiliser réduit sa probabilité d'utilisation de la part des consommateurs. Il est également peu probable que ceux-ci la recommandent d'autres consommateurs d'API.
+Une API difficile à utiliser réduit sa probabilité d'utilisation de la part des consommateurs. Il est également peu probable que ceux-ci la recommandent à d'autres consommateurs d'API.
 
-Il est fortement **RECOMMANDÉES** que les API en cours de conception soient testées avec de véritables consommateurs. Toute rétroaction donnée **DEVRAIT** être pris en compte afin d'être intégré à l'API.
+Il est fortement **RECOMMANDÉES** que les API en cours de conception soient testées avec de véritables consommateurs. Toutes rétroactions données **DEVRAIENT** être pris en compte afin d'être intégré à l'API.
 
 L'équipe API du gouvernement du Québec fournit un processus d'examen des API afin de garantir que les API répondent à un niveau minimaliste d'utilisabilité avant qu'elles ne soient publiées aux consommateurs.
 
 
 ## Stabilité des API <a name="stabilité"></a>
 
-Les API **DOIVENT** être conçues en gardant à l'esprit la rétro-compatibilité lorsque des modifications sont introduites.
+Les API **DOIVENT** être conçues en gardant à l'esprit la rétro-compatibilité lorsque des modifications sont apportées.
 
 L'introduction de nouveaux champs dans une API ou l'ajout de nouveaux points de terminaison (*endpoints*) représente un changement sans rupture.
 
-Si le contrat API doit changer d'une manière qui rompt le contrat des consommateurs, cela **DEVRAIT** être communiqué clairement.
+Si le contrat API doit changer d'une manière qui rompt celui-ci avec ses des consommateurs, cela **DEVRAIT** être communiqué clairement.
 
 1. Les propriétaires de des API **DEVRAIENT** documenter la durée de vie du support de ceux-ci.
 1. Les nouvelles fonctionnalités **DOIVENT** être introduites de manière à ne pas affecter les consommateurs existants.
@@ -308,8 +308,8 @@ Si le contrat API doit changer d'une manière qui rompt le contrat des consommat
 Lors de la conception d'une nouvelle API, l'une des principales considérations est l'expérience du développeur qui utilisera celle-ci.
 
 Afin d'aider les concepteurs d'API peuvent se référer au modèle de maturité de Leonard Richardson (2008) afin de s'assurer que leurs API sont conforme au style REST.
-
-![alt text](https://github.com/pdesrochers01/api-doc/blob/main/niveaux-maturité-REST.png "Niveaux de maturité des API REST de Richardson")
+![alt text](https://github.com/pdesrochers01/api-doc/blob/main/API-Web.png "API de type service Web")
+![alt text](https://github.com/pdesrochers01/api-doc/blob/main/niveaux-maturité-REST.png "Niveaux de maturité de Richardson")
 
 Le modèle de maturité proposé par Richardson classe les API en fonction de leur adhésion et de leur conformité aux principes REST selon quatre niveaux (de 0 à 3).
 
