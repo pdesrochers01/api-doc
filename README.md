@@ -44,7 +44,7 @@
     1. [Gestion des dates](#dates)
     1. [Exemples](#exemples)
 1. [Versionnage des API](#versionnage)
-    1. [Gestion sémantique de version](#sémantiqueversion)
+    1. [Sémantique des versions](#sémantiqueversion)
     1. [Version majeure](#versionmajeure)
     1. [Version mineure](#versionmineure)
     1. [Rétrocompatibilité](#rétrocompatibilité)
@@ -595,10 +595,11 @@ Filtrage à l'extérieur dans l'URL au lieu de la chaîne de requête :
 
 `GET https://api.quebec.ca/v1/employe/123456/desc`
 
-# Versionnage des API <a name="versionnage"></a>
+# Versionnage des API (*API Versioning*) <a name="versionnage"></a>
 
-## Gestion sémantique de version <a name="sémantiqueversion"></a>
-Toutes les API **DOIVENT** adhérer à la [gestion des versions sémantique] (https://semver.org/):
+## Sémantique des versions <a name="sémantiqueversion"></a>
+
+Toutes les API **DOIVENT** adhérer à la [gestion des versions sémantique](https://semver.org/):
 
   {MAJEUR}. {MINEUR}. {PATCH}
 
