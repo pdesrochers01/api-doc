@@ -44,7 +44,7 @@
     1. [Gestion des dates](#dates)
     1. [Exemples](#exemples)
 1. [Versionnage des API](#versionnage)
-    1. [Sémantique des versions](#sémantiqueversion)
+    1. [Gestion sémantique des versions](#sémantiqueversion)
     1. [Version majeure](#versionmajeure)
     1. [Version mineure](#versionmineure)
     1. [Rétrocompatibilité](#rétrocompatibilité)
@@ -597,37 +597,37 @@ Filtrage à l'extérieur dans l'URL au lieu de la chaîne de requête :
 
 # Versionnage des API (*API Versioning*) <a name="versionnage"></a>
 
-## Sémantique des versions <a name="sémantiqueversion"></a>
+## Gestion sémantique des versions <a name="sémantiqueversion"></a>
 
-Toutes les API **DOIVENT** adhérer à la [gestion des versions sémantique](https://semver.org/):
+Toutes les API **DOIVENT** adhérer à la [Gestion sémantique des versions 2.0.0](https://semver.org/):
 
-  {MAJEUR}. {MINEUR}. {PATCH}
+  {MAJEUR}.{MINEUR}.{CORRECTIF}
 
   La première version d'une API **DOIT** toujours commencer par une version MAJEURE de 1.
 
   Utilisez les instructions suivantes lors de l'incrémentation du numéro de version de l'API:
 
-  - Version **MAJEURE** lorsque vous apportez des modifications **incompatibles** ou **cassantes** d'API,
-  - Version **MINEURE** lorsque vous ajoutez des fonctionnalités de manière rétrocompatible, et
-  - Version **PATCH** lorsque vous effectuez des corrections de bogues rétrocompatibles.
+  - Version **MAJEURE** quand il y a des changements non rétrocompatibles,
+  - Version **MINEURE** quand il y a des ajouts de fonctionnalités rétrocompatibles
+  - Version **CORRECTIF** quand il y a des corrections d’anomalies rétrocompatibles.
 
 
 ## Version majeure <a name="versionmajeure"></a>
-Toutes les API **DOIVENT** inclure uniquement la version MAJEUR dans le cadre de l'URI au format 'v {MAJEUR}', par exemple https://api.gov.au/namespace/v1/employees
 
-Les versions mineure et corrective ne sont PAS requises dans l'URI car la modification est rétrocompatible.
+Toutes les API **DOIVENT** inclure uniquement la version MAJEUR dans le cadre de l'URI au format 'v{MAJEUR}', par exemple https://api.gov.au/v1/employes
 
-
+Les versions MINEURE et CORRECTIF ne sont pas requises dans l'URI.
 
 ### Réduire les nouvelles versions majeures
 
-Avec chaque nouvelle version majeure de l'API, les anciennes versions sont nécessaires jusqu'à ce que tous les consommateurs soient incités à utiliser les nouvelles versions. Cela ajoute aux besoins globaux de maintenance et de support.
+Avec chaque nouvelle version majeure de l'API, les maintenance des anciennes versions sont requises jusqu'à ce qu'à la fin de leur support annonçés. Il est important de bien comprendre que cette activité ajoute des effort de maintenance et de support.
 
-Utilisez des clés API pour identifier les consommateurs et désactiver les anciennes versions de l'API avec une notification suffisante.
+Les clés d'API peuvent être utilisés afin d'identifier et de communiquer avec les consommateurs des versions obsolètes.
 
-Lorsque de nouvelles versions majeures sont publiées, l'ancienne version doit être obsolète suite au processus de dépréciation.
+Lorsque de nouvelles versions majeures sont publiées, les anciennes versions doivent être décomissionnées suite au processus de dépréciation.
 
 ## Version mineure <a name="versionmineure"></a>
+
 Les numéros de version mineure sont affichés sur la page de documentation de l'API ou font partie d'un appel de gestion spécial à l'URI de l'API lui-même. Pour prendre en charge cela, votre API **DOIT** implémenter une réponse à une requête GET à l'URI de base de l'API et renvoyer les métadonnées suivantes dans la réponse:
 
 - **api_name:** Le nom de l'API
