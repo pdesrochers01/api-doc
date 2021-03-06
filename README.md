@@ -693,13 +693,13 @@ Toutes ces modifications **DOIVENT** nécessiter une mise à jour majeure de la 
 
 ## Politique de fin de vie <a name="findevie"></a>
 
-La politique de fin de vie (*End-of-Life (EOL)*) d'une API détermine le processus par lequel celle-ci passent de l'état «ACTIVE» à l'état «RETIRÉE».
+La politique de fin de vie (*End-of-Life - EOL*) d'une API détermine le processus par lequel celle-ci passent de l'état «ACTIVE» à l'état «RETIRÉE».
 
-Une politique *EOL* est conçue pour garantir une période de transition raisonnable pour les consommateur d'API qui devront migrer de l'ancienne version vers la nouvelle.
+Une politique *EOL* est conçue pour garantir une période de transition raisonnable pour les consommateurs d'API qui devront migrer de l'ancienne version vers la nouvelle.
 
 ### Version mineure de l'API EOL
 
-Les versions mineures des API **DOIVENT** être rétrocompatibles avec les versions mineures précédentes d'une même version majeure. Cette modification ne devrait avoir aucun impact sur les abonnés existants, il n'est donc pas nécessaire de passer par un état `DEPRECATED` pour faciliter la migration du client.
+Les versions mineures des API **DOIVENT** être rétrocompatibles avec les versions mineures précédentes. Cette modification ne devrait avoir aucun impact sur les consommateurs existants.
 
 ### Version principale de l'API EOL
 
@@ -708,14 +708,14 @@ Les versions majeures de l'API **PEUVENT** être rétrocompatibles avec les vers
 Les règles suivantes s'appliquent lors du retrait d'une version majeure de l'API.
 
 1. Une API majeure **NE DEVRAIT PAS** être à l'état "DEPRECATED" jusqu'à ce qu'un service de remplacement soit "LIVE". Ce dernier devra fournir des instructions de migration pour toutes les fonctionnalités qui sont reportées. Idéalement, celles-ci **DEVRAIT** inclure de la documentation, des outils et des exemples de code.
-1. La version obsolète de l'API **DOIT** être à l'état «DEPRECATED» pendant une période minimale afin donner aux utilisateurs un préavis suffisant pour migrer.
+1. La version obsolète de l'API **DOIT** être à l'état «DEPRECATED» pendant une période minimale afin donner aux utilisateurs un délai suffisant pour migrer.
 1. Si une API versionnée à l'état «LIVE» ou «DEPRECATED» n'a pas d'utilisateurs enregistrés, elle **PEUT** passer immédiatement à l'état «RETIRED».
 
-### Version principale de l'API de remplacement
+### Version majeure de l'API de remplacement
 
 Étant donné les impacts importants d'une nouvelle version majeure d'une API, les propriétaires d'API ** DOIVENT ** s'assurer de la justification de produire une version majeure.
 
-Les propriétaires d'API ** DEVRAIENT ** explorer toutes les alternatives possibles à l'introduction d'une nouvelle version majeure de l'API dans le but de minimiser l'impact sur les clients.
+Les propriétaires d'API **DEVRAIENT** explorer toutes les alternatives possibles à l'introduction d'une nouvelle version majeure de l'API dans le but de minimiser l'impact sur les clients.
 
 ## Désuétude des API (Deprecated) <a name="désuétude"></a>
 
