@@ -669,7 +669,7 @@ Par exemple:
 | 24.04.xx           | 1.39.xx                           | Rétrocompatible       | La version du produit sera modifiée en **24.05.xx** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **1.40.x** si les modifications sont liées à l'API |
 | 24.04.xx           | 1.39.xx                           | Non rétrocompatible   | La version du produit sera remplacée par **25.01.x** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **2.00.x** si les modifications sont liées à l'API |
 
-Une mise à jour de correctif (*Patch* ou *Service Pack*) **DOIT** avoir une compatibilité descendante.
+Une mise à jour de correctif (*Patch* ou *Service Pack*) **DOIT** avoir une rétrocompatibilité.
 
 ## Rétrocompatibilité <a name="rétrocompatibilité"></a>
 
