@@ -599,7 +599,7 @@ Filtrage à l'extérieur dans l'URL au lieu de la chaîne de requête :
 
 ## Gestion sémantique des versions <a name="sémantiqueversion"></a>
 
-Toutes les API **DOIVENT** adhérer à la [Gestion sémantique des versions 2.0.0](https://semver.org/):
+Toutes les API **DOIVENT** adhérer à la [Gestion sémantique des versions 2.0.0](https://semver.org/) :
 
   {MAJEUR}.{MINEUR}.{CORRECTIF}
 
@@ -614,15 +614,15 @@ Toutes les API **DOIVENT** adhérer à la [Gestion sémantique des versions 2.0.
 
 ## Version majeure <a name="versionmajeure"></a>
 
-Toutes les API **DOIVENT** inclure uniquement la version MAJEUR dans le cadre de l'URI au format 'v{MAJEUR}', par exemple https://api.gov.au/v1/employes
+Toutes les API **DOIVENT** inclure uniquement la version MAJEUR dans le cadre de l'URI au format 'v{MAJEUR}', par exemple https://api.quebec.ca/v1/employes
 
 Les versions MINEURE et CORRECTIF ne sont pas requises dans l'URI.
 
-### Réduire les nouvelles versions majeures
+### Réduire au minimum la publication des nouvelles versions majeures
 
-Avec chaque nouvelle version majeure de l'API, les maintenance des anciennes versions sont requises jusqu'à ce qu'à la fin de leur support annonçés. Il est important de bien comprendre que cette activité ajoute des effort de maintenance et de support.
+Avec chaque nouvelle version majeure de l'API, la maintenance des anciennes versions sera requise jusqu'à ce qu'à la fin de leurs supports annonçés. Il est important de bien comprendre que cette activité ajoute des effort de maintenance et de support.
 
-Les clés d'API peuvent être utilisés afin d'identifier et de communiquer avec les consommateurs des versions obsolètes.
+Les clés d'API peuvent être utilisés afin d'identifier et communiquer avec les consommateurs des versions obsolètes.
 
 Lorsque de nouvelles versions majeures sont publiées, les anciennes versions doivent être décomissionnées suite au processus de dépréciation.
 
@@ -640,24 +640,24 @@ Des métadonnées supplémentaires peuvent être ajoutées à la réponse si né
 
 Exemple:
 ```
-GET /namespace/v1/
+GET /v1/
 
 //HTTP 200 OK
 
 {
   "api_name": "namespace",
-  "api_version": "1.0.3"
-  "api_released": "2018-08-10"
-  "api_documentation": "https://api.quebec.ca/namespace/v1/docs"
+  "api_version": "1.0.9"
+  "api_released": "2019-09-14"
+  "api_documentation": "https://api.quebec.ca/v1/docs"
   "api_status": "active"
 }
 
 ```
-##Documentation mineure et patch
+## Documentation mineure et patch
 
-La définition Swagger **DEVRAIT** contenir également la version mineure et le correctif.
+La définition Swagger **DEVRAIT** également contenir la version mineure et le correctif.
 
-La version du produit de l'API et la version de la mise en œuvre de l'API ne sont **PAS** identiques.
+La version du produit de l'API et la version de la mise en œuvre de l'API ne sont pas les mêmes.
 
 Une version de produit est la version logique appliquée à l'API à des fins de documentation et de référence. La version d'implémentation est la version de build physique qui a été créée.
 
@@ -665,33 +665,34 @@ Par exemple:
 
 | Version de produit | Version d'implémentation de l'API | Type de changement    | Changement de version                                        |
 | ------------------ | --------------------------------- | --------------------- | ------------------------------------------------------------ |
-| 17.04.xx           | 1.29.xx                           | Corrections de bogues | La version du produit sera modifiée en **17.04.02** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **1.29.02** si les modifications sont liées à l'API |
-| 17.04.xx           | 1.29.xx                           | Rétrocompatible       | La version du produit sera modifiée en **17.05.xx** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **1.30.x** si les modifications sont liées à l'API |
-| 17.04.xx           | 1.29.xx                           | Non rétrocompatible   | La version du produit sera remplacée par **18.01.x** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **2.00.x** si les modifications sont liées à l'API |
+| 24.04.xx           | 1.39.xx                           | Corrections de bogues | La version du produit sera modifiée en **24.04.02** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **1.39.02** si les modifications sont liées à l'API |
+| 24.04.xx           | 1.39.xx                           | Rétrocompatible       | La version du produit sera modifiée en **24.05.xx** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **1.40.x** si les modifications sont liées à l'API |
+| 24.04.xx           | 1.39.xx                           | Non rétrocompatible   | La version du produit sera remplacée par **25.01.x** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **2.00.x** si les modifications sont liées à l'API |
 
-Une mise à jour de correctif (Patch ou Service Pack) **DOIT** avoir une compatibilité descendante.
-
+Une mise à jour de correctif (*Patch* ou *Service Pack*) **DOIT** avoir une compatibilité descendante.
 
 ## Rétrocompatibilité <a name="rétrocompatibilité"></a>
-Il est essentiel que les API soient développées avec un couplage lâche à l'esprit pour assurer la compatibilité descendante pour les consommateurs.
+
+Il est essentiel que les API soient développées avec un faible couplage afin d'assurer la rétrocompatibilité pour les consommateurs.
 
 Les modifications suivantes sont réputées rétrocompatibles:
 
 - Ajout d'un nouveau champ optionnel à une représentation
 - Ajout d'un nouveau lien au tableau `_links` d'une représentation
-- Ajout d'un nouveau point de terminaison à une API
-- Prise en charge supplémentaire d'un nouveau type de média (par exemple, `Accept: application / pdf`)
+- Ajout d'un nouveau *endpoint* à une API
+- Support additionnel d'un nouveau type de média (par exemple, `Accept: application/pdf`)
 
-Les modifications suivantes ne sont **PAS** considérées comme rétrocompatibles:
+Les modifications suivantes ne sont pas considérées comme rétrocompatibles:
 
 - Suppression des champs des représentations
-- Changements des types de données sur les champs (par exemple chaîne en booléen)
-- Suppression des terminaux ou des fonctions
-- Suppression du support du type de support
+- Changements des types de données sur les champs (par exemple une chaîne de caractères en booléen)
+- Suppression des *endpoint* ou des fonctions
+- Suppression du d'un type de média
 
-Toutes ces modifications **DOIVENT** nécessiter une mise à jour majeure de la version, elles doivent donc être gérées avec prudence.
+Toutes ces modifications **DOIVENT** nécessiter une mise à jour majeure de la version.
 
 ## Politique de fin de vie <a name="findevie"></a>
+
 Lors de la conception de nouvelles API, l'une des dates les plus importantes à prendre en compte est celle du retrait de l'API.
 
 Les API ne sont pas destinées à durer éternellement. Certaines API sont retirées après une courte période car elles peuvent prouver un cas d'utilisation, d'autres peuvent être supprimées lorsque de meilleures options sont disponibles pour les utilisateurs.
