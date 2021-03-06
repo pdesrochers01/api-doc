@@ -693,74 +693,49 @@ Toutes ces modifications **DOIVENT** nécessiter une mise à jour majeure de la 
 
 ## Politique de fin de vie <a name="findevie"></a>
 
-Lors de la conception de nouvelles API, l'une des dates les plus importantes à prendre en compte est celle du retrait de l'API.
+La politique de fin de vie (*End-of-Life (EOL)*) d'une API détermine le processus par lequel celle-ci passent de l'état «ACTIVE» à l'état «RETIRÉE».
 
-Les API ne sont pas destinées à durer éternellement. Certaines API sont retirées après une courte période car elles peuvent prouver un cas d'utilisation, d'autres peuvent être supprimées lorsque de meilleures options sont disponibles pour les utilisateurs.
-
-La politique de fin de vie (EOL) détermine le processus par lequel les API passent pour passer à travers leur flux de travail de l'état «LIVE» à l'état «RETIRED».
-
-La politique EOL est conçue pour garantir une période de transition cohérente et raisonnable pour les clients API qui doivent migrer de l'ancienne version d'API vers la nouvelle version d'API tout en permettant à un processus sain de retirer sa dette technique.
+Une politique *EOL* est conçue pour garantir une période de transition raisonnable pour les consommateur d'API qui devront migrer de l'ancienne version vers la nouvelle.
 
 ### Version mineure de l'API EOL
 
-Selon la politique de gestion des versions, les versions mineures de l'API **DOIVENT** être rétrocompatibles avec les versions mineures précédentes dans la même version majeure. Par conséquent, les versions mineures de l'API sont «RETIRED» immédiatement après qu'une version mineure plus récente de la même version majeure devient «LIVE». Cette modification ne devrait avoir aucun impact sur les abonnés existants, il n'est donc pas nécessaire de passer par un état `DEPRECATED` pour faciliter la migration du client.
+Les versions mineures des API **DOIVENT** être rétrocompatibles avec les versions mineures précédentes d'une même version majeure. Cette modification ne devrait avoir aucun impact sur les abonnés existants, il n'est donc pas nécessaire de passer par un état `DEPRECATED` pour faciliter la migration du client.
 
 ### Version principale de l'API EOL
 
-Les versions majeures de l'API **PEUVENT** être rétrocompatibles avec les versions majeures précédentes. Les règles suivantes s'appliquent lors du retrait d'une version majeure de l'API.
+Les versions majeures de l'API **PEUVENT** être rétrocompatibles avec les versions majeures précédentes.
 
-1. Une API majeure **NE DOIT PAS** être à l'état "DEPRECATED" jusqu'à ce qu'un service de remplacement soit "LIVE" qui fournit un chemin de migration clair pour toutes les fonctionnalités qui seront conservées à l'avenir. Ceci **DEVRAIT** inclure de la documentation et des outils / exemples de code de migration qui fournissent aux utilisateurs ce dont ils ont besoin pour effectuer une migration propre.
-2. La version obsolète de l'API **DOIT** être à l'état «DEPRECATED» pendant une période minimale de 60 jours pour donner aux utilisateurs un préavis suffisant pour migrer.
-3. L'abandon des versions d'API avec des utilisateurs externes **DEVRAIT** être envisagé au cas par cas et peut nécessiter des délais et / ou des contraintes supplémentaires pour minimiser l'impact sur les utilisateurs.
-4. Si une API versionnée à l'état «LIVE» ou «DEPRECATED» n'a pas d'utilisateurs enregistrés, elle **PEUT** passer immédiatement à l'état «RETIRED».
+Les règles suivantes s'appliquent lors du retrait d'une version majeure de l'API.
+
+1. Une API majeure **NE DEVRAIT PAS** être à l'état "DEPRECATED" jusqu'à ce qu'un service de remplacement soit "LIVE". Ce dernier devra fournir des instructions de migration pour toutes les fonctionnalités qui sont reportées. Idéalement, celles-ci **DEVRAIT** inclure de la documentation, des outils et des exemples de code.
+1. La version obsolète de l'API **DOIT** être à l'état «DEPRECATED» pendant une période minimale afin donner aux utilisateurs un préavis suffisant pour migrer.
+1. Si une API versionnée à l'état «LIVE» ou «DEPRECATED» n'a pas d'utilisateurs enregistrés, elle **PEUT** passer immédiatement à l'état «RETIRED».
 
 ### Version principale de l'API de remplacement
 
-Étant donné qu'une nouvelle version majeure de l'API qui entraîne la dépréciation d'une version d'API préexistante est un investissement produit important, les propriétaires d'API ** DOIVENT ** justifier la nouvelle version majeure avant de commencer un travail de conception et de développement important.
+Étant donné les impacts importants d'une nouvelle version majeure d'une API, les propriétaires d'API ** DOIVENT ** s'assurer de la justification de produire une version majeure.
 
-Les propriétaires d'API ** DEVRAIENT ** explorer toutes les alternatives possibles à l'introduction d'une nouvelle version majeure de l'API dans le but de minimiser l'impact sur les clients avant de décider d'introduire une nouvelle version.
-
-La justification **DEVRAIT** inclure les éléments suivants:
-
-
-
-####  Business case
-
-   1. Valeur client fournie par une nouvelle version qui n'est pas possible avec la version existante.
-   2. Analyse coûts-avantages de la version obsolète par rapport à la nouvelle version.
-   3. Explication des alternatives à l'introduction d'une nouvelle version majeure et pourquoi celles-ci n'ont pas été choisies.
-   4. Si une modification rétrocompatible est requise pour résoudre un problème de sécurité critique, les éléments 1 et 2 (ci-dessus) ne sont pas requis.
-
-#### Conception d'API
-
-   1. Un modèle de domaine de toutes les ressources dans la nouvelle version d'API et comment elles se comparent au modèle de domaine de la version d'API principale précédente.
-   2. Description des opérations des API et des cas d'utilisation qu'elles implémentent.
-   3. Définition d'objectifs de niveau de service pour les performances et la disponibilité qui sont égaux ou supérieurs à la version principale de l'API à déconseiller.
-
-#### Stratégie de migration
-
-   1. Nombre de clients existants touchés; internes, externes et partenaires.
-   2. Plan de communication et de support pour informer les clients existants de la nouvelle version, de la valeur et du chemin de migration.
-
+Les propriétaires d'API ** DEVRAIENT ** explorer toutes les alternatives possibles à l'introduction d'une nouvelle version majeure de l'API dans le but de minimiser l'impact sur les clients.
 
 ## Désuétude des API (Deprecated) <a name="désuétude"></a>
-Lorsqu'une API plus récente est disponible, les propriétaires d'API sont **RECOMMANDÉS** de fournir deux en-têtes dans la réponse lorsque d'anciennes versions sont utilisées:
 
-- X-API-Deprecated - champ booléen indiquant que cela est obsolète
-- X-API-Retire-Time - Date ISO8601 indiquant quand il sera obsolète
+Lorsqu'une nouvelle version de l'API est disponible, il est **RECOMMANDÉ** de fournir deux en-têtes dans la réponse lorsque d'anciennes versions sont utilisées:
+
+- X-API-Deprecated - champ booléen indiquant que cette version est obsolète (*deprecated*)
+- X-API-Retire-Time - Date ISO8601 indiquant quand il sera obsolète (*deprecated*)
 
 Par exemple:
 
 ```
-GET `/ namespace / v1`
+GET `.../v1`
 
 // 200 OK
-Content-Type: application / json; jeu de caractères = utf-8
-X-API-obsolète: true
-X-API-Retire-Time: 2018-11-17T13: 00: 00Z
+Content-Type: application/json; charset=utf-8
+X-API-Deprecated: true
+X-API-Retire-Time: 2018-11-17T13:00:00Z
 ```
 
-Cela fournit aux consommateurs un rappel constant que l'API est marquée comme obsolète et qu'il existe probablement une autre version disponible pour qu'ils migrent.
+Cela fournit aux consommateurs de l'API un rappel constant que celle-ci est marquée comme obsolète et qu'il existe probablement une autre version disponible leur permettant de migrer.
 
 # Requête des API et paramètres <a name="requêteparamètres"></a>
 
