@@ -789,7 +789,7 @@ Pour récupérer un seul "client", une requête est envoyée à l'URN `/clients/
 
 ### Collection de ressources
 
-Les opérations suivantes s'appliquent à une collection de ressources:
+Les opérations suivantes s'appliquent à une collection de ressources :
 
 | Méthode HTTP | Chemin           | Opération    | Exemples                                                 |
 | ------------ | ---------------- | ------------ | -------------------------------------------------------- |
@@ -798,7 +798,7 @@ Les opérations suivantes s'appliquent à une collection de ressources:
 
 ### Ressource unique
 
-Les opérations suivantes sont applicables pour une seule ressource:
+Les opérations suivantes sont applicables pour une seule ressource :
 
 | Méthode HTTP | Chemin des ressources  | Opération                                                    |
 | ------------ | ---------------------- | ------------------------------------------------------------ |
@@ -811,7 +811,7 @@ Les opérations suivantes sont applicables pour une seule ressource:
 
 Les API **DOIVENT** supporter un *payload* au format `JSON`.
 
-D'autres formats de *payload* tels que `XML`, `CSV` et `YAML` peuvent aussi être supportés lorsque requis.
+D'autres formats de *payload* tels que `XML`, `CSV` et `YAML` **PEUVENT** aussi être supportés lorsque requis.
 
 Le support des formats supplémentaires doit être documentée dans la définition Swagger des API.
 
@@ -833,6 +833,7 @@ Les méthodes API RESTful **DOIVENT** adhérer à l'idempotence spécifiée dans
 | `OPTIONS`    | Vrai           |
 
 ## Pagination <a name="paramètresrequête"></a>
+
 La pagination est le processus qui consiste à renvoyer un grand ensemble de résultats sous forme de blocs (ou de pages) afin de réduire la quantité d'informations envoyées avec chaque requête.
 
 La pagination nécessite plusieurs paramètres de requête à fournir, et des informations supplémentaires sur la façon de configurer cela sont fournies dans la section pagination de ce document.
@@ -941,15 +942,6 @@ The following status codes represent appropriate responses to the different oper
 |                |               | Internal Server error  | 500  |
 
 
-
-
-*******
-1. [Hypermédia](#hypermédia)
-    1. [Hypermédia - Données liées](#hypermédiadonnées)
-    1. [HATEOAS](#hateoas)
-    1. [API compatible hypermédia](#compatiblehypermédia)
-    1. [Link Description Object](#linkobject)
-    1. [Type de relation de lien](#typelien)
 # Hypermédia <a name="titre1"></a>
 
 ## HATEOAS <a name="hateoas"></a>
