@@ -746,28 +746,24 @@ Toutes les API **DOIVENT** supporter les en-têtes de requête suivants:
 | Entête                        | Valeur                                                       |
 | ----------------------------- | ------------------------------------------------------------ |
 | Autorisation / Identification | Peut être l'un des éléments suivants : <ul><li>clé API </li><li>authentification de base (clé API + secret) </li><li>nom d'utilisateur + mot de passe</li><li> Jeton (token)</li> </ul>|
-<ul><li>item1</li><li>item2</li></ul>
-Les en-têtes des requêtes suivantes sont facultatives.
+
+Les entêtes des requêtes suivantes sont facultatives.
 
 | Entête        | Valeur                                                       |
 | ------------- | ------------------------------------------------------------ |
-| Content-Type  | Peut être l'un des valeurs suivantes :`application/json` (obligatoire), `application/xml` (optionel pour xml), `multipart/form-data` (optionel pour les fichiers), `application/x-www-form-urlencoded` (optionel pour les form data) |
-| Accept        | Content-Types qui sont acceptable pour la réponse. Peut être un choix de :`application/json` (obligatoire), `application/xml` (optionel pour xml) |
+| Content-Type  | Peut être l'un des valeurs suivantes :<ul><li>`application/json` (obligatoire)</li> <li> `application/xml` (optionel pour xml)</li> <li>`multipart/form-data` (optionel pour les fichiers)</li><li>`application/x-www-form-urlencoded` (optionel pour les form data)</li></ul> |
+| Accept        | Content-Types qui sont acceptable pour la réponse. Peut être un choix de :<ul><li>`application/json` (obligatoire)</li><li>`application/xml` (optionel pour xml)</li></ul> |
 | Connection    | Options de contrôle pour la connexion actuelle. Par exemple : `keep-alive`. |
 | Date          | La date et l'heure à laquelle le message a été émis, au format "HTTP-date" tel que défini par [RFC 7231 Date / Time Formats] (http://tools.ietf.org/html/rfc7231#section-7.1.1.1) . Par exemple. «Mar 15 novembre 1994 08:12:31 GMT». |
 | Cookie        | Un cookie HTTP précédemment envoyé par le serveur.           |
 | Cache-Control | Utilisé pour spécifier des directives qui doivent être respectées par tous les mécanismes de mise en cache, par exemple pas de cache. |
 | ETag          | Utilisé pour identifier la version particulière d'une ressource en cours de mise à jour pour empêcher plusieurs mises à jour utilisateur. Cela doit correspondre à ce qui est actuellement stocké sur le serveur. |
 
-
 ## Méthodes des requêtes HTTP <a name="méthodeshttp"></a>
-Les opérations de l'API RESTful sont basées sur la norme HTTP Request Method telle que définie par la [RFC 7231] (https://tools.ietf.org/html/rfc7231#section-4.3).
 
-
+Les opérations de l'API RESTful sont basées sur la norme HTTP Request Method telle que définie par la [RFC 7231](https://tools.ietf.org/html/rfc7231#section-4.3).
 
 ### Méthodes de requête HTTP supportées
-
-
 
 | Méthode HTTP | Description                                                  |
 | ------------ | ------------------------------------------------------------ |
@@ -779,60 +775,52 @@ Les opérations de l'API RESTful sont basées sur la norme HTTP Request Method t
 | `HEAD`       | Pour récupérer des métadonnées sur la demande, par ex. combien de résultats retournera la requête? (sans  exécuter la requête). |
 | `OPTIONS`    | Utilisé pour déterminer si une demande CORS (partage de ressources inter-origines, en anglais *cross-origin resource sharing*) peut être effectuée. Ceci est principalement utilisé dans les applications Web *front-end* pour déterminer si elles peuvent utiliser directement les API. |
 
+Une requête peut être effectuée pour une seule ressource ou une collection de ressources.
 
-
-Une demande de récupération de ressources peut être effectuée pour une seule ressource ou une collection de ressources.
-
-Prenons l'exemple suivant:
+Par exemple :
 
 ```
 https://api.quebec.ca/agence/v1/clients/{id}
 ```
 
-Pour récupérer une collection de clients, une requête est envoyée à l'URN `/customers`.
+Pour récupérer une collection de clients, une requête est envoyée à l'URN `/clients`.
 
-Pour récupérer un seul "client", une requête est envoyée à l'URN `/customers/{id}`.
+Pour récupérer un seul "client", une requête est envoyée à l'URN `/clients/{id}`.
 
 ### Collection de ressources
 
 Les opérations suivantes s'appliquent à une collection de ressources:
 
-| Méthode HTTP | Chemin des ressources | Opération                                       | Exemples                                             |
-| ------------ | --------------------- | ----------------------------------------------- | ---------------------------------------------------- |
-| GET          | `/ressources`         | Obtenez une collection de la ressource          | GET `/employés` ou GET<br />` /employés?Status=open` |
-| POST         | `/ressources`         | Créez une nouvelle instance de cette ressource. |                                                      |
-
-**Note :**
-
-La création ou la mise à jour de plusieurs instances de ressources dans la même demande n'est actuellement pas standardisée. Il existe des facteurs tels que l'accusé de réception et la manière de gérer le succès partiel d'un ensemble de lots qui doivent être considérés au cas par cas.
-
-Les futures versions de la spécification pourraient aborder le traitement par lots à l'aide d'API.
-
-
+| Méthode HTTP | Chemin des ressources | Opération                                       | Exemples                                               |
+| ------------ | --------------------- | ----------------------------------------------- | ------------------------------------------------------ |
+| GET          | `/ressources`         | Obtenir une collection de la ressource          | GET `/employes` ou GET<br />` /employés?status=ouvert` |
+| POST         | `/ressources`         | Créez une nouvelle instance de cette ressource. |                                                        |
 
 ### Ressource unique
 
 Les opérations suivantes sont applicables pour une seule ressource:
 
-
-
-| Méthode HTTP | Chemin des ressources | Opération                                                    |
-| ------------ | --------------------- | ------------------------------------------------------------ |
-| GET          | `/resources/{id}`     | Obtenez l'instance correspondant à l'ID de ressource         |
-| PUT          | `/resources/{id}`     | Pour mettre à jour une instance de ressource en la remplaçant |
-| SUPPRIMER    | `/resources/{id}`     | Pour supprimer l'instance de ressource en fonction de la ressource |
-| PATCH        | `/resources/{id}`     | Effectuez des modifications telles que l'ajout, la mise à jour et la suppression des attributs spécifiés. Est souvent utilisé pour effectuer des mises à jour partielles sur une ressource |
+| Méthode HTTP | Chemin des ressources  | Opération                                                    |
+| ------------ | ---------------------- | ------------------------------------------------------------ |
+| GET          | `/ressources/{id}`     | Obtenez l'instance correspondant à l'ID de ressource         |
+| PUT          | `/ressources/{id}`     | Pour mettre à jour une instance de ressource                 |
+| DELETE       | `/ressources/{id}`     | Pour supprimer l'instance de ressource correspondant à l'ID de ressource |
+| PATCH        | `/ressources/{id}`     | Effectuez des modifications telles que l'ajout, la mise à jour et la suppression des attributs spécifiés. Cette opération est souvent utilisé pour effectuer des mises à jour partielles sur une ressource |
 
 ## Formats du contenu des requêtes (Request Payload Formats) <a name="formatréponses"></a>
-Au minimum, l'API **DOIT** prendre en charge une charge utile au format `JSON` lorsqu'elle est fournie.
 
-D'autres formats de données utiles tels que `XML`, `CSV` et `YAML` peuvent être pris en charge si nécessaire.
+Les API **DOIVENT** supporter un *payload* au format `JSON`.
 
-La prise en charge du format supplémentaire doit être documentée dans la conception de votre API (définition Swagger).
+D'autres formats de *payload* tels que `XML`, `CSV` et `YAML` peuvent aussi être supportés lorsque requis.
+
+Le support des formats supplémentaires doit être documentée dans la définition Swagger des API.
 
 ## Idempotence <a name="idempotence"></a>
-Une méthode HTTP idempotente est une méthode HTTP qui peut être appelée plusieurs fois sans résultats différents. Dans certains cas, les appels secondaires entraîneront un code de réponse différent, mais il n'y aura pas de changement d'état de la ressource.
-Par exemple, lorsque vous invoquez N demandes DELETE similaires, la première demande supprimera la ressource et la réponse sera 200 (OK) ou 204 (Aucun contenu). Les demandes supplémentaires renverront 404 (non trouvé). De toute évidence, la réponse est différente de la première requête, mais il n'y a aucun changement d'état pour aucune ressource côté serveur car la ressource d'origine est déjà supprimée.
+
+Une méthode HTTP idempotente peut être appelée plusieurs fois sans résultats différents.
+Par exemple, lorsque vous invoquez plusieurs requêtes `DELETE` similaires, la première demande supprimera la ressource et la réponse sera 200 (OK) ou 204 (Aucun contenu). Les demandes supplémentaires renverront 404 (non trouvé).
+
+Les méthodes API RESTful **DOIVENT** adhérer à l'idempotence spécifiée dans le tableau suivant :
 
 | Méthode HTTP | Est idempotent |
 | ------------ | -------------- |
@@ -843,10 +831,6 @@ Par exemple, lorsque vous invoquez N demandes DELETE similaires, la première de
 | `DELETE`     | Vrai           |
 | `HEAD`       | Vrai           |
 | `OPTIONS`    | Vrai           |
-
-Les méthodes API RESTful **DOIVENT** adhérer à l'idempotence spécifiée dans le tableau ci-dessus
-
-
 
 ## Pagination <a name="paramètresrequête"></a>
 La pagination est le processus qui consiste à renvoyer un grand ensemble de résultats sous forme de blocs (ou de pages) afin de réduire la quantité d'informations envoyées avec chaque requête.
