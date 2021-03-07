@@ -956,22 +956,28 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 # Hypermédia <a name="titre1"></a>
 
 ## HATEOAS <a name="hateoas"></a>
-TBC https://restcookbook.com/Basics/hateoas/
+
 «Hypermédia en tant que moteur de l'état de l'application» est le concept de représentation des actions autorisées sous forme d'hyperliens associés à la ressource. Similaire au concept de données liées hypermédia, les liens définis dans les données de réponse représentent des transitions d'états disponibles de cet état actuel vers des états adjacents.
+
+Les liens hypermédia dans les API sont des liens dans le *response payload* qui informent les consommateurs sur le contenu qu'il peut récupérer. Les liens hypermédia dans les API permettent aux consommateurs de localiser la ressource sans avoir besoin d'avoir une compréhension initiale de la ressource et de sa relation.
+
+HATEOAS est similaire à la navigation sur une page Web. L'utilisateur n'est pas censé connaître la structure de la page Web avant de la visiter. Ils peuvent simplement accéder à la page d'accueil et la navigation (via les liens hypertextes) leurs permet de parcourir le site selon leurs besoins.
+
+Exemple :
 
 ```
 {
    "numéro_compte": "12345",
    "solde": 100,00,
    "_liens":[
-     {"rel": "** deposit **", "href": "/ accounts / 12345 / deposit"},
-     {"rel": "** retirer **", "href": "/ accounts / 12345 / retirer"},
-     {"rel": "** transfer **", "href": "/ accounts / 12345 / transfer"}
+     {"rel": "deposer", "href": "/comptes/12345/depot"},
+     {"rel": "retirer", "href": "/comptes/12345/retrait"},
+     {"rel": "transfer", "href": "/comptes/12345/transfer"}
    ]
 }
 ```
 
-Mais si le même compte est à découvert de 25, la seule action autorisée est le dépôt:
+Mais si le même compte est à découvert (solde négatif), la seule action autorisée est le dépôt :
 
 ```
 {
@@ -979,54 +985,31 @@ Mais si le même compte est à découvert de 25, la seule action autorisée est 
    "solde": -25,00,
    "_liens":[{
      "rel": "dépôt",
-     "href": "/ comptes / 12345 / dépôt"
+     "href": "/comptes/12345/dépot"
    }]
 }
 ```
-
-La décision d'implémenter les conceptions HATEOAS dans votre API dépend de la volonté des clients de consommer HATEOAS et de l'effort de conception et de mise en œuvre.
-
-## API compatible hypermédia <a name="compatiblehypermédia"></a>
-TBC
-
-Une API compatible hypermédia fournit aux consommateurs une machine à états accessible des transitions qu'ils peuvent utiliser.
-
-Dans les API, les méthodes de requête telles que «DELETE», «PATCH», «POST» et «PUT» lancent une transition dans l'état d'une ressource. Une requête «GET» ne **DOIT** jamais changer l'état de la ressource qui est récupérée.
-
-Afin de fournir une meilleure expérience aux consommateurs d'API, les concepteurs d'API **DEVRAIENT** fournir une liste des transitions d'état disponibles pour chaque ressource dans le tableau `_links`.
-
-*********
-Les API **DEVRAIENT** suivre une politique de «pagination d'abord».
-
-La pagination est **RECOMMANDÉE** pour:
-
-1. répondre aux demandes en temps opportun (par exemple, plus long que 2 secondes)
-2. assurez-vous que la quantité de données renvoyées reste dans une charge utile gérable (par exemple, plus gros que 500 Ko)
-3. Assurez-vous que les données de la réponse sont facilement gérables pour améliorer l'expérience utilisateur.
-
 
 # Outils de test <a name="outilstest"></a>
 
 Il existe une grande variété d'outils de test gratuits (open source) disponibles pour les tests d'API:
 
-- **SoapUI** - SoapUI est l'outil de test fonctionnel Open Source pour les tests d'API. Il prend en charge plusieurs protocoles tels que SOAP, REST, HTTP, JMS, etc. Vous pouvez télécharger SoapUI à partir de https://www.soapui.org/downloads/soapui.html
-- **Postman** - Postman est une application pour interagir avec les API HTTP. Il vous présente une interface graphique conviviale pour la construction de requêtes et la lecture des réponses. Vous pouvez télécharger Postman sur https://www.getpostman.com/
-- **Curl** - cURL est un outil pour travailler avec des URL. cURL nous permet d'interroger une URL à partir de la ligne de commande. Cela nous permet de publier des données de formulaire. Avec cURL, nous pouvons facilement essayer de nouvelles API. Vous pouvez télécharger le curl à partir de la ligne de commande sous Linux en tapant sudo yum install curl
-- **Apache benchmark** - L'outil ApacheBench (ab) peut charger des serveurs de test en envoyant un nombre arbitraire de requêtes simultanées. Vous pouvez télécharger le benchmark Apache à partir de la ligne de commande sous Linux en tapant yum install httpd-tools
-- **Swagger** - L'éditeur Swagger peut être utilisé pour valider votre définition Swagger avant de l'importer dans API Manager.
+- **SoapUI** - [SoapUI](https://www.soapui.org/downloads/soapui.html) est un outil de test fonctionnel Open Source pour les tests d'API. Il prend en charge plusieurs protocoles tels que SOAP, REST, HTTP, JMS et plusieurs autres.
+- **Postman** - [Postman](https://www.getpostman.com/) est une application pour interagir avec les API HTTP. Il vous présente une interface graphique conviviale pour la construction de requêtes et la lecture des réponses.
+- **Curl** - cURL est un outil pour travailler avec des URL. cURL nous permet d'interroger une URL à partir de la ligne de commande. cURL permet de tester facilement de nouvelles API. cUrl peut être installer dans un terminal sur Linux en tapant `sudo yum install curl`.
+- **Apache benchmark** - ApacheBench peut réaliser des tests de charge en envoyant un nombre arbitraire de requêtes simultanées. Benchmark Apache peut s'installer à partir de la ligne de commande sous Linux en tapant `yum install httpd-tools`.
+- **Swagger** - Swagger est un éditeur permettant de valider une définition Swagger.
 
 
 ## Références <a name="références"></a>
 
 [Fielding's Dissertation on REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 
-[xxx](yyy)
-
-[Government of Canada Web API Standard](https://github.com/wet-boew/wet-boew-api-standards#style-guide)
+[Normes du gouvernement du Canada sur les API](https://www.canada.ca/fr/gouvernement/systeme/gouvernement-numerique/technologiques-modernes-nouveaux/normes-gouvernement-canada-api.html)
 
 [18F API Standards](https://github.com/18F/api-standards)
 
-[Gov.UK API Service Manual](https://www.gov.uk/service-manual/technology/application-programming-interfaces-apis)
+[UK API design guidance](hhttps://www.gov.uk/government/collections/api-design-guidance)
 
 [PayPal API Design Guidelines](https://github.com/paypal/api-standards/blob/master/api-style-guide.md)
 
