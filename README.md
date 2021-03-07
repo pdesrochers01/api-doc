@@ -853,31 +853,43 @@ Exemple:
 # Réponses des API <a name="réponses"></a>
 
 ## Entête des réponses <a name="entêteréponses"></a>
-Le type de contenu recommandé est `JSON` (` application/json`).
 
-Les en-têtes de réponse suivants **PEUVENT** être inclus dans toutes les réponses:
+Le type de contenu recommandé est `JSON` (`application/json`).
+
+Les entêtes de réponse suivantes **PEUVENT** être incluses :
 
 | En-tête                      | Valeur                                                       |
 | ---------------------------- | ------------------------------------------------------------ |
 | Access-Control-Allow-Origin  | URL qui est autorisée à accéder à ce service directement à partir de javascript et de clients basés sur un navigateur. <br />**Remarque:** N'utilisez jamais d'URL génériques (*) à moins que la ressource REST ne soit vraiment publique. |
 | Access-Control-Allow-Methods | Les méthodes auxquelles il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
 | Access-Control-Allow-Headers | Les en-têtes auxquels il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
-| Content-Type                 | Choix de: <br />`application / json` (obligatoire)<br />` application / xml` (facultatif pour `xml`)<br />` multipart / form-data` (facultatif pour les fichiers)<br />`text / html` (facultatif pour` html`) |
+| Content-Type                 | Choix de: <ul><li>`application / json` (obligatoire)</li><li>` application / xml` (facultatif pour `xml`)</li><li>` multipart / form-data` (facultatif pour les fichiers)</li><li>`text / html` (facultatif pour` html`)</li></ul> |
 | Cache-Control                | Informe les mécanismes de mise en cache.                     |
 | Date                         | La date et l'heure à laquelle le message a été émis Date par ex. Mar 15 novembre 1994 08:12:31 GMT |
 | Expire                       | Donne la date / heure après laquelle la réponse est considérée comme périmée, par ex. Jeu. 01 décembre 1994 16:00:00 GMT |
 | ETag                         | Utilisé pour identifier la version particulière d'une ressource. Le client doit l'inclure dans toutes les demandes de mise à jour pour s'assurer qu'il est inchangé. |
 
-
-
 ## Codes de réponse HTTP <a name="codesréponsehttp"></a>
-TBC : https://restfulapi.net/http-status-codes/
 
+Les API REST utilisent la partie Status-Line d'un message de réponse HTTP pour informer les clients du résultat global de leur requête. La [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) définit la syntaxe de la ligne d'état comme indiqué ci-dessous:
+```
+Status-Line = HTTP-Version SP Status-Code SP Reason-Phrase CRLF
+```
+HTTP définit ces codes d’état standard qui peuvent être utilisés pour transmettre les résultats de la demande d’un client. Les codes d'état sont divisés en cinq catégories :
 
-## Contenu des réponses <a name="contenuréponses"></a>
-La charge utile de réponse pour une API peut concerner une seule ressource ou un ensemble de ressources.
+- 1xx: Informational – Communique des informations au niveau du protocole de transfert.
+- 2xx: Success – Indique que la demande du client a été acceptée avec succès.
+- 3xx: Redirection – Indique que le client doit prendre des mesures supplémentaires afin de terminer sa demande.
+- 4xx: Client Error – Cette catégorie de codes d'état d'erreur pointe du doigt les clients.
+- 5xx: Server Error – TLe serveur assume la responsabilité de ces codes d'état d'erreur.
 
-Lorsque le format de réponse est «JSON», les normes de réponse suivantes s'appliquent:
+Pour obtenir la liste complète des codes d'état HTTP et codes d'état spécifiques à REST, veillez vous référer à ce [tutorial](https://restfulapi.net/http-status-codes/).
+
+## Contenu des réponses (*Response Payload*) <a name="contenuréponses"></a>
+
+Le *Response Payload* d'une API peut concerner une seule ressource ou un ensemble de ressources.
+
+Lorsque le format de réponse est dans un format `JSON`, les normes de réponse suivantes s'appliquent :
 
 ### Ressource unique
 
@@ -927,8 +939,7 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 
 ### Collection of Resources
 
-The following status codes represent appropriate responses to the different operations that can be performed on a collection resource within the system.
-
+Les codes d'état suivants représentent les réponses appropriées aux différentes opérations qui peuvent être effectuées sur une ressource de collection dans le système.
 | Request Method | Resource Path | Status                 | Code |
 | -------------- | ------------- | ---------------------- | ---- |
 | GET            | `/resources/` | OK                     | 200  |
