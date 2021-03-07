@@ -836,19 +836,18 @@ Les méthodes API RESTful **DOIVENT** adhérer à l'idempotence spécifiée dans
 
 La pagination est le processus qui consiste à renvoyer un grand ensemble de résultats sous forme de blocs (ou de pages) afin de réduire la quantité d'informations envoyées avec chaque requête.
 
-La pagination nécessite plusieurs paramètres de requête à fournir, et des informations supplémentaires sur la façon de configurer cela sont fournies dans la section pagination de ce document.
-
 ## Filtrage et tri <a name="Filtragetri"></a>
-Offrir la possibilité de filtrer et de trier les collections dans votre API offre à vos consommateurs une plus grande flexibilité et contrôle la façon dont ils choisissent de consommer votre API.
 
-Il existe un certain nombre de techniques sur la façon de procéder et d'autres explications sont fournies ci-dessous, cependant **NE PAS** définir les paramètres de filtrage et de tri dans le cadre de l'URI de l'API (par exemple, `/employés/age/de/20/à/30` ).
+La possibilité de filtrer et de trier les collections dans une API offre aux consommateurs un plus grand contrôle.
+
+Il existe un certain nombre de techniques sur la façon de procéder, cependant on **NE DOIT PAS** définir des paramètres de filtrage et de tri dans le cadre de l'URI (par exemple, `/employes/age/de/20/à/30`).
 
 Les paramètres de filtre ne font pas partie de la définition de la ressource. Utilisez plutôt des paramètres de requête pour spécifier les exigences de filtrage et de tri.
 
 Exemple:
 
 ```
-?date_of_birth=\>1999-12-31 and \<=2001-09-21T13:00:00
+?date_de_naissance=\>1999-12-31 and \<=2001-09-21T13:00:00
 ```
 
 # Réponses des API <a name="réponses"></a>
