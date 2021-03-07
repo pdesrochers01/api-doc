@@ -1007,7 +1007,13 @@ Il existe une grande variété d'outils de test gratuits (open source) disponibl
 
 [Normes du gouvernement du Canada sur les API](https://www.canada.ca/fr/gouvernement/systeme/gouvernement-numerique/technologiques-modernes-nouveaux/normes-gouvernement-canada-api.html)
 
+[Lignes directrices sur les API du gouvernement Ontarien](https://github.com/ongov/API-Guidelines/blob/master/Lignes-directrices-sur-les-API.md)
+
 [18F API Standards](https://github.com/18F/api-standards)
+
+[White House Web API Standards](https://github.com/WhiteHouse/api-standards)
+
+[National API Standards of Australia](https://api.gov.au/standards/national_api_standards/)
 
 [UK API design guidance](https://www.gov.uk/government/collections/api-design-guidance)
 
@@ -1017,7 +1023,7 @@ Il existe une grande variété d'outils de test gratuits (open source) disponibl
 
 [LeaseWeb API Design Standards](https://github.com/LeaseWeb/api-standards)
 
-[OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md)
+[OpenAPI Specification](https://swagger.io/resources/open-api/)
 
 [HTTP Status Codes](https://restfulapi.net/http-status-codes/)
 
