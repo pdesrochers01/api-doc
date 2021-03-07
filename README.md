@@ -74,16 +74,16 @@
 # Préface <a name="préface"></a>
 
 ## Introduction <a name="introduction"></a>
-Ce document décrit la norme de conception pour l'ensemble des interfaces de programmation d'application (API) du Québec. Ce guide s'adresse à toute personne œuvrant au développement de services numériques pour une fonction publique, que ce soit dans le cadre de la fonction publique du Québec, d'une agence gouvernementale ou au-delà.
+Ce document décrit la norme de conception pour l'ensemble des interfaces de programmation d'application (API) du Québec. Ce guide s'adresse à toute personne œuvrant au développement de services numériques pour une fonction publique, que ce soit dans le cadre de la fonction publique du Québec, d'une agence gouvernementale ou autre.
 
-Ce document de normes API est un travail en cours d'élaboration (Work-in-progress). Pour y contribuer, veuillez faire une demande à l'adresse ci-dessous. L'équipe de gestion des API du gouvernement du Québec analysera la demande et décidera si ceux-ci peuvent être incorporer.
+Ce document de normes API est un travail en cours d'élaboration (*work-in-progress*). Pour y contribuer, veuillez faire une demande à l'adresse ci-dessous. L'équipe de gestion des API du gouvernement du Québec analysera la demande et décidera si celle-ci peut être intégrée.
 
 ## Audience <a name="audience"></a>
 Le public visé par ce document sont les développeurs d'API, les architectes d'entreprise et de solutions et les analystes organiques et d'affaire.
 
-Ce document a été écrit dans le but d'être utilisé en interne au sein du gouvernement du Québec. Il est rendu public afin de permettre une adoption plus large par des individus ou des organisations partenaires qui souhaitent aussi créer ou consommer des API interopérables avec les standard du gouvernement du Québec.
+Ce document a été écrit dans le but d'être utilisé au sein du gouvernement du Québec. Il est rendu public afin de permettre une adoption plus large par des particuliers ou des organisations partenaires qui souhaitent aussi publier ou consommer des API interopérables avec les standards du gouvernement du Québec.
 
-## Document Semantics, Formatting, and Naming <a name="document"></a>
+## Sémantique, formatage et dénomination du document (*Document Semantics, Formatting, and Naming*) <a name="document"></a>
 Les mots clés **DOIT**, **NE DOIT PAS**, **DEVRAIT**, **NE DEVRAIT PAS**, **RECOMMANDÉ**, **PEUT** et **OPTIONNEL** dans ce document doivent être interprétés tel que décrit dans le standard [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
 Les acronymes sont écrits en majuscules. Par exemple,les mots **REST**, **JSON**, **XML** et tous les autres acronymes sont tous représentés de cette façon.
@@ -91,9 +91,11 @@ Les acronymes sont écrits en majuscules. Par exemple,les mots **REST**, **JSON*
 Les textes lisibles par traitement informatique (programme, script, etc.) tel que les **URL**, les verbes **HTTP** et les codes sources, sont représentés par la `mise en évidence (surbrillance) des blocs de code`.
 
 ## Contact <a name="contact"></a>
+
 TBC (ex: apiteam@api.quebec.ca)
 
 ## Pourquoi une norme de conception des API? <a name="norme"></a>
+
 La principale intention de ce document est de servir de référence dans la phase de conception du développement d'un nouvel API.
 
 Les normes de conception définies dans ce document sont indépendantes des données (ne tiennent pas compte du type de données consommées ou produites) et des langages de programmation.
@@ -101,6 +103,7 @@ Les normes de conception définies dans ce document sont indépendantes des donn
 Ces normes de conception présentent des patrons communs de conception qui sont applicables à tous les scénarios d'API. Ces patrons de conceptions sont basées sur des standards reconnus par l'industrie.
 
 ## Comment appliquer ce cadre normatif? <a name="appliquer"></a>
+
 Il est important de bien comprendre quand et comment appliquer ces normes de conception d'API. En effet, la catégorie à laquelle appartient l'API déterminera si vous devrez ou non utiliser ce cadre normatif.
 
 Une API appartiendra généralement à l'une des catégories suivantes:
@@ -119,7 +122,7 @@ Si votre API est une API de niveau d'expérience, ces normes de conception **DOI
 
 ## Pourquoi le style d'architecture REST? <a name="rest"></a>
 
-Cette norme de conception d'API du gouvernement du Québec est basée sur le style d'architecture **REST** (Representational State Transfer).
+Cette norme de conception des API du gouvernement du Québec est basée sur le style d'architecture **REST** (Representational State Transfer).
 
 Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté **REST** comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontarion, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture REST. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
 
@@ -137,7 +140,7 @@ Finalement, étant donné que les outils pour les **API REST** sont largement di
 ## API <a name="api"></a>
 En informatique, une interface de programmation d’application (en anglais API pour *Application Programming Interface*) est un ensemble normalisé de classes, de méthodes, de fonctions et de constantes qui sert de façade par laquelle une application offre des services à d'autres applications. Elle est offerte par une bibliothèque logicielle ou un service web, le plus souvent accompagnée d'une description qui spécifie comment des programmes consommateurs peuvent se servir des fonctionnalités du programme fournisseur.
 
-Dans le contexte de cette norme de conception d'API, une API est définie comme un service Web.
+Dans le contexte de cette norme de conception d'API, une API est définie comme un service Web. Ils sont utilisées pour créer des applications distribués, dont les composants sont faiblement couplés.
 ![alt text](https://github.com/pdesrochers01/api-doc/blob/main/API-Web.png "API de type service Web")
 
 ## REST <a name="rest"></a>
