@@ -741,13 +741,13 @@ Cela fournit aux consommateurs de l'API un rappel constant que celle-ci est marq
 
 ## Entête des requêtes <a name="entêterequêtes"></a>
 
-Toutes les API **DOIVENT** supporter les entêtes de requête suivants:
+Toutes les API **DOIVENT** supporter les entêtes de requête suivants :
 
 | Entête                        | Valeur                                                       |
 | ----------------------------- | ------------------------------------------------------------ |
 | Autorisation / Identification | Peut être l'un des éléments suivants : <ul><li>clé API </li><li>authentification de base (clé API + secret) </li><li>nom d'utilisateur + mot de passe</li><li> Jeton (*token*)</li> </ul>|
 
-Les entêtes des requêtes suivantes sont facultatives:
+Les entêtes des requêtes suivantes sont facultatives :
 
 | Entête        | Valeur                                                       |
 | ------------- | ------------------------------------------------------------ |
@@ -793,7 +793,7 @@ Les opérations suivantes s'appliquent à une collection de ressources:
 
 | Méthode HTTP | Chemin des ressources | Opération                            | Exemples                                                 |
 | ------------ | --------------------- | ------------------------------------ | -------------------------------------------------------- |
-| GET          | `/ressources`         | Obtenir une collection de la ressource | GET `/employes` ou GET<br />` /employés?status=ouvert` |
+| GET          | `/ressources`         | Obtenir une collection de la ressource | GET `/employes` ou <br />GET`/employés?status=ouvert` |
 | POST         | `/ressources`         | Créez une nouvelle instance de cette ressource. |                                       |
 
 ### Ressource unique
