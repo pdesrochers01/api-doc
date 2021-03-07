@@ -740,14 +740,13 @@ Cela fournit aux consommateurs de l'API un rappel constant que celle-ci est marq
 # Requête des API et paramètres <a name="requêteparamètres"></a>
 
 ## Entête des requêtes <a name="entêterequêtes"></a>
-Toutes les API **DOIVENT** prendre en charge les en-têtes de requête suivants:
 
-
+Toutes les API **DOIVENT** supporter les en-têtes de requête suivants:
 
 | Entête                        | Valeur                                                       |
 | ----------------------------- | ------------------------------------------------------------ |
-| Autorisation / Identification | Peut être l'un des éléments suivants : clé API, authentification de base (clé API + secret), nom d'utilisateur + mot de passe, Jeton (token) |
-
+| Autorisation / Identification | Peut être l'un des éléments suivants : <ul><li>clé API </li><li>authentification de base (clé API + secret) </li><li>nom d'utilisateur + mot de passe</li><li> Jeton (token)</li> </ul>|
+<ul><li>item1</li><li>item2</li></ul>
 Les en-têtes des requêtes suivantes sont facultatives.
 
 | Entête        | Valeur                                                       |
