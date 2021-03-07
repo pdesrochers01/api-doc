@@ -141,7 +141,7 @@ Finalement, étant donné que les outils pour les **API REST** sont largement di
 En informatique, une interface de programmation d’application (en anglais API pour *Application Programming Interface*) est un ensemble normalisé de classes, de méthodes, de fonctions et de constantes qui sert de façade par laquelle une application offre des services à d'autres applications. Elle est offerte par une bibliothèque logicielle ou un service web, le plus souvent accompagnée d'une description qui spécifie comment des programmes consommateurs peuvent se servir des fonctionnalités du programme fournisseur.
 
 Dans le contexte de cette norme de conception d'API, une API est définie comme un service Web. Ils sont utilisées pour créer des applications distribués, dont les composants sont faiblement couplés.
-![alt text](https://github.com/pdesrochers01/api-doc/blob/main/API-Web.png "API de type service Web")
+![alt text](./API-Web.png "API de type service Web")
 
 ## REST <a name="rest"></a>
 REST (*REpresentational State Transfer*) est un style d'architecture logicielle définissant un ensemble de contraintes à utiliser pour créer des services web.
