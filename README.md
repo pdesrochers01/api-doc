@@ -852,26 +852,26 @@ Exemple:
 
 # Réponses des API <a name="réponses"></a>
 
-## Entête des réponses <a name="entêteréponses"></a>
+## Entête des réponses (*response headers*) <a name="entêteréponses"></a>
 
 Le type de contenu recommandé est `JSON` (`application/json`).
 
-Les entêtes de réponse suivantes **PEUVENT** être incluses :
+Les entêtes de réponse (*response readers*) suivantes **PEUVENT** être incluses :
 
 | En-tête                      | Valeur                                                       |
 | ---------------------------- | ------------------------------------------------------------ |
 | Access-Control-Allow-Origin  | URL qui est autorisée à accéder à ce service directement à partir de javascript et de clients basés sur un navigateur. <br />**Remarque:** N'utilisez jamais d'URL génériques (*) à moins que la ressource REST ne soit vraiment publique. |
 | Access-Control-Allow-Methods | Les méthodes auxquelles il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
-| Access-Control-Allow-Headers | Les en-têtes auxquels il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
-| Content-Type                 | Choix de: <ul><li>`application / json` (obligatoire)</li><li>` application / xml` (facultatif pour `xml`)</li><li>` multipart / form-data` (facultatif pour les fichiers)</li><li>`text / html` (facultatif pour` html`)</li></ul> |
-| Cache-Control                | Informe les mécanismes de mise en cache.                     |
-| Date                         | La date et l'heure à laquelle le message a été émis Date par ex. Mar 15 novembre 1994 08:12:31 GMT |
-| Expire                       | Donne la date / heure après laquelle la réponse est considérée comme périmée, par ex. Jeu. 01 décembre 1994 16:00:00 GMT |
+| Access-Control-Allow-Headers | Les entêtes auxquels il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
+| Content-Type                 | Choix de: <ul><li>`application/json` (obligatoire)</li><li>`application/xml` (facultatif pour `xml`)</li><li>` multipart/form-data` (facultatif pour les fichiers)</li><li>`text/html` (facultatif pour`html`)</li></ul> |
+| Cache-Control                | Informe des mécanismes de mise en cache.                     |
+| Date                         | La date et l'heure à laquelle le message a été émis Date par ex. Mardi, 24 novembre 1984 09:02:15 GMT |
+| Expire                       | Donne la date / heure après laquelle la réponse est considérée comme périmée, par ex. Jeudi, 01 décembre 1984 12:01:00 GMT |
 | ETag                         | Utilisé pour identifier la version particulière d'une ressource. Le client doit l'inclure dans toutes les demandes de mise à jour pour s'assurer qu'il est inchangé. |
 
 ## Codes de réponse HTTP <a name="codesréponsehttp"></a>
 
-Les API REST utilisent la partie Status-Line d'un message de réponse HTTP pour informer les clients du résultat global de leur requête. La [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) définit la syntaxe de la ligne d'état comme indiqué ci-dessous:
+Les API REST utilisent la partie `Status-Line` d'un message de réponse HTTP pour informer les clients du résultat global de leur requête. La [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) définit la syntaxe de la ligne d'état (*Status-Line*) cotel qu'indiqué ci-dessous:
 ```
 Status-Line = HTTP-Version SP Status-Code SP Reason-Phrase CRLF
 ```
@@ -887,11 +887,11 @@ Pour obtenir la liste complète des codes d'état HTTP et codes d'état spécifi
 
 ## Contenu des réponses (*Response Payload*) <a name="contenuréponses"></a>
 
-Le *Response Payload* d'une API peut concerner une seule ressource ou un ensemble de ressources.
+Le *response payload* d'une API peut concerner une seule ressource ou un ensemble de ressources.
 
 Lorsque le format de réponse est dans un format `JSON`, les normes de réponse suivantes s'appliquent :
 
-### Ressource unique
+### Pour une ressource unique
 
 Les codes d'état suivants représentent les réponses appropriées aux différentes opérations qui peuvent être effectuées sur une seule ressource dans le système.
 
@@ -937,9 +937,10 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 |                |                   | Unprocessable Entity   | 422  |
 |                |                   | Internal Server error  | 500  |
 
-### Collection of Resources
+### Pour une collection of Resources
 
 Les codes d'état suivants représentent les réponses appropriées aux différentes opérations qui peuvent être effectuées sur une ressource de collection dans le système.
+
 | Request Method | Resource Path | Status                 | Code |
 | -------------- | ------------- | ---------------------- | ---- |
 | GET            | `/resources/` | OK                     | 200  |
