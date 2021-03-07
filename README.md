@@ -847,7 +847,7 @@ Les paramètres de filtre ne font pas partie de la définition de la ressource. 
 Exemple:
 
 ```
-?date_de_naissance=\>1999-12-31 and \<=2001-09-21T13:00:00
+?date_de_naissance=\>1999-12-31 and \<=2001-12-31
 ```
 
 # Réponses des API <a name="réponses"></a>
