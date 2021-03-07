@@ -741,34 +741,34 @@ Cela fournit aux consommateurs de l'API un rappel constant que celle-ci est marq
 
 ## Entête des requêtes <a name="entêterequêtes"></a>
 
-Toutes les API **DOIVENT** supporter les en-têtes de requête suivants:
+Toutes les API **DOIVENT** supporter les entêtes de requête suivants:
 
 | Entête                        | Valeur                                                       |
 | ----------------------------- | ------------------------------------------------------------ |
-| Autorisation / Identification | Peut être l'un des éléments suivants : <ul><li>clé API </li><li>authentification de base (clé API + secret) </li><li>nom d'utilisateur + mot de passe</li><li> Jeton (token)</li> </ul>|
+| Autorisation / Identification | Peut être l'un des éléments suivants : <ul><li>clé API </li><li>authentification de base (clé API + secret) </li><li>nom d'utilisateur + mot de passe</li><li> Jeton (*token*)</li> </ul>|
 
-Les entêtes des requêtes suivantes sont facultatives.
+Les entêtes des requêtes suivantes sont facultatives:
 
 | Entête        | Valeur                                                       |
 | ------------- | ------------------------------------------------------------ |
 | Content-Type  | Peut être l'un des valeurs suivantes :<ul><li>`application/json` (obligatoire)</li> <li> `application/xml` (optionel pour xml)</li> <li>`multipart/form-data` (optionel pour les fichiers)</li><li>`application/x-www-form-urlencoded` (optionel pour les form data)</li></ul> |
 | Accept        | Content-Types qui sont acceptable pour la réponse. Peut être un choix de :<ul><li>`application/json` (obligatoire)</li><li>`application/xml` (optionel pour xml)</li></ul> |
 | Connection    | Options de contrôle pour la connexion actuelle. Par exemple : `keep-alive`. |
-| Date          | La date et l'heure à laquelle le message a été émis, au format "HTTP-date" tel que défini par [RFC 7231 Date / Time Formats] (http://tools.ietf.org/html/rfc7231#section-7.1.1.1) . Par exemple. «Mar 15 novembre 1994 08:12:31 GMT». |
+| Date          | La date et l'heure à laquelle le message a été émis, au format "HTTP-date" tel que défini par [RFC 7231 Date / Time Formats](http://tools.ietf.org/html/rfc7231#section-7.1.1.1) . Par exemple. «Mardi, 20 janvier 1984 02:10:30 GMT». |
 | Cookie        | Un cookie HTTP précédemment envoyé par le serveur.           |
-| Cache-Control | Utilisé pour spécifier des directives qui doivent être respectées par tous les mécanismes de mise en cache, par exemple pas de cache. |
-| ETag          | Utilisé pour identifier la version particulière d'une ressource en cours de mise à jour pour empêcher plusieurs mises à jour utilisateur. Cela doit correspondre à ce qui est actuellement stocké sur le serveur. |
+| Cache-Control | Utilisé pour spécifier des directives qui doivent être respectées par tous les mécanismes de mise en cache, par exemple `no-cache`. |
+| ETag          | Utilisé pour identifier la version particulière d'une ressource en cours de mise à jour. Doit correspondre à ce qui est actuellement stocké sur le serveur. |
 
 ## Méthodes des requêtes HTTP <a name="méthodeshttp"></a>
 
-Les opérations de l'API RESTful sont basées sur la norme HTTP Request Method telle que définie par la [RFC 7231](https://tools.ietf.org/html/rfc7231#section-4.3).
+Les opérations de l'API RESTful sont basées sur la norme **HTTP Request Method** telle que définie par la [RFC 7231](https://tools.ietf.org/html/rfc7231#section-4.3).
 
 ### Méthodes de requête HTTP supportées
 
 | Méthode HTTP | Description                                                  |
 | ------------ | ------------------------------------------------------------ |
 | `GET`        | Pour *récupérer* une ressource.                              |
-| `POST`       | Pour *créer* une nouvelle ressource, ou pour * exécuter * une opération sur une ressource qui change l'état du système, par ex. envoyer un message. |
+| `POST`       | Pour *créer* une nouvelle ressource, ou pour *exécuter* une opération sur une ressource qui change l'état du système, par ex. envoyer un message. |
 | `PUT`        | Pour *remplacer* une ressource par une autre fournie dans la demande. |
 | `PATCH`      | Pour effectuer une *mise à jour partielle* d'une ressource.  |
 | `DELETE`     | Pour *supprimer* une ressource.                              |
@@ -791,10 +791,10 @@ Pour récupérer un seul "client", une requête est envoyée à l'URN `/clients/
 
 Les opérations suivantes s'appliquent à une collection de ressources:
 
-| Méthode HTTP | Chemin des ressources | Opération                                       | Exemples                                               |
-| ------------ | --------------------- | ----------------------------------------------- | ------------------------------------------------------ |
-| GET          | `/ressources`         | Obtenir une collection de la ressource          | GET `/employes` ou GET<br />` /employés?status=ouvert` |
-| POST         | `/ressources`         | Créez une nouvelle instance de cette ressource. |                                                        |
+| Méthode HTTP | Chemin des ressources | Opération                            | Exemples                                                 |
+| ------------ | --------------------- | ------------------------------------ | -------------------------------------------------------- |
+| GET          | `/ressources`         | Obtenir une collection de la ressource | GET `/employes` ou GET<br />` /employés?status=ouvert` |
+| POST         | `/ressources`         | Créez une nouvelle instance de cette ressource. |                                       |
 
 ### Ressource unique
 
