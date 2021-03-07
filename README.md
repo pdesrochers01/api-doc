@@ -312,7 +312,7 @@ Lors de la conception d'une nouvelle API, l'une des principales considérations 
 
 Afin d'aider les concepteurs d'API peuvent se référer au modèle de maturité de Leonard Richardson (2008) afin de s'assurer que leurs API sont conforme au style REST.
 
-![alt text](https://github.com/pdesrochers01/api-doc/blob/main/niveaux-maturité-REST.png "Niveaux de maturité de Richardson")
+![alt text](./niveaux-maturité-REST.png "Niveaux de maturité de Richardson")
 
 Le modèle de maturité proposé par Richardson classe les API en fonction de leur adhésion et de leur conformité aux principes REST selon quatre niveaux (de 0 à 3).
 
