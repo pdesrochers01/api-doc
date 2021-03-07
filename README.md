@@ -791,10 +791,10 @@ Pour récupérer un seul "client", une requête est envoyée à l'URN `/clients/
 
 Les opérations suivantes s'appliquent à une collection de ressources:
 
-| Méthode HTTP | Chemin des ressources | Opération                    | Exemples                                                 |
-| ------------ | --------------------- | ---------------------------- | -------------------------------------------------------- |
-| GET          | `/ressources`         | Obtenir une collection de <br/>la ressource| GET `/employes` ou <br/>GET`/employés?status=ouvert` |
-| POST         | `/ressources`         | Créez une nouvelle instance <br/>de cette ressource|                                       |
+| Méthode HTTP | Chemin        | Opération                    | Exemples                                                 |
+| ------------ | ------------- | ---------------------------- | -------------------------------------------------------- |
+| GET          | `/ressources` | Obtenir une collection de <br/>la ressource| GET `/employes` ou <br/> GET `/employés?status=ouvert` |
+| POST         | `/ressources` | Créez une nouvelle instance de cette ressource|                                       |
 
 ### Ressource unique
 
