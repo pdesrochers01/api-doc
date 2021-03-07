@@ -1009,7 +1009,7 @@ Il existe une grande variété d'outils de test gratuits (open source) disponibl
 
 [18F API Standards](https://github.com/18F/api-standards)
 
-[UK API design guidance](hhttps://www.gov.uk/government/collections/api-design-guidance)
+[UK API design guidance](https://www.gov.uk/government/collections/api-design-guidance)
 
 [PayPal API Design Guidelines](https://github.com/paypal/api-standards/blob/master/api-style-guide.md)
 
