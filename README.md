@@ -172,11 +172,14 @@ Les principaux bénéfices de l’architecture REST est d’exploiter les caract
 Toutes ces caractéristiques sont des facteurs essentiels afin de créer des services résilients. Un autre avantage important réside dans le fait que le Web est construit à partir de multitude de spécifications succinctes permettant une évolution plus facile et éviter ainsi d’interminables polémiques sur la sélection des normes.
 
 ## Ressources <a name="resssources"></a>
+
 Afin de concevoir une API facilement utilisable, les applications doit être divisées en groupes logiques (souvent appelés modèles ou ressources).
 
-Dans l'exemple d'un système de gestion de ressources humaines (RH), les **ressources** sont les `employés`, les `postes` et les `demandes de congés`.
+Par exemple, dans un système de gestion de ressources humaines (RH), les **ressources** sont les `employés`, les `postes` et les `demandes de congés`.
 
 La décomposition des systèmes en groupes logiques permet une séparation des préoccupations (*"separation of concerns"*). Cela garantit également que chaque élément de données retourné par l'API sera minimaliste afin répondre aux exigences du client.
+
+Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Il y a cependant une différence importante entre REST et POO: les méthodes de REST sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler la ressource. Aucune autre méthode ne peut être indiquée dans les requêtes des API, ni dans le corps HTTP, ni dans le chemin de base, ni dans les paramètres.
 
 ## Identifiants de ressource <a name="idresssources"></a>
 Toutes les ressources disponibles dans un système (par exemple, chaque `employé` ou chaque `demande de congé`) doit être identifiable de manière unique. Ceci est un élément clé d'un API RESTful, soit la possibilité d'adresser individuellement tout élément d'un système.
