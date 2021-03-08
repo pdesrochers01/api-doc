@@ -118,22 +118,33 @@ Si votre API fait partie de l'API de niveau système (application) et est dével
 
 Si votre API est une API de niveau de processus, il est aussi **RECOMMANDÉ** d'appliquer cette norme de conception. En effet, les API de niveau de processus sont souvent réutilisées par différents consommateurs.
 
-Si votre API est une API de niveau d'expérience, ces normes de conception **DOIVENT** être appliquées.
+Si votre API est une API de niveau d'intégration, ces normes de conception **DOIVENT** être appliquées.
 
 ## Pourquoi le style d'architecture REST? <a name="rest"></a>
 
 Cette norme de conception des API du gouvernement du Québec est basée sur le style d'architecture **REST** (Representational State Transfer).
 
-Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté **REST** comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontario, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture REST. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
+Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **SOAP**, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté **REST** comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontario, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture REST. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
 
-Le style d'architecture **REST** est très efficace lorsque nous devons modéliser des systèmes et des données. Les principes peuvent être aussi bien appliqués aux systèmes de petite ou de grande envergure et les outils disponibles (écosystème de développement) supportent facilement les accès aux données.
+Le style d'architecture **REST** est très efficace afin de modéliser des systèmes et des données. Les principes **REST** peuvent être aussi bien appliqués aux systèmes de petite que de grande envergure et les outils disponibles (écosystème de développement) supportent facilement les accès aux données.
 
-Il est important de prendre note que les **API REST** ne sont généralement pas adaptées à la diffusion (streaming) de données ou dans les cas où la performance des interaction est essentielle. **GraphQL** et **gRPC/JSON-RPC** sont des alternatives en émergence qui seront éventuellement considérées comme des options pour les standards du gouvernement du Québec.
+Il est important de prendre note que les **API REST** ne sont généralement pas adaptées à la diffusion (streaming) de données ou dans les cas où la performance des interaction est essentielle. **GraphQL** et **gRPC/JSON-RPC** sont des alternatives en émergence qui seront éventuellement considérées comme des options pour les standards du gouvernement du Québec. Un aiguilleur sera disponible bientôt afin d'aider les concepteurs dans le choix de l'architecture à considérer.
 
 Finalement, étant donné que les outils pour les **API REST** sont largement disponibles et que les développeurs sont déjà familier avec ceux-ci (autant en Amérique du Nord qu'ailleurs dans le monde), il a été déterminé que le style d'architecture **REST** serait la base de la modélisation des API dans le gouvernement du Québec.
 
 ## La norme de spécification OpenAPI <a name="openapi"></a>
-**TBC** [OpenAPI v3.0](https://swagger.io/specification/)
+
+La spécification [OpenAPI](https://www.openapis.org/) est une spécification ouverte pilotée par la communauté de l'OpenAPI Initiative, un projet collaboratif de la Linux Foundation.
+
+La spécification [OpenAPI](https://www.openapis.org/) (anciennement la spécification Swagger) est un format de description d'API pour les API REST. Un fichier OpenAPI vous permet de décrire l'ensemble de votre API, incluant :
+
+- Points de terminaison disponibles (*endpoints*) (ex `/utilisateurs`) et opérations sur chaque point de terminaison (*endpoints*) (ex `GET /utilisateurs`, `POST /utilisateurs`)
+- Paramètres des opérations
+- Méthodes d'authentification
+- Coordonnées, licence, conditions d'utilisation et autres informations.
+
+Les spécifications d'API peuvent être écrites en YAML ou JSON. Le format est facile à apprendre et lisible autant par les humains que par les machines. La spécification OpenAPI complète peut être trouvée sur GitHub: Spécification OpenAPI 3.0
+
 
 # Définitions <a name="définition"></a>
 
