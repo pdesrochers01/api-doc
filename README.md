@@ -89,7 +89,7 @@ Ce document a été écrit dans le but d'être utilisé au sein du gouvernement 
 
 Les mots clés **DOIT**, **NE DOIT PAS**, **DEVRAIT**, **NE DEVRAIT PAS**, **RECOMMANDÉ**, **PEUT** et **OPTIONNEL** dans ce document doivent être interprétés tel que décrit dans le standard [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
-Les acronymes sont écrits en majuscules. Par exemple, les mots **REST**, **JSON**, **XML** et tous les autres acronymes sont tous représentés de cette façon.
+Les acronymes sont écrits en majuscules. Par exemple, les mots REST, **JSON**, **XML** et tous les autres acronymes sont tous représentés de cette façon.
 
 La grande majorité de la littérature disponible sur les **API REST** n'est disponible qu'en anglais seulement. En conséquence, les auteurs de cette norme ont jugé utile d'indiquer en *italique* le terme anglais pour des fins de référence.
 
@@ -125,17 +125,17 @@ Si l'API est de niveau de processus, il est aussi **RECOMMANDÉ** d'appliquer ce
 
 Si l'API est de niveau d'intégration, ces normes de conception **DOIVENT** être appliquées.
 
-## Pourquoi le style d'architecture **REST**? <a name="rest"></a>
+## Pourquoi le style d'architecture REST? <a name="rest"></a>
 
-Cette norme de conception des API du gouvernement du Québec est basée sur le style d'architecture **REST** (Representational State Transfer).
+Cette norme de conception des API du gouvernement du Québec est basée sur le style d'architecture REST (Representational State Transfer).
 
-Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **SOAP**, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté **REST** comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontario, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture **REST**. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
+Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **SOAP**, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté REST comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontario, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture REST. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
 
-Le style d'architecture **REST** est très efficace afin de modéliser des systèmes et des données. Les principes **REST** peuvent être aussi bien appliqués aux systèmes de petite que de grande envergure et les outils disponibles (écosystème de développement) supportent facilement les accès aux données.
+Le style d'architecture REST est très efficace afin de modéliser des systèmes et des données. Les principes REST peuvent être aussi bien appliqués aux systèmes de petite que de grande envergure et les outils disponibles (écosystème de développement) supportent facilement les accès aux données.
 
 Il est important de prendre note que les **API REST** ne sont généralement pas adaptées à la diffusion (streaming) de données ou dans les cas où la performance des interaction est essentielle. **GraphQL** et **gRPC/JSON-RPC** sont des alternatives en émergence qui seront éventuellement considérées comme des options pour les standards du gouvernement du Québec. Un aiguilleur sera disponible bientôt afin d'aider les concepteurs dans le choix de l'architecture à considérer.
 
-Finalement, étant donné que les outils pour les **API REST** sont largement disponibles et que les développeurs sont déjà familier avec ceux-ci (autant en Amérique du Nord qu'ailleurs dans le monde), il a été déterminé que le style d'architecture **REST** serait la base de la modélisation des API dans le gouvernement du Québec.
+Finalement, étant donné que les outils pour les **API REST** sont largement disponibles et que les développeurs sont déjà familier avec ceux-ci (autant en Amérique du Nord qu'ailleurs dans le monde), il a été déterminé que le style d'architecture REST serait la base de la modélisation des API dans le gouvernement du Québec.
 
 ## La norme de spécification OpenAPI <a name="openAPI"></a>
 
@@ -159,16 +159,16 @@ En informatique, une interface de programmation d’application (en anglais API 
 Dans le contexte de cette norme de conception d'API, une API est définie comme un service Web. Ils sont utilisées pour créer des applications distribués, dont les composants sont faiblement couplés.
 ![alt text](./API-Web.png "API de type service Web")
 
-## **REST** <a name="rest"></a>
-**REST** (*REpresentational State Transfer*) est un style d'architecture logicielle définissant un ensemble de contraintes à utiliser pour créer des services web.
+## REST <a name="rest"></a>
+REST (*REpresentational State Transfer*) est un style d'architecture logicielle définissant un ensemble de contraintes à utiliser pour créer des services web.
 
-Les services web conformes au style d'architecture **REST**, aussi appelés services web **RESTful**, établissent une interopérabilité entre les ordinateurs sur Internet.
+Les services web conformes au style d'architecture REST, aussi appelés services web **RESTful**, établissent une interopérabilité entre les ordinateurs sur Internet.
 
-Les services web **REST** permettent aux systèmes effectuant des requêtes de manipuler des ressources web via leurs représentations textuelles à travers un ensemble d'opérations uniformes et prédéfinies sans état.
+Les services web REST permettent aux systèmes effectuant des requêtes de manipuler des ressources web via leurs représentations textuelles à travers un ensemble d'opérations uniformes et prédéfinies sans état.
 
 Essentiellement, ce style d’architecture vise à utiliser tous les standards du Web afin de développer des applications distribuées. Il a été développé par Thomas Fielding dans sa thèse de doctorat (Université de Californie, 2000).
 
-Les principaux bénéfices de l’architecture **REST** est d’exploiter les caractéristiques du Web et de son principale protocole (HTTP) sont :
+Les principaux bénéfices de l’architecture REST est d’exploiter les caractéristiques du Web et de son principale protocole (HTTP) sont :
 - Réutilisation des verbes d’actions standards pour interagir avec des stockages persistants (GET pour lire, POST pour créer une nouvelle ressource, PUT pour mettre à jour, DELETE pour effacer, ETC.)
 - Réutilisation des mécanismes de cache (fureteur, proxy, passerelle, serveur Web, etc.)
 - Réutilisation des mécanismes de redirection et de transfert
@@ -184,7 +184,7 @@ Par exemple, dans un système de gestion de ressources humaines (RH), les **ress
 
 La décomposition des systèmes en **ressources** permet une séparation des préoccupations (*"separation of concerns"*). Par exemple, seul un employé peut faire une demande de congés. Cela garantit également que chaque élément de données retourné par l'API sera minimaliste afin répondre aux exigences du client.
 
-Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Généralement, les ressources sont les «noms» que nous retrouvons dans une applications. Il y a cependant une différence importante entre **REST** et POO: les méthodes de **REST** sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler une ressource, c'est à dire qu'aucune autre méthode ne peut être indiquée dans les requêtes des API, ni dans le corps HTTP, ni dans le chemin de base ou dans les paramètres.
+Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Généralement, les ressources sont les «noms» que nous retrouvons dans une applications. Il y a cependant une différence importante entre REST et POO: les méthodes de REST sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler une ressource, c'est à dire qu'aucune autre méthode ne peut être indiquée dans les requêtes des API, ni dans le corps HTTP, ni dans le chemin de base ou dans les paramètres.
 
 ## Identifiants de ressource <a name="idresssources"></a>
 
@@ -330,11 +330,11 @@ Si le contrat API doit changer d'une manière qui rompt celui-ci avec ses des co
 
 Lors de la conception d'une nouvelle API, l'une des principales considérations est l'expérience du développeur qui utilisera celle-ci.
 
-Afin d'aider les concepteurs d'API peuvent se référer au modèle de maturité de Leonard Richardson (2008) afin de s'assurer que leurs API sont conforme au style **REST**.
+Afin d'aider les concepteurs d'API peuvent se référer au modèle de maturité de Leonard Richardson (2008) afin de s'assurer que leurs API sont conforme au style REST.
 
 ![alt text](./niveaux-maturité-REST.png "Niveaux de maturité de Richardson")
 
-Le modèle de maturité proposé par Richardson classe les API en fonction de leur adhésion et de leur conformité aux principes **REST** selon quatre niveaux (de 0 à 3).
+Le modèle de maturité proposé par Richardson classe les API en fonction de leur adhésion et de leur conformité aux principes REST selon quatre niveaux (de 0 à 3).
 
 - Niveau 0 - État de base pour toute nouvelle API. Le niveau 0 utilise un simple URI (typiquement des POST) et HTTP comme système de transport pour les interactions entre les applications, mais sans utiliser aucun autres des mécanismes du Web. Il s’agit essentiellement d’échanger des fichiers XML (« Plain Old XML » – POX). Bien que ce style d’architecture soit populaire (simplicité d’implémentation), il n’utilise pas les caractéristiques du Web, soit sa capacité de monter en charge (*scalability*), fiabilité et sa robustesse. De plus, celui-ci amène un problème de couplage fort entre les applications. Cette approche est fortement déconseillée.
 - Niveau 1 - L'API implémente différents URI, mais un seul verbe (par exemple POST). Le niveau 1 introduit des « ressources » et permet de faire des requêtes à des URI individuels (généralement en utilisant des POST) pour des actions distinctes au lieu d'exposer un point de terminaison universel (de service unique). Une ressource représente une entité unique ou une collection de tout ce qu’on peut exposer sur le Web (ex. un document, une vidéo, une fiche client, une commande, etc.).
@@ -883,7 +883,7 @@ Les entêtes de réponse (*response readers*) suivantes **PEUVENT** être inclus
 
 | En-tête                      | Valeur                                                       |
 | ---------------------------- | ------------------------------------------------------------ |
-| Access-Control-Allow-Origin  | URL qui est autorisée à accéder à ce service directement à partir de javascript et de clients basés sur un navigateur. <br />**Remarque:** N'utilisez jamais d'URL génériques (*) à moins que la ressource **REST** ne soit vraiment publique. |
+| Access-Control-Allow-Origin  | URL qui est autorisée à accéder à ce service directement à partir de javascript et de clients basés sur un navigateur. <br />**Remarque:** N'utilisez jamais d'URL génériques (*) à moins que la ressource REST ne soit vraiment publique. |
 | Access-Control-Allow-Methods | Les méthodes auxquelles il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
 | Access-Control-Allow-Headers | Les entêtes auxquels il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
 | Content-Type                 | Choix de: <ul><li>`application/json` (obligatoire)</li><li>`application/xml` (facultatif pour `xml`)</li><li>` multipart/form-data` (facultatif pour les fichiers)</li><li>`text/html` (facultatif pour`html`)</li></ul> |
@@ -906,7 +906,7 @@ HTTP définit ces codes d’état standard qui peuvent être utilisés pour tran
 - 4xx: Client Error – Cette catégorie de codes d'état d'erreur pointe du doigt les clients.
 - 5xx: Server Error – TLe serveur assume la responsabilité de ces codes d'état d'erreur.
 
-Pour obtenir la liste complète des codes d'état HTTP et codes d'état spécifiques à **REST**, veillez vous référer à ce [tutorial](https://restfulAPI.net/http-status-codes/).
+Pour obtenir la liste complète des codes d'état HTTP et codes d'état spécifiques à REST, veillez vous référer à ce [tutorial](https://restfulAPI.net/http-status-codes/).
 
 ## Contenu des réponses (*Response Payload*) <a name="contenuréponses"></a>
 
@@ -1017,7 +1017,7 @@ Mais si le même compte est à découvert (solde négatif), la seule action auto
 
 Il existe une grande variété d'outils de test gratuits (open source) disponibles pour les tests d'API:
 
-- **SoapUI** - [SoapUI](https://www.soapui.org/downloads/soapui.html) est un outil de test fonctionnel Open Source pour les tests d'API. Il prend en charge plusieurs protocoles tels que **SOAP**, **REST**, **HTTP**, **JMS** et plusieurs autres.
+- **SoapUI** - [SoapUI](https://www.soapui.org/downloads/soapui.html) est un outil de test fonctionnel Open Source pour les tests d'API. Il prend en charge plusieurs protocoles tels que **SOAP**, REST, **HTTP**, **JMS** et plusieurs autres.
 - **Postman** - [Postman](https://www.getpostman.com/) est une application pour interagir avec les API HTTP. Il vous présente une interface graphique conviviale pour la construction de requêtes et la lecture des réponses.
 - **Curl** - cURL est un outil pour travailler avec des URL. cURL nous permet d'interroger une URL à partir de la ligne de commande. cURL permet de tester facilement de nouvelles API. cUrl peut être installer dans un terminal sur Linux en tapant `sudo yum install curl`.
 - **Apache benchmark** - ApacheBench peut réaliser des tests de charge en envoyant un nombre arbitraire de requêtes simultanées. Benchmark Apache peut s'installer à partir de la ligne de commande sous Linux en tapant `yum install httpd-tools`.
@@ -1026,7 +1026,7 @@ Il existe une grande variété d'outils de test gratuits (open source) disponibl
 
 ## Références <a name="références"></a>
 
-[Fielding's Dissertation on **REST**](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+[Fielding's Dissertation on REST](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 
 [Normes du gouvernement du Canada sur les API](https://www.canada.ca/fr/gouvernement/systeme/gouvernement-numerique/technologiques-modernes-nouveaux/normes-gouvernement-canada-API.html)
 
