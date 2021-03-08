@@ -89,11 +89,11 @@ Ce document a été écrit dans le but d'être utilisé au sein du gouvernement 
 
 Les mots clés **DOIT**, **NE DOIT PAS**, **DEVRAIT**, **NE DEVRAIT PAS**, **RECOMMANDÉ**, **PEUT** et **OPTIONNEL** dans ce document doivent être interprétés tel que décrit dans le standard [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
-Les acronymes sont écrits en majuscules. Par exemple, les mots REST, **JSON**, **XML** et tous les autres acronymes sont tous représentés de cette façon.
+Les acronymes sont écrits en majuscules. Par exemple, les mots REST, JSON, XML et tous les autres acronymes sont tous représentés de cette façon.
 
-La grande majorité de la littérature disponible sur les **API REST** n'est disponible qu'en anglais seulement. En conséquence, les auteurs de cette norme ont jugé utile d'indiquer en *italique* le terme anglais pour des fins de référence.
+La grande majorité de la littérature disponible sur les API REST n'est disponible qu'en anglais seulement. En conséquence, les auteurs de cette norme ont jugé utile d'indiquer en *italique* le terme anglais pour des fins de référence.
 
-Les textes lisibles par traitement informatique (programme, script, etc.) tel que les **URL**, les verbes **HTTP** et les codes sources, sont représentés par la `mise en évidence (surbrillance) des blocs de code`.
+Les textes lisibles par traitement informatique (programme, script, etc.) tel que les URL, les verbes HTTP et les codes sources, sont représentés par la `mise en évidence (surbrillance) des blocs de code`.
 
 ## Contact <a name="contact"></a>
 
@@ -129,19 +129,19 @@ Si l'API est de niveau d'intégration, ces normes de conception **DOIVENT** êtr
 
 Cette norme de conception des API du gouvernement du Québec est basée sur le style d'architecture REST (Representational State Transfer).
 
-Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **SOAP**, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté REST comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontario, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture REST. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
+Bien qu'il existe d'autres modèles de conception pour les API (par exemple, SOAP, GraphQL et gRPC), la grande majorité des développeurs de l'industrie des TI ont largement adopté REST comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontario, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture REST. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
 
 Le style d'architecture REST est très efficace afin de modéliser des systèmes et des données. Les principes REST peuvent être aussi bien appliqués aux systèmes de petite que de grande envergure et les outils disponibles (écosystème de développement) supportent facilement les accès aux données.
 
-Il est important de prendre note que les **API REST** ne sont généralement pas adaptées à la diffusion (streaming) de données ou dans les cas où la performance des interaction est essentielle. **GraphQL** et **gRPC/JSON-RPC** sont des alternatives en émergence qui seront éventuellement considérées comme des options pour les standards du gouvernement du Québec. Un aiguilleur sera disponible bientôt afin d'aider les concepteurs dans le choix de l'architecture à considérer.
+Il est important de prendre note que les API REST ne sont généralement pas adaptées à la diffusion (streaming) de données ou dans les cas où la performance des interaction est essentielle. GraphQL et gRPC/JSON-RPC sont des alternatives en émergence qui seront éventuellement considérées comme des options pour les standards du gouvernement du Québec. Un aiguilleur sera disponible bientôt afin d'aider les concepteurs dans le choix de l'architecture à considérer.
 
-Finalement, étant donné que les outils pour les **API REST** sont largement disponibles et que les développeurs sont déjà familier avec ceux-ci (autant en Amérique du Nord qu'ailleurs dans le monde), il a été déterminé que le style d'architecture REST serait la base de la modélisation des API dans le gouvernement du Québec.
+Finalement, étant donné que les outils pour les API REST sont largement disponibles et que les développeurs sont déjà familier avec ceux-ci (autant en Amérique du Nord qu'ailleurs dans le monde), il a été déterminé que le style d'architecture REST serait la base de la modélisation des API dans le gouvernement du Québec.
 
 ## La norme de spécification OpenAPI <a name="openAPI"></a>
 
-La spécification **OpenAPI** (anciennement la spécification Swagger) est une spécification ouverte pilotée par la communauté de l'[OpenAPI Initiative](https://www.openAPIs.org/), un projet collaboratif de la Linux Foundation.
+La spécification OpenAPI (anciennement la spécification Swagger) est une spécification ouverte pilotée par la communauté de l'[OpenAPI Initiative](https://www.openapis.org/), un projet collaboratif de la Linux Foundation.
 
-La spécification [OpenAPI](https://www.openAPIs.org/) est un format de description d'API pour les **API REST**. Un fichier OpenAPI permet de décrire toutes les caractéristiques d'un API, incluant :
+La spécification [OpenAPI](https://www.openapis.org/) est un format de description d'API pour les API REST. Un fichier OpenAPI permet de décrire toutes les caractéristiques d'un API, incluant :
 
 - Points de terminaison disponibles (*endpoints*) (ex `/utilisateurs`) et opérations sur chaque point de terminaison (*endpoints*) (ex `GET /utilisateurs`, `POST /utilisateurs`)
 - Paramètres des opérations
@@ -303,7 +303,7 @@ Il est **RECOMMANDÉ** de suivre les directives suivantes lors du développement
 
 Tous les documents OpenAPI **DEVRAIENT** être fournis au format JSON.
 
-Afin de suivre les recommandations de versionnage de cette norme, il **DOIT** y avoir une description OpenAPI par version principale. Par exemple; si votre produit API expose et gère 3 versions principales de son **API REST**, vous devez fournir 3 descriptions OpenAPI (une pour chaque version, soit v1, v2 et v3).
+Afin de suivre les recommandations de versionnage de cette norme, il **DOIT** y avoir une description OpenAPI par version principale. Par exemple; si votre produit API expose et gère 3 versions principales de son API REST, vous devez fournir 3 descriptions OpenAPI (une pour chaque version, soit v1, v2 et v3).
 
 ## L'expérience du développeur <a name="expérience"></a>
 
@@ -400,7 +400,7 @@ Exemple:
 
 ## Noms des composants URI <a name="composantesuri"></a>
 
-Les URI de cette norme suivent la spécification RFC 3986 afin de simplifier le développement et la consommation de services d'**API REST**.
+Les URI de cette norme suivent la spécification RFC 3986 afin de simplifier le développement et la consommation de services d'API REST.
 
 **Composants de l'URI**
 
@@ -439,7 +439,7 @@ Le tableau suivant explique comment construire l'URI de l'API.
 
 **Noms des ressources**
 
-Les concepteurs d'API **DOIVENT** suivre ces principes lors de la création d'une **API REST**:
+Les concepteurs d'API **DOIVENT** suivre ces principes lors de la création d'une API REST:
 
 - Les noms **DOIVENT** être utilisés et non des verbes dans l'URI.
 - Les noms de ressources **DOIVENT** être au pluriel.
@@ -894,7 +894,7 @@ Les entêtes de réponse (*response readers*) suivantes **PEUVENT** être inclus
 
 ## Codes de réponse HTTP <a name="codesréponsehttp"></a>
 
-Les **API REST** utilisent la partie `Status-Line` d'un message de réponse HTTP pour informer les clients du résultat global de leur requête. La [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) définit la syntaxe de la ligne d'état (*Status-Line*) cotel qu'indiqué ci-dessous:
+Les API REST utilisent la partie `Status-Line` d'un message de réponse HTTP pour informer les clients du résultat global de leur requête. La [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) définit la syntaxe de la ligne d'état (*Status-Line*) cotel qu'indiqué ci-dessous:
 ```
 Status-Line = HTTP-Version SP Status-Code SP Reason-Phrase CRLF
 ```
@@ -1017,7 +1017,7 @@ Mais si le même compte est à découvert (solde négatif), la seule action auto
 
 Il existe une grande variété d'outils de test gratuits (open source) disponibles pour les tests d'API:
 
-- **SoapUI** - [SoapUI](https://www.soapui.org/downloads/soapui.html) est un outil de test fonctionnel Open Source pour les tests d'API. Il prend en charge plusieurs protocoles tels que **SOAP**, REST, **HTTP**, **JMS** et plusieurs autres.
+- **SoapUI** - [SoapUI](https://www.soapui.org/downloads/soapui.html) est un outil de test fonctionnel Open Source pour les tests d'API. Il prend en charge plusieurs protocoles tels que SOAP, REST, HTTP, JMS et plusieurs autres.
 - **Postman** - [Postman](https://www.getpostman.com/) est une application pour interagir avec les API HTTP. Il vous présente une interface graphique conviviale pour la construction de requêtes et la lecture des réponses.
 - **Curl** - cURL est un outil pour travailler avec des URL. cURL nous permet d'interroger une URL à partir de la ligne de commande. cURL permet de tester facilement de nouvelles API. cUrl peut être installer dans un terminal sur Linux en tapant `sudo yum install curl`.
 - **Apache benchmark** - ApacheBench peut réaliser des tests de charge en envoyant un nombre arbitraire de requêtes simultanées. Benchmark Apache peut s'installer à partir de la ligne de commande sous Linux en tapant `yum install httpd-tools`.
