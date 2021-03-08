@@ -162,7 +162,7 @@ Dans le contexte de cette norme de conception d'API, une API est définie comme 
 ## REST <a name="rest"></a>
 REST (*REpresentational State Transfer*) est un style d'architecture logicielle définissant un ensemble de contraintes à utiliser pour créer des services web.
 
-Les services web conformes au style d'architecture REST, aussi appelés services web **RESTful**, établissent une interopérabilité entre les ordinateurs sur Internet.
+Les services web conformes au style d'architecture REST, aussi appelés services web RESTful, établissent une interopérabilité entre les ordinateurs sur Internet.
 
 Les services web REST permettent aux systèmes effectuant des requêtes de manipuler des ressources web via leurs représentations textuelles à travers un ensemble d'opérations uniformes et prédéfinies sans état.
 
@@ -178,17 +178,17 @@ Toutes ces caractéristiques sont des facteurs essentiels afin de créer des ser
 
 ## Ressources <a name="resssources"></a>
 
-Afin de concevoir une API facilement utilisable, les applications doit être divisées en groupes logiques, aussi appelés **ressources**.
+Afin de concevoir une API facilement utilisable, les applications doit être divisées en groupes logiques, aussi appelés des ressources.
 
-Par exemple, dans un système de gestion de ressources humaines (RH), les **ressources** sont les `employés`, les `postes` et les `demandes de congés`.
+Par exemple, dans un système de gestion de ressources humaines (RH), les ressources sont les `employés`, les `postes` et les `demandes de congés`.
 
-La décomposition des systèmes en **ressources** permet une séparation des préoccupations (*"separation of concerns"*). Par exemple, seul un employé peut faire une demande de congés. Cela garantit également que chaque élément de données retourné par l'API sera minimaliste afin répondre aux exigences du client.
+La décomposition des systèmes en ressources permet une séparation des préoccupations (*"separation of concerns"*). Par exemple, seul un employé peut faire une demande de congés. Cela garantit également que chaque élément de données retourné par l'API sera minimaliste afin répondre aux exigences du client.
 
 Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Généralement, les ressources sont les «noms» que nous retrouvons dans une applications. Il y a cependant une différence importante entre REST et POO: les méthodes de REST sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler une ressource, c'est à dire qu'aucune autre méthode ne peut être indiquée dans les requêtes des API, ni dans le corps HTTP, ni dans le chemin de base ou dans les paramètres.
 
 ## Identifiants de ressource <a name="idresssources"></a>
 
-Toutes les ressources disponibles dans un système (par exemple, chaque `employé` ou chaque `demande de congé`) doit être identifiable de manière unique. Ceci est un élément clé d'un **API RESTful**, soit la possibilité d'adresser individuellement tout élément d'un système.
+Toutes les ressources disponibles dans un système (par exemple, chaque `employé` ou chaque `demande de congé`) doit être identifiable de manière unique. Ceci est un élément clé d'un API RESTful, soit la possibilité d'adresser individuellement tout élément d'un système.
 
 Voici quelques exemples d'identificateurs de ressources :
 | Nom                       | Exemple                                         |
@@ -198,10 +198,10 @@ Voici quelques exemples d'identificateurs de ressources :
 | Date                      | /dates/2020-10-23                               |
 | GUID                      | dceb9c63-a73b-44c9-9a48-93813d37fee7            |
 
-**Note** : Lorsque des identifiants numériques sont utilisés, ils **NE DOIVENT** pas être séquentiels afin d'éviter une facilité à deviner le prochain identificateur.
+**Note** : Lorsque des identifiants numériques sont utilisés, ils **NE DOIVENT PAS** être séquentiels afin d'éviter une facilité à deviner le prochain identificateur.
 
 ## Représentations <a name="représentation"></a>
-Un concept clé dans la conception d'**API RESTful** réside dans l'idée de représenter une ressource à un moment donné dans le temps.
+Un concept clé dans la conception d'API RESTful réside dans l'idée de représenter une ressource à un moment donné dans le temps.
 
 Dans notre exemple d'un système de gestion de ressources humaines, lorsque qu'une application cliente demande une informations sur un employé, le système de RH retournera cette représentation :
 
@@ -241,7 +241,7 @@ Les espaces de noms (*namespace*) doivent être tenus en compte dans la concepti
 
 ## Opérations <a name="opérations"></a>
 
-Les développeurs utilisent des **Operations** afin d'accéder aux espaces de noms (*namespace*), ressources et des identificateurs de ressources.
+Les développeurs utilisent des Operations afin d'accéder aux espaces de noms (*namespace*), ressources et des identificateurs de ressources.
 
 Une opération est définie par l'utilisation d'une méthode HTTP et d'un chemin de ressource.
 
@@ -330,7 +330,7 @@ Si le contrat API doit changer d'une manière qui rompt celui-ci avec ses des co
 
 Lors de la conception d'une nouvelle API, l'une des principales considérations est l'expérience du développeur qui utilisera celle-ci.
 
-Afin d'aider les concepteurs d'API peuvent se référer au modèle de maturité de Leonard Richardson (2008) afin de s'assurer que leurs API sont conforme au style REST.
+Afin d'aider les concepteurs d'API peuvent se référer au [modèle de maturité de Leonard Richardson (2008)](https://martinfowler.com/articles/richardsonMaturityModel.html) afin de s'assurer que leurs API sont conforme au style REST.
 
 ![alt text](./niveaux-maturité-REST.png "Niveaux de maturité de Richardson")
 
@@ -430,7 +430,7 @@ Le tableau suivant explique comment construire l'URI de l'API.
 | Élément de l'URI                        | Description                                                  | Exemple                                                      |
 | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Protocol                                | Toutes les API **DOIVENT** être exposées en utilisant HTTPS. | `https://`                                                   |
-| Autorité > Environment                  | Le domaine dans lequel le point de terminaison (*endpoint*) de l'API sera exposé.| `API.quebec.ca`                                              |
+| Autorité > Environment                  | Le domaine dans lequel le point de terminaison (*endpoint*) de l'API sera exposé.| `api.quebec.ca`                                              |
 | Chemin > API                            | Le nom d'API dérivé du domaine métier.                       | Exemple : `/namespace/nom-du-projet`. |
 | Chemin > Version                        | La version de l'API à laquelle le consommateur souhaite accéder. | Exemple : `/v1`. |
 | Chemin > Collection                     | La collection identifie une liste de ressources. La collection **DOIT** être nommée en utilisant la représentation plurielle d'un nom. |  |
@@ -529,7 +529,7 @@ AAAA-MM-JJ
 La manière internationalement reconnue de représenter un objet temporel est:
 
 ```
-hh:mm:ss.fff
+hh:mm:ss.mmm
 ```
 
 Voici la description de ces composantes :
@@ -539,10 +539,10 @@ Voici la description de ces composantes :
 | AAAA           | Année à quatre chiffres                                      | `2021`  |
 | MM             | Mois à deux chiffres (avec zéro non significatif)            | `07`    |
 | JJ             | Jour à deux chiffres (avec zéro non significatif)            | `14`    |
-| hh             | Deux chiffres(00 à 23)                                       | `13`    |
-| mm             | Deux chiffres                                                | `48`    |
-| ss             | Deux chiffres                                                | `12`    |
-| fff            | Trois chiffres (milliseconde de 000 à 999)                   | `123`   |
+| hh             | Heure à deux chiffres (00 à 23)                              | `16`    |
+| mm             | Minute à deux chiffres (00 à 60)                             | `48`    |
+| ss             | Seconde à deux chiffres (00 à 60)                            | `12`    |
+| mmm            | Trois chiffres (milliseconde de 000 à 999)                   | `123`   |
 
 Lorsqu'il est combiné dans un `datetime`, l'objet peut être représenté comme suit:
 
@@ -637,7 +637,7 @@ Toutes les API **DOIVENT** adhérer à la [Gestion sémantique des versions 2.0.
 
 ## Version majeure <a name="versionmajeure"></a>
 
-Toutes les API **DOIVENT** inclure uniquement la version MAJEUR dans le cadre de l'URI au format 'v{MAJEUR}', par exemple https://API.quebec.ca/v1/employes
+Toutes les API **DOIVENT** inclure uniquement la version MAJEUR dans le cadre de l'URI au format 'v{MAJEUR}', par exemple https://api.quebec.ca/v1/employes
 
 Les versions MINEURE et CORRECTIF ne sont pas requises dans l'URI.
 
@@ -653,11 +653,11 @@ Lorsque de nouvelles versions majeures sont publiées, les anciennes versions do
 
 Les numéros de version mineure sont affichés sur la page de documentation de l'API ou font partie d'un appel de gestion spécial à l'URI de l'API lui-même. Pour prendre en charge cela, votre API **DOIT** implémenter une réponse à une requête GET à l'URI de base de l'API et renvoyer les métadonnées suivantes dans la réponse:
 
-- **API_name:** Le nom de l'API
-- **API_version:** La version de l'API avec les versions majeures et mineures
-- **API_released:** La date à laquelle l'API a été publiée
-- **API_documentation:** Liens vers la documentation de l'API
-- **API_status:** Pour indiquer si une API est toujours active ou est obsolète.
+- **api_name:** Le nom de l'API
+- **api_version:** La version de l'API avec les versions majeures et mineures
+- **api_released:** La date à laquelle l'API a été publiée
+- **api_documentation:** Liens vers la documentation de l'API
+- **api_status:** Pour indiquer si une API est toujours active ou est obsolète.
 
 Des métadonnées supplémentaires peuvent être ajoutées à la réponse si nécessaire.
 
@@ -736,7 +736,7 @@ Les règles suivantes s'appliquent lors du retrait d'une version majeure de l'AP
 
 ### Version majeure de l'API de remplacement
 
-Étant donné les impacts importants d'une nouvelle version majeure d'une API, les propriétaires d'API ** DOIVENT ** s'assurer de la justification de produire une version majeure.
+Étant donné les impacts importants d'une nouvelle version majeure d'une API, les propriétaires d'API **DOIVENT** s'assurer de la justification de produire une version majeure.
 
 Les propriétaires d'API **DEVRAIENT** explorer toutes les alternatives possibles à l'introduction d'une nouvelle version majeure de l'API dans le but de minimiser l'impact sur les clients.
 
@@ -832,9 +832,9 @@ Les opérations suivantes sont applicables pour une seule ressource :
 
 ## Formats du contenu des requêtes (Request Payload Formats) <a name="formatréponses"></a>
 
-Les API **DOIVENT** supporter un *payload* au format `JSON`.
+Les API **DOIVENT** supporter un *payload* au format JSON.
 
-D'autres formats de *payload* tels que `XML`, `CSV` et `YAML` **PEUVENT** aussi être supportés lorsque requis.
+D'autres formats de *payload* tels que XML, CSV et YAML **PEUVENT** aussi être supportés lorsque requis.
 
 Le support des formats supplémentaires doit être documentée dans la définition Swagger des API.
 
@@ -1021,7 +1021,7 @@ Il existe une grande variété d'outils de test gratuits (open source) disponibl
 - **Postman** - [Postman](https://www.getpostman.com/) est une application pour interagir avec les API HTTP. Il vous présente une interface graphique conviviale pour la construction de requêtes et la lecture des réponses.
 - **Curl** - cURL est un outil pour travailler avec des URL. cURL nous permet d'interroger une URL à partir de la ligne de commande. cURL permet de tester facilement de nouvelles API. cUrl peut être installer dans un terminal sur Linux en tapant `sudo yum install curl`.
 - **Apache benchmark** - ApacheBench peut réaliser des tests de charge en envoyant un nombre arbitraire de requêtes simultanées. Benchmark Apache peut s'installer à partir de la ligne de commande sous Linux en tapant `yum install httpd-tools`.
-- **Swagger** - Swagger est un éditeur permettant de valider une définition Swagger.
+- **Swagger** - [Swagger(https://swagger.io/tools/swagger-editor/) est un éditeur permettant de valider une définition basée sur OpenAPI.
 
 
 ## Références <a name="références"></a>
