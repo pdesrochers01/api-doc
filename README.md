@@ -134,16 +134,16 @@ Finalement, étant donné que les outils pour les **API REST** sont largement di
 
 ## La norme de spécification OpenAPI <a name="openapi"></a>
 
-La spécification [OpenAPI](https://www.openapis.org/) est une spécification ouverte pilotée par la communauté de l'OpenAPI Initiative, un projet collaboratif de la Linux Foundation.
+La spécification **OpenAPI** est une spécification ouverte pilotée par la communauté de l'[OpenAPI Initiative](https://www.openapis.org/), un projet collaboratif de la Linux Foundation.
 
-La spécification [OpenAPI](https://www.openapis.org/) (anciennement la spécification Swagger) est un format de description d'API pour les API REST. Un fichier OpenAPI vous permet de décrire l'ensemble de votre API, incluant :
+La spécification [OpenAPI](https://www.openapis.org/) (anciennement la spécification Swagger) est un format de description d'API pour les API REST. Un fichier OpenAPI permet de décrire toutes les caractéristiques d'un API, incluant :
 
 - Points de terminaison disponibles (*endpoints*) (ex `/utilisateurs`) et opérations sur chaque point de terminaison (*endpoints*) (ex `GET /utilisateurs`, `POST /utilisateurs`)
 - Paramètres des opérations
 - Méthodes d'authentification
 - Coordonnées, licence, conditions d'utilisation et autres informations.
 
-Les spécifications d'API peuvent être écrites en YAML ou JSON. Le format est facile à apprendre et lisible autant par les humains que par les machines. La spécification OpenAPI complète peut être trouvée sur GitHub: Spécification OpenAPI 3.0
+Les spécifications d'API peuvent être écrites en YAML ou JSON. Le format est facile à apprendre et lisible autant par les humains que par les machines. La spécification OpenAPI complète peut être trouvée sur GitHub: [Spécification OpenAPI](https://github.com/OAI/OpenAPI-Specification).
 
 
 # Définitions <a name="définition"></a>
