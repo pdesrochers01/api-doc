@@ -5,7 +5,7 @@
 1. [Préface](#préface)
     1. [Introduction](#introduction)
     1. [Audience](#audience)
-    1. [Sémantique et formatage du document](#document)
+    1. [Conventions utilisées dans ce document](#document)
     1. [Contacts](#contact)
     1. [Pourquoi une norme de conception des API?](#norme)
     1. [Comment appliquer cette norme de conception?](#appliquer)
@@ -74,19 +74,24 @@
 # Préface <a name="préface"></a>
 
 ## Introduction <a name="introduction"></a>
+
 Ce document décrit la norme de conception pour l'ensemble des interfaces de programmation d'application (API) du Québec. Ce guide s'adresse à toute personne œuvrant au développement de services numériques pour une fonction publique, que ce soit dans le cadre de la fonction publique du Québec, d'une agence gouvernementale ou autre.
 
 Ce document de normes API est un travail en cours d'élaboration (*work-in-progress*). Pour y contribuer, veuillez faire une demande à l'adresse ci-dessous. L'équipe de gestion des API du gouvernement du Québec analysera la demande et décidera si celle-ci peut être intégrée.
 
 ## Audience <a name="audience"></a>
+
 Le public visé par ce document sont les développeurs d'API, les architectes d'entreprise et de solutions et les analystes organiques et d'affaire.
 
 Ce document a été écrit dans le but d'être utilisé au sein du gouvernement du Québec. Il est rendu public afin de permettre une adoption plus large par des particuliers ou des organisations partenaires qui souhaitent aussi publier ou consommer des API interopérables avec les standards du gouvernement du Québec.
 
-## Sémantique, formatage et dénomination du document (*Document Semantics, Formatting, and Naming*) <a name="document"></a>
+## Conventions utilisées dans ce document <a name="document"></a>
+
 Les mots clés **DOIT**, **NE DOIT PAS**, **DEVRAIT**, **NE DEVRAIT PAS**, **RECOMMANDÉ**, **PEUT** et **OPTIONNEL** dans ce document doivent être interprétés tel que décrit dans le standard [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
 Les acronymes sont écrits en majuscules. Par exemple, les mots **REST**, **JSON**, **XML** et tous les autres acronymes sont tous représentés de cette façon.
+
+La grande majorité de la littérature disponible sur les API REST n'est disponible qu'en anglais seulement. En conséquence, les auteurs de cette norme ont jugé utilie d'indiquer en *italique* le terme anglais pour des fins de référence.
 
 Les textes lisibles par traitement informatique (programme, script, etc.) tel que les **URL**, les verbes **HTTP** et les codes sources, sont représentés par la `mise en évidence (surbrillance) des blocs de code`.
 
@@ -182,14 +187,15 @@ La décomposition des systèmes en **ressources** permet une séparation des pr�
 Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Généralement, les ressources sont les «noms» que nous retrouvons dans une applications. Il y a cependant une différence importante entre REST et POO: les méthodes de REST sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler une ressource, c'est à dire qu'aucune autre méthode ne peut être indiquée dans les requêtes des API, ni dans le corps HTTP, ni dans le chemin de base ou dans les paramètres.
 
 ## Identifiants de ressource <a name="idresssources"></a>
+
 Toutes les ressources disponibles dans un système (par exemple, chaque `employé` ou chaque `demande de congé`) doit être identifiable de manière unique. Ceci est un élément clé d'un API RESTful, soit la possibilité d'adresser individuellement tout élément d'un système.
 
 Voici quelques exemples d'identificateurs de ressources :
-| Nom                       | Exemple                        |
-| ------------------------- |--------------------------------|
-| Numérique                 | /employes/123456                |
-| Chaîne de caractères      | /employes/marie-tremblay       |
-| Date                      | /dates/2020-10-23              |
+| Nom                       | Exemple                                         |
+| ------------------------- |-------------------------------------------------|
+| Numérique                 | /employes/123456                                |
+| Chaîne de caractères      | /employes/marie-tremblay                        |
+| Date                      | /dates/2020-10-23                               |
 | GUID                      | dceb9c63-a73b-44c9-9a48-93813d37fee7            |
 
 **Note** : Lorsque des identifiants numériques sont utilisés, ils **NE DOIVENT** pas être séquentiels afin d'éviter une facilité à deviner le prochain identificateur.
