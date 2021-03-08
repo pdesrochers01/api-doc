@@ -177,9 +177,9 @@ Afin de concevoir une API facilement utilisable, les applications doit être div
 
 Par exemple, dans un système de gestion de ressources humaines (RH), les **ressources** sont les `employés`, les `postes` et les `demandes de congés`.
 
-La décomposition des systèmes en groupes logiques permet une séparation des préoccupations (*"separation of concerns"*). Cela garantit également que chaque élément de données retourné par l'API sera minimaliste afin répondre aux exigences du client.
+La décomposition des systèmes en **ressources** permet une séparation des préoccupations (*"separation of concerns"*). Par exemple, seul un employé peut faire une demande de congés. Cela garantit également que chaque élément de données retourné par l'API sera minimaliste afin répondre aux exigences du client.
 
-Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Il y a cependant une différence importante entre REST et POO: les méthodes de REST sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler la ressource. Aucune autre méthode ne peut être indiquée dans les requêtes des API, ni dans le corps HTTP, ni dans le chemin de base, ni dans les paramètres.
+Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Généralement, les ressources sont les «noms» que nous retrouvons dans une applications. Il y a cependant une différence importante entre REST et POO: les méthodes de REST sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler une ressource, c'est à dire qu'aucune autre méthode ne peut être indiquée dans les requêtes des API, ni dans le corps HTTP, ni dans le chemin de base ou dans les paramètres.
 
 ## Identifiants de ressource <a name="idresssources"></a>
 Toutes les ressources disponibles dans un système (par exemple, chaque `employé` ou chaque `demande de congé`) doit être identifiable de manière unique. Ceci est un élément clé d'un API RESTful, soit la possibilité d'adresser individuellement tout élément d'un système.
@@ -187,10 +187,10 @@ Toutes les ressources disponibles dans un système (par exemple, chaque `employ�
 Voici quelques exemples d'identificateurs de ressources :
 | Nom                       | Exemple                        |
 | ------------------------- |--------------------------------|
-| Numérique                 | /employes/12389                |
+| Numérique                 | /employes/123456                |
 | Chaîne de caractères      | /employes/marie-tremblay       |
-| Date                      | /dates/2018-09-17              |
-| GUID                      | 7d80-eb69-4lq5-9f95            |
+| Date                      | /dates/2020-10-23              |
+| GUID                      | dceb9c63-a73b-44c9-9a48-93813d37fee7            |
 
 **Note** : Lorsque des identifiants numériques sont utilisés, ils **NE DOIVENT** pas être séquentiels afin d'éviter une facilité à deviner le prochain identificateur.
 
