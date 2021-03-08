@@ -173,7 +173,7 @@ Toutes ces caractéristiques sont des facteurs essentiels afin de créer des ser
 
 ## Ressources <a name="resssources"></a>
 
-Afin de concevoir une API facilement utilisable, les applications doit être divisées en groupes logiques (souvent appelés modèles ou ressources).
+Afin de concevoir une API facilement utilisable, les applications doit être divisées en groupes logiques, aussi appelés **ressources**.
 
 Par exemple, dans un système de gestion de ressources humaines (RH), les **ressources** sont les `employés`, les `postes` et les `demandes de congés`.
 
