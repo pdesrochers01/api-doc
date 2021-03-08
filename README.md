@@ -1,4 +1,4 @@
-# Lignes directrices des **API** du gouvernement du Québec
+# Lignes directrices des API du gouvernement du Québec
 
 # Table des matières
 
@@ -7,7 +7,7 @@
     1. [Audience](#audience)
     1. [Conventions utilisées dans ce document](#document)
     1. [Contacts](#contact)
-    1. [Pourquoi une norme de conception des **API**?](#norme)
+    1. [Pourquoi une norme de conception des API?](#norme)
     1. [Comment appliquer cette norme de conception?](#appliquer)
     1. [Pourquoi le style d'architecture REST?](#rest)
     1. [La norme de spécification OpenAPI](#openAPI)
@@ -75,15 +75,15 @@
 
 ## Introduction <a name="introduction"></a>
 
-Ce document décrit la norme de conception pour l'ensemble des interfaces de programmation d'application (**API**) du Québec. Ce guide s'adresse à toute personne œuvrant au développement de services numériques pour une fonction publique, que ce soit dans le cadre de la fonction publique du Québec, d'une agence gouvernementale ou autre.
+Ce document décrit la norme de conception pour l'ensemble des interfaces de programmation d'application (API) du Québec. Ce guide s'adresse à toute personne œuvrant au développement de services numériques pour une fonction publique, que ce soit dans le cadre de la fonction publique du Québec, d'une agence gouvernementale ou autre.
 
-Ce document de normes **API** est un travail en cours d'élaboration (*work-in-progress*). Pour y contribuer, veuillez faire une demande à l'adresse ci-dessous. L'équipe de gestion des **API** du gouvernement du Québec analysera la demande et décidera si celle-ci peut être intégrée.
+Ce document de normes API est un travail en cours d'élaboration (*work-in-progress*). Pour y contribuer, veuillez faire une demande à l'adresse ci-dessous. L'équipe de gestion des API du gouvernement du Québec analysera la demande et décidera si celle-ci peut être intégrée.
 
 ## Audience <a name="audience"></a>
 
-Le public visé par ce document sont les développeurs d'**API**, les architectes d'entreprise et de solutions et les analystes organiques et d'affaire.
+Le public visé par ce document sont les développeurs d'API, les architectes d'entreprise et de solutions et les analystes organiques et d'affaire.
 
-Ce document a été écrit dans le but d'être utilisé au sein du gouvernement du Québec. Il est rendu public afin de permettre une adoption plus large par des particuliers ou des organisations partenaires qui souhaitent aussi publier ou consommer des **API** interopérables avec les standards du gouvernement du Québec.
+Ce document a été écrit dans le but d'être utilisé au sein du gouvernement du Québec. Il est rendu public afin de permettre une adoption plus large par des particuliers ou des organisations partenaires qui souhaitent aussi publier ou consommer des API interopérables avec les standards du gouvernement du Québec.
 
 ## Conventions utilisées dans ce document <a name="document"></a>
 
@@ -99,65 +99,65 @@ Les textes lisibles par traitement informatique (programme, script, etc.) tel qu
 
 TBC (ex: APIteam@API.quebec.ca)
 
-## Pourquoi une norme de conception des **API**? <a name="norme"></a>
+## Pourquoi une norme de conception des API? <a name="norme"></a>
 
-La principale intention de ce document est de servir de référence dans la phase de conception du développement d'un nouvel **API**.
+La principale intention de ce document est de servir de référence dans la phase de conception du développement d'un nouvel API.
 
 Les normes de conception définies dans ce document sont indépendantes des données (ne tiennent pas compte du type de données consommées ou produites) et des langages de programmation.
 
-Ces normes de conception présentent des patrons communs de conception qui sont applicables à tous les scénarios d'**API**. Ces patrons de conceptions sont basées sur des standards reconnus par l'industrie.
+Ces normes de conception présentent des patrons communs de conception qui sont applicables à tous les scénarios d'API. Ces patrons de conceptions sont basées sur des standards reconnus par l'industrie.
 
 ## Comment appliquer ce cadre normatif? <a name="appliquer"></a>
 
-Il est important de bien comprendre quand et comment appliquer ces normes de conception d'**API**. En effet, la catégorie à laquelle appartient l'**API** déterminera si vous devrez ou non utiliser ce cadre normatif.
+Il est important de bien comprendre quand et comment appliquer ces normes de conception d'API. En effet, la catégorie à laquelle appartient l'API déterminera si vous devrez ou non utiliser ce cadre normatif.
 
-Une **API** appartiendra généralement à l'une des catégories suivantes:
+Une API appartiendra généralement à l'une des catégories suivantes:
 
-- ****API** de niveau système (application)**: il s'agit d'**API** de bas niveau exposées directement par une application.
+- **API de niveau système (application)**: il s'agit d'API de bas niveau exposées directement par une application.
 
-- ****API** de niveau processus**: il s'agit d'**API** composées d'autres **API** systèmes soit via une orchestration et/ou une chorégraphie.
+- **API de niveau processus**: il s'agit d'API composées d'autres API systèmes soit via une orchestration et/ou une chorégraphie.
 
-- ****API** de niveau d'intégration**: il s'agit d'**API** destinées à faciliter l'adoption de l'intégration d'**API** entre une organisation et ses consommateurs externes.
+- **API de niveau d'intégration**: il s'agit d'API destinées à faciliter l'adoption de l'intégration d'API entre une organisation et ses consommateurs externes.
 
-Si votre **API** fait partie de l'**API** de niveau système (application) et est développée sur mesure (maison), il est **RECOMMANDÉ** d'utiliser cette norme de conception car elle facilitera le développement futur des **API** de niveau processus ou d'intégration.
+Si l'API fait partie du niveau système (application) et est développée sur mesure (maison), il est **RECOMMANDÉ** d'utiliser cette norme de conception car elle facilitera le développement futur des API de niveau processus ou d'intégration.
 
-Si votre **API** est une **API** de niveau de processus, il est aussi **RECOMMANDÉ** d'appliquer cette norme de conception. En effet, les **API** de niveau de processus sont souvent réutilisées par différents consommateurs.
+Si l'API est de niveau de processus, il est aussi **RECOMMANDÉ** d'appliquer cette norme de conception. En effet, les API de niveau de processus sont souvent réutilisées par différents consommateurs.
 
-Si votre **API** est une **API** de niveau d'intégration, ces normes de conception **DOIVENT** être appliquées.
+Si l'API est de niveau d'intégration, ces normes de conception **DOIVENT** être appliquées.
 
 ## Pourquoi le style d'architecture **REST**? <a name="rest"></a>
 
-Cette norme de conception des **API** du gouvernement du Québec est basée sur le style d'architecture **REST** (Representational State Transfer).
+Cette norme de conception des API du gouvernement du Québec est basée sur le style d'architecture **REST** (Representational State Transfer).
 
-Bien qu'il existe d'autres modèles de conception pour les **API** (par exemple, **SOAP**, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté **REST** comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontario, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture **REST**. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
+Bien qu'il existe d'autres modèles de conception pour les API (par exemple, **SOAP**, **GraphQL** et **gRPC**), la grande majorité des développeurs de l'industrie des TI ont largement adopté **REST** comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontario, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture **REST**. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
 
 Le style d'architecture **REST** est très efficace afin de modéliser des systèmes et des données. Les principes **REST** peuvent être aussi bien appliqués aux systèmes de petite que de grande envergure et les outils disponibles (écosystème de développement) supportent facilement les accès aux données.
 
 Il est important de prendre note que les **API REST** ne sont généralement pas adaptées à la diffusion (streaming) de données ou dans les cas où la performance des interaction est essentielle. **GraphQL** et **gRPC/JSON-RPC** sont des alternatives en émergence qui seront éventuellement considérées comme des options pour les standards du gouvernement du Québec. Un aiguilleur sera disponible bientôt afin d'aider les concepteurs dans le choix de l'architecture à considérer.
 
-Finalement, étant donné que les outils pour les **API REST** sont largement disponibles et que les développeurs sont déjà familier avec ceux-ci (autant en Amérique du Nord qu'ailleurs dans le monde), il a été déterminé que le style d'architecture **REST** serait la base de la modélisation des **API** dans le gouvernement du Québec.
+Finalement, étant donné que les outils pour les **API REST** sont largement disponibles et que les développeurs sont déjà familier avec ceux-ci (autant en Amérique du Nord qu'ailleurs dans le monde), il a été déterminé que le style d'architecture **REST** serait la base de la modélisation des API dans le gouvernement du Québec.
 
-## La norme de spécification Open**API** <a name="open**API**"></a>
+## La norme de spécification OpenAPI <a name="openAPI"></a>
 
-La spécification **Open**API**** (anciennement la spécification Swagger) est une spécification ouverte pilotée par la communauté de l'[OpenAPI Initiative](https://www.open**API**s.org/), un projet collaboratif de la Linux Foundation.
+La spécification **OpenAPI** (anciennement la spécification Swagger) est une spécification ouverte pilotée par la communauté de l'[OpenAPI Initiative](https://www.openAPIs.org/), un projet collaboratif de la Linux Foundation.
 
-La spécification [Open**API**](https://www.open**API**s.org/) est un format de description d'**API** pour les **API REST**. Un fichier OpenAPI permet de décrire toutes les caractéristiques d'un **API**, incluant :
+La spécification [OpenAPI](https://www.openAPIs.org/) est un format de description d'API pour les **API REST**. Un fichier OpenAPI permet de décrire toutes les caractéristiques d'un API, incluant :
 
 - Points de terminaison disponibles (*endpoints*) (ex `/utilisateurs`) et opérations sur chaque point de terminaison (*endpoints*) (ex `GET /utilisateurs`, `POST /utilisateurs`)
 - Paramètres des opérations
 - Méthodes d'authentification
 - Coordonnées, licence, conditions d'utilisation et autres informations.
 
-Les spécifications d'**API** peuvent être écrites en YAML ou JSON. Le format est facile à apprendre et lisible autant par les humains que par les machines. La spécification Open**API** complète peut être trouvée sur GitHub: [Spécification Open**API**](https://github.com/OAI/Open**API**-Specification).
+Les spécifications d'API peuvent être écrites en YAML ou JSON. Le format est facile à apprendre et lisible autant par les humains que par les machines. La spécification OpenAPI complète peut être trouvée sur GitHub: [Spécification OpenAPI](https://github.com/OAI/OpenAPI-Specification).
 
 
 # Définitions <a name="définition"></a>
 
-## **API** <a name="**API**"></a>
-En informatique, une interface de programmation d’application (en anglais **API** pour *Application Programming Interface*) est un ensemble normalisé de classes, de méthodes, de fonctions et de constantes qui sert de façade par laquelle une application offre des services à d'autres applications. Elle est offerte par une bibliothèque logicielle ou un service web, le plus souvent accompagnée d'une description qui spécifie comment des programmes consommateurs peuvent se servir des fonctionnalités du programme fournisseur.
+## API <a name="API"></a>
+En informatique, une interface de programmation d’application (en anglais API pour *Application Programming Interface*) est un ensemble normalisé de classes, de méthodes, de fonctions et de constantes qui sert de façade par laquelle une application offre des services à d'autres applications. Elle est offerte par une bibliothèque logicielle ou un service web, le plus souvent accompagnée d'une description qui spécifie comment des programmes consommateurs peuvent se servir des fonctionnalités du programme fournisseur.
 
-Dans le contexte de cette norme de conception d'**API**, une **API** est définie comme un service Web. Ils sont utilisées pour créer des applications distribués, dont les composants sont faiblement couplés.
-![alt text](./**API**-Web.png "**API** de type service Web")
+Dans le contexte de cette norme de conception d'API, une API est définie comme un service Web. Ils sont utilisées pour créer des applications distribués, dont les composants sont faiblement couplés.
+![alt text](./API-Web.png "API de type service Web")
 
 ## **REST** <a name="rest"></a>
 **REST** (*REpresentational State Transfer*) est un style d'architecture logicielle définissant un ensemble de contraintes à utiliser pour créer des services web.
@@ -178,13 +178,13 @@ Toutes ces caractéristiques sont des facteurs essentiels afin de créer des ser
 
 ## Ressources <a name="resssources"></a>
 
-Afin de concevoir une **API** facilement utilisable, les applications doit être divisées en groupes logiques, aussi appelés **ressources**.
+Afin de concevoir une API facilement utilisable, les applications doit être divisées en groupes logiques, aussi appelés **ressources**.
 
 Par exemple, dans un système de gestion de ressources humaines (RH), les **ressources** sont les `employés`, les `postes` et les `demandes de congés`.
 
-La décomposition des systèmes en **ressources** permet une séparation des préoccupations (*"separation of concerns"*). Par exemple, seul un employé peut faire une demande de congés. Cela garantit également que chaque élément de données retourné par l'**API** sera minimaliste afin répondre aux exigences du client.
+La décomposition des systèmes en **ressources** permet une séparation des préoccupations (*"separation of concerns"*). Par exemple, seul un employé peut faire une demande de congés. Cela garantit également que chaque élément de données retourné par l'API sera minimaliste afin répondre aux exigences du client.
 
-Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Généralement, les ressources sont les «noms» que nous retrouvons dans une applications. Il y a cependant une différence importante entre **REST** et POO: les méthodes de **REST** sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler une ressource, c'est à dire qu'aucune autre méthode ne peut être indiquée dans les requêtes des **API**, ni dans le corps HTTP, ni dans le chemin de base ou dans les paramètres.
+Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Généralement, les ressources sont les «noms» que nous retrouvons dans une applications. Il y a cependant une différence importante entre **REST** et POO: les méthodes de **REST** sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler une ressource, c'est à dire qu'aucune autre méthode ne peut être indiquée dans les requêtes des API, ni dans le corps HTTP, ni dans le chemin de base ou dans les paramètres.
 
 ## Identifiants de ressource <a name="idresssources"></a>
 
@@ -235,7 +235,7 @@ Content-Type: application/pdf
 ## Espace de noms (*namespace*) <a name="namespace"></a>
 L'espace de noms (*namespace*) d'un service définit le regroupement d'un ensemble de fonctions associées. Les espaces de noms (*namespace*) peuvent être de niveau élevé (par exemple, le nom d'un OP ou d'un service) ou bas (par exemple un projet spécifique ou une équipe précise).
 
-Les espaces de noms (*namespace*) sont utiles pour fournir aux consommateurs d'**API** des accès à des regroupements via une passerelle d'**API**. Une fois qu'un consommateur a un jeton d'accès (*access token*) à un espace de noms particulier, il peut alors avoir accès à toutes les fonctions fournies dans cet espace de noms (*namespace*).
+Les espaces de noms (*namespace*) sont utiles pour fournir aux consommateurs d'API des accès à des regroupements via une passerelle d'API. Une fois qu'un consommateur a un jeton d'accès (*access token*) à un espace de noms particulier, il peut alors avoir accès à toutes les fonctions fournies dans cet espace de noms (*namespace*).
 
 Les espaces de noms (*namespace*) doivent être tenus en compte dans la conception de la structure d'un URL (voir la section Noms des composants URI).
 
@@ -252,15 +252,15 @@ GET /employes/123456
 DELETE /employes/123456
 ```
 
-# Exigences gouvernementale des **API** <a name="exigences"></a>
+# Exigences gouvernementale des API <a name="exigences"></a>
 
-## Documentation des **API** <a name="documentation"></a>
+## Documentation des API <a name="documentation"></a>
 
-Une bonne documentation d'un **API** est un élément essentiel. En effet, cela facilite l'interopérabilité des services grâce à un document descriptif commun. Idéalement, la structure, les méthodes, les conventions de dénomination (*naming conventions*) et les réponses seront normalisées afin de garantir une expérience commune aux développeurs qui accèdent aux services provenant des différents OP ou agence.
+Une bonne documentation d'un API est un élément essentiel. En effet, cela facilite l'interopérabilité des services grâce à un document descriptif commun. Idéalement, la structure, les méthodes, les conventions de dénomination (*naming conventions*) et les réponses seront normalisées afin de garantir une expérience commune aux développeurs qui accèdent aux services provenant des différents OP ou agence.
 
-En conséquence, toutes les **API** créées pour le gouvernement québécois **DOIVENT** fournir un document Open**API** v2.0. Un document Open**API** v3.0 **PEUT** également être fourni pour assurer la pérennité de l'**API**.
+En conséquence, toutes les API créées pour le gouvernement québécois **DOIVENT** fournir un document OpenAPI v2.0. Un document OpenAPI v3.0 **PEUT** également être fourni pour assurer la pérennité de l'API.
 
-Il est **RECOMMANDÉ** d'inclure les sections suivantes dans le document de description d'un l'**API** :
+Il est **RECOMMANDÉ** d'inclure les sections suivantes dans le document de description d'un l'API :
 
 - À propos de
 - Mentions légales
@@ -272,16 +272,16 @@ Il est **RECOMMANDÉ** d'inclure les sections suivantes dans le document de desc
 - Modèle de données
 - Nous contacter
 
-## Développement des **API** <a name="développement"></a>
-Il est **RECOMMANDÉ** de suivre les directives suivantes lors du développement d'une **API**:
+## Développement des API <a name="développement"></a>
+Il est **RECOMMANDÉ** de suivre les directives suivantes lors du développement d'une API:
 
-- Le document de description de l'**API** **DEVRAIENT** contenir une description de haut niveau et **DEVRAIENT** être versionnés.
+- Le document de description de l'API **DEVRAIENT** contenir une description de haut niveau et **DEVRAIENT** être versionnés.
 
 - Ils **DOIVENT** être considérés comme des contrats techniques entre les concepteurs (*designers*) et les développeurs et entre consommateurs et fournisseurs.
 
-- Les **API** simulées (*mock*) **DEVRAIENT** être créées en utilisant la description de l'**API** afin de permettre aux consommateurs de s'intégrer r**API**dement dans la phase de réalisation.
+- Les API simulées (*mock*) **DEVRAIENT** être créées en utilisant la description de l'API afin de permettre aux consommateurs de s'intégrer rapidement dans la phase de réalisation.
 
-- Le comportement et les réponses de l'**API** **DEVRAIENT** être décrits avec autant d'informations que possible dans la documentation de l'**API**.
+- Le comportement et les réponses de l'API **DEVRAIENT** être décrits avec autant d'informations que possible dans la documentation de l'API.
 
 - La documentation **DEVRAIT** facilement accessible aux consommateurs.
 
@@ -295,59 +295,59 @@ Il est **RECOMMANDÉ** de suivre les directives suivantes lors du développement
 
 - Les problèmes connus ou les limitations (*known issues or limitations*) **DEVRAIENT** être clairement documentés.
 
-- Les performances attendues, la disponibilité et le niveau de service (*SLA*) des l'**API** **DEVRAIENT** être documentés.
+- Les performances attendues, la disponibilité et le niveau de service (*SLA*) des l'API **DEVRAIENT** être documentés.
 
-- La chronologie dans laquelle les méthodes seront obsolètes **DEVRAIT** être fournie. (Voir la section Politique de fin de vie et dépréciation de l'**API**).
+- La chronologie dans laquelle les méthodes seront obsolètes **DEVRAIT** être fournie. (Voir la section Politique de fin de vie et dépréciation de l'API).
 
-- Toute la documentation de l'**API** **DEVRAIT** être imprimable ou exportable.
+- Toute la documentation de l'API **DEVRAIT** être imprimable ou exportable.
 
-Tous les documents Open**API** **DEVRAIENT** être fournis au format JSON.
+Tous les documents OpenAPI **DEVRAIENT** être fournis au format JSON.
 
-Afin de suivre les recommandations de versionnage de cette norme, il **DOIT** y avoir une description Open**API** par version principale. Par exemple; si votre produit **API** expose et gère 3 versions principales de son **API REST**, vous devez fournir 3 descriptions Open**API** (une pour chaque version, soit v1, v2 et v3).
+Afin de suivre les recommandations de versionnage de cette norme, il **DOIT** y avoir une description OpenAPI par version principale. Par exemple; si votre produit API expose et gère 3 versions principales de son **API REST**, vous devez fournir 3 descriptions OpenAPI (une pour chaque version, soit v1, v2 et v3).
 
 ## L'expérience du développeur <a name="expérience"></a>
 
-Une **API** difficile à utiliser réduit sa probabilité d'utilisation de la part des consommateurs. Il est également peu probable que ceux-ci la recommandent à d'autres consommateurs d'**API**.
+Une API difficile à utiliser réduit sa probabilité d'utilisation de la part des consommateurs. Il est également peu probable que ceux-ci la recommandent à d'autres consommateurs d'API.
 
-Il est fortement **RECOMMANDÉES** que les **API** en cours de conception soient testées avec de véritables consommateurs. Toutes rétroactions données **DEVRAIENT** être pris en compte afin d'être intégré à l'**API**.
+Il est fortement **RECOMMANDÉES** que les API en cours de conception soient testées avec de véritables consommateurs. Toutes rétroactions données **DEVRAIENT** être pris en compte afin d'être intégré à l'API.
 
-L'équipe **API** du gouvernement du Québec fournit un processus d'examen des **API** afin de garantir que les **API** répondent à un niveau minimaliste d'utilisabilité avant qu'elles ne soient publiées aux consommateurs.
+L'équipe API du gouvernement du Québec fournit un processus d'examen des API afin de garantir que les API répondent à un niveau minimaliste d'utilisabilité avant qu'elles ne soient publiées aux consommateurs.
 
 
-## Stabilité des **API** <a name="stabilité"></a>
+## Stabilité des API <a name="stabilité"></a>
 
-Les **API** **DOIVENT** être conçues en gardant à l'esprit la rétro-compatibilité lorsque des modifications sont apportées.
+Les API **DOIVENT** être conçues en gardant à l'esprit la rétro-compatibilité lorsque des modifications sont apportées.
 
-L'introduction de nouveaux champs dans une **API** ou l'ajout de nouveaux points de terminaison (*endpoints*) représente un changement sans rupture.
+L'introduction de nouveaux champs dans une API ou l'ajout de nouveaux points de terminaison (*endpoints*) représente un changement sans rupture.
 
-Si le contrat **API** doit changer d'une manière qui rompt celui-ci avec ses des consommateurs, cela **DEVRAIT** être communiqué clairement.
+Si le contrat API doit changer d'une manière qui rompt celui-ci avec ses des consommateurs, cela **DEVRAIT** être communiqué clairement.
 
-1. Les propriétaires de des **API** **DEVRAIENT** documenter la durée de vie du support de ceux-ci.
+1. Les propriétaires de des API **DEVRAIENT** documenter la durée de vie du support de ceux-ci.
 1. Les nouvelles fonctionnalités **DOIVENT** être introduites de manière à ne pas affecter les consommateurs existants.
 1. Toutes les activités de dépréciation (*deprecation*) **DOIVENT** être connues des consommateurs avant leur mise en œuvre.
 
-## Maturité de la conception des **API** <a name="maturité"></a>
+## Maturité de la conception des API <a name="maturité"></a>
 
-Lors de la conception d'une nouvelle **API**, l'une des principales considérations est l'expérience du développeur qui utilisera celle-ci.
+Lors de la conception d'une nouvelle API, l'une des principales considérations est l'expérience du développeur qui utilisera celle-ci.
 
-Afin d'aider les concepteurs d'**API** peuvent se référer au modèle de maturité de Leonard Richardson (2008) afin de s'assurer que leurs **API** sont conforme au style **REST**.
+Afin d'aider les concepteurs d'API peuvent se référer au modèle de maturité de Leonard Richardson (2008) afin de s'assurer que leurs API sont conforme au style **REST**.
 
 ![alt text](./niveaux-maturité-REST.png "Niveaux de maturité de Richardson")
 
-Le modèle de maturité proposé par Richardson classe les **API** en fonction de leur adhésion et de leur conformité aux principes **REST** selon quatre niveaux (de 0 à 3).
+Le modèle de maturité proposé par Richardson classe les API en fonction de leur adhésion et de leur conformité aux principes **REST** selon quatre niveaux (de 0 à 3).
 
-- Niveau 0 - État de base pour toute nouvelle **API**. Le niveau 0 utilise un simple URI (typiquement des POST) et HTTP comme système de transport pour les interactions entre les applications, mais sans utiliser aucun autres des mécanismes du Web. Il s’agit essentiellement d’échanger des fichiers XML (« Plain Old XML » – POX). Bien que ce style d’architecture soit populaire (simplicité d’implémentation), il n’utilise pas les caractéristiques du Web, soit sa capacité de monter en charge (*scalability*), fiabilité et sa robustesse. De plus, celui-ci amène un problème de couplage fort entre les applications. Cette approche est fortement déconseillée.
-- Niveau 1 - L'**API** implémente différents URI, mais un seul verbe (par exemple POST). Le niveau 1 introduit des « ressources » et permet de faire des requêtes à des URI individuels (généralement en utilisant des POST) pour des actions distinctes au lieu d'exposer un point de terminaison universel (de service unique). Une ressource représente une entité unique ou une collection de tout ce qu’on peut exposer sur le Web (ex. un document, une vidéo, une fiche client, une commande, etc.).
-- Niveau 2 - L'**API** implémente différents URI et plusieurs verbes (par exemple CRUD via GET / POST / PUT / DELETE). Le niveau 2 utilise les verbes HTTP, soit GET (obtenir des données), POST (pour créer de nouvelles données), DELETE (pour effacer des données), PUT (mettre à jour des données), etc. Cette technique permet de spécialiser davantage la ressource et d'affiner ainsi la fonctionnalité de chaque opération individuelle avec le service. Ce niveau est celui utilisé par la majorité des fournisseurs infonuagique (ex S3 d’AWS) et il permet d’accéder aux niveau 3.
-- Niveau 3 - L'**API** implémente différents URI, plusieurs verbes et HATEOAS (« Hypermedia As The Engine of Application State ») pour représenter les relations entre les objets. Essentiellement, il s’agit d’ajouter les actions permises dans les messages de réponse. Ces actions peuvent être déterminer selon le cas d’utilisation et/ou le niveau d’autorisation du consommateur et représentent l’état de la ressource. C’est ce niveau de maturité qui permet le couplage le plus faible entre les applications.
+- Niveau 0 - État de base pour toute nouvelle API. Le niveau 0 utilise un simple URI (typiquement des POST) et HTTP comme système de transport pour les interactions entre les applications, mais sans utiliser aucun autres des mécanismes du Web. Il s’agit essentiellement d’échanger des fichiers XML (« Plain Old XML » – POX). Bien que ce style d’architecture soit populaire (simplicité d’implémentation), il n’utilise pas les caractéristiques du Web, soit sa capacité de monter en charge (*scalability*), fiabilité et sa robustesse. De plus, celui-ci amène un problème de couplage fort entre les applications. Cette approche est fortement déconseillée.
+- Niveau 1 - L'API implémente différents URI, mais un seul verbe (par exemple POST). Le niveau 1 introduit des « ressources » et permet de faire des requêtes à des URI individuels (généralement en utilisant des POST) pour des actions distinctes au lieu d'exposer un point de terminaison universel (de service unique). Une ressource représente une entité unique ou une collection de tout ce qu’on peut exposer sur le Web (ex. un document, une vidéo, une fiche client, une commande, etc.).
+- Niveau 2 - L'API implémente différents URI et plusieurs verbes (par exemple CRUD via GET / POST / PUT / DELETE). Le niveau 2 utilise les verbes HTTP, soit GET (obtenir des données), POST (pour créer de nouvelles données), DELETE (pour effacer des données), PUT (mettre à jour des données), etc. Cette technique permet de spécialiser davantage la ressource et d'affiner ainsi la fonctionnalité de chaque opération individuelle avec le service. Ce niveau est celui utilisé par la majorité des fournisseurs infonuagique (ex S3 d’AWS) et il permet d’accéder aux niveau 3.
+- Niveau 3 - L'API implémente différents URI, plusieurs verbes et HATEOAS (« Hypermedia As The Engine of Application State ») pour représenter les relations entre les objets. Essentiellement, il s’agit d’ajouter les actions permises dans les messages de réponse. Ces actions peuvent être déterminer selon le cas d’utilisation et/ou le niveau d’autorisation du consommateur et représentent l’état de la ressource. C’est ce niveau de maturité qui permet le couplage le plus faible entre les applications.
 
-Toutes les **API** adhérant à cette norme **DOIVENT** être conçues au niveau 2 du modèle de maturité Richardson.
+Toutes les API adhérant à cette norme **DOIVENT** être conçues au niveau 2 du modèle de maturité Richardson.
 
 Il est **RECOMMANDÉ** de mettre en œuvre le niveau 3 du modèle, mais ce n'est pas obligatoire pour cette norme.
 
-# Sécurité des **API** <a name="sécurité**API**"></a>
+# Sécurité des API <a name="sécuritéAPI"></a>
 
-## Conception des **API** <a name="conceptionsecurité"></a>
+## Conception des API <a name="conceptionsecurité"></a>
 TBD
 
 ## Sécurité des transports <a name="sécuritétransports"></a>
@@ -370,7 +370,7 @@ TBC
 ## Validation du type de contenu <a name="validationtypecontenu"></a>
 TBD
 
-## Utiliser les fonctions de sécurité de la passerelle d'**API** <a name="fonctionspasserelle"></a>
+## Utiliser les fonctions de sécurité de la passerelle d'API <a name="fonctionspasserelle"></a>
 TBC
 
 # Conventions de nommage (*Naming Conventions*) <a name="nommage"></a>
@@ -404,11 +404,11 @@ Les URI de cette norme suivent la spécification RFC 3986 afin de simplifier le 
 
 **Composants de l'URI**
 
-La structure des URL utilisées dans les **API** **DEVRAIT** être significative pour les consommateurs. Les URL **DEVRAIENT** suivre une structure hiérarchique prévisible afin d'assurer sa compréhension et sa convivialité.
+La structure des URL utilisées dans les API **DEVRAIT** être significative pour les consommateurs. Les URL **DEVRAIENT** suivre une structure hiérarchique prévisible afin d'assurer sa compréhension et sa convivialité.
 
 Les URL **DOIVENT** suivre la convention de dénomination standard tel que décrite ci-dessous:
 ```
-https://**API**.quebec.ca/namespace/v1/collection?attributes=prenom,nom
+https://API.quebec.ca/namespace/v1/collection?attributes=prenom,nom
 \___/   \___________/\______________________/\____________________/
   |           |                   |                     |
 schéma     autorité            chemin                requête
@@ -425,21 +425,21 @@ Les URL **DOIVENT** suivre la convention de dénomination standard décrite ci-d
 - seuls les tirets «-» peuvent être utilisés pour séparer les mots ou les paramètres pour des fins de lisibilité (pas d'espaces ni de traits de soulignement)
 - seuls les traits de soulignement peuvent être utilisés pour séparer les mots dans les noms de paramètres de requête, mais pas dans le cadre de l'URI de base.
 
-Le tableau suivant explique comment construire l'URI de l'**API**.
+Le tableau suivant explique comment construire l'URI de l'API.
 
 | Élément de l'URI                        | Description                                                  | Exemple                                                      |
 | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Protocol                                | Toutes les **API** **DOIVENT** être exposées en utilisant HTTPS. | `https://`                                                   |
-| Autorité > Environment                  | Le domaine dans lequel le point de terminaison (*endpoint*) de l'**API** sera exposé.| `**API**.quebec.ca`                                              |
-| Chemin > **API**                            | Le nom d'**API** dérivé du domaine métier.                       | Exemple : `/namespace/nom-du-projet`. |
-| Chemin > Version                        | La version de l'**API** à laquelle le consommateur souhaite accéder. | Exemple : `/v1`. |
+| Protocol                                | Toutes les API **DOIVENT** être exposées en utilisant HTTPS. | `https://`                                                   |
+| Autorité > Environment                  | Le domaine dans lequel le point de terminaison (*endpoint*) de l'API sera exposé.| `API.quebec.ca`                                              |
+| Chemin > API                            | Le nom d'API dérivé du domaine métier.                       | Exemple : `/namespace/nom-du-projet`. |
+| Chemin > Version                        | La version de l'API à laquelle le consommateur souhaite accéder. | Exemple : `/v1`. |
 | Chemin > Collection                     | La collection identifie une liste de ressources. La collection **DOIT** être nommée en utilisant la représentation plurielle d'un nom. |  |
-| Chemin > Resource                       | L'identifiant de ressource qui correspond à une instance de la ressource. | Par exemple, l'**API** nom-du-projet, un employé spécifique avec l'ID 123456 serait récupérés en utilisant `GET` `/project-name/v1/employes/E13454` |
-| Chaîne de requête> Paramètres/Filtres   | Les paramètres de requête **NE DOIVENT PAS** être utilisés pour transporter des données réelles. Les paramètres de requête suivants **DEVRAIENT** être pris en charge par votre **API** là où ils seraient utiles: **attributs** - spécifiez ou restreignez les attributs à renvoyer **filtres** - conditions pour restreindre / filtrer la liste de collection **sort** - spécifiez l'exigence de tri **page** - spécifiez l'index de pagination à renvoyer dans un ensemble de collections | Par exemple, `attributes=prenom,nom` retourne un élément de données ne contenant que `prenom` et `nom` attributes`filters=date_de_creation => 2001-09-20T13:00:00 et date_de_creation <= 2001-09-21T13:00:00 et prenom like 'Marie' et post_code=3000` - retourne une collection de ressources avec uen date de création entre 2001-09-20 1pm et 2001-09-21 1pm et prénom 'fred' et post_code est 3000. |
+| Chemin > Resource                       | L'identifiant de ressource qui correspond à une instance de la ressource. | Par exemple, l'API nom-du-projet, un employé spécifique avec l'ID 123456 serait récupérés en utilisant `GET` `/project-name/v1/employes/E13454` |
+| Chaîne de requête> Paramètres/Filtres   | Les paramètres de requête **NE DOIVENT PAS** être utilisés pour transporter des données réelles. Les paramètres de requête suivants **DEVRAIENT** être pris en charge par votre API là où ils seraient utiles: **attributs** - spécifiez ou restreignez les attributs à renvoyer **filtres** - conditions pour restreindre / filtrer la liste de collection **sort** - spécifiez l'exigence de tri **page** - spécifiez l'index de pagination à renvoyer dans un ensemble de collections | Par exemple, `attributes=prenom,nom` retourne un élément de données ne contenant que `prenom` et `nom` attributes`filters=date_de_creation => 2001-09-20T13:00:00 et date_de_creation <= 2001-09-21T13:00:00 et prenom like 'Marie' et post_code=3000` - retourne une collection de ressources avec uen date de création entre 2001-09-20 1pm et 2001-09-21 1pm et prénom 'fred' et post_code est 3000. |
 
 **Noms des ressources**
 
-Les concepteurs d'**API** **DOIVENT** suivre ces principes lors de la création d'une **API REST**:
+Les concepteurs d'API **DOIVENT** suivre ces principes lors de la création d'une **API REST**:
 
 - Les noms **DOIVENT** être utilisés et non des verbes dans l'URI.
 - Les noms de ressources **DOIVENT** être au pluriel.
@@ -483,7 +483,7 @@ Les valeurs peuvent être des objets, des chaînes, des nombres, des booléens o
 
 ## Noms des relations des liens <a name="nomsliens"></a>
 
-Afin de faciliter la navigation des utilisateurs dans l'**API**, des liens relationnels **DOIVENT** être fournis.
+Afin de faciliter la navigation des utilisateurs dans l'API, des liens relationnels **DOIVENT** être fournis.
 
 Un tableau `_links` **DOIT** être fourni pour les ressources. Il contient des objets lien (*link*) qui peuvent référer à des ressources associées dans le système.
 
@@ -516,7 +516,7 @@ Les en-têtes suivants **DEVRAIENT** être utilisés par défaut sur toutes les 
 
 ### Dates formatées ISO8601
 
-Toutes les **API** utilisant des dates **DOIVENT** être conformes au format [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+Toutes les API utilisant des dates **DOIVENT** être conformes au format [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
 
 Dans ce standard, les valeurs de date et d'heure sont classées de la plus grande à la plus petite unité de temps: année, mois (ou semaine), jour, heure, minute, seconde et fraction de seconde.
 
@@ -578,57 +578,57 @@ Lorsque vous utilisez des champs de date, les conventions de dénomination suiva
 
 Liste des employés :
 
-`GET https://**API**.quebec.ca/v1/employes`
+`GET https://API.quebec.ca/v1/employes`
 
 Requête avec filtre :
 
-`GET https://**API**.quebec.ca/v1/employes?annee=2012&sort=desc`
+`GET https://API.quebec.ca/v1/employes?annee=2012&sort=desc`
 
-`GET https://**API**.quebec.ca/v1/employes?section=juridique&annee=2012`
+`GET https://API.quebec.ca/v1/employes?section=juridique&annee=2012`
 
 Un seul employé au format JSON :
 
-`GET https://**API**.quebec.ca/v1/employes/123456`
+`GET https://API.quebec.ca/v1/employes/123456`
 
 Tous les endroits où cet employé travaille :
 
-`GET https://**API**.quebec.ca/v1/employes/123456/locations`
+`GET https://API.quebec.ca/v1/employes/123456/locations`
 
 Spécifiez les champs facultatifs dans une liste séparée par des virgules :
 
-`GET https://**API**.quebec.ca/v1/employes/1234?fields=titre_poste,date_debut`
+`GET https://API.quebec.ca/v1/employes/1234?fields=titre_poste,date_debut`
 
 Ajouter un nouvel emplacement à un employé en particulier :
 
-`POST https://**API**.quebec.ca/v1/employes/123456/locations`
+`POST https://API.quebec.ca/v1/employes/123456/locations`
 
 ### Exemples d'URL incorrectes
 
 Point de terminaison non pluriel:
 
-`GET https://**API**.quebec.ca/v1/employe`
+`GET https://API.quebec.ca/v1/employe`
 
-`GET https://**API**.quebec.ca/v1/employe/123456`
+`GET https://API.quebec.ca/v1/employe/123456`
 
 Verbe dans l'URL:
 
-`POST https://**API**.quebec.ca/v1/employe/123456/ajouter`
+`POST https://API.quebec.ca/v1/employe/123456/ajouter`
 
 Filtrage à l'extérieur dans l'URL au lieu de la chaîne de requête :
 
-`GET https://**API**.quebec.ca/v1/employe/123456/desc`
+`GET https://API.quebec.ca/v1/employe/123456/desc`
 
-# Versionnage des **API** (*API Versioning*) <a name="versionnage"></a>
+# Versionnage des API (*API Versioning*) <a name="versionnage"></a>
 
 ## Gestion sémantique des versions <a name="sémantiqueversion"></a>
 
-Toutes les **API** **DOIVENT** adhérer à la [Gestion sémantique des versions 2.0.0](https://semver.org/) :
+Toutes les API **DOIVENT** adhérer à la [Gestion sémantique des versions 2.0.0](https://semver.org/) :
 
   {MAJEUR}.{MINEUR}.{CORRECTIF}
 
-  La première version d'une **API** **DOIT** toujours commencer par une version MAJEURE de 1.
+  La première version d'une API **DOIT** toujours commencer par une version MAJEURE de 1.
 
-  Utilisez les instructions suivantes lors de l'incrémentation du numéro de version de l'**API**:
+  Utilisez les instructions suivantes lors de l'incrémentation du numéro de version de l'API:
 
   - Version **MAJEURE** quand il y a des changements non rétrocompatibles,
   - Version **MINEURE** quand il y a des ajouts de fonctionnalités rétrocompatibles
@@ -637,27 +637,27 @@ Toutes les **API** **DOIVENT** adhérer à la [Gestion sémantique des versions 
 
 ## Version majeure <a name="versionmajeure"></a>
 
-Toutes les **API** **DOIVENT** inclure uniquement la version MAJEUR dans le cadre de l'URI au format 'v{MAJEUR}', par exemple https://**API**.quebec.ca/v1/employes
+Toutes les API **DOIVENT** inclure uniquement la version MAJEUR dans le cadre de l'URI au format 'v{MAJEUR}', par exemple https://API.quebec.ca/v1/employes
 
 Les versions MINEURE et CORRECTIF ne sont pas requises dans l'URI.
 
 ### Réduire au minimum la publication des nouvelles versions majeures
 
-Avec chaque nouvelle version majeure de l'**API**, la maintenance des anciennes versions sera requise jusqu'à ce qu'à la fin de leurs supports annonçés. Il est important de bien comprendre que cette activité ajoute des effort de maintenance et de support.
+Avec chaque nouvelle version majeure de l'API, la maintenance des anciennes versions sera requise jusqu'à ce qu'à la fin de leurs supports annonçés. Il est important de bien comprendre que cette activité ajoute des effort de maintenance et de support.
 
-Les clés d'**API** peuvent être utilisés afin d'identifier et communiquer avec les consommateurs des versions obsolètes.
+Les clés d'API peuvent être utilisés afin d'identifier et communiquer avec les consommateurs des versions obsolètes.
 
 Lorsque de nouvelles versions majeures sont publiées, les anciennes versions doivent être décomissionnées suite au processus de dépréciation.
 
 ## Version mineure <a name="versionmineure"></a>
 
-Les numéros de version mineure sont affichés sur la page de documentation de l'**API** ou font partie d'un appel de gestion spécial à l'URI de l'**API** lui-même. Pour prendre en charge cela, votre **API** **DOIT** implémenter une réponse à une requête GET à l'URI de base de l'**API** et renvoyer les métadonnées suivantes dans la réponse:
+Les numéros de version mineure sont affichés sur la page de documentation de l'API ou font partie d'un appel de gestion spécial à l'URI de l'API lui-même. Pour prendre en charge cela, votre API **DOIT** implémenter une réponse à une requête GET à l'URI de base de l'API et renvoyer les métadonnées suivantes dans la réponse:
 
-- **API_name:** Le nom de l'**API**
-- **API_version:** La version de l'**API** avec les versions majeures et mineures
-- **API_released:** La date à laquelle l'**API** a été publiée
-- **API_documentation:** Liens vers la documentation de l'**API**
-- **API_status:** Pour indiquer si une **API** est toujours active ou est obsolète.
+- **API_name:** Le nom de l'API
+- **API_version:** La version de l'API avec les versions majeures et mineures
+- **API_released:** La date à laquelle l'API a été publiée
+- **API_documentation:** Liens vers la documentation de l'API
+- **API_status:** Pour indiquer si une API est toujours active ou est obsolète.
 
 Des métadonnées supplémentaires peuvent être ajoutées à la réponse si nécessaire.
 
@@ -668,11 +668,11 @@ GET /v1/
 //HTTP 200 OK
 
 {
-  "**API**_name": "namespace",
-  "**API**_version": "1.0.9"
-  "**API**_released": "2019-09-14"
-  "**API**_documentation": "https://**API**.quebec.ca/v1/docs"
-  "**API**_status": "active"
+  "API_name": "namespace",
+  "API_version": "1.0.9"
+  "API_released": "2019-09-14"
+  "API_documentation": "https://API.quebec.ca/v1/docs"
+  "API_status": "active"
 }
 
 ```
@@ -680,29 +680,29 @@ GET /v1/
 
 La définition Swagger **DEVRAIT** également contenir la version mineure et le correctif.
 
-La version du produit de l'**API** et la version de la mise en œuvre de l'**API** ne sont pas les mêmes.
+La version du produit de l'API et la version de la mise en œuvre de l'API ne sont pas les mêmes.
 
-Une version de produit est la version logique appliquée à l'**API** à des fins de documentation et de référence. La version d'implémentation est la version de build physique qui a été créée.
+Une version de produit est la version logique appliquée à l'API à des fins de documentation et de référence. La version d'implémentation est la version de build physique qui a été créée.
 
 Par exemple:
 
-| Version de produit | Version d'implémentation de l'**API** | Type de changement    | Changement de version                                        |
+| Version de produit | Version d'implémentation de l'API | Type de changement    | Changement de version                                        |
 | ------------------ | --------------------------------- | --------------------- | ------------------------------------------------------------ |
-| 24.04.xx           | 1.39.xx                           | Corrections de bogues | La version du produit sera modifiée en **24.04.02** si les modifications sont liées au produit. La version d'implémentation de l'**API** sera modifiée en **1.39.02** si les modifications sont liées à l'**API** |
-| 24.04.xx           | 1.39.xx                           | Rétrocompatible       | La version du produit sera modifiée en **24.05.xx** si les modifications sont liées au produit. La version d'implémentation de l'**API** sera modifiée en **1.40.x** si les modifications sont liées à l'**API** |
-| 24.04.xx           | 1.39.xx                           | Non rétrocompatible   | La version du produit sera remplacée par **25.01.x** si les modifications sont liées au produit. La version d'implémentation de l'**API** sera modifiée en **2.00.x** si les modifications sont liées à l'**API** |
+| 24.04.xx           | 1.39.xx                           | Corrections de bogues | La version du produit sera modifiée en **24.04.02** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **1.39.02** si les modifications sont liées à l'API |
+| 24.04.xx           | 1.39.xx                           | Rétrocompatible       | La version du produit sera modifiée en **24.05.xx** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **1.40.x** si les modifications sont liées à l'API |
+| 24.04.xx           | 1.39.xx                           | Non rétrocompatible   | La version du produit sera remplacée par **25.01.x** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **2.00.x** si les modifications sont liées à l'API |
 
 Une mise à jour de correctif (*Patch* ou *Service Pack*) **DOIT** avoir une rétrocompatibilité.
 
 ## Rétrocompatibilité <a name="rétrocompatibilité"></a>
 
-Il est essentiel que les **API** soient développées avec un faible couplage afin d'assurer la rétrocompatibilité pour les consommateurs.
+Il est essentiel que les API soient développées avec un faible couplage afin d'assurer la rétrocompatibilité pour les consommateurs.
 
 Les modifications suivantes sont réputées rétrocompatibles:
 
 - Ajout d'un nouveau champ optionnel à une représentation
 - Ajout d'un nouveau lien au tableau `_links` d'une représentation
-- Ajout d'un nouveau *endpoint* à une **API**
+- Ajout d'un nouveau *endpoint* à une API
 - Support additionnel d'un nouveau type de média (par exemple, `Accept: application/pdf`)
 
 Les modifications suivantes ne sont pas considérées comme rétrocompatibles:
@@ -716,36 +716,36 @@ Toutes ces modifications **DOIVENT** nécessiter une mise à jour majeure de la 
 
 ## Politique de fin de vie <a name="findevie"></a>
 
-La politique de fin de vie (*End-of-Life - EOL*) d'une **API** détermine le processus par lequel celle-ci passent de l'état «ACTIVE» à l'état «RETIRÉE».
+La politique de fin de vie (*End-of-Life - EOL*) d'une API détermine le processus par lequel celle-ci passent de l'état «ACTIVE» à l'état «RETIRÉE».
 
-Une politique *EOL* est conçue pour garantir une période de transition raisonnable pour les consommateurs d'**API** qui devront migrer de l'ancienne version vers la nouvelle.
+Une politique *EOL* est conçue pour garantir une période de transition raisonnable pour les consommateurs d'API qui devront migrer de l'ancienne version vers la nouvelle.
 
-### Version mineure de l'**API** EOL
+### Version mineure de l'API EOL
 
-Les versions mineures des **API** **DOIVENT** être rétrocompatibles avec les versions mineures précédentes. Cette modification ne devrait avoir aucun impact sur les consommateurs existants.
+Les versions mineures des API **DOIVENT** être rétrocompatibles avec les versions mineures précédentes. Cette modification ne devrait avoir aucun impact sur les consommateurs existants.
 
-### Version principale de l'**API** EOL
+### Version principale de l'API EOL
 
-Les versions majeures de l'**API** **PEUVENT** être rétrocompatibles avec les versions majeures précédentes.
+Les versions majeures de l'API **PEUVENT** être rétrocompatibles avec les versions majeures précédentes.
 
-Les règles suivantes s'appliquent lors du retrait d'une version majeure de l'**API**.
+Les règles suivantes s'appliquent lors du retrait d'une version majeure de l'API.
 
-1. Une **API** majeure **NE DEVRAIT PAS** être à l'état "DEPRECATED" jusqu'à ce qu'un service de remplacement soit "LIVE". Ce dernier devra fournir des instructions de migration pour toutes les fonctionnalités qui sont reportées. Idéalement, celles-ci **DEVRAIT** inclure de la documentation, des outils et des exemples de code.
-1. La version obsolète de l'**API** **DOIT** être à l'état «DEPRECATED» pendant une période minimale afin donner aux utilisateurs un délai suffisant pour migrer.
-1. Si une **API** versionnée à l'état «LIVE» ou «DEPRECATED» n'a pas d'utilisateurs enregistrés, elle **PEUT** passer immédiatement à l'état «RETIRED».
+1. Une API majeure **NE DEVRAIT PAS** être à l'état "DEPRECATED" jusqu'à ce qu'un service de remplacement soit "LIVE". Ce dernier devra fournir des instructions de migration pour toutes les fonctionnalités qui sont reportées. Idéalement, celles-ci **DEVRAIT** inclure de la documentation, des outils et des exemples de code.
+1. La version obsolète de l'API **DOIT** être à l'état «DEPRECATED» pendant une période minimale afin donner aux utilisateurs un délai suffisant pour migrer.
+1. Si une API versionnée à l'état «LIVE» ou «DEPRECATED» n'a pas d'utilisateurs enregistrés, elle **PEUT** passer immédiatement à l'état «RETIRED».
 
-### Version majeure de l'**API** de remplacement
+### Version majeure de l'API de remplacement
 
-Étant donné les impacts importants d'une nouvelle version majeure d'une **API**, les propriétaires d'**API** ** DOIVENT ** s'assurer de la justification de produire une version majeure.
+Étant donné les impacts importants d'une nouvelle version majeure d'une API, les propriétaires d'API ** DOIVENT ** s'assurer de la justification de produire une version majeure.
 
-Les propriétaires d'**API** **DEVRAIENT** explorer toutes les alternatives possibles à l'introduction d'une nouvelle version majeure de l'**API** dans le but de minimiser l'impact sur les clients.
+Les propriétaires d'API **DEVRAIENT** explorer toutes les alternatives possibles à l'introduction d'une nouvelle version majeure de l'API dans le but de minimiser l'impact sur les clients.
 
-## Désuétude des **API** (Deprecated) <a name="désuétude"></a>
+## Désuétude des API (Deprecated) <a name="désuétude"></a>
 
-Lorsqu'une nouvelle version de l'**API** est disponible, il est **RECOMMANDÉ** de fournir deux en-têtes dans la réponse lorsque d'anciennes versions sont utilisées:
+Lorsqu'une nouvelle version de l'API est disponible, il est **RECOMMANDÉ** de fournir deux en-têtes dans la réponse lorsque d'anciennes versions sont utilisées:
 
-- X-**API**-Deprecated - champ booléen indiquant que cette version est obsolète (*deprecated*)
-- X-**API**-Retire-Time - Date ISO8601 indiquant quand il sera obsolète (*deprecated*)
+- X-API-Deprecated - champ booléen indiquant que cette version est obsolète (*deprecated*)
+- X-API-Retire-Time - Date ISO8601 indiquant quand il sera obsolète (*deprecated*)
 
 Par exemple:
 
@@ -754,21 +754,21 @@ GET `.../v1`
 
 // 200 OK
 Content-Type: application/json; charset=utf-8
-X-**API**-Deprecated: true
-X-**API**-Retire-Time: 2018-11-17T13:00:00Z
+X-API-Deprecated: true
+X-API-Retire-Time: 2018-11-17T13:00:00Z
 ```
 
-Cela fournit aux consommateurs de l'**API** un rappel constant que celle-ci est marquée comme obsolète et qu'il existe probablement une autre version disponible leur permettant de migrer.
+Cela fournit aux consommateurs de l'API un rappel constant que celle-ci est marquée comme obsolète et qu'il existe probablement une autre version disponible leur permettant de migrer.
 
-# Requête des **API** et paramètres <a name="requêteparamètres"></a>
+# Requête des API et paramètres <a name="requêteparamètres"></a>
 
 ## Entête des requêtes <a name="entêterequêtes"></a>
 
-Toutes les **API** **DOIVENT** supporter les entêtes de requête suivants :
+Toutes les API **DOIVENT** supporter les entêtes de requête suivants :
 
 | Entête                        | Valeur                                                       |
 | ----------------------------- | ------------------------------------------------------------ |
-| Autorisation / Identification | Peut être l'un des éléments suivants : <ul><li>clé **API** </li><li>authentification de base (clé **API** + secret) </li><li>nom d'utilisateur + mot de passe</li><li> Jeton (*token*)</li> </ul>|
+| Autorisation / Identification | Peut être l'un des éléments suivants : <ul><li>clé API </li><li>authentification de base (clé API + secret) </li><li>nom d'utilisateur + mot de passe</li><li> Jeton (*token*)</li> </ul>|
 
 Les entêtes des requêtes suivantes sont facultatives :
 
@@ -796,14 +796,14 @@ Les opérations de l'**API RESTful** sont basées sur la norme **HTTP Request Me
 | `PATCH`      | Pour effectuer une *mise à jour partielle* d'une ressource.  |
 | `DELETE`     | Pour *supprimer* une ressource.                              |
 | `HEAD`       | Pour récupérer des métadonnées sur la demande, par ex. combien de résultats retournera la requête? (sans  exécuter la requête). |
-| `OPTIONS`    | Utilisé pour déterminer si une demande CORS (partage de ressources inter-origines, en anglais *cross-origin resource sharing*) peut être effectuée. Ceci est principalement utilisé dans les applications Web *front-end* pour déterminer si elles peuvent utiliser directement les **API**. |
+| `OPTIONS`    | Utilisé pour déterminer si une demande CORS (partage de ressources inter-origines, en anglais *cross-origin resource sharing*) peut être effectuée. Ceci est principalement utilisé dans les applications Web *front-end* pour déterminer si elles peuvent utiliser directement les API. |
 
 Une requête peut être effectuée pour une seule ressource ou une collection de ressources.
 
 Par exemple :
 
 ```
-https://**API**.quebec.ca/agence/v1/clients/{id}
+https://API.quebec.ca/agence/v1/clients/{id}
 ```
 
 Pour récupérer une collection de clients, une requête est envoyée à l'URN `/clients`.
@@ -832,11 +832,11 @@ Les opérations suivantes sont applicables pour une seule ressource :
 
 ## Formats du contenu des requêtes (Request Payload Formats) <a name="formatréponses"></a>
 
-Les **API** **DOIVENT** supporter un *payload* au format `JSON`.
+Les API **DOIVENT** supporter un *payload* au format `JSON`.
 
 D'autres formats de *payload* tels que `XML`, `CSV` et `YAML` **PEUVENT** aussi être supportés lorsque requis.
 
-Le support des formats supplémentaires doit être documentée dans la définition Swagger des **API**.
+Le support des formats supplémentaires doit être documentée dans la définition Swagger des API.
 
 ## Idempotence <a name="idempotence"></a>
 
@@ -861,7 +861,7 @@ La pagination est le processus qui consiste à renvoyer un grand ensemble de ré
 
 ## Filtrage et tri <a name="Filtragetri"></a>
 
-La possibilité de filtrer et de trier les collections dans une **API** offre aux consommateurs un plus grand contrôle.
+La possibilité de filtrer et de trier les collections dans une API offre aux consommateurs un plus grand contrôle.
 
 Il existe un certain nombre de techniques sur la façon de procéder, cependant on **NE DOIT PAS** définir des paramètres de filtrage et de tri dans le cadre de l'URI (par exemple, `/employes/age/de/20/à/30`).
 
@@ -873,7 +873,7 @@ Exemple:
 ?date_de_naissance=\>1999-12-31 and \<=2001-12-31
 ```
 
-# Réponses des **API** <a name="réponses"></a>
+# Réponses des API <a name="réponses"></a>
 
 ## Entête des réponses (*response headers*) <a name="entêteréponses"></a>
 
@@ -906,11 +906,11 @@ HTTP définit ces codes d’état standard qui peuvent être utilisés pour tran
 - 4xx: Client Error – Cette catégorie de codes d'état d'erreur pointe du doigt les clients.
 - 5xx: Server Error – TLe serveur assume la responsabilité de ces codes d'état d'erreur.
 
-Pour obtenir la liste complète des codes d'état HTTP et codes d'état spécifiques à **REST**, veillez vous référer à ce [tutorial](https://restful**API**.net/http-status-codes/).
+Pour obtenir la liste complète des codes d'état HTTP et codes d'état spécifiques à **REST**, veillez vous référer à ce [tutorial](https://restfulAPI.net/http-status-codes/).
 
 ## Contenu des réponses (*Response Payload*) <a name="contenuréponses"></a>
 
-Le *response payload* d'une **API** peut concerner une seule ressource ou un ensemble de ressources.
+Le *response payload* d'une API peut concerner une seule ressource ou un ensemble de ressources.
 
 Lorsque le format de réponse est dans un format `JSON`, les normes de réponse suivantes s'appliquent :
 
@@ -982,7 +982,7 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 
 «Hypermédia en tant que moteur de l'état de l'application» est le concept de représentation des actions autorisées sous forme d'hyperliens associés à la ressource. Similaire au concept de données liées hypermédia, les liens définis dans les données de réponse représentent des transitions d'états disponibles de cet état actuel vers des états adjacents.
 
-Les liens hypermédia dans les **API** sont des liens dans le *response payload* qui informent les consommateurs sur le contenu qu'il peut récupérer. Les liens hypermédia dans les **API** permettent aux consommateurs de localiser la ressource sans avoir besoin d'avoir une compréhension initiale de la ressource et de sa relation.
+Les liens hypermédia dans les API sont des liens dans le *response payload* qui informent les consommateurs sur le contenu qu'il peut récupérer. Les liens hypermédia dans les API permettent aux consommateurs de localiser la ressource sans avoir besoin d'avoir une compréhension initiale de la ressource et de sa relation.
 
 HATEOAS est similaire à la navigation sur une page Web. L'utilisateur n'est pas censé connaître la structure de la page Web avant de la visiter. Ils peuvent simplement accéder à la page d'accueil et la navigation (via les liens hypertextes) leurs permet de parcourir le site selon leurs besoins.
 
@@ -1015,11 +1015,11 @@ Mais si le même compte est à découvert (solde négatif), la seule action auto
 
 # Outils de test <a name="outilstest"></a>
 
-Il existe une grande variété d'outils de test gratuits (open source) disponibles pour les tests d'**API**:
+Il existe une grande variété d'outils de test gratuits (open source) disponibles pour les tests d'API:
 
-- **SoapUI** - [SoapUI](https://www.soapui.org/downloads/soapui.html) est un outil de test fonctionnel Open Source pour les tests d'**API**. Il prend en charge plusieurs protocoles tels que **SOAP**, **REST**, **HTTP**, **JMS** et plusieurs autres.
-- **Postman** - [Postman](https://www.getpostman.com/) est une application pour interagir avec les **API** HTTP. Il vous présente une interface graphique conviviale pour la construction de requêtes et la lecture des réponses.
-- **Curl** - cURL est un outil pour travailler avec des URL. cURL nous permet d'interroger une URL à partir de la ligne de commande. cURL permet de tester facilement de nouvelles **API**. cUrl peut être installer dans un terminal sur Linux en tapant `sudo yum install curl`.
+- **SoapUI** - [SoapUI](https://www.soapui.org/downloads/soapui.html) est un outil de test fonctionnel Open Source pour les tests d'API. Il prend en charge plusieurs protocoles tels que **SOAP**, **REST**, **HTTP**, **JMS** et plusieurs autres.
+- **Postman** - [Postman](https://www.getpostman.com/) est une application pour interagir avec les API HTTP. Il vous présente une interface graphique conviviale pour la construction de requêtes et la lecture des réponses.
+- **Curl** - cURL est un outil pour travailler avec des URL. cURL nous permet d'interroger une URL à partir de la ligne de commande. cURL permet de tester facilement de nouvelles API. cUrl peut être installer dans un terminal sur Linux en tapant `sudo yum install curl`.
 - **Apache benchmark** - ApacheBench peut réaliser des tests de charge en envoyant un nombre arbitraire de requêtes simultanées. Benchmark Apache peut s'installer à partir de la ligne de commande sous Linux en tapant `yum install httpd-tools`.
 - **Swagger** - Swagger est un éditeur permettant de valider une définition Swagger.
 
@@ -1028,29 +1028,29 @@ Il existe une grande variété d'outils de test gratuits (open source) disponibl
 
 [Fielding's Dissertation on **REST**](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 
-[Normes du gouvernement du Canada sur les **API**](https://www.canada.ca/fr/gouvernement/systeme/gouvernement-numerique/technologiques-modernes-nouveaux/normes-gouvernement-canada-**API**.html)
+[Normes du gouvernement du Canada sur les API](https://www.canada.ca/fr/gouvernement/systeme/gouvernement-numerique/technologiques-modernes-nouveaux/normes-gouvernement-canada-API.html)
 
-[Lignes directrices sur les **API** du gouvernement Ontarien](https://github.com/ongov/**API**-Guidelines/blob/master/Lignes-directrices-sur-les-**API**.md)
+[Lignes directrices sur les API du gouvernement Ontarien](https://github.com/ongov/API-Guidelines/blob/master/Lignes-directrices-sur-les-API.md)
 
-[18F **API** Standards](https://github.com/18F/**API**-standards)
+[18F API Standards](https://github.com/18F/API-standards)
 
-[White House Web **API** Standards](https://github.com/WhiteHouse/**API**-standards)
+[White House Web API Standards](https://github.com/WhiteHouse/API-standards)
 
-[National **API** Standards of Australia](https://**API**.gov.au/standards/national_**API**_standards/)
+[National API Standards of Australia](https://API.gov.au/standards/national_API_standards/)
 
-[UK **API** design guidance](https://www.gov.uk/government/collections/**API**-design-guidance)
+[UK API design guidance](https://www.gov.uk/government/collections/API-design-guidance)
 
-[PayPal **API** Design Guidelines](https://github.com/paypal/**API**-standards/blob/master/**API**-style-guide.md)
+[PayPal API Design Guidelines](https://github.com/paypal/API-standards/blob/master/API-style-guide.md)
 
-[Refinery29 **API** Standards](https://github.com/refinery29/**API**-standards#url-structure-and-versioning)
+[Refinery29 API Standards](https://github.com/refinery29/API-standards#url-structure-and-versioning)
 
-[LeaseWeb **API** Design Standards](https://github.com/LeaseWeb/**API**-standards)
+[LeaseWeb API Design Standards](https://github.com/LeaseWeb/API-standards)
 
-[Open**API** Specification](https://swagger.io/resources/open-**API**/)
+[OpenAPI Specification](https://swagger.io/resources/open-API/)
 
-[HTTP Status Codes](https://restful**API**.net/http-status-codes/)
+[HTTP Status Codes](https://restfulAPI.net/http-status-codes/)
 
-[JSON:**API**, a specification for building **API**s in JSON](https://json**API**.org/format/)
+[JSON:API, a specification for building APIs in JSON](https://jsonAPI.org/format/)
 
 
 *********template*********
