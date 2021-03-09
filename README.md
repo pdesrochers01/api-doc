@@ -97,7 +97,7 @@ Les textes lisibles par traitement informatique (programme, script, etc.) tel qu
 
 ## Contact <a name="contact"></a>
 
-TBC (ex: APIteam@API.quebec.ca)
+TBC (ex: apiteam@api.quebec.ca)
 
 ## Pourquoi une norme de conception des API? <a name="norme"></a>
 
