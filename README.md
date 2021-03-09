@@ -121,7 +121,7 @@ Une API appartiendra généralement à l'une des catégories suivantes:
 
 Si l'API fait partie du niveau système (application) et est développée sur mesure (maison), il est **RECOMMANDÉ** d'utiliser cette norme de conception car elle facilitera le développement futur des API de niveau processus ou d'intégration.
 
-Si l'API est de niveau de processus, il est aussi **RECOMMANDÉ** d'appliquer cette norme de conception. En effet, les API de niveau de processus sont souvent réutilisées par différents consommateurs.
+Si l'API est de niveau de processus, il est aussi fortement **RECOMMANDÉ** d'appliquer cette norme de conception. En effet, les API de niveau de processus sont souvent réutilisées par différents consommateurs.
 
 Si l'API est de niveau d'intégration, ces normes de conception **DOIVENT** être appliquées.
 
@@ -166,7 +166,7 @@ Les services web conformes au style d'architecture REST, aussi appelés services
 
 Les services web REST permettent aux systèmes effectuant des requêtes de manipuler des ressources web via leurs représentations textuelles à travers un ensemble d'opérations uniformes et prédéfinies sans état.
 
-Essentiellement, ce style d’architecture vise à utiliser tous les standards du Web afin de développer des applications distribuées. Il a été développé par Thomas Fielding dans sa thèse de doctorat (Université de Californie, 2000).
+Essentiellement, ce style d’architecture vise à utiliser tous les standards du Web afin de développer des applications distribuées. Il a été développé par Thomas Fielding dans sa thèse de [doctorat](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm) (Université de Californie, 2000).
 
 Les principaux bénéfices de l’architecture REST est d’exploiter les caractéristiques du Web et de son principale protocole (HTTP) sont :
 - Réutilisation des verbes d’actions standards pour interagir avec des stockages persistants (GET pour lire, POST pour créer une nouvelle ressource, PUT pour mettre à jour, DELETE pour effacer, ETC.)
@@ -400,7 +400,7 @@ Exemple:
 
 ## Noms des composants URI <a name="composantesuri"></a>
 
-Les URI de cette norme suivent la spécification RFC 3986 afin de simplifier le développement et la consommation de services d'API REST.
+Les URI de cette norme suivent la spécification [RFC 3986](https://tools.ietf.org/html/rfc3986) afin de simplifier le développement et la consommation de services d'API REST.
 
 **Composants de l'URI**
 
@@ -663,14 +663,14 @@ Des métadonnées supplémentaires peuvent être ajoutées à la réponse si né
 
 Exemple:
 ```
-GET /v1/
+GET /v1/employes
 
 //HTTP 200 OK
 
 {
-  "API_name": "namespace",
-  "API_version": "1.0.9"
-  "API_released": "2019-09-14"
+  "API_name": "employes",
+  "API_version": "1.1.9"
+  "API_released": "2021-07-04"
   "API_documentation": "https://API.quebec.ca/v1/docs"
   "API_status": "active"
 }
