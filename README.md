@@ -747,7 +747,6 @@ Content-Type: application/json; charset=utf-8
 X-API-Deprecated: true
 X-API-Retire-Time: 2018-11-17T13:00:00Z
 ```
-
 Cela fournit aux consommateurs de l'API un rappel constant que celle-ci est marquée comme obsolète et qu'il existe probablement une autre version disponible leur permettant de migrer.
 
 # Requête des API et paramètres <a name="requêteparamètres"></a>
