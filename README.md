@@ -622,13 +622,13 @@ Filtrage à l'extérieur dans l'URL au lieu de la chaîne de requête :
 
 ## Gestion sémantique des versions <a name="sémantiqueversion"></a>
 
-Toutes les API **DOIVENT** adhérer à la [Gestion sémantique des versions 2.0.0](https://semver.org/) :
+Toutes les API **DOIVENT** adhérer à la [Gestion sémantique des versions 2.0.0](https://semver.org/).
 
-  {MAJEUR}.{MINEUR}.{CORRECTIF}
+{MAJEUR}.{MINEUR}.{CORRECTIF}
 
-  La première version d'une API **DOIT** toujours commencer par une version MAJEURE de 1.
+La première version d'une API **DOIT** toujours commencer par une version MAJEURE de 1.
 
-  Utilisez les instructions suivantes lors de l'incrémentation du numéro de version de l'API:
+Utilisez les instructions suivantes lors de l'incrémentation du numéro de version de l'API:
 
   - Version **MAJEURE** quand il y a des changements non rétrocompatibles,
   - Version **MINEURE** quand il y a des ajouts de fonctionnalités rétrocompatibles
@@ -643,27 +643,25 @@ Les versions MINEURE et CORRECTIF ne sont pas requises dans l'URI.
 
 ### Réduire au minimum la publication des nouvelles versions majeures
 
-Avec chaque nouvelle version majeure de l'API, la maintenance des anciennes versions sera requise jusqu'à ce qu'à la fin de leurs supports annonçés. Il est important de bien comprendre que cette activité ajoute des effort de maintenance et de support.
+Avec chaque nouvelle version majeure de l'API, la maintenance des anciennes versions sera requise jusqu'à ce qu'à la fin de leurs supports annonçés. Il est important de bien comprendre que cette activité ajoute des efforts de maintenance et de support.
 
 Les clés d'API peuvent être utilisés afin d'identifier et communiquer avec les consommateurs des versions obsolètes.
 
-Lorsque de nouvelles versions majeures sont publiées, les anciennes versions doivent être décomissionnées suite au processus de dépréciation.
+Lorsque de nouvelles versions majeures sont publiées, les anciennes versions doivent être décomissionnées selon le processus de dépréciation décrit ci-dessous.
 
 ## Version mineure <a name="versionmineure"></a>
 
-Les numéros de version mineure sont affichés sur la page de documentation de l'API ou font partie d'un appel de gestion spécial à l'URI de l'API lui-même. Pour prendre en charge cela, votre API **DOIT** implémenter une réponse à une requête GET à l'URI de base de l'API et renvoyer les métadonnées suivantes dans la réponse:
+Les numéros de version mineure sont affichés sur la page de documentation de l'API ou font partie d'un appel spécial à l'URI de l'API lui-même. Afin de supporter ce cas, l'API **DOIT** répondre à une requête GET de l'URI de base et retourner les métadonnées suivantes :
 
 - **api_name:** Le nom de l'API
 - **api_version:** La version de l'API avec les versions majeures et mineures
 - **api_released:** La date à laquelle l'API a été publiée
 - **api_documentation:** Liens vers la documentation de l'API
-- **api_status:** Pour indiquer si une API est toujours active ou est obsolète.
-
-Des métadonnées supplémentaires peuvent être ajoutées à la réponse si nécessaire.
+- **api_status:** Pour indiquer si une API est toujours active ou obsolète.
 
 Exemple:
 ```
-GET /v1/employes
+GET /namespace/v1
 
 //HTTP 200 OK
 
@@ -671,46 +669,38 @@ GET /v1/employes
   "API_name": "employes",
   "API_version": "1.1.9"
   "API_released": "2021-07-04"
-  "API_documentation": "https://API.quebec.ca/v1/docs"
+  "API_documentation": "https://api.quebec.ca/namespace/v1/docs"
   "API_status": "active"
 }
 
 ```
-## Documentation mineure et patch
+## Documentation des versions mineures et des rustines (patch)
 
 La définition Swagger **DEVRAIT** également contenir la version mineure et le correctif.
 
-La version du produit de l'API et la version de la mise en œuvre de l'API ne sont pas les mêmes.
+Il est important de noter que les versions du produit API et les versions d'implémentation de l'API ne sont pas les mêmes.
 
-Une version de produit est la version logique appliquée à l'API à des fins de documentation et de référence. La version d'implémentation est la version de build physique qui a été créée.
+Une version de produit est la version logique appliquée à l'API à des fins de documentation et de référence. La version d'implémentation est la version de *build* physique qui a été créée.
 
-Par exemple:
+Une mise à jour de correctif (*Patch*) **DOIT** toujours être rétrocompatible.
 
-| Version de produit | Version d'implémentation de l'API | Type de changement    | Changement de version                                        |
-| ------------------ | --------------------------------- | --------------------- | ------------------------------------------------------------ |
-| 24.04.xx           | 1.39.xx                           | Corrections de bogues | La version du produit sera modifiée en **24.04.02** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **1.39.02** si les modifications sont liées à l'API |
-| 24.04.xx           | 1.39.xx                           | Rétrocompatible       | La version du produit sera modifiée en **24.05.xx** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **1.40.x** si les modifications sont liées à l'API |
-| 24.04.xx           | 1.39.xx                           | Non rétrocompatible   | La version du produit sera remplacée par **25.01.x** si les modifications sont liées au produit. La version d'implémentation de l'API sera modifiée en **2.00.x** si les modifications sont liées à l'API |
-
-Une mise à jour de correctif (*Patch* ou *Service Pack*) **DOIT** avoir une rétrocompatibilité.
-
-## Rétrocompatibilité <a name="rétrocompatibilité"></a>
+## Rétrocompatibilité (*Backwards Compatibility*) <a name="rétrocompatibilité"></a>
 
 Il est essentiel que les API soient développées avec un faible couplage afin d'assurer la rétrocompatibilité pour les consommateurs.
 
-Les modifications suivantes sont réputées rétrocompatibles:
+Les modifications suivantes sont réputées rétrocompatibles :
 
-- Ajout d'un nouveau champ optionnel à une représentation
+- Ajout d'un nouveau champ optionnel d'une représentation
 - Ajout d'un nouveau lien au tableau `_links` d'une représentation
 - Ajout d'un nouveau *endpoint* à une API
 - Support additionnel d'un nouveau type de média (par exemple, `Accept: application/pdf`)
 
-Les modifications suivantes ne sont pas considérées comme rétrocompatibles:
+Les modifications suivantes ne peuvent être considérées comme rétrocompatibles:
 
-- Suppression des champs des représentations
+- Suppression de champs des représentations
 - Changements des types de données sur les champs (par exemple une chaîne de caractères en booléen)
-- Suppression des *endpoint* ou des fonctions
-- Suppression du d'un type de média
+- Suppression de *endpoints* ou de fonctions
+- Suppression du support d'un type de média
 
 Toutes ces modifications **DOIVENT** nécessiter une mise à jour majeure de la version.
 
@@ -720,18 +710,18 @@ La politique de fin de vie (*End-of-Life - EOL*) d'une API détermine le process
 
 Une politique *EOL* est conçue pour garantir une période de transition raisonnable pour les consommateurs d'API qui devront migrer de l'ancienne version vers la nouvelle.
 
-### Version mineure de l'API EOL
+### Version mineure d'une API en fin de vie (*EOL*)
 
 Les versions mineures des API **DOIVENT** être rétrocompatibles avec les versions mineures précédentes. Cette modification ne devrait avoir aucun impact sur les consommateurs existants.
 
-### Version principale de l'API EOL
+### Version principale d'une API en fin de vie (*EOL*)
 
 Les versions majeures de l'API **PEUVENT** être rétrocompatibles avec les versions majeures précédentes.
 
 Les règles suivantes s'appliquent lors du retrait d'une version majeure de l'API.
 
-1. Une API majeure **NE DEVRAIT PAS** être à l'état "DEPRECATED" jusqu'à ce qu'un service de remplacement soit "LIVE". Ce dernier devra fournir des instructions de migration pour toutes les fonctionnalités qui sont reportées. Idéalement, celles-ci **DEVRAIT** inclure de la documentation, des outils et des exemples de code.
-1. La version obsolète de l'API **DOIT** être à l'état «DEPRECATED» pendant une période minimale afin donner aux utilisateurs un délai suffisant pour migrer.
+1. Une API majeure **NE DEVRAIT PAS** être à l'état "DEPRECATED" jusqu'à ce qu'un service de remplacement soit "LIVE". Cette dernière devra fournir des instructions de migration pour toutes les fonctionnalités qui sont reportées. Idéalement, celles-ci **DEVRAIT** inclure de la documentation, des outils et des exemples de code.
+1. La version obsolète d'une API **DOIT** être à l'état «DEPRECATED» pour une période minimale afin donner aux utilisateurs un délai suffisant pour effectuer une migration vers une version plus récente.
 1. Si une API versionnée à l'état «LIVE» ou «DEPRECATED» n'a pas d'utilisateurs enregistrés, elle **PEUT** passer immédiatement à l'état «RETIRED».
 
 ### Version majeure de l'API de remplacement
