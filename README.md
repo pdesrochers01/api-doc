@@ -757,14 +757,14 @@ Toutes les API **DOIVENT** supporter les entêtes de requête suivants :
 
 | Entête                        | Valeur                                                       |
 | ----------------------------- | ------------------------------------------------------------ |
-| Autorisation / Identification | Peut être l'un des éléments suivants : <ul><li>clé API </li><li>authentification de base (clé API + secret) </li><li>nom d'utilisateur + mot de passe</li><li> Jeton (*token*)</li> </ul>|
+| Autorisation / Identification | Un des éléments suivants : <ul><li>clé API </li><li>authentification de base (clé API + secret) </li><li>nom d'utilisateur + mot de passe</li><li> Jeton (*token*)</li> </ul>|
 
-Les entêtes des requêtes suivantes sont facultatives :
+Les entêtes suivantes sont facultatives :
 
 | Entête        | Valeur                                                       |
 | ------------- | ------------------------------------------------------------ |
 | Content-Type  | Peut être l'un des valeurs suivantes :<ul><li>`application/json` (obligatoire)</li> <li> `application/xml` (optionel pour xml)</li> <li>`multipart/form-data` (optionel pour les fichiers)</li><li>`application/x-www-form-urlencoded` (optionel pour les form data)</li></ul> |
-| Accept        | Content-Types qui sont acceptable pour la réponse. Peut être un choix de :<ul><li>`application/json` (obligatoire)</li><li>`application/xml` (optionel pour xml)</li></ul> |
+| Accept        | Un des choix suivants :<ul><li>`application/json` (obligatoire)</li><li>`application/xml` (optionel pour xml)</li></ul> |
 | Connection    | Options de contrôle pour la connexion actuelle. Par exemple : `keep-alive`. |
 | Date          | La date et l'heure à laquelle le message a été émis, au format "HTTP-date" tel que défini par [RFC 7231 Date / Time Formats](http://tools.ietf.org/html/rfc7231#section-7.1.1.1) . Par exemple. «Mardi, 20 janvier 1984 02:10:30 GMT». |
 | Cookie        | Un cookie HTTP précédemment envoyé par le serveur.           |
@@ -780,12 +780,12 @@ Les opérations de l'**API RESTful** sont basées sur la norme **HTTP Request Me
 | Méthode HTTP | Description                                                  |
 | ------------ | ------------------------------------------------------------ |
 | `GET`        | Pour *récupérer* une ressource.                              |
-| `POST`       | Pour *créer* une nouvelle ressource, ou pour *exécuter* une opération sur une ressource qui change l'état du système, par ex. envoyer un message. |
-| `PUT`        | Pour *remplacer* une ressource par une autre fournie dans la demande. |
+| `POST`       | Pour *créer* une nouvelle ressource, ou pour *exécuter* une opération sur une ressource qui change l'état du système. |
+| `PUT`        | Pour *remplacer* une ressource par une autre. |
 | `PATCH`      | Pour effectuer une *mise à jour partielle* d'une ressource.  |
 | `DELETE`     | Pour *supprimer* une ressource.                              |
-| `HEAD`       | Pour récupérer des métadonnées sur la demande, par ex. combien de résultats retournera la requête? (sans  exécuter la requête). |
-| `OPTIONS`    | Utilisé pour déterminer si une demande CORS (partage de ressources inter-origines, en anglais *cross-origin resource sharing*) peut être effectuée. Ceci est principalement utilisé dans les applications Web *front-end* pour déterminer si elles peuvent utiliser directement les API. |
+| `HEAD`       | Pour récupérer des métadonnées sur la requête sans l'exécuter. Par exemple, combien de résultats retournera la requête? |
+| `OPTIONS`    | Utilisé pour déterminer si une demande CORS (partage de ressources inter-origines, en anglais *cross-origin resource sharing*) peut être effectuée. |
 
 Une requête peut être effectuée pour une seule ressource ou une collection de ressources.
 
@@ -797,7 +797,7 @@ https://API.quebec.ca/agence/v1/clients/{id}
 
 Pour récupérer une collection de clients, une requête est envoyée à l'URN `/clients`.
 
-Pour récupérer un seul "client", une requête est envoyée à l'URN `/clients/{id}`.
+Pour récupérer un seul client, une requête est envoyée à l'URN `/clients/{id}`.
 
 ### Collection de ressources
 
@@ -817,7 +817,7 @@ Les opérations suivantes sont applicables pour une seule ressource :
 | GET          | `/ressources/{id}`     | Obtenez l'instance correspondant à l'ID de ressource         |
 | PUT          | `/ressources/{id}`     | Pour mettre à jour une instance de ressource                 |
 | DELETE       | `/ressources/{id}`     | Pour supprimer l'instance de ressource correspondant à l'ID de ressource |
-| PATCH        | `/ressources/{id}`     | Effectuez des modifications telles que l'ajout, la mise à jour et la suppression des attributs spécifiés. Cette opération est souvent utilisé pour effectuer des mises à jour partielles sur une ressource |
+| PATCH        | `/ressources/{id}`     | Pour effectuer des modifications telles que l'ajout, la mise à jour et la suppression des attributs spécifiés. Cette opération peut être utilisé pour effectuer des mises à jour partielles sur une ressource |
 
 ## Formats du contenu des requêtes (Request Payload Formats) <a name="formatréponses"></a>
 
@@ -829,8 +829,8 @@ Le support des formats supplémentaires doit être documentée dans la définiti
 
 ## Idempotence <a name="idempotence"></a>
 
-Une méthode HTTP idempotente peut être appelée plusieurs fois sans résultats différents.
-Par exemple, lorsque vous invoquez plusieurs requêtes `DELETE` similaires, la première demande supprimera la ressource et la réponse sera 200 (OK) ou 204 (Aucun contenu). Les demandes supplémentaires renverront 404 (non trouvé).
+Une méthode HTTP idempotente peut être appelée plusieurs fois sans donner de résultats différents.
+Par exemple, lorsque qu'une requête `DELETE` similaire est invoquée à plusieurs reprises, la première requête supprimera la ressource et retournera un code de status 200 (OK). Les demandes suivantes retourneront toutes un code de status 404 (non trouvé).
 
 Les méthodes **API RESTful** **DOIVENT** adhérer à l'idempotence spécifiée dans le tableau suivant :
 
