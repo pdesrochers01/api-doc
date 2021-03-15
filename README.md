@@ -850,17 +850,11 @@ La pagination est le processus qui consiste à renvoyer un grand ensemble de ré
 
 ## Filtrage et tri <a name="Filtragetri"></a>
 
-La possibilité de filtrer et de trier les collections dans une API offre aux consommateurs un plus grand contrôle.
+La possibilité de filtrer et de trier des collections dans une API est importante car elle offre aux consommateurs un plus grand contrôle.
 
-Il existe un certain nombre de techniques sur la façon de procéder, cependant on **NE DOIT PAS** définir des paramètres de filtrage et de tri dans le cadre de l'URI (par exemple, `/employes/age/de/20/à/30`).
+Il existe un grand nombre de techniques sur la façon de procéder et cette norme n'en recommande aucune particulièrement mais on **NE DOIT PAS** définir des paramètres de filtrage ou de tri dans le cadre de l'URI (par exemple, `/employes/age/de/20/à/30`).
 
-Les paramètres de filtre ne font pas partie de la définition de la ressource. Utilisez plutôt des paramètres de requête pour spécifier les exigences de filtrage et de tri.
-
-Exemple:
-
-```
-?date_de_naissance=\>1999-12-31 and \<=2001-12-31
-```
+Les paramètres de filtre ne font pas partie de la définition de la ressource. Il est **RECOMMANDÉ** d'utiliser des paramètres dans la requête pour spécifier les exigences de filtrage et de tri.
 
 # Réponses des API <a name="réponses"></a>
 
