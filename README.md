@@ -963,38 +963,38 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 
 ## HATEOAS <a name="hateoas"></a>
 
-«Hypermédia en tant que moteur de l'état de l'application» est le concept de représentation des actions autorisées sous forme d'hyperliens associés à la ressource. Similaire au concept de données liées hypermédia, les liens définis dans les données de réponse représentent des transitions d'états disponibles de cet état actuel vers des états adjacents.
+«Hypermédia en tant que moteur de l'état de l'application» (*Hypermedia as the Engine of Application State*) est le concept de représentation des actions autorisées sous forme d'hyperliens associés à la ressource. Lorsque qu'une API utilise ce concept, les liens indiqués dans les réponse représentent les transitions d'états disponibles de l'état actuel vers des états ultérieurs. HATEOAS est l'une des composantes qui différencie l'architecture REST des autres types d'architecture distribuées.
 
-Les liens hypermédia dans les API sont des liens dans le *response payload* qui informent les consommateurs sur le contenu qu'il peut récupérer. Les liens hypermédia dans les API permettent aux consommateurs de localiser la ressource sans avoir besoin d'avoir une compréhension initiale de la ressource et de sa relation.
+Le principe est qu'un client interagit avec une application réseau entièrement par hypermédia fournie dynamiquement par les serveurs d'applications. Un client REST n'a besoin d'aucune connaissance préalable sur la façon d'interagir avec une application ou un serveur particulier au-delà d'une compréhension générique de l'hypermédia.
 
 HATEOAS est similaire à la navigation sur une page Web. L'utilisateur n'est pas censé connaître la structure de la page Web avant de la visiter. Ils peuvent simplement accéder à la page d'accueil et la navigation (via les liens hypertextes) leurs permet de parcourir le site selon leurs besoins.
 
-Exemple :
+Le principal avantage d'HATEOAS est de permettre un découplage (*low coupling*) entre les clients et les serveurs de façon à permettre aux applications serveurs d'évoluer de manière indépendante.
+
+Afin de mieux comprendre HATEOAS, examinons la réponse à l'API HATEOAS suivant :
+```
+GET http://api.quebec.ca/docteurs/1
+```
+Réponse :
 
 ```
 {
-   "numéro_compte": "12345",
-   "solde": 100,00,
-   "_liens":[
-     {"rel": "deposer", "href": "/comptes/12345/depot"},
-     {"rel": "retirer", "href": "/comptes/12345/retrait"},
-     {"rel": "transfer", "href": "/comptes/12345/transfer"}
-   ]
+    "id": 1,
+    "nom": "Dr. Tremblay",
+    "spécialité": "Urgentologue",
+    "location": "Hopital Maisoneuve-Rosemont",
+
+    "_links": {
+        "self": {
+            "href": "http://api.quebec.ca/docteurs/1"
+        },
+        "listePatients": {
+            "href": "http://api.quebec.ca/docteurs/1/patients"
+        }
+    }
 }
 ```
-
-Mais si le même compte est à découvert (solde négatif), la seule action autorisée est le dépôt :
-
-```
-{
-   "numéro_compte": "12345",
-   "solde": -25,00,
-   "_liens":[{
-     "rel": "dépôt",
-     "href": "/comptes/12345/dépot"
-   }]
-}
-```
+En plus d'obtenir les informations sur le médecin, la réponse de l'API fournit également des informations supplémentaires sous forme de liens. Par exemple, un lien pour récupérer tous les patients d'un seul médecin est également fournis dans la réponse, seulement si le demandeur en possède l'autorisation.
 
 # Outils de test <a name="outilstest"></a>
 
