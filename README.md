@@ -860,42 +860,42 @@ Les paramètres de filtre ne font pas partie de la définition de la ressource. 
 
 ## Entête des réponses (*response headers*) <a name="entêteréponses"></a>
 
-Le type de contenu recommandé est `JSON` (`application/json`).
+Le type de contenu recommandé est JSON (`application/json`).
 
-Les entêtes de réponse (*response readers*) suivantes **PEUVENT** être incluses :
+Les entêtes de réponse (*response headers*) suivantes **PEUVENT** être incluses :
 
 | En-tête                      | Valeur                                                       |
 | ---------------------------- | ------------------------------------------------------------ |
-| Access-Control-Allow-Origin  | URL qui est autorisée à accéder à ce service directement à partir de javascript et de clients basés sur un navigateur. <br />**Remarque:** N'utilisez jamais d'URL génériques (*) à moins que la ressource REST ne soit vraiment publique. |
+| Access-Control-Allow-Origin  | URL qui est autorisée à accéder à ce service directement à partir de javascript et de clients basés sur un navigateur. <br />**Remarque:** N'utilisez jamais d'URL génériques (*) à moins que la ressource REST ne soit de nature publique. |
 | Access-Control-Allow-Methods | Les méthodes auxquelles il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
 | Access-Control-Allow-Headers | Les entêtes auxquels il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
-| Content-Type                 | Choix de: <ul><li>`application/json` (obligatoire)</li><li>`application/xml` (facultatif pour `xml`)</li><li>` multipart/form-data` (facultatif pour les fichiers)</li><li>`text/html` (facultatif pour`html`)</li></ul> |
+| Content-Type                 | Choix de: <ul><li>`application/json` (requis)</li><li>`application/xml` (facultatif pour `xml`)</li><li>` multipart/form-data` (facultatif pour les fichiers)</li><li>`text/html` (facultatif pour`html`)</li></ul> |
 | Cache-Control                | Informe des mécanismes de mise en cache.                     |
-| Date                         | La date et l'heure à laquelle le message a été émis Date par ex. Mardi, 24 novembre 1984 09:02:15 GMT |
-| Expire                       | Donne la date / heure après laquelle la réponse est considérée comme périmée, par ex. Jeudi, 01 décembre 1984 12:01:00 GMT |
+| Date                         | La date et l'heure à laquelle le message a été émis. |
+| Expire                       | La date et l'heure après laquelle la réponse est considérée comme étant périmée. |
 | ETag                         | Utilisé pour identifier la version particulière d'une ressource. Le client doit l'inclure dans toutes les demandes de mise à jour pour s'assurer qu'il est inchangé. |
 
 ## Codes de réponse HTTP <a name="codesréponsehttp"></a>
 
-Les API REST utilisent la partie `Status-Line` d'un message de réponse HTTP pour informer les clients du résultat global de leur requête. La [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) définit la syntaxe de la ligne d'état (*Status-Line*) cotel qu'indiqué ci-dessous:
+Les API REST utilisent la partie `Status-Line` d'une réponse pour informer les clients du résultat de leur requête. La [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) définit la syntaxe de la ligne d'état (*Status-Line*) tel qu'indiqué ci-dessous:
 ```
 Status-Line = HTTP-Version SP Status-Code SP Reason-Phrase CRLF
 ```
-HTTP définit ces codes d’état standard qui peuvent être utilisés pour transmettre les résultats de la demande d’un client. Les codes d'état sont divisés en cinq catégories :
+La norme HTTP définit les codes d’état qui peuvent être utilisés pour transmettre les résultats d'une requête. Les codes d'état sont divisés en cinq catégories :
 
 - 1xx: Informational – Communique des informations au niveau du protocole de transfert.
 - 2xx: Success – Indique que la demande du client a été acceptée avec succès.
 - 3xx: Redirection – Indique que le client doit prendre des mesures supplémentaires afin de terminer sa demande.
 - 4xx: Client Error – Cette catégorie de codes d'état d'erreur pointe du doigt les clients.
-- 5xx: Server Error – TLe serveur assume la responsabilité de ces codes d'état d'erreur.
+- 5xx: Server Error – Le serveur assume la responsabilité de ces codes d'état d'erreur.
 
-Pour obtenir la liste complète des codes d'état HTTP et codes d'état spécifiques à REST, veillez vous référer à ce [tutorial](https://restfulAPI.net/http-status-codes/).
+Pour obtenir la liste complète des codes d'état HTTP et des codes d'état spécifiques à REST, veillez vous référer à ce [tutorial](https://restfulAPI.net/http-status-codes/).
 
 ## Contenu des réponses (*Response Payload*) <a name="contenuréponses"></a>
 
-Le *response payload* d'une API peut concerner une seule ressource ou un ensemble de ressources.
+Le contenu d'une réponse *response payload* d'une API peut concerner une seule ressource ou un ensemble de ressources.
 
-Lorsque le format de réponse est dans un format `JSON`, les normes de réponse suivantes s'appliquent :
+Lorsque le format de réponse est dans un format JSON, les normes de réponse suivantes s'appliquent :
 
 ### Pour une ressource unique
 
