@@ -965,11 +965,11 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 
 «Hypermédia en tant que moteur de l'état de l'application» (*Hypermedia as the Engine of Application State*) est le concept de représentation des actions autorisées sous forme d'hyperliens associés à la ressource. Lorsque qu'une API utilise ce concept, les liens indiqués dans les réponse représentent les transitions d'états disponibles de l'état actuel vers des états ultérieurs. HATEOAS est l'une des composantes qui différencie l'architecture REST des autres types d'architecture distribuées.
 
-Le principe est qu'un client interagit avec une application réseau entièrement par hypermédia fournie dynamiquement par les serveurs d'applications. Un client REST n'a besoin d'aucune connaissance préalable sur la façon d'interagir avec une application ou un serveur particulier au-delà d'une compréhension générique de l'hypermédia.
+Le principe est basé sur des interactions entièrement réalisées par des liens hypermédias entre les clients et les serveurs. Ces liens sont fournis dynamiquement par les serveurs des applications. Un client REST n'a pas besoin d'avoir aucune connaissance préalable sur la façon d'interagir avec une application particulière au-delà d'une compréhension générique des liens hypermédias.
 
-HATEOAS est similaire à la navigation sur une page Web. L'utilisateur n'est pas censé connaître la structure de la page Web avant de la visiter. Ils peuvent simplement accéder à la page d'accueil et la navigation (via les liens hypertextes) leurs permet de parcourir le site selon leurs besoins.
+En ce sens, HATEOAS est similaire à la navigation d'une page Web. Les utilisateurs n'ont pas besoin de connaître la structure d'un site Web avant de le visiter. Ils peuvent simplement accéder à la page d'accueil et la navigation (via les liens hypertextes) leurs permet de parcourir le site selon leurs besoins.
 
-Le principal avantage d'HATEOAS est de permettre un découplage (*low coupling*) entre les clients et les serveurs de façon à permettre aux applications serveurs d'évoluer de manière indépendante.
+Le principal avantage d'HATEOAS est de permettre un découplage (*low coupling*) entre les clients et les serveurs de façon à permettre aux applications serveurs d'évoluer de manière indépendante (sans impacter) des applications clientes.
 
 Afin de mieux comprendre HATEOAS, examinons la réponse à l'API HATEOAS suivant :
 ```
@@ -994,7 +994,7 @@ Réponse :
     }
 }
 ```
-En plus d'obtenir les informations sur le médecin, la réponse de l'API fournit également des informations supplémentaires sous forme de liens. Par exemple, un lien pour récupérer tous les patients d'un seul médecin est également fournis dans la réponse, seulement si le demandeur en possède l'autorisation.
+En plus d'obtenir les informations sur un médecin, la réponse de l'API fournit également des informations supplémentaires sous forme de liens. Par exemple, si le demandeur en possède l'autorisation requise, un lien pour récupérer tous les patients du médecin est également fournis dans la réponse.
 
 # Outils de test <a name="outilstest"></a>
 
