@@ -965,7 +965,7 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 
 «Hypermédia en tant que moteur de l'état de l'application» (*Hypermedia as the Engine of Application State*) est le concept de représentation des actions autorisées sous forme d'hyperliens associés à la ressource. Lorsque qu'une API utilise ce concept, les liens indiqués dans les réponse représentent les transitions d'états disponibles de l'état actuel vers des états ultérieurs. HATEOAS est l'une des composantes qui différencie l'architecture REST des autres types d'architecture distribuées.
 
-Le principe est basé sur des interactions entièrement réalisées par des liens hypermédias entre les clients et les serveurs. Ces liens sont fournis dynamiquement par les serveurs des applications. Un client REST n'a pas besoin d'avoir aucune connaissance préalable sur la façon d'interagir avec une application particulière au-delà d'une compréhension générique des liens hypermédias.
+Le principe est basé sur des interactions entièrement réalisées par des liens hypermédias entre les clients et les serveurs. Ces liens sont fournis dynamiquement par les serveurs des applications. Un client REST n'a pas besoin d'avoir aucune connaissance préalable sur la façon d'interagir avec une application particulière mis à part d'une compréhension générique des liens hypermédias.
 
 En ce sens, HATEOAS est similaire à la navigation d'une page Web. Les utilisateurs n'ont pas besoin de connaître la structure d'un site Web avant de le visiter. Ils peuvent simplement accéder à la page d'accueil et la navigation (via les liens hypertextes) leurs permet de parcourir le site selon leurs besoins.
 
