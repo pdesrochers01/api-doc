@@ -29,7 +29,7 @@
     1. [Conception des API](#conceptionsecurité)
     1. [Sécurité des transports](#sécuritétransports)
     1. [Authentification et autorisation](#authentificationautorisation)
-    1. [Données sensibles dans les requêtes] (#donnéessensibles)
+    1. [Données sensibles dans les requêtes](#donnéessensibles)
     1. [Limitation du débit](#limitationdébit)
     1. [Gestion des erreurs](#gestionerreurs)
     1. [Journaux d'audit](#journauxaudit)
@@ -396,11 +396,11 @@ Des politiques de limitation de débit (*rate limiting*) permettent d'éviter de
 
 Les entêtes suivants peuvent être retournés lorsque les les seuils ont été dépassés :
 
-| En-tête                  | Description |
-| ------------------------ | -------------------------------------------------- ---------- |
-| `X-Rate-Limit-Limit`     | Plafond de la limite de débit atteinte (par exemple, 100 messages). |
-| `X-Rate-Limit-Remaining` | Nombre de demandes restantes pour la fenêtre de temps (par exemple, 45 messages). |
-| `X-Rate-Limit-Reset` | La fenêtre de temps restante (en secondes) avant la réinitialisation de la limite de débit. |
+| En-tête                  | Description                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------- |
+| `X-Rate-Limit-Limit`     | Plafond de la limite de débit atteinte (par exemple, 100 messages).                         |
+| `X-Rate-Limit-Remaining` | Nombre de demandes restantes pour la fenêtre de temps (par exemple, 45 messages).           |
+| `X-Rate-Limit-Reset`     | La fenêtre de temps restante (en secondes) avant la réinitialisation de la limite de débit. |
 
 ## Gestion des erreurs <a name="gestionerreurs"></a>
 
