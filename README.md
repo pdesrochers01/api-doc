@@ -29,12 +29,15 @@
     1. [Conception des API](#conceptionsecurité)
     1. [Sécurité des transports](#sécuritétransports)
     1. [Authentification et autorisation](#authentificationautorisation)
+    1. [Données sensibles dans les requêtes] (#donnéessensibles)
     1. [Limitation du débit](#limitationdébit)
     1. [Gestion des erreurs](#gestionerreurs)
     1. [Journaux d'audit](#journauxaudit)
     1. [Validation des entrées](#validationentrées)
     1. [Validation du type de contenu](#validationtypecontenu)
     1. [Utiliser les fonctions de sécurité de la passerelle d'API](#fonctionspasserelle)
+    1. [Tests de sécurité](#testssécurité)
+    1. [Exigences de sécurité pour les API – OWASP](#owasp)
 1. [Conventions de nommage](#nommage)
     1. [Format des messages](#formatmessages)
     1. [Noms des composants URI](#composantesuri)
@@ -348,30 +351,105 @@ Il est **RECOMMANDÉ** de mettre en œuvre le niveau 3 du modèle, mais ce n'est
 # Sécurité des API <a name="sécuritéAPI"></a>
 
 ## Conception des API <a name="conceptionsecurité"></a>
-TBD
+
+Les orientations liées à la sécurité visent à assurer la protection de l’ensemble des actifs informationnels à l’égard de la disponibilité, de l’intégrité, de la confidentialité, de l’authentification et de traçabilité et non-répudiation.
+
+Le niveau de sensibilité des différents API est identique à celui déterminé suite à l’analyse de la sensibilité de la solution même et ses données.
+
+Les normes de sécurité des API sont regroupées en trois catégories: conception, transport et authentification et autorisation.
+
+Afin d’assurer une uniformité et établir de bases solides et sécuritaires dans le développement des API pour l'ensemble du gouvernement du Québec, les normes de sécurité du présent cadre identifiées par **DOIVENT** sont obligatoire.
 
 ## Sécurité des transports <a name="sécuritétransports"></a>
-TBD
+
+- Tous les transports **DOIVENT** utiliser HTTPS (TLS 1.2).
+- Tous les certificats **DOIVENT** utiliser l'algorithmes de hachage sécurisé SHA256 avec une longueur de clé minimale de 2048.
+- Tous les points de terminaison accessibles (*endpoints*) au public **DOIVENT** utiliser un certificat numérique (*Digital Certificate*) signé par une autorité de certification approuvée.
+- Les points d'extrémité internes faisant face **PEUVENT** utiliser des certificats numériques auto-signés (*self-signed Digital Certificates*).
+- Les redirections du trafic HTTP vers HTTPS **DOIVENT** être rejetées.
+- Les méthodes HTTP inutilisées **DEVRAIENT** être désactivées et retourner un code de status HTTP 405.
+- Toutes les demandes **DOIVENT** être validées.
 
 ## Authentification et autorisation <a name="authentificationautorisation"></a>
-TBD
+
+- L'authentification de base ou Digest **NE DOIT PAS** être utilisée.
+- L'en-tête `Authorization: Bearer` **DOIT** être utilisé pour l'authentification/l'autorisation à l'aide d'un jeton JWT.
+- Une date d'expiration raisonnable pour les jetons **DOIT** être fournit. La durée de vie du jeton JWT **NE DOIT PAS** dépasser 5 minutes.
+- Toutes les API **DOIVENT** avoir une politique qui autorise l'accès à l'aide d'une clé d'API valide afin de permettre le suivi de l’utilisation, mais aussi pour permettre d’identifier l’application qui effectue l’appel et de prévenir toute utilisation malveillante potentielle.
+- Les clés d'API **DOIVENT** être utilisées pour l'authentification du client. L'utilisation de clés API **DOIT** être sur TLS uniquement.
+- Une politique de rotation des clés d'API doit être mise en œuvre.
+- Les clés d'API **NE DEVRAIENT PAS** être incluses dans l'URL ou la chaîne de requête. Les clés API **DOIVENT** être incluses dans l'en-tête HTTP.
+- Les en-têtes CORS (*Cross-Origin Resource Sharing*) ne doivent être utilisés que lorsque cela est nécessaire. En effet, ceux-ci, réduisent les mécanismes de sécurité intégrés aux navigateurs Web en assouplissant les restrictions d'origine croisée.
+- L’authentification fondée sur les jetons JWT est fortement **RECOMMANDÉE** pour toute API publiée qui doit être utilisée dans l’ensemble du gouvernement et/ou à l’externe, car ils permettent identifier les utilisateurs, c’est-à-dire la personne qui utilise l’application.
+- OAuth 2.0 **DOIT** être utilisé pour gérer les autorisations.
+- OpenID Connect **PEUT** être utilisé pour recevoir des informations sur les utilisateurs authentifiés (exemple : nom d'utilisateur, téléphone, etc.)
+- **L'équipe d'API du gouvernement du Québec fournira un service OAuth pour cette fin.**
+
+## Données sensibles dans les requêtes <a name="donnéessensibles"></a>
+Évitez d’insérer des données sensibles dans les URL de requête : les chaînes d’URL de requête peuvent être retracées et compromises même avec le chiffrement du transport. Si une requête comporte des éléments de données sensibles (p. ex., numéro d’assurance sociale), définissez les paramètres de requête comme une charge de message JSON plutôt que dans la chaîne de requête URL.
 
 ## Limitation du débit <a name="limitationdébit"></a>
-TBC
+
+Définissez des quotas quant à la fréquence d'appels de vos API et suivez son utilisation dans l'historique. Une augmentation du nombre d'appels peut indiquer que l'API est utilisée de manière abusive. Il peut également s'agir d'une erreur de programmation, par exemple une boucle infinie qui ne cesse d'appeler l'API. Établissez des règles de limitation de requêtes pour protéger les API des pics de trafic et des attaques par déni de service.
+
+Des politiques de limitation de débit (*rate limiting*) permettent d'éviter des abus d'utilisation des API. Des alertes appropriées permettent de répondre aux consommateurs lorsque les seuils ont été dépassés.
+
+Les entêtes suivants peuvent être retournés lorsque les les seuils ont été dépassés :
+
+| En-tête                  | Description |
+| ------------------------ | -------------------------------------------------- ---------- |
+| `X-Rate-Limit-Limit`     | Plafond de la limite de débit atteinte (par exemple, 100 messages). |
+| `X-Rate-Limit-Remaining` | Nombre de demandes restantes pour la fenêtre de temps (par exemple, 45 messages). |
+| `X-Rate-Limit-Reset` | La fenêtre de temps restante (en secondes) avant la réinitialisation de la limite de débit. |
+
 ## Gestion des erreurs <a name="gestionerreurs"></a>
-TBD
+
+Lorsque qu'une application affiche des messages d'erreur, elle **NE DOIT PAS** exposer des informations pouvant être exploitation pour des fins d'attaque. Les contrôles doivent être appliqués dans les messages d'erreur :
+- Les réponses des API **DOIVENT** masquer toutes les erreurs liées au système dans les réponses d'état HTTP et les messages d'erreur (par exemple, ne pas exposer des informations du niveau du système (*system level*).
+- Les réponses des API **NE DOIVENT PAS** transmettre de détails techniques (par exemple, des *call stacks* ou autres informations internes) au client.
 
 ## Journaux d'audit <a name="journauxaudit"></a>
-TBD
+
+Il est **RECOMMANDÉ** de définir le bon niveau de journalisation et d'audit et de définir les bonnes alertes.
+
+Enregistrez et surveillez les performances et les activités : suivez l’utilisation et surveiller les activités suspectes, y compris les accès anormaux, tels que les demandes en dehors des heures d’ouverture, les demandes de données importantes et autres. Utilisez des normes d’enregistrement dans les journaux et intégrez les journaux de manière centralisée.
 
 ## Validation des entrées <a name="validationentrées"></a>
-TBC
+
+Afin d'éviter des attaques malveillantes, la validation des entrées permet de garantir que seules les données valides seront traitées :
+
+- Définir une limite appropriée de la taille des demandes et rejeter les demandes dépassant cette limite.
+- Journaliser les échecs de validation d'entrée.
 
 ## Validation du type de contenu <a name="validationtypecontenu"></a>
-TBD
+
+Rejeter les demandes contenant des entêtes de type de contenu (*content type headers*) inadéquats ou manquants avec un status de réponse HTTP `415 Unsupported Media Type`.
 
 ## Utiliser les fonctions de sécurité de la passerelle d'API <a name="fonctionspasserelle"></a>
-TBC
+
+Il est préférable d'utiliser les fonctionnalités de politique de sécurité disponibles dans la passerelle d'API Gateway du gouvernement du Québec que de mettre en œuvre des politiques dans les API eux-mêmes.
+
+## Tests de sécurité <a name="testssécurité"></a>
+Intégrez les tests de sécurité : automatisez les tests de sécurité pour valider toute nouvelle modification du code source de l’API et aussi pour garantir la robustesse des modifications apportées. Évaluez l’impact du changement et effectuez les tests nécessaires.
+
+## Exigences de sécurité pour les API – OWASP <a name="owasp"></a>
+
+Ci-dessous se trouvent les exigences de sécurité permettant de mieux sécuriser les API et les données :
+- S’assurer que les communications entre les différents composants de l'application, y compris les API et les couches de données, sont authentifiées. Les composants doivent respecter le principe « Du droit d’accès minimal ».
+- S’assurer que toutes les voies d'authentification et toutes les API de gestion d'identité mettent en œuvre une force de contrôle de sécurité d'authentification cohérente, de sorte qu'il n'y ait pas des alternatives plus faibles par rapport au risque de l’application.
+- S’assurer que les clés des API sont gérées de manière sécurisée et elles ne sont pas inclus dans le code source ou stockés dans les dépôts de code source.
+- S’assurer que les API n’utilisent pas des clés statiques.
+- S’assurer que les API sont protégées contre les attaques directes d'objets ciblant la création, la lecture, la mise à jour et la suppression d'enregistrements, notamment la mise à jour des enregistrements de quelqu’un d’autre ou la suppression de tous les enregistrements.
+- S’assurer que les URL des API sont protégées contre l'attaque « Path Traversal » ou « Directory traversal ».
+- S’assurer que les URL des API n'exposent pas des informations sensibles.
+
+Ci-dessous vous trouverez des exigences permettant de mieux sécuriser les API RESTful :
+- S’assurer que les méthodes HTTP RESTful activées sont un choix valide pour l'utilisateur ou une action, par exemple : empêcher les utilisateurs normaux d'utiliser DELETE ou PUT sur une API.
+- S’assurer que la validation du schéma JSON est en place et elle est vérifiée avant d'accepter une entrée.
+- S’assurer que les services Web RESTful qui utilisent des cookies sont protégés contre la falsification de requête CrossSite via l'utilisation d'au moins un ou plusieurs des éléments suivants: modèle de cookie à triple ou double soumission, nombres aléatoires d’une seule utilisation ou vérifications de l'entête de requête ORIGIN.
+- S’assurer que les services REST disposent de contrôles anti-automatisation pour se protéger contre les appels excessifs, notamment si l'API n'est pas authentifiée.
+- S’assurer que les services REST vérifient explicitement que le Content-Type entrant est celui attendu, tel que : application/XML ou application/JSON.
+- Vérifier que les entêtes de message et la charge utile sont fiables et non modifiés en transit. Exiger un cryptage fort pour le transport (TLS uniquement) dans de nombreux cas peut être suffisant, car il assure à la fois la protection de la confidentialité et de l'intégrité.
 
 # Conventions de nommage (*Naming Conventions*) <a name="nommage"></a>
 
