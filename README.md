@@ -354,26 +354,25 @@ Il est **RECOMMANDÉ** de mettre en œuvre le niveau 3 du modèle, mais ce n'est
 
 Les orientations liées à la sécurité visent à assurer la protection de l’ensemble des actifs informationnels à l’égard de la disponibilité, de l’intégrité, de la confidentialité, de l’authentification et de traçabilité et non-répudiation.
 
-Le niveau de sensibilité des différents API est identique à celui déterminé suite à l’analyse de la sensibilité de la solution même et ses données.
+Il est important de prendre note que le niveau de sensibilité des différents API est identique à celui déterminé suite à l’analyse de la sensibilité de la solution même et ses données.
 
-Les normes de sécurité des API sont regroupées en trois catégories: conception, transport et authentification et autorisation.
-
-Afin d’assurer une uniformité et établir de bases solides et sécuritaires dans le développement des API pour l'ensemble du gouvernement du Québec, les normes de sécurité du présent cadre identifiées par **DOIVENT** sont obligatoire.
+Afin d’assurer une uniformité et établir de bases solides et sécuritaires dans le développement des API pour l'ensemble du gouvernement du Québec, les normes de sécurité obligatoire (identifiées par **DOIVENT**) du présent cadre respectées.
 
 ## Sécurité des transports <a name="sécuritétransports"></a>
 
-- Tous les transports **DOIVENT** utiliser HTTPS (TLS 1.2).
-- Tous les certificats **DOIVENT** utiliser l'algorithmes de hachage sécurisé SHA256 avec une longueur de clé minimale de 2048.
+- Tous les transports **DOIVENT** utiliser HTTPS (TLS 1.2 ou plus récent).
+- Tous les certificats **DOIVENT** utiliser l'algorithme de hachage sécurisé SHA256 avec une longueur de clé minimale de 2,048.
 - Tous les points de terminaison accessibles (*endpoints*) au public **DOIVENT** utiliser un certificat numérique (*Digital Certificate*) signé par une autorité de certification approuvée.
-- Les points d'extrémité internes faisant face **PEUVENT** utiliser des certificats numériques auto-signés (*self-signed Digital Certificates*).
+- Les points de terminaison (*internal facing endpoints*) internes **PEUVENT** utiliser des certificats numériques auto-signés (*self-signed Digital Certificates*).
 - Les redirections du trafic HTTP vers HTTPS **DOIVENT** être rejetées.
-- Les méthodes HTTP inutilisées **DEVRAIENT** être désactivées et retourner un code de status HTTP 405.
+- Les méthodes HTTP inutilisées **DEVRAIENT** être désactivées et retourner un code de status HTTP `405 Not Allowed`.
 - Toutes les demandes **DOIVENT** être validées.
 
 ## Authentification et autorisation <a name="authentificationautorisation"></a>
 
 - L'authentification de base ou Digest **NE DOIT PAS** être utilisée.
-- L'en-tête `Authorization: Bearer` **DOIT** être utilisé pour l'authentification/l'autorisation à l'aide d'un jeton JWT.
+- L'en-tête `Authorization: Bearer` **DOIT** être utilisé pour l'authentification/l'autorisation.
+- La norme JSON Web Tokens ou JWT **DOIT** être utilisée afin de représenter les réclamations (*claims*) en toute sécurité entre les applications clientes et back-end.  JWT est une spécification ouverte définit dans le standard [RFC 7519](https://tools.ietf.org/html/rfc7519).
 - Une date d'expiration raisonnable pour les jetons **DOIT** être fournit. La durée de vie du jeton JWT **NE DOIT PAS** dépasser 5 minutes.
 - Toutes les API **DOIVENT** avoir une politique qui autorise l'accès à l'aide d'une clé d'API valide afin de permettre le suivi de l’utilisation, mais aussi pour permettre d’identifier l’application qui effectue l’appel et de prévenir toute utilisation malveillante potentielle.
 - Les clés d'API **DOIVENT** être utilisées pour l'authentification du client. L'utilisation de clés API **DOIT** être sur TLS uniquement.
