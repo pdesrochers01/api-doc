@@ -356,7 +356,7 @@ Les orientations liées à la sécurité visent à assurer la protection de l’
 
 Il est important de prendre note que le niveau de sensibilité des différents API est identique à celui déterminé suite à l’analyse de la sensibilité de la solution même et ses données.
 
-Afin d’assurer une uniformité et établir de bases solides et sécuritaires dans le développement des API pour l'ensemble du gouvernement du Québec, les normes de sécurité obligatoire (identifiées par **DOIVENT**) du présent cadre respectées.
+Afin d’assurer une uniformité et établir de bases solides et sécuritaires dans le développement des API pour l'ensemble du gouvernement du Québec, les normes de sécurité obligatoire (identifiées par **DOIVENT**) du présent cadre doivent être respectées.
 
 ## Sécurité des transports <a name="sécuritétransports"></a>
 
