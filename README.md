@@ -426,7 +426,7 @@ Rejeter les demandes contenant des entêtes de type de contenu (*content type he
 
 ## Utiliser les fonctions de sécurité de la passerelle d'API <a name="fonctionspasserelle"></a>
 
-Il est fortement **RECOMMANDÉ** d'utiliser les fonctionnalités de sécurité disponibles dans la passerelle d'API du gouvernement du Québec que de mettre en œuvre des politiques dans les API eux-mêmes. ** à compléter lorsque la passerelle sera sélectionnée.**
+Il est fortement **RECOMMANDÉ** d'utiliser les fonctionnalités de sécurité disponibles dans la passerelle d'API du gouvernement du Québec que de mettre en œuvre des politiques dans les API eux-mêmes. **à compléter lorsque la passerelle sera sélectionnée.**
 
 ## Tests de sécurité <a name="testssécurité"></a>
 
