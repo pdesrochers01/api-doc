@@ -1,4 +1,4 @@
-# Lignes directrices des API du gouvernement du Québec
+# Lignes directrices des API du gouvernement du Québec (document de travail)
 
 # Table des matières
 
