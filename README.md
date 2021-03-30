@@ -376,12 +376,12 @@ Afin d’assurer une uniformité et établir de bases solides et sécuritaires d
 - Il est **RECOMMANDÉ** de donner une date d'expiration raisonnable pour les jetons. La durée de vie du jeton JWT **NE DEVRAIT PAS** dépasser 5 minutes.
 - Toutes les API **DOIVENT** avoir une politique qui autorise l'accès à l'aide d'une clé d'API valide afin de permettre le suivi de l’utilisation, mais aussi pour permettre d’identifier l’application qui effectue l’appel et de prévenir toute utilisation malveillante potentielle.
 - Les clés d'API **DOIVENT** être utilisées pour l'authentification du client. L'utilisation de clés API **DOIT** être sur TLS uniquement.
-- Il est fortement **RECOMMANDÉ** de mettre en place une politique de rotation des clés d'API.
+- Il est fortement **RECOMMANDÉ** de mettre en place une politique de rotation des clés d'API. **TBC**
 - Les clés d'API **NE DEVRAIENT PAS** être incluses dans l'URL ou la chaîne de requête. Les clés API **DOIVENT** être incluses uniquement dans l'en-tête HTTP.
 - Les entêtes CORS (*Cross-Origin Resource Sharing*) **NE DEVRAIENT PAS** être utilisés, sauf si cela est absolument nécessaire. En effet, ceux-ci, réduisent les mécanismes de sécurité intégrés aux navigateurs Web en assouplissant ces restrictions.
 - L’authentification fondée sur les jetons JWT est fortement **RECOMMANDÉE** pour toutes les API publiées utilisée dans l’ensemble du gouvernement et/ou à l’externe.
 - OAuth 2.0 **DOIT** être utilisé pour gérer les autorisations.
-- OpenID Connect **PEUT** être utilisé pour recevoir des informations sur les utilisateurs authentifiés (exemple : nom d'utilisateur, téléphone, etc.)
+- OpenID Connect **PEUT** être utilisé pour recevoir des informations sur les utilisateurs authentifiés (exemple : nom d'utilisateur, téléphone, etc.) **TBC**
 - **L'équipe d'API du gouvernement du Québec fournira un service OAuth pour cette fin.**
 
 ## Données sensibles dans les requêtes <a name="donnéessensibles"></a>
@@ -426,7 +426,7 @@ Rejeter les demandes contenant des entêtes de type de contenu (*content type he
 
 ## Utiliser les fonctions de sécurité de la passerelle d'API <a name="fonctionspasserelle"></a>
 
-Il est fortement **RECOMMANDÉ** d'utiliser les fonctionnalités de sécurité disponibles dans la passerelle d'API du gouvernement du Québec que de mettre en œuvre des politiques dans les API eux-mêmes.
+Il est fortement **RECOMMANDÉ** d'utiliser les fonctionnalités de sécurité disponibles dans la passerelle d'API du gouvernement du Québec que de mettre en œuvre des politiques dans les API eux-mêmes. ** à compléter lorsque la passerelle sera sélectionnée.**
 
 ## Tests de sécurité <a name="testssécurité"></a>
 
