@@ -420,6 +420,8 @@ Par exemple :
 - Définir une limite appropriée de la taille des demandes et rejeter les demandes dépassant cette limite.
 - Journaliser les échecs de validation d'entrée.
 
+**ajouter qu'il faut valider le plus finement possible (longueur min/max des chaînes de caractères, type date, format adresse email, etc.)**
+
 ## Validation du type de contenu <a name="validationtypecontenu"></a>
 
 Rejeter les demandes contenant des entêtes de type de contenu (*content type headers*) inadéquats ou manquants avec un status de réponse HTTP `415 Unsupported Media Type`.
@@ -906,7 +908,7 @@ D'autres formats de *payload* tels que XML, CSV et YAML **PEUVENT** aussi être 
 Le support des formats supplémentaires doit être documentée dans la définition Swagger des API.
 
 ## Idempotence <a name="idempotence"></a>
-
+**Ajouter les raisons pour lesquelles l'idempotence est importante**
 Une méthode HTTP idempotente peut être appelée plusieurs fois sans donner de résultats différents.
 Par exemple, lorsque qu'une requête `DELETE` similaire est invoquée à plusieurs reprises, la première requête supprimera la ressource et retournera un code de status 200 (OK). Les demandes suivantes retourneront toutes un code de status 404 (non trouvé).
 
