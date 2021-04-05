@@ -13,7 +13,7 @@
     1. [La norme de spécification OpenAPI](#openAPI)
 1. [Définitions](#définition)
     1. [API](#API)
-    1. [REST](#rest)
+    1. [REST](#definitionrest)
     1. [Ressources](#resssources)
     1. [Identifiants de ressource](#idresssources)
     1. [Représentations](#représentation)
@@ -162,7 +162,7 @@ En informatique, une interface de programmation d’application (en anglais API 
 Dans le contexte de cette norme de conception d'API, une API est définie comme un service Web. Ils sont utilisées pour créer des applications distribués, dont les composants sont faiblement couplés.
 ![alt text](./API-Web.png "API de type service Web")
 
-## REST <a name="rest"></a>
+## REST <a name="definitionrest"></a>
 REST (*REpresentational State Transfer*) est un style d'architecture logicielle définissant un ensemble de contraintes à utiliser pour créer des services web.
 
 Les services web conformes au style d'architecture REST, aussi appelés services web RESTful, établissent une interopérabilité entre les ordinateurs sur Internet.
