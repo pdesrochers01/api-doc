@@ -908,7 +908,7 @@ D'autres formats de *payload* tels que XML, CSV et YAML **PEUVENT** aussi être 
 Le support des formats supplémentaires doit être documentée dans la définition Swagger des API.
 
 ## Idempotence <a name="idempotence"></a>
-**Ajouter les raisons pour lesquelles l'idempotence est importante**
+
 Une méthode HTTP idempotente peut être appelée plusieurs fois sans donner de résultats différents.
 Par exemple, lorsque qu'une requête `DELETE` similaire est invoquée à plusieurs reprises, la première requête supprimera la ressource et retournera un code de status 200 (OK). Les demandes suivantes retourneront toutes un code de status 404 (non trouvé).
 
@@ -1116,31 +1116,3 @@ Il existe une grande variété d'outils de test gratuits (open source) disponibl
 [HTTP Status Codes](https://restfulAPI.net/http-status-codes/)
 
 [JSON:API, a specification for building APIs in JSON](https://jsonAPI.org/format/)
-
-
-*********template*********
-# Titre1 <a name="titre1"></a>
-
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBC
-
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBC
-
-## Titre2 <a name="titre2"></a>
-TBD
-
-## Titre2 <a name="titre2"></a>
-TBC
