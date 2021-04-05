@@ -66,7 +66,6 @@
     1. [Codes de réponse HTTP](#codesréponsehttp)
     1. [Contenu des réponses](#contenuréponses)
 1. [Hypermédia (HATEOAS)](#hypermédia)
-    1. [HATEOAS](#hateoas)
 1. [Outils de test](#outilstest)
 1. [Références](#références)
 
