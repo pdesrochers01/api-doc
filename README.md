@@ -418,9 +418,9 @@ Afin d'éviter des attaques malveillantes, il est fortement **RECOMMANDÉ** de l
 
 Par exemple :
 - Définir une limite appropriée de la taille des demandes et rejeter les demandes dépassant cette limite.
+- Valider l'entrée: par ex. longueur minimale et maximale des chaînes de caractères, format (des dates, adrrsse courriel, etc.)
 - Journaliser les échecs de validation d'entrée.
 
-**ajouter qu'il faut valider le plus finement possible (longueur min/max des chaînes de caractères, type date, format adresse email, etc.)**
 
 ## Validation du type de contenu <a name="validationtypecontenu"></a>
 
@@ -911,6 +911,8 @@ Le support des formats supplémentaires doit être documentée dans la définiti
 **Ajouter les raisons pour lesquelles l'idempotence est importante**
 Une méthode HTTP idempotente peut être appelée plusieurs fois sans donner de résultats différents.
 Par exemple, lorsque qu'une requête `DELETE` similaire est invoquée à plusieurs reprises, la première requête supprimera la ressource et retournera un code de status 200 (OK). Les demandes suivantes retourneront toutes un code de status 404 (non trouvé).
+
+L'idempotence est importante dans les API car une ressource peut être appelée plusieurs fois si le réseau est interrompu. Dans ce scénario, les opérations non idempotentes peuvent provoquer des effets secondaires involontaires importants en créant des ressources supplémentaires ou en les modifiant de manière inattendue. Lorsqu'une entreprise s'appuie sur l'exactitude de ses données, la non-idempotence présente un risque important.
 
 Les méthodes **API RESTful** **DOIVENT** adhérer à l'idempotence spécifiée dans le tableau suivant :
 
