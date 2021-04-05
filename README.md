@@ -65,12 +65,8 @@
     1. [Entête des réponses](#entêteréponses)
     1. [Codes de réponse HTTP](#codesréponsehttp)
     1. [Contenu des réponses](#contenuréponses)
-1. [Hypermédia](#hypermédia)
-    1. [Hypermédia - Données liées](#hypermédiadonnées)
+1. [Hypermédia (HATEOAS)](#hypermédia)
     1. [HATEOAS](#hateoas)
-    1. [API compatible hypermédia](#compatiblehypermédia)
-    1. [Link Description Object](#linkobject)
-    1. [Type de relation de lien](#typelien)
 1. [Outils de test](#outilstest)
 1. [Références](#références)
 
@@ -1041,7 +1037,7 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 |                |               | Internal Server error  | 500  |
 
 
-# Hypermédia <a name="titre1"></a>
+# Hypermédia <a name="hypermédia"></a>
 
 ## HATEOAS <a name="hateoas"></a>
 
