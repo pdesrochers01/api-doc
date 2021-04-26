@@ -113,9 +113,9 @@ Une API appartiendra généralement à l'une des catégories suivantes:
 
 - **API de niveau système (application)**: il s'agit d'API de bas niveau exposées directement par une application.
 
-- **API de niveau processus**: il s'agit d'API composées d'autres API systèmes soit via une orchestration et/ou une chorégraphie.
+- **API de niveau composition/orchestration**: il s'agit d'API composées d'autres API systèmes soit via une orchestration et/ou une chorégraphie.
 
-- **API de niveau d'intégration**: il s'agit d'API destinées à faciliter l'adoption de l'intégration d'API entre une organisation et ses consommateurs externes.
+- **API de niveau d'intégration/externe**: il s'agit d'API destinées à faciliter l'adoption de l'intégration d'API entre une organisation et ses consommateurs externes.
 
 Si l'API fait partie du niveau système (application) et est développée sur mesure (maison), il est **RECOMMANDÉ** d'utiliser cette norme de conception car elle facilitera le développement futur des API de niveau processus ou d'intégration.
 
@@ -164,7 +164,7 @@ Les services web conformes au style d'architecture REST, aussi appelés services
 
 Les services web REST permettent aux systèmes effectuant des requêtes de manipuler des ressources web via leurs représentations textuelles à travers un ensemble d'opérations uniformes et prédéfinies sans état.
 
-Essentiellement, ce style d’architecture vise à utiliser tous les standards du Web afin de développer des applications distribuées. Il a été développé par Thomas Fielding dans sa thèse de [doctorat](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm) (Université de Californie, 2000).
+Essentiellement, ce style d’architecture vise à utiliser tous les standards du Web afin de développer des applications distribuées. Il a été développé par Roy Thomas Fielding dans sa thèse de [doctorat](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm) (Université de Californie, 2000).
 
 Les principaux bénéfices de l’architecture REST est d’exploiter les caractéristiques du Web et de son principale protocole (HTTP) sont :
 - Réutilisation des verbes d’actions standards pour interagir avec des stockages persistants (GET pour lire, POST pour créer une nouvelle ressource, PUT pour mettre à jour, DELETE pour effacer, ETC.)
@@ -277,7 +277,7 @@ Il est **RECOMMANDÉ** de suivre les directives suivantes lors du développement
 
 - Ils **DOIVENT** être considérés comme des contrats techniques entre les concepteurs (*designers*) et les développeurs et entre consommateurs et fournisseurs.
 
-- Les API simulées (*mock*) **DEVRAIENT** être créées en utilisant la description de l'API afin de permettre aux consommateurs de s'intégrer rapidement dans la phase de réalisation.
+- Les API simulées (*mock*) **DEVRAIENT** être créées en utilisant la description de l'API afin de permettre aux consommateurs de s'intégrer rapidement dans la phase de réalisation et retrouner un exemple de réponse.
 
 - Le comportement et les réponses de l'API **DEVRAIENT** être décrits avec autant d'informations que possible dans la documentation de l'API.
 
@@ -560,7 +560,7 @@ Les valeurs peuvent être des objets, des chaînes, des nombres, des booléens o
 
 Afin de faciliter la navigation des utilisateurs dans l'API, des liens relationnels **DOIVENT** être fournis.
 
-Un tableau `_links` **DOIT** être fourni pour les ressources. Il contient des objets lien (*link*) qui peuvent référer à des ressources associées dans le système.
+Un tableau `_links` **DEVRAIT** être fourni pour les ressources. Il contient des objets lien (*link*) qui peuvent référer à des ressources associées dans le système.
 
 Une relation de lien (*link relation*) **DOIT** contenir les éléments suivants:
 
@@ -751,7 +751,7 @@ GET /namespace/v1
 ```
 ## Documentation des versions mineures et des rustines (patch)
 
-La définition Swagger **DEVRAIT** également contenir la version mineure et le correctif.
+La définition OpenAPI (aciennement Swagger) **DEVRAIT** également contenir la version mineure et le correctif.
 
 Il est important de noter que les versions du produit API et les versions d'implémentation de l'API ne sont pas les mêmes.
 
@@ -1039,6 +1039,8 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 # Hypermédia <a name="hypermédia"></a>
 
 ## HATEOAS <a name="hateoas"></a>
+
+**Veuillez noter que le gouvernement du Québec n'impose pas cette norme d'API mais qu'elle est ici à titre informatif.**
 
 «Hypermédia en tant que moteur de l'état de l'application» (*Hypermedia as the Engine of Application State*) est le concept de représentation des actions autorisées sous forme d'hyperliens associés à la ressource. Lorsque qu'une API utilise ce concept, les liens indiqués dans les réponse représentent les transitions d'états disponibles de l'état actuel vers des états ultérieurs. HATEOAS est l'une des composantes qui différencie l'architecture REST des autres types d'architecture distribuées.
 
