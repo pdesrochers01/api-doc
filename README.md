@@ -103,7 +103,7 @@ La principale intention de ce document est de servir de référence dans la phas
 
 Les normes de conception définies dans ce document sont indépendantes des données (ne tiennent pas compte du type de données consommées ou produites) et des langages de programmation.
 
-Ces normes de conception présentent des patrons communs de conception qui sont applicables à tous les scénarios d'API. Ces patrons de conceptions sont basées sur des standards reconnus par l'industrie.
+Ces normes de conception présentent des patrons communs de conception qui sont applicables à tous les scénarios d'API. Ces patrons de conceptions sont basés sur des standards reconnus par l'industrie.
 
 ## Comment appliquer ce cadre normatif? <a name="appliquer"></a>
 
@@ -182,7 +182,7 @@ Par exemple, dans un système de gestion de ressources humaines (RH), les ressou
 
 La décomposition des systèmes en ressources permet une séparation des préoccupations (*"separation of concerns"*). Par exemple, seul un employé peut faire une demande de congés. Cela garantit également que chaque élément de données retourné par l'API sera minimaliste afin répondre aux exigences du client.
 
-Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Généralement, les ressources sont les «noms» que nous retrouvons dans une applications. Il y a cependant une différence importante entre REST et POO: les méthodes de REST sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler une ressource, c'est à dire qu'aucune autre méthode ne peut être indiquée dans les requêtes des API, ni dans le corps HTTP, ni dans le chemin de base ou dans les paramètres.
+Les ressources sont similaires aux objets dans le paradigme de programmation orientée objet (POO). Généralement, les ressources sont les «noms» que nous retrouvons dans une application. Il y a cependant une différence importante entre REST et POO: les méthodes de REST sont limitées à l'ensemble des méthodes HTTP (GET, PUT, POST, etc.), alors qu'en POO les méthodes peuvent être arbitraires. Outre les méthodes HTTP spécifiées dans l'interface de ressource uniforme (*uniform resource interface*), aucune autre méthode ne peut être utilisée pour manipuler une ressource, c'est à dire qu'aucune autre méthode ne peut être indiquée dans les requêtes des API, ni dans le corps HTTP, ni dans le chemin de base ou dans les paramètres.
 
 ## Identifiants de ressource <a name="idresssources"></a>
 
@@ -258,7 +258,7 @@ Une bonne documentation d'un API est un élément essentiel. En effet, cela faci
 
 En conséquence, toutes les API créées pour le gouvernement québécois **DOIVENT** fournir un document OpenAPI v2.0. Un document OpenAPI v3.0 **PEUT** également être fourni pour assurer la pérennité de l'API.
 
-Il est **RECOMMANDÉ** d'inclure les sections suivantes dans le document de description d'un l'API :
+Il est **RECOMMANDÉ** d'inclure les sections suivantes dans le document de description de l'API :
 
 - À propos de
 - Mentions légales
@@ -293,7 +293,7 @@ Il est **RECOMMANDÉ** de suivre les directives suivantes lors du développement
 
 - Les problèmes connus ou les limitations (*known issues or limitations*) **DEVRAIENT** être clairement documentés.
 
-- Les performances attendues, la disponibilité et le niveau de service (*SLA*) des l'API **DEVRAIENT** être documentés.
+- Les performances attendues, la disponibilité et le niveau de service (*SLA*) des API **DEVRAIENT** être documentés.
 
 - La chronologie dans laquelle les méthodes seront obsolètes **DEVRAIT** être fournie. (Voir la section Politique de fin de vie et dépréciation de l'API).
 
@@ -307,7 +307,7 @@ Afin de suivre les recommandations de versionnage de cette norme, il **DOIT** y 
 
 Une API difficile à utiliser réduit sa probabilité d'utilisation de la part des consommateurs. Il est également peu probable que ceux-ci la recommandent à d'autres consommateurs d'API.
 
-Il est fortement **RECOMMANDÉES** que les API en cours de conception soient testées avec de véritables consommateurs. Toutes rétroactions données **DEVRAIENT** être pris en compte afin d'être intégré à l'API.
+Il est fortement **RECOMMANDÉ** que les API en cours de conception soient testées avec de véritables consommateurs. Toutes rétroactions données **DEVRAIENT** être pris en compte afin d'être intégré à l'API.
 
 L'équipe API du gouvernement du Québec fournit un processus d'examen des API afin de garantir que les API répondent à un niveau minimaliste d'utilisabilité avant qu'elles ne soient publiées aux consommateurs.
 
@@ -381,13 +381,13 @@ Afin d’assurer une uniformité et établir de bases solides et sécuritaires d
 
 ## Données sensibles dans les requêtes <a name="donnéessensibles"></a>
 
-Les données sensibles **NE DEVRAIENT PAS** apparaitrent dans l'URL des requêtes. En effet, les chaînes de requête des URL peuvent être compromises et ce, même avec un chiffrement du transport (TLS). Si une requête comporte des éléments de données sensibles (par exemple, un numéro d’assurance sociale), il est fortement **RECOMMANDÉ** d'utiliser les paramètres de requête dans un message JSON plutôt que dans la chaîne de requête URL.
+Les données sensibles **NE DEVRAIENT PAS** apparaitre dans l'URL des requêtes. En effet, les chaînes de requête des URL peuvent être compromises et ce, même avec un chiffrement du transport (TLS). Si une requête comporte des éléments de données sensibles (par exemple, un numéro d’assurance sociale), il est fortement **RECOMMANDÉ** d'utiliser les paramètres de requête dans un message JSON plutôt que dans la chaîne de requête URL.
 
 ## Limitation du débit <a name="limitationdébit"></a>
 
-Il est fortement **RECOMMANDÉ** de mettre des quotas quant à la fréquence d'appels des API et de suivre son utilisation dans un historique. Une augmentation du nombre d'appels peut indiquer que l'API est utilisée de manière abusive. Il peut également s'agir d'une erreur de programmation(par exemple, une boucle infinie qui ne cesse d'appeler l'API). Il est auss fortement **RECOMMANDÉ** d'établir des règles de limitation des requêtes (*rate limiting*) pour protéger les API des pics de trafic et des attaques par déni de service (*Denial of Service - DoS*). Des alertes appropriées seront fournient afin de répondre aux consommateurs lorsque les seuils ont été dépassés.
+Il est fortement **RECOMMANDÉ** de mettre des quotas quant à la fréquence d'appels des API et de suivre son utilisation dans un historique. Une augmentation du nombre d'appels peut indiquer que l'API est utilisée de manière abusive. Il peut également s'agir d'une erreur de programmation(par exemple, une boucle infinie qui ne cesse d'appeler l'API). Il est aussi fortement **RECOMMANDÉ** d'établir des règles de limitation des requêtes (*rate limiting*) pour protéger les API des pics de trafic et des attaques par déni de service (*Denial of Service - DoS*). Des alertes appropriées seront fournis afin de répondre aux consommateurs lorsque les seuils ont été dépassés.
 
-Les entêtes suivants peuvent être retournés lorsque les les seuils ont été dépassés :
+Les entêtes suivants peuvent être retournés lorsque les seuils ont été dépassés :
 
 | En-tête                  | Description                                                                                 |
 | ------------------------ | ------------------------------------------------------------------------------------------- |
@@ -413,13 +413,13 @@ Afin d'éviter des attaques malveillantes, il est fortement **RECOMMANDÉ** de l
 
 Par exemple :
 - Définir une limite appropriée de la taille des demandes et rejeter les demandes dépassant cette limite.
-- Valider l'entrée: par ex. longueur minimale et maximale des chaînes de caractères, format (des dates, adrrsse courriel, etc.)
+- Valider l'entrée: par ex. longueur minimale et maximale des chaînes de caractères, format (des dates, adresse courriel, etc.)
 - Journaliser les échecs de validation d'entrée.
 
 
 ## Validation du type de contenu <a name="validationtypecontenu"></a>
 
-Rejeter les demandes contenant des entêtes de type de contenu (*content type headers*) inadéquats ou manquants avec un status de réponse HTTP `415 Unsupported Media Type`.
+Rejeter les demandes contenant des entêtes de type de contenu (*content type headers*) inadéquats ou manquants avec un statut de réponse HTTP `415 Unsupported Media Type`.
 
 ## Utiliser les fonctions de sécurité de la passerelle d'API <a name="fonctionspasserelle"></a>
 
@@ -718,11 +718,11 @@ Les versions MINEURE et CORRECTIF ne sont pas requises dans l'URI.
 
 ### Réduire au minimum la publication des nouvelles versions majeures
 
-Avec chaque nouvelle version majeure de l'API, la maintenance des anciennes versions sera requise jusqu'à ce qu'à la fin de leurs supports annonçés. Il est important de bien comprendre que cette activité ajoute des efforts de maintenance et de support.
+Avec chaque nouvelle version majeure de l'API, la maintenance des anciennes versions sera requise jusqu'à ce qu'à la fin de leurs supports annoncés. Il est important de bien comprendre que cette activité ajoute des efforts de maintenance et de support.
 
 Les clés d'API peuvent être utilisés afin d'identifier et communiquer avec les consommateurs des versions obsolètes.
 
-Lorsque de nouvelles versions majeures sont publiées, les anciennes versions doivent être décomissionnées selon le processus de dépréciation décrit ci-dessous.
+Lorsque de nouvelles versions majeures sont publiées, les anciennes versions doivent être décommissionnées selon le processus de dépréciation décrit ci-dessous.
 
 ## Version mineure <a name="versionmineure"></a>
 
@@ -751,7 +751,7 @@ GET /namespace/v1
 ```
 ## Documentation des versions mineures et des rustines (patch)
 
-La définition OpenAPI (aciennement Swagger) **DEVRAIT** également contenir la version mineure et le correctif.
+La définition OpenAPI (anciennement Swagger) **DEVRAIT** également contenir la version mineure et le correctif.
 
 Il est important de noter que les versions du produit API et les versions d'implémentation de l'API ne sont pas les mêmes.
 
@@ -795,7 +795,7 @@ Les versions majeures de l'API **PEUVENT** être rétrocompatibles avec les vers
 
 Les règles suivantes s'appliquent lors du retrait d'une version majeure de l'API.
 
-1. Une API majeure **NE DEVRAIT PAS** être à l'état "DEPRECATED" jusqu'à ce qu'un service de remplacement soit "LIVE". Cette dernière devra fournir des instructions de migration pour toutes les fonctionnalités qui sont reportées. Idéalement, celles-ci **DEVRAIT** inclure de la documentation, des outils et des exemples de code.
+1. Une API majeure **NE DEVRAIT PAS** être à l'état "DEPRECATED" jusqu'à ce qu'un service de remplacement soit "LIVE". Cette dernière devra fournir des instructions de migration pour toutes les fonctionnalités qui sont reportées. Idéalement, celles-ci **DEVRAIENT** inclure de la documentation, des outils et des exemples de code.
 1. La version obsolète d'une API **DOIT** être à l'état «DEPRECATED» pour une période minimale afin donner aux utilisateurs un délai suffisant pour effectuer une migration vers une version plus récente.
 1. Si une API versionnée à l'état «LIVE» ou «DEPRECATED» n'a pas d'utilisateurs enregistrés, elle **PEUT** passer immédiatement à l'état «RETIRED».
 
@@ -905,7 +905,7 @@ Le support des formats supplémentaires doit être documentée dans la définiti
 ## Idempotence <a name="idempotence"></a>
 
 Une méthode HTTP idempotente peut être appelée plusieurs fois sans donner de résultats différents.
-Par exemple, lorsque qu'une requête `DELETE` similaire est invoquée à plusieurs reprises, la première requête supprimera la ressource et retournera un code de status 200 (OK). Les demandes suivantes retourneront toutes un code de status 404 (non trouvé).
+Par exemple, lorsque qu'une requête `DELETE` similaire est invoquée à plusieurs reprises, la première requête supprimera la ressource et retournera un code de statut 200 (OK). Les demandes suivantes retourneront toutes un code de statut 404 (non trouvé).
 
 L'idempotence est importante dans les API car une ressource peut être appelée plusieurs fois si le réseau est interrompu. Dans ce scénario, les opérations non idempotentes peuvent provoquer des effets secondaires involontaires importants en créant des ressources supplémentaires ou en les modifiant de manière inattendue. Lorsqu'une entreprise s'appuie sur l'exactitude de ses données, la non-idempotence présente un risque important.
 
@@ -946,7 +946,7 @@ Les entêtes de réponse (*response headers*) suivantes **PEUVENT** être inclus
 | Access-Control-Allow-Origin  | URL qui est autorisée à accéder à ce service directement à partir de javascript et de clients basés sur un navigateur. <br />**Remarque:** N'utilisez jamais d'URL génériques (*) à moins que la ressource REST ne soit de nature publique. |
 | Access-Control-Allow-Methods | Les méthodes auxquelles il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
 | Access-Control-Allow-Headers | Les entêtes auxquels il est possible d'accéder directement à partir de javascript et de clients basés sur un navigateur. |
-| Content-Type                 | Choix de: <ul><li>`application/json` (requis)</li><li>`application/xml` (facultatif pour `xml`)</li><li>` multipart/form-data` (facultatif pour les fichiers)</li><li>`text/html` (facultatif pour`html`)</li></ul> |
+| Content-Type                 | Choix de: <ul><li>`application/json` (requis)</li><li>`application/xml` (facultatif pour `xml`)</li><li>` multipart/form-data` (facultatif pour les fichiers)</li><li>`text/html` (facultatif pour `html`)</li></ul> |
 | Cache-Control                | Informe des mécanismes de mise en cache.                     |
 | Date                         | La date et l'heure à laquelle le message a été émis. |
 | Expire                       | La date et l'heure après laquelle la réponse est considérée comme étant périmée. |
@@ -1042,7 +1042,7 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 
 **Veuillez noter que le gouvernement du Québec n'impose pas cette norme d'API mais qu'elle est ici à titre informatif.**
 
-«Hypermédia en tant que moteur de l'état de l'application» (*Hypermedia as the Engine of Application State*) est le concept de représentation des actions autorisées sous forme d'hyperliens associés à la ressource. Lorsque qu'une API utilise ce concept, les liens indiqués dans les réponse représentent les transitions d'états disponibles de l'état actuel vers des états ultérieurs. HATEOAS est l'une des composantes qui différencie l'architecture REST des autres types d'architecture distribuées.
+«Hypermédia en tant que moteur de l'état de l'application» (*Hypermedia as the Engine of Application State*) est le concept de représentation des actions autorisées sous forme d'hyperliens associés à la ressource. Lorsque qu'une API utilise ce concept, les liens indiqués dans les réponses représentent les transitions d'états disponibles de l'état actuel vers des états ultérieurs. HATEOAS est l'une des composantes qui différencie l'architecture REST des autres types d'architecture distribuées.
 
 Le principe est basé sur des interactions entièrement réalisées par des liens hypermédias entre les clients et les serveurs. Ces liens sont fournis dynamiquement par les serveurs des applications. Un client REST n'a pas besoin d'avoir aucune connaissance préalable sur la façon d'interagir avec une application particulière mis à part une compréhension générique des liens hypermédias.
 
