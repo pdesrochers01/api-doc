@@ -95,7 +95,7 @@ Les textes lisibles par traitement informatique (programme, script, etc.) tel qu
 
 ## Contact <a name="contact"></a>
 
-TBC (ex: apiteam@api.quebec.ca)
+(ex: apiteam@api.quebec.ca)
 
 ## Pourquoi une norme de conception des API? <a name="norme"></a>
 
@@ -129,7 +129,11 @@ Cette norme de conception des API du gouvernement du Québec est basée sur le s
 
 Bien qu'il existe d'autres modèles de conception pour les API (par exemple, SOAP, GraphQL et gRPC), la grande majorité des développeurs de l'industrie des TI ont largement adopté REST comme mécanisme de représentation et de transfert de données entre les différentes applications visibles sur Internet. Les gouvernements de l'Ontario, du Canada, du Royaume-Uni, de l'Australie et de nombreux autres ont déjà adoptés le style d'architecture REST. Ce standard a aussi été adopté par la grande majorité des fournisseurs de services infonuagiques (Azure, AWS, Google Cloud, DigitalOcean, etc.).
 
-Le style d'architecture REST est très efficace afin de modéliser des systèmes et des données. Les principes REST peuvent être aussi bien appliqués aux systèmes de petite que de grande envergure et les outils disponibles (écosystème de développement) supportent facilement les accès aux données.
+L’adoption massive du style d’architecture REST réside dans son efficacité à modéliser des systèmes et des données plus rapidement tout en facilitant le partage de celles-ci. Les principes REST peuvent être appliqués aux systèmes de petite et de grande envergure. La plupart des outils disponibles pour le développement de solution supportent également facilement les accès aux données via les principes REST.
+
+En tenant compte de ces tendances fortes du marché autant en Amérique du Nord qu’ailleurs dans le monde, il a été déterminé que le style d’architecture REST serait la base de la modélisation des API dans le gouvernement du Québec.
+
+**Limites des API REST au Gouvernement du Québec**
 
 Il est important de prendre note que les API REST ne sont généralement pas adaptées à la diffusion (streaming) de données ou dans les cas où la performance des interaction est essentielle. GraphQL et gRPC/JSON-RPC sont des alternatives en émergence qui seront éventuellement considérées comme des options pour les standards du gouvernement du Québec. Un aiguilleur sera disponible bientôt afin d'aider les concepteurs dans le choix de l'architecture à considérer.
 
@@ -369,19 +373,15 @@ Afin d’assurer une uniformité et établir de bases solides et sécuritaires d
 - L'en-tête `Authorization: Bearer` **DOIT** être utilisé pour l'authentification/l'autorisation.
 - La norme JSON Web Tokens ou JWT **DOIT** être utilisée afin de représenter les réclamations (*claims*) en toute sécurité entre les applications clientes et back-end.  JWT est une spécification ouverte définit dans le standard [RFC 7519](https://tools.ietf.org/html/rfc7519).
 - Il est **RECOMMANDÉ** de donner une date d'expiration raisonnable pour les jetons. La durée de vie du jeton JWT **NE DEVRAIT PAS** dépasser 5 minutes.
-- Toutes les API **DOIVENT** avoir une politique qui autorise l'accès à l'aide d'une clé d'API valide afin de permettre le suivi de l’utilisation, mais aussi pour permettre d’identifier l’application qui effectue l’appel et de prévenir toute utilisation malveillante potentielle.
-- Les clés d'API **DOIVENT** être utilisées pour l'authentification du client. L'utilisation de clés API **DOIT** être sur TLS uniquement.
-- Il est fortement **RECOMMANDÉ** de mettre en place une politique de rotation des clés d'API. **TBC**
-- Les clés d'API **NE DEVRAIENT PAS** être incluses dans l'URL ou la chaîne de requête. Les clés API **DOIVENT** être incluses uniquement dans l'en-tête HTTP.
 - Les entêtes CORS (*Cross-Origin Resource Sharing*) **NE DEVRAIENT PAS** être utilisés, sauf si cela est absolument nécessaire. En effet, ceux-ci, réduisent les mécanismes de sécurité intégrés aux navigateurs Web en assouplissant ces restrictions.
 - L’authentification fondée sur les jetons JWT est fortement **RECOMMANDÉE** pour toutes les API publiées utilisée dans l’ensemble du gouvernement et/ou à l’externe.
 - OAuth 2.0 **DOIT** être utilisé pour gérer les autorisations.
-- OpenID Connect **PEUT** être utilisé pour recevoir des informations sur les utilisateurs authentifiés (exemple : nom d'utilisateur, téléphone, etc.) **TBC**
+- OpenID Connect **PEUT** être utilisé pour recevoir des informations sur les utilisateurs authentifiés (exemple : nom d'utilisateur, téléphone, etc.).
 - **L'équipe d'API du gouvernement du Québec fournira un service OAuth pour cette fin.**
 
 ## Données sensibles dans les requêtes <a name="donnéessensibles"></a>
 
-Les données sensibles **NE DEVRAIENT PAS** apparaitre dans l'URL des requêtes. En effet, les chaînes de requête des URL peuvent être compromises et ce, même avec un chiffrement du transport (TLS). Si une requête comporte des éléments de données sensibles (par exemple, un numéro d’assurance sociale), il est fortement **RECOMMANDÉ** d'utiliser les paramètres de requête dans un message JSON plutôt que dans la chaîne de requête URL.
+Les données sensibles **NE DEVRAIENT PAS** apparaitre dans l'URL des requêtes, ni dans les réponses sans que celles-ci soient encryptées. En effet, les chaînes de requête des URL peuvent être compromises et ce, même avec un chiffrement du transport (TLS). Si une requête comporte des éléments de données sensibles (par exemple, un numéro d’assurance sociale), il est fortement **RECOMMANDÉ** d'utiliser les paramètres de requête dans un message JSON plutôt que dans la chaîne de requête URL.
 
 ## Limitation du débit <a name="limitationdébit"></a>
 
@@ -832,7 +832,7 @@ Toutes les API **DOIVENT** supporter les entêtes de requête suivants :
 
 | Entête                        | Valeur                                                       |
 | ----------------------------- | ------------------------------------------------------------ |
-| Autorisation / Identification | Un des éléments suivants : <ul><li>clé API </li><li>authentification de base (clé API + secret) </li><li>nom d'utilisateur + mot de passe</li><li> Jeton (*token*)</li> </ul>|
+| Autorisation / Identification | Jeton (*token*)                                              |
 
 Les entêtes suivantes sont facultatives :
 
