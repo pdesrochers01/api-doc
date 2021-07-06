@@ -158,7 +158,7 @@ Les spécifications d'API peuvent être écrites en YAML ou JSON. Le format est 
 ## API <a name="API"></a>
 En informatique, une interface de programmation d’application (en anglais API pour *Application Programming Interface*) est un ensemble normalisé de classes, de méthodes, de fonctions et de constantes qui sert de façade par laquelle une application offre des services à d'autres applications. Elle est offerte par une bibliothèque logicielle ou un service web, le plus souvent accompagnée d'une description qui spécifie comment des programmes consommateurs peuvent se servir des fonctionnalités du programme fournisseur.
 
-Dans le contexte de cette norme de conception d'API, une API est définie comme un service Web. Ils sont utilisées pour créer des applications distribués, dont les composants sont faiblement couplés.
+Dans le contexte de cette norme de conception d'API, une API est définie comme un service Web. Elle est utilisée pour créer des applications distribuées, dont les composants sont faiblement couplés.
 ![alt text](./API-Web.png "API de type service Web")
 
 ## REST <a name="definitionrest"></a>
@@ -208,7 +208,7 @@ Un concept clé dans la conception d'API RESTful réside dans l'idée de représ
 Dans notre exemple d'un système de gestion de ressources humaines, lorsque qu'une application cliente demande une informations sur un employé, le système de RH retournera cette représentation :
 
 ```
-HTTP 1.1 GET /employees/marie-tremblay
+HTTP 1.1 GET /employees/123456
 Accept: application/json
 
 200 OK
@@ -226,7 +226,7 @@ L'état de cette représentation peut changer dans le temps. Un appel ultérieur
 Il est également possible de demander une représentation entièrement différente de cette même ressource (si le système le permet). Par exemple, une version PDF de cette employée peut être produite via une instruction spécifique dans l'entête `Accept`. L'exemple ci-dessous retournera une version PDF de la requête :
 
 ```
-HTTP 1.1 GET /employes/marie-tremblay
+HTTP 1.1 GET /employes/123456
 Accept: application/pdf
 
 200 OK
@@ -285,11 +285,11 @@ Il est **RECOMMANDÉ** de suivre les directives suivantes lors du développement
 
 - Le comportement et les réponses de l'API **DEVRAIENT** être décrits avec autant d'informations que possible dans la documentation de l'API.
 
-- La documentation **DEVRAIT** facilement accessible aux consommateurs.
+- La documentation **DEVRAIT** être facilement accessible aux consommateurs.
 
 - Les descriptions **DEVRAIENT** contenir au moins un exemple de requête et de réponses.
 
-- Des exemples de corps (*bodies*) de demande et de réponse **DEVRAIENT** être fournis en totalité.
+- Des exemples de corps (*bodies*) de requêtes et de réponses **DEVRAIENT** être fournis en totalité.
 
 - Les codes de réponse et les messages d'erreur attendus **DEVRAIENT** être fournis en totalité.
 
@@ -365,7 +365,7 @@ Afin d’assurer une uniformité et établir de bases solides et sécuritaires d
 - Les points de terminaison (*internal facing endpoints*) internes **PEUVENT** utiliser des certificats numériques auto-signés (*self-signed Digital Certificates*).
 - Les redirections du trafic HTTP vers HTTPS **DOIVENT** être rejetées.
 - Les méthodes HTTP inutilisées **DEVRAIENT** être désactivées et retourner un code de status HTTP `405 Not Allowed`.
-- Toutes les demandes **DOIVENT** être validées.
+- Toutes les requêtes **DOIVENT** être validées.
 
 ## Authentification et autorisation <a name="authentificationautorisation"></a>
 
@@ -374,7 +374,6 @@ Afin d’assurer une uniformité et établir de bases solides et sécuritaires d
 - La norme JSON Web Tokens ou JWT **DOIT** être utilisée afin de représenter les réclamations (*claims*) en toute sécurité entre les applications clientes et back-end.  JWT est une spécification ouverte définit dans le standard [RFC 7519](https://tools.ietf.org/html/rfc7519).
 - Il est **RECOMMANDÉ** de donner une date d'expiration raisonnable pour les jetons. La durée de vie du jeton JWT **NE DEVRAIT PAS** dépasser 5 minutes.
 - Les entêtes CORS (*Cross-Origin Resource Sharing*) **NE DEVRAIENT PAS** être utilisés, sauf si cela est absolument nécessaire. En effet, ceux-ci, réduisent les mécanismes de sécurité intégrés aux navigateurs Web en assouplissant ces restrictions.
-- L’authentification fondée sur les jetons JWT est fortement **RECOMMANDÉE** pour toutes les API publiées utilisée dans l’ensemble du gouvernement et/ou à l’externe.
 - OAuth 2.0 **DOIT** être utilisé pour gérer les autorisations.
 - OpenID Connect **PEUT** être utilisé pour recevoir des informations sur les utilisateurs authentifiés (exemple : nom d'utilisateur, téléphone, etc.).
 - **L'équipe d'API du gouvernement du Québec fournira un service OAuth pour cette fin.**
@@ -466,7 +465,7 @@ S'il n'est pas possible d'utiliser le *snake-case* , le format *camel case* est 
 
 Exemple:
 ```
-// CeciEstUnCamelCase
+// ceciEstUnCamelCase
 
 {
   "employeId" : "123456"
@@ -510,7 +509,7 @@ Le tableau suivant explique comment construire l'URI de l'API.
 | Chemin > Version                        | La version de l'API à laquelle le consommateur souhaite accéder. | Exemple : `/v1`. |
 | Chemin > Collection                     | La collection identifie une liste de ressources. La collection **DOIT** être nommée en utilisant la représentation plurielle d'un nom. |  |
 | Chemin > Resource                       | L'identifiant de ressource qui correspond à une instance de la ressource. | Par exemple, l'API nom-du-projet, un employé spécifique avec l'ID 123456 serait récupérés en utilisant `GET` `/project-name/v1/employes/E13454` |
-| Chaîne de requête> Paramètres/Filtres   | Les paramètres de requête **NE DOIVENT PAS** être utilisés pour transporter des données réelles. Les paramètres de requête suivants **DEVRAIENT** être pris en charge par votre API là où ils seraient utiles: **attributs** - spécifiez ou restreignez les attributs à renvoyer **filtres** - conditions pour restreindre / filtrer la liste de collection **sort** - spécifiez l'exigence de tri **page** - spécifiez l'index de pagination à renvoyer dans un ensemble de collections | Par exemple, `attributes=prenom,nom` retourne un élément de données ne contenant que `prenom` et `nom` attributes`filters=date_de_creation => 2001-09-20T13:00:00 et date_de_creation <= 2001-09-21T13:00:00 et prenom like 'Marie' et post_code=3000` - retourne une collection de ressources avec uen date de création entre 2001-09-20 1pm et 2001-09-21 1pm et prénom 'fred' et post_code est 3000. |
+| Chaîne de requête> Paramètres/Filtres   | Les paramètres de requête **NE DOIVENT PAS** être utilisés pour transporter des données réelles. Les paramètres de requête suivants **DEVRAIENT** être pris en charge par votre API là où ils seraient utiles: **attributs** - spécifiez ou restreignez les attributs à renvoyer **filtres** - conditions pour restreindre / filtrer la liste de collection **sort** - spécifiez l'exigence de tri **page** - spécifiez l'index de pagination à renvoyer dans un ensemble de collections | Par exemple, `attributes=prenom,nom` retourne un élément de données ne contenant que `prenom` et `nom` attributes`filters=date_de_creation => 2001-09-20T13:00:00 et date_de_creation <= 2001-09-21T13:00:00 et prenom like 'Marie' et post_code=3000` - retourne une collection de ressources avec une date de création entre 2001-09-20 1pm et 2001-09-21 1pm et prénom 'fred' et post_code est 3000. |
 
 **Noms des ressources**
 
@@ -581,7 +580,7 @@ Exemple:
 
 ## En-têtes des requêtes <a name="entetedemandes"></a>
 
-Les en-têtes suivants **DEVRAIENT** être utilisés par défaut sur toutes les demandes.
+Les en-têtes suivants **DEVRAIENT** être utilisés par défaut sur toutes les requêtes.
 
 | En-tête | Valeur par défaut   |
 | ------- | ------------------- |
@@ -1020,7 +1019,7 @@ Les codes d'état suivants représentent les réponses appropriées aux différe
 |                |                   | Unprocessable Entity   | 422  |
 |                |                   | Internal Server error  | 500  |
 
-### Pour une collection of Resources
+### Pour une collection of Ressources
 
 Les codes d'état suivants représentent les réponses appropriées aux différentes opérations qui peuvent être effectuées sur une ressource de collection dans le système.
 
